@@ -298,37 +298,38 @@ function w3_close() {
   <th><center>2</center></th>
   <th><center>1</center></th>
   </tr>
+
   <tr>
-  <th colspan="4">Reponse time to the intial call for servicec</th>
-  <th><input type="radio" value="5"  class="form-control" name="cbl"></th>
-  <th><input type="radio" value="4"  class="form-control" name="cb1"></th>
-  <th><input type="radio" value="3"  class="form-control" name="cb1"></th>
-  <th><input type="radio" value="2"  class="form-control" name="cb1"></th>
-  <th><input type="radio" value="1"  class="form-control" name="cb1"></th>
+  <th colspan="4">Accuracy of work and efficiency to save time</th>
+  <th><input type="radio" value="1" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="5" class="form-control" name="cb1"></th>
   </tr>
   <tr>
   <th colspan="4">Accuracy of work and efficiency to save time</th>
-  <th><input type="radio" name="5"  class="form-control" name="cb2"></th>
-  <th><input type="radio" name="4"  class="form-control" name="cb2"></th>
-  <th><input type="radio" name="3"  class="form-control" name="cb2"></th>
-  <th><input type="radio" name="2"  class="form-control" name="cb2"></th>
-  <th><input type="radio" name="1"  class="form-control" name="cb2"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="5" class="form-control" name="cb2"></th>
   </tr>
   <tr>
   <th colspan="4">Courtesy and professionalis of the attending personel</th>
-  <th><input type="radio" name=""  class="form-control" name="cb3"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb3"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb3"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb3"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb3"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="5" class="form-control" name="cb3"></th>
   </tr>
   <tr>
   <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-  <th><input type="radio" name=""  class="form-control" name="cb4"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb4"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb4"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb4"></th>
-  <th><input type="radio" name=""  class="form-control" name="cb4"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="5" class="form-control" name="cb4"></th>
   </tr>
 
 
