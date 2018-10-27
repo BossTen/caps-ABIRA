@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Job Order Records</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<img src="logo.png" width="100%" height="20%"><br>
+<nav class="navbar navbar-expand-lg w3-black">
+<a class="navbar-brand w3-xlarge" href="index.php">General Services Office</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link w3-xlarge" href="#">Notification</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link w3-xlarge" href="#">Inventory</a>
+      </li>
+      <li class="nav-item dropdown w3-xlarge">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Records
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="montly-maintenance-record.php">Maintenance Record</a>
+          <a class="dropdown-item" href="student-record.php">Student Record</a>
+          <a class="dropdown-item" href="job-order-record.php">Job Order Records</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown w3-xlarge">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Forms
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="job-order-form.php">Job Order Form</a>
+          <a class="dropdown-item" href="#">Purchase Request Form</a>
+          <a class="dropdown-item" href="#">Request for Repair Form</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown w3-xlarge">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Scheduling
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Schedule for Monthly Maintenance</a>
+          <a class="dropdown-item" href="#">Schedule for Job Order</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn  w3-hover-white" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
