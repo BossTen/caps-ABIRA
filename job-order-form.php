@@ -19,29 +19,64 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                ElectricalWorks,
                                                
                                                Plumbing,
-                                               Welding
-                                                  
-                                               ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssss", $nameOfOffice,
-                          $serialCode,
-                          $date,
-                          $airConditioning,
-                          $masonryCarpentry,
-                          $electrical,
-                          $plumbing,
-                          $welding
-                        );
+                                               Welding,
 
+
+                                               RequestorSignature,
+                                               RequestorName,
+                                               RequestorDesignation,
+                                               DateRequested,
+                                               signatureOfInspector,
+                                               InspectorName,
+                                               InspectorDesignation,
+                                               DateInspected,
+                                               Approved
+                                               -- ApprovedBy,
+                                               
+                                               ) 
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+$stmt->bind_param("sssssssssssssssss", $nameOfOffice,
+                              $serialCode,
+                              $date,
+                              $airConditioning,
+                              $masonryCarpentry,
+                              $electrical,
+                              $plumbing,
+                              $welding,
+
+                              $requesterSignature,
+                              $nameOfRequester,
+                              $designationOfRequester,
+                              $dateRequested,
+
+                              $inspecterSignature,
+                              $nameOfInspector,
+                              $designationOfInspecter,
+                              $dateInspected,
+
+                              $directorSignature
+
+                        );
+// Approved = $directorSignature
 // set parameters and execute
-echo $nameOfOffice = $_POST['nameofoffice'];
-echo $serialCode = $_POST['serial'];
-echo $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
-echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
-echo $electrical = isset($_POST['Electrical']) ? "on" : 'off';
-echo $plumbing = isset($_POST['Plumbing']) ? "on" : 'off';
-echo $welding = isset($_POST['Welding']) ? "on" : 'off';
-$date="";
+ $nameOfOffice = $_POST['nameofoffice'];
+ $serialCode = $_POST['serial'];
+ $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
+ $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
+ $electrical = isset($_POST['Electrical']) ? "on" : 'off';
+ $plumbing = isset($_POST['Plumbing']) ? "on" : 'off';
+ $welding = isset($_POST['Welding']) ? "on" : 'off';
+ $date = $_POST['date1'];
+ $requesterSignature = $_POST['requester-signature']; 
+ $inspecterSignature = $_POST['inspecter-signature'];
+ $directorSignature = $_POST['director-signature'];
+ $nameOfRequester = $_POST['name-of-requester'];
+ $nameOfInspector = $_POST['name-of-inspector'];
+ $designationOfRequester = $_POST['designation-of-requester'];
+ $designationOfInspecter = $_POST['designation-of-inspecter'];
+ $dateRequested = $_POST['date-requested'];
+ $dateInspected = $_POST['date-inspected'];
   //echo $campus = $_POST['campus'];
 
 $stmt->execute();
@@ -140,7 +175,7 @@ function w3_close() {
              <div class="row "><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
              </div>
 
-        <div class="row "><h4 class="col-6"><b>Date:</b>&nbsp;<input type="date" name="date1"  id="date1" class="form-control col-7"/></h4>
+        <div class="row "><h4 class="col-6"><b>Date:</b>&nbsp;<input type="date" name="date1" class="form-control col-7"/></h4>
                           <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
                               <?php
@@ -240,26 +275,26 @@ function w3_close() {
 </tr>
 <tr>
 <th>Signature:</th>
-<th></th>
-<th></th>
-<th></th>
+<th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
+<th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
+<th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
 </tr>
 <tr>
 <th>Printed Name:</th>
-<th><input class="w3-input" type="text" name="tb19"></th>
-<th><input class="w3-input" type="text" name="tb20"></th>
+<th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester"></th>
+<th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter"></th>
 <th><center>Engr. VICTOR A. SEMIRA</th>
 </tr>
 <tr>
 <th>Designation:</th>
-<th><input class="w3-input" type="text" name="tb21"></th>
-<th><input class="w3-input" type="text" name="tb22"></th>
+<th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester"></th>
+<th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter"></th>
 <th><center>Assistant Director of FMSO</th>
 </tr>
 <tr>
 <th>Date:</th>
-<th><input type="date"  class="form-control" name="date2"></th>
-<th><input type="date"  class="form-control" name="date3"></th>
+<th><input type="date"  class="form-control" name="date-requested"></th>
+<th><input type="date"  class="form-control" name="date-inspected"></th>
 <th><center>GSO - GPB Main II</th>
 </tr>
 </table>
