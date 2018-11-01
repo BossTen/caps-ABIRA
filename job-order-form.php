@@ -30,13 +30,17 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                InspectorName,
                                                InspectorDesignation,
                                                DateInspected,
-                                               Approved
+                                               Approved,
+                                               StartOfService,
+                                               EndOfService,
+                                               NoOfHours,
+                                               Assesment
                                                -- ApprovedBy,
                                                
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
 
-$stmt->bind_param("sssssssssssssssss", $nameOfOffice,
+$stmt->bind_param("sssssssssssssssssssss", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -55,7 +59,12 @@ $stmt->bind_param("sssssssssssssssss", $nameOfOffice,
                               $designationOfInspecter,
                               $dateInspected,
 
-                              $directorSignature
+                              $directorSignature,
+
+                              $startOfService,
+                              $endOfService,
+                              $noOfHours,
+                              $assessment
 
                         );
 // Approved = $directorSignature
@@ -77,6 +86,10 @@ $stmt->bind_param("sssssssssssssssss", $nameOfOffice,
  $designationOfInspecter = $_POST['designation-of-inspecter'];
  $dateRequested = $_POST['date-requested'];
  $dateInspected = $_POST['date-inspected'];
+ $startOfService = $_POST['start-of-service'];
+ $endOfService = $_POST['end-of-service'];
+ $noOfHours = $_POST['no-of-hours'];
+ $assessment = $_POST['assessment'];
   //echo $campus = $_POST['campus'];
 
 $stmt->execute();
@@ -175,7 +188,11 @@ function w3_close() {
              <div class="row "><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
              </div>
 
-        <div class="row "><h4 class="col-6"><b>Date:</b>&nbsp;<input type="date" name="date1" class="form-control col-7"/></h4>
+        <div class="row ">
+          
+          <h4 class="col-6"><b>Date:</b>&nbsp;
+            <input type="date" class="form-control col-7" name="date1" />
+          </h4>
                           <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
                               <?php
@@ -307,15 +324,15 @@ function w3_close() {
 </tr>
 <br>
 <tr>
-<th>Date: <input type="date" name="date4"  class="form-control"></th>
-<th><input type="date" name="date5"  class="form-control"</th>
-<th rowspan=2><input class="w3-input" type="text" name="tb23"></th>
-<th><input class="w3-check" type="checkbox" name="assess1">Work completed upon agreed duration</th>
+<th>Date: <input type="date" name="start-of-service"  class="form-control"></th>
+<th><input type="date" name="end-of-service"  class="form-control"</th>
+<th rowspan=2><input class="w3-input" type="text" name="no-of-hours"></th>
+<th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
 </tr>
 <tr>
 <th>Time:<input type="time"  class="form-control" name="time1"></th>
 <th><input type="time" class="form-control" name="time2"></th>
-<th><input class="w3-check" type="checkbox" name="assess2">Work not completed upon agreed duration</th>
+<th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
 </tr>
 </table>
 <br>
