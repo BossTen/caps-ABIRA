@@ -1,3 +1,38 @@
+<?php
+require 'dbcon.php';
+
+if(isset($_POST['jos'])){
+  //nameofoffice
+  //serial
+
+  //Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// prepare and binds
+$stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
+                                               SerialCode, 
+                                               DateRequestCreated
+                                               
+                                               ) 
+                                               VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $nameOfOffice, $serialCode,$date);
+
+// set parameters and execute
+ $nameOfOffice = $_POST['nameofoffice'];
+ $serialCode = $_POST['serial'];
+ $date = $_POST['date1'];
+  //echo $campus = $_POST['campus'];
+
+
+
+$stmt->execute();
+$stmt->close();
+$conn->close();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,26 +115,28 @@ function w3_close() {
 <center><h1>Job Order Form - Inspection Order</h1></center>
 <div class="container" style="margin-top: 1em;">
     <!-- UPDATE form -->
-    <form action="../capstone2/test.php" method="POST">
+    <form action="" method="POST">
         <!-- UPDATE card -->
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
 
-             <div class="row "><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required></h4>
+             <div class="row "><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
              </div>
 
-        <div class="row "><h4 class="col-6"><b>Date:</b>&nbsp;<input type="date" name="date1"  class="form-control col-7"></h4>
+        <div class="row "><h4 class="col-6"><b>Date:</b>&nbsp;<input type="date" name="date1"  id="date1" class="form-control col-7"/></h4>
                           <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
-                              <option value="Main I">Main I</option>
-                              <option value="Main II">Main II</option>
-                              <option value="Lemery">Lemery</option>
-                              <option value="Balayan">Balayan</option>
-                              <option value="Nasugbu">Nasugbu</option>
-                              <option value="Malvar">Malvar</option>
-                              <option value="Rosario">Rosario</option>
-                              <option value="Lobo">Lobo</option>
-                              <option value="San Juan">San Juan</option>
+                              <?php
+                                $sql = "SELECT Id, Name FROM capuses";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+
+                                  while ($row =  $result->fetch_assoc()) {
+            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+
+                                  }
+                                }
+                              ?>
                             </select>
         </div>
         <div class="row">
@@ -341,4 +378,4 @@ function w3_close() {
 <br>
 
 
-<input style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+<input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
