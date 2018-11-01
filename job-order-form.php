@@ -13,19 +13,36 @@ if ($conn->connect_error) {
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                SerialCode, 
-                                               DateRequestCreated
+                                               DateRequestCreated,
+                                               AirCondition,
+                                               CarpentryMasonry,
+                                               ElectricalWorks,
                                                
+                                               Plumbing,
+                                               Welding
+                                                  
                                                ) 
-                                               VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $nameOfOffice, $serialCode,$date);
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $nameOfOffice,
+                          $serialCode,
+                          $date,
+                          $airConditioning,
+                          $masonryCarpentry,
+                          $electrical,
+                          $plumbing,
+                          $welding
+                        );
 
 // set parameters and execute
- $nameOfOffice = $_POST['nameofoffice'];
- $serialCode = $_POST['serial'];
- $date = $_POST['date1'];
+echo $nameOfOffice = $_POST['nameofoffice'];
+echo $serialCode = $_POST['serial'];
+echo $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
+echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
+echo $electrical = isset($_POST['Electrical']) ? "on" : 'off';
+echo $plumbing = isset($_POST['Plumbing']) ? "on" : 'off';
+echo $welding = isset($_POST['Welding']) ? "on" : 'off';
+$date="";
   //echo $campus = $_POST['campus'];
-
-
 
 $stmt->execute();
 $stmt->close();
@@ -163,7 +180,7 @@ function w3_close() {
   <th colspan=2><center>Material Needed</th>
   </tr>
 <tr>
-<th rowspan=2><input class="w3-check" type="checkbox" name="work" value="Air-condtioning">
+<th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value ="true">
 <label>Air-conditioning Works:</label></th>
 <th><input class="w3-input" type="tb1"></th>
 <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
@@ -173,7 +190,7 @@ function w3_close() {
 <th colspan=2><input class="w3-input" type="text" name="tb4"></th>
 </tr>
 <tr>
-<th rowspan=2><input class="w3-check" type="checkbox" name="work" value="Carpentry/Masonary">
+<th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry">
 <label><center>Carpentry/ Masonary Works:</label></th>
 <th><input class="w3-input" type="text" name="tb5"></th>
 <th colspan=2><input class="w3-input" type="text" name="tb6"></th>
@@ -183,7 +200,7 @@ function w3_close() {
 <th colspan=2><input class="w3-input" type="text" name="tb8"></th>
 </tr>
 <tr>
-<th rowspan=2><input class="w3-check" type="checkbox" name="work" value="Electrical">
+<th rowspan=2><input class="w3-check" type="checkbox" name="Electrical">
 <label>Electrical Works:</label></th>
 <th><input class="w3-input" type="text" name="tb9"></th>
 <th colspan=2><input class="w3-input" type="text" name="tb10"></th>
@@ -193,7 +210,7 @@ function w3_close() {
 <th colspan=2><input class="w3-input" type="text" name="tb11"></th>
 </tr>
 <tr>
-<th rowspan=2><input class="w3-check" type="checkbox" name="work" value="Plumbing">
+<th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
 <label><center>Plumbing Works:</label></th>
 <th><input class="w3-input" type="text" name="tb12"></th>
 <th colspan=2><input class="w3-input" type="text" name="tb13"></th>
@@ -203,7 +220,7 @@ function w3_close() {
 <th colspan=2><input class="w3-input" type="text" name="tb14"></th>
 </tr>
 <tr>
-<th rowspan=2><input class="w3-check" type="checkbox" name="work" value="Welding">
+<th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
 <label><center>Welding Works:</label></th>
 <th><input class="w3-input" type="text" name="tb15"></th>
 <th colspan=2><input class="w3-input" type="text" name="16"></th>
