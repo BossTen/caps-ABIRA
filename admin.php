@@ -21,9 +21,6 @@ echo '<script> alert("Worng username or Password") </script>';
 }
 }
 }
-
-
-
 ?>
 
 <!DOCTYPE html>

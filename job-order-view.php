@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Preventive Maintenance BWSWF View</title>
+  <title>Job Order View</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -174,14 +174,13 @@ function w3_close() {
   </div>
 </div>
 
-
 <!--body-->
 
 <form action="" method="">
 <div class="container">
    <div class="form-row">
-      <div class="col-5 w3-text-red"><h2>Building, Walls, Doors, Windows Preventive Maintenance View</h2></div>
-      <div class="col-2"><h4>Department</h4>
+      <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
+      <div class="col-2"><h4>Campus</h4>
         <select name="services" style="width:80%;"></select>
       </div>
       <div class="col-2"><h4>Month</h4>
@@ -195,38 +194,34 @@ function w3_close() {
    </div>
 
 </form>
+<br>
+
+
 
 <div class="container">      
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Month</th>
-        <th>Department</th>
-         <th>Floor</th>
-         <th>Area</th>
-         <th>Type</th>
-         <th>Date Started</th>
-         <th>Date Ended</th>
-         <th>Accomplish by:</th>
+        <th>Serial</th>
+        <th>Campus</th>
+        <th>Date</th>
+         <th>Time</th>
+         <th>Status</th>
       </tr>
     </thead>
     <tbody>
     <tr>
-          <td>October</td>
-          <td>CICS</td>
-          <td>Third</td>
-          <td>Room 103</td>
-          <td>Door</td>
-          <td>10/10/18</td>
-          <td>10/10/18</td>
-          <td>Negrito</td>
-          
+          <td><b></b></td>
+          <td><b></b></td>
+          <td><b></b></td>
+          <td><b></td>
+          <td style="color:#28a745"><b></b></td>
           </tr>
-                  </tbody>
+        </tbody>
       </table>
     </div>
 
 <div class="container ">
-       <div class="float-right"><a href="bwd-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+       <div class="float-right"><a href="job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>
       </div>   
       </div>
