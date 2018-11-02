@@ -36,13 +36,26 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                NoOfHours,
                                                Assesment,
                                                StartOfServiceTime,
-                                               EndOfServiceTime
+                                               EndOfServiceTime,
+                                               AccomplishedWork1,
+                                               WorkDoneBy1,
+                                               Signature1,
+                                               AccomplishedWork2,
+                                               WorkDoneBy2,
+                                               Signature2,
+                                               AccomplishedWork3,
+                                               WorkDoneBy3,
+                                               Signature3,
+                                               AccomplishedWork4,
+                                               WorkDoneBy4,
+                                               Signature4
+
                                                -- ApprovedBy,
                                                
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssssssssssssssssssssss", $nameOfOffice,
+$stmt->bind_param("sssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -68,7 +81,19 @@ $stmt->bind_param("sssssssssssssssssssssss", $nameOfOffice,
                               $noOfHours,
                               $assessment,
                               $startOfServiceTime,
-                              $endOfServiceTime
+                              $endOfServiceTime,
+                              $accomplishedWork1,
+                              $workDoneBy1,
+                              $signature1,
+                              $accomplishedWork2,
+                              $workDoneBy2,
+                              $signature2,
+                              $accomplishedWork3,
+                              $workDoneBy3,
+                              $signature3,
+                              $accomplishedWork4,
+                              $workDoneBy4,
+                              $signature4
 
                         );
 // Approved = $directorSignature
@@ -96,6 +121,18 @@ $stmt->bind_param("sssssssssssssssssssssss", $nameOfOffice,
  $assessment = $_POST['assessment'];
  $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
  $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
+ $accomplishedWork1 = $_POST['accomplished-work1'];
+ $workDoneBy1 = $_POST['work-done-by1'];
+ $signature1 = $_POST['signature1'];
+ $accomplishedWork2 = $_POST['accomplished-work2'];
+ $workDoneBy2 = $_POST['work-done-by2'];
+ $signature2 = $_POST['signature2'];
+ $accomplishedWork3 = $_POST['accomplished-work3'];
+ $workDoneBy3 = $_POST['work-done-by3'];
+ $signature3 = $_POST['signature3'];
+ $accomplishedWork4 = $_POST['accomplished-work4'];
+ $workDoneBy4 = $_POST['work-done-by4'];
+ $signature4 = $_POST['signature4'];
   //echo $campus = $_POST['campus'];
 
 $stmt->execute();
