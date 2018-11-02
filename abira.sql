@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2018 at 01:17 AM
+-- Generation Time: Nov 02, 2018 at 11:58 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -118,10 +118,23 @@ CREATE TABLE `joborder` (
   `Approved` tinyint(1) DEFAULT NULL,
   `ApprovedBy` varchar(200) DEFAULT NULL,
   `StartOfService` date DEFAULT NULL,
+  `StartOfServiceTime` varchar(15) DEFAULT NULL,
   `EndOfService` date DEFAULT NULL,
+  `EndOfServiceTime` varchar(15) DEFAULT NULL,
   `NoOfHours` int(10) DEFAULT NULL,
   `Assesment` varchar(200) DEFAULT NULL,
-  `AccomplishedWorkId` int(10) DEFAULT NULL,
+  `AccomplishedWork1` varchar(250) DEFAULT NULL,
+  `WorkDoneBy1` varchar(250) DEFAULT NULL,
+  `Signature1` varchar(250) DEFAULT NULL,
+  `AccomplishedWork2` varchar(250) DEFAULT NULL,
+  `WorkDoneBy2` varchar(250) DEFAULT NULL,
+  `Signature2` varchar(250) DEFAULT NULL,
+  `AccomplishedWork3` varchar(250) DEFAULT NULL,
+  `WorkDoneBy3` varchar(250) DEFAULT NULL,
+  `Signature3` varchar(250) DEFAULT NULL,
+  `AccomplishedWork4` varchar(250) DEFAULT NULL,
+  `WorkDoneBy4` varchar(250) DEFAULT NULL,
+  `Signature4` varchar(250) DEFAULT NULL,
   `ConformeName` varchar(200) DEFAULT NULL,
   `ConformeApproved` tinyint(1) DEFAULT NULL,
   `ConformeDateApproved` date DEFAULT NULL,
@@ -135,15 +148,21 @@ CREATE TABLE `joborder` (
 -- Dumping data for table `joborder`
 --
 
-INSERT INTO `joborder` (`Id`, `SerialCode`, `Title`, `DateRequestCreated`, `CampusId`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeeded`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `EndOfService`, `NoOfHours`, `Assesment`, `AccomplishedWorkId`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`) VALUES
-(1, '123', NULL, NULL, NULL, 'aaa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'this is un', NULL, '0000-00-00', NULL, 'asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'qwe', NULL, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, '123333', NULL, '0000-00-00', NULL, '111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'test', NULL, '0000-00-00', NULL, '1', 'on', 'off', 'on', NULL, 'off', 'on', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 'test1', NULL, '0000-00-00', NULL, '1', 'on', 'off', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'printed name of requester', 'desgination of requester', '2018-11-01', 'signa', 'printed name of Inspecter', 'designation of Inspecter', '2018-11-07', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 'testing 3', NULL, '0000-00-00', NULL, '1', 'off', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '2018-11-07', '2018-11-07', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 'assessment', NULL, '0000-00-00', NULL, '1', 'off', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '2018-11-15', '2018-11-06', 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `joborder` (`Id`, `SerialCode`, `Title`, `DateRequestCreated`, `CampusId`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeeded`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assesment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`) VALUES
+(1, '123', NULL, NULL, NULL, 'aaa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'this is un', NULL, '0000-00-00', NULL, 'asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'qwe', NULL, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '123333', NULL, '0000-00-00', NULL, '111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'test', NULL, '0000-00-00', NULL, '1', 'on', 'off', 'on', NULL, 'off', 'on', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 'test1', NULL, '0000-00-00', NULL, '1', 'on', 'off', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'printed name of requester', 'desgination of requester', '2018-11-01', 'signa', 'printed name of Inspecter', 'designation of Inspecter', '2018-11-07', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'testing 3', NULL, '0000-00-00', NULL, '1', 'off', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '2018-11-07', NULL, '2018-11-07', NULL, 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 'assessment', NULL, '0000-00-00', NULL, '1', 'off', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '2018-11-15', NULL, '2018-11-06', NULL, 90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 'testTime', NULL, '0000-00-00', NULL, 'a', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '2018-11-08', '10:22', '2018-11-22', '10:33', 90, 'completed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'testtime2', NULL, '0000-00-00', NULL, '1', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '09:01 AM', '0000-00-00', '03:57 AM', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'test accom', NULL, '2018-11-23', NULL, '1', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-15', 'signa', 'name2', 'designation2', '2018-11-16', 0, NULL, '2018-11-07', '02:00 AM', '2018-11-07', '01:00 PM', 21, 'notcompleted', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, '111111', NULL, '2018-11-17', NULL, '11', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-22', 'signa', 'name2', 'designation2', '2018-11-30', 0, NULL, '2018-11-01', '11:01 PM', '2018-11-02', '11:01 AM', 1, 'notcompleted', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 'sampleseri', NULL, '2018-11-03', NULL, 'name of office', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-15', 'signa', 'name2', 'designation2', '2018-11-07', 0, NULL, '2018-11-03', '12:01 PM', '2018-11-03', '02:01 PM', 90, 'completed', 'AccomplishedWork1', 'WorkDoneBy1', 'Signature1', 'AccomplishedWork2', 'WorkDoneBy2', 'Signature2', 'AccomplishedWork3', 'WorkDoneBy3', 'Signature3', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 'f', NULL, '2018-11-09', NULL, 'asd', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-21', 'signa', 'name2', 'designation2', '2018-07-18', 0, NULL, '2018-11-02', '01:00 AM', '2018-11-03', '02:00 PM', 90, 'completed', 'AccomplishedWork1', 'WorkDoneBy1', 'Signature1', 'AccomplishedWork2', 'WorkDoneBy2', 'Signature2', 'AccomplishedWork3', 'WorkDoneBy3', 'Signature3', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', 'ConformeName', 0, '2018-11-03', 1, 1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -181,8 +200,7 @@ ALTER TABLE `employees`
 ALTER TABLE `joborder`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `serial` (`SerialCode`),
-  ADD KEY `CampusId` (`CampusId`),
-  ADD KEY `AccomplishedWorkId` (`AccomplishedWorkId`);
+  ADD KEY `CampusId` (`CampusId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -216,7 +234,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
@@ -232,8 +250,7 @@ ALTER TABLE `employees`
 -- Constraints for table `joborder`
 --
 ALTER TABLE `joborder`
-  ADD CONSTRAINT `joborder_ibfk_1` FOREIGN KEY (`CampusId`) REFERENCES `capuses` (`Id`),
-  ADD CONSTRAINT `joborder_ibfk_2` FOREIGN KEY (`AccomplishedWorkId`) REFERENCES `accomplishedwork` (`Id`);
+  ADD CONSTRAINT `joborder_ibfk_1` FOREIGN KEY (`CampusId`) REFERENCES `capuses` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
