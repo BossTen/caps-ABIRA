@@ -48,14 +48,20 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                Signature3,
                                                AccomplishedWork4,
                                                WorkDoneBy4,
-                                               Signature4
-
+                                               Signature4,
+                                               ConformeName,
+                                               ConformeApproved,
+                                               ConformeDateApproved,
+                                               ResponseTime,
+                                               AccuracyOfWork,
+                                               Courtesy,
+                                               QualityOfService
                                                -- ApprovedBy,
-                                               
+                                      
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssss", $nameOfOffice,
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -93,7 +99,14 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $signature3,
                               $accomplishedWork4,
                               $workDoneBy4,
-                              $signature4
+                              $signature4,
+                              $conformeName,
+                              $conformeSignature,
+                              $conformeDateSigned,
+                              $responseTime,
+                              $accuracyOfWork,
+                              $courtesy,
+                              $qualityOfService
 
                         );
 // Approved = $directorSignature
@@ -133,6 +146,15 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssss", $nameOfOffice,
  $accomplishedWork4 = $_POST['accomplished-work4'];
  $workDoneBy4 = $_POST['work-done-by4'];
  $signature4 = $_POST['signature4'];
+ $conformeName = $_POST['conforme-name'];
+ $conformeSignature = $_POST['conforme-signature'];
+ $conformeDateSigned = $_POST['conforme-date-signed'];
+ $responseTime = $_POST['cb1'];
+ $accuracyOfWork = $_POST['cb2'];
+ $courtesy = $_POST['cb3'];
+ $qualityOfService = $_POST['cb4'];
+
+
   //echo $campus = $_POST['campus'];
 
 $stmt->execute();
@@ -450,35 +472,35 @@ function w3_close() {
 
   <tr>
   <th colspan="4">Accuracy of work and efficiency to save time</th>
-  <th><input type="radio" value="1" class="form-control" name="cb1"></th>
-  <th><input type="radio" value="2" class="form-control" name="cb1"></th>
-  <th><input type="radio" value="3" class="form-control" name="cb1"></th>
-  <th><input type="radio" value="4" class="form-control" name="cb1"></th>
   <th><input type="radio" value="5" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb1"></th>
   </tr>
   <tr>
   <th colspan="4">Accuracy of work and efficiency to save time</th>
-  <th><input type="radio" value="1" class="form-control" name="cb2"></th>
-  <th><input type="radio" value="2" class="form-control" name="cb2"></th>
-  <th><input type="radio" value="3" class="form-control" name="cb2"></th>
-  <th><input type="radio" value="4" class="form-control" name="cb2"></th>
   <th><input type="radio" value="5" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb2"></th>
   </tr>
   <tr>
   <th colspan="4">Courtesy and professionalis of the attending personel</th>
-  <th><input type="radio" value="1" class="form-control" name="cb3"></th>
-  <th><input type="radio" value="2" class="form-control" name="cb3"></th>
-  <th><input type="radio" value="3" class="form-control" name="cb3"></th>
-  <th><input type="radio" value="4" class="form-control" name="cb3"></th>
   <th><input type="radio" value="5" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb3"></th>
   </tr>
   <tr>
   <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-  <th><input type="radio" value="1" class="form-control" name="cb4"></th>
-  <th><input type="radio" value="2" class="form-control" name="cb4"></th>
-  <th><input type="radio" value="3" class="form-control" name="cb4"></th>
-  <th><input type="radio" value="4" class="form-control" name="cb4"></th>
   <th><input type="radio" value="5" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb4"></th>
   </tr>
 
 
