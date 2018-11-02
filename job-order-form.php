@@ -349,30 +349,30 @@ function w3_close() {
 <th><center>Signature</th>
 </tr>
 <tr>
-<th colspan=2><input class="w3-input" type="text" name="tb24"></th>
-<th><input class="w3-input" type="text" name="tb25"></th>
-<th></th>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
+<th><input class="w3-input" type="text" name="work-done-by1"></th>
+<th><input class="w3-input" type="text" name="signature1"></th>
 </tr>
 <tr>
-<th colspan=2><input class="w3-input" type="text" name="tb26"></th>
-<th><input class="w3-input" type="text" name="tb27"></th>
-<th></th>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work2"></th>
+<th><input class="w3-input" type="text" name="work-done-by2"></th>
+<th><input class="w3-input" type="text" name="signature2"></th>
 </tr>
 <tr>
-<th colspan=2><input class="w3-input" type="text" name="tb28"></th>
-<th><input class="w3-input" type="text" name="tb29"></th>
-<th></th>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work3"></th>
+<th><input class="w3-input" type="text" name="work-done-by3"></th>
+<th><input class="w3-input" type="text" name="signature3"></th>
 </tr>
 <tr>
-<th colspan=2><input class="w3-input" type="text" name="tb30"></th>
-<th><input class="w3-input" type="text" name="tb31"></th>
-<th></th>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
+<th><input class="w3-input" type="text" name="work-done-by4"></th>
+<th><input class="w3-input" type="text" name="signature4"></th>
 </tr>
 <tr>
 <th rowspan=2><center>Conforme:</th>
-<th><input class="w3-input" type="text" name="tb32"></th>
-<th></th>
-<th><center><input type="date" name="date1"  class="form-control" name="date6"></th>
+<th><input class="w3-input" type="text" name="conforme-name"></th>
+<th><input class="w3-input" type="text" name="conforme-signature"></th>
+<th><center><input type="date" class="form-control" name="conforme-date-signed"></th>
 </tr>
 <tr>
 <th><center>Name</th>
@@ -384,7 +384,7 @@ function w3_close() {
 <br>
 <div class="container" style="margin-top: 1em;">
     <!-- UPDATE form -->
-    <form action="" method="POST">
+    <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
         <!-- UPDATE card -->
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
