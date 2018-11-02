@@ -13,4 +13,4 @@ echo $formattedtime;exit;
 <input type="time" name="time" />
 <input type="submit" name="submitform">
 </form>
-?>
+
