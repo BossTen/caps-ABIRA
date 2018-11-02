@@ -34,13 +34,15 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                StartOfService,
                                                EndOfService,
                                                NoOfHours,
-                                               Assesment
+                                               Assesment,
+                                               StartOfServiceTime,
+                                               EndOfServiceTime
                                                -- ApprovedBy,
                                                
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssssssssssssssssssss", $nameOfOffice,
+$stmt->bind_param("sssssssssssssssssssssss", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -64,7 +66,9 @@ $stmt->bind_param("sssssssssssssssssssss", $nameOfOffice,
                               $startOfService,
                               $endOfService,
                               $noOfHours,
-                              $assessment
+                              $assessment,
+                              $startOfServiceTime,
+                              $endOfServiceTime
 
                         );
 // Approved = $directorSignature
@@ -90,6 +94,8 @@ $stmt->bind_param("sssssssssssssssssssss", $nameOfOffice,
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
  $assessment = $_POST['assessment'];
+ $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
+ $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
   //echo $campus = $_POST['campus'];
 
 $stmt->execute();
@@ -330,8 +336,8 @@ function w3_close() {
 <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
 </tr>
 <tr>
-<th>Time:<input type="time"  class="form-control" name="time1"></th>
-<th><input type="time" class="form-control" name="time2"></th>
+<th>Time:<input type="time"  class="form-control" name="start-of-service-time"></th>
+<th><input type="time" class="form-control" name="end-of-service-time"></th>
 <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
 </tr>
 </table>

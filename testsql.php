@@ -2,40 +2,15 @@
 
 require 'dbcon.php';
 	
-	// $sql = "SELECT Id, Name FROM capuses";
-	// $result = $conn->query($sql);
-	// if($result->num_rows > 0){
 
-	// 	while ($row =  $result->fetch_assoc()) {
-	// 		echo "id:" . $row["Id"] . "Name: " . $row["Name"];
-	// 	}
-	// }else{
-	// 		//create a log and display a custom error message
-	// 	echo "error";
-	// 	}
+if(isset($_POST['submitform'])){
+$formattedtime = date('h:i A', strtotime($_POST['time']));
+echo $formattedtime;exit;
+}
 ?>
-	<html><body>
-<select class="form-control form-control" name="campus" id="campus">
-                              <?php
-                                $sql = "SELECT Id, Name FROM capuses";
-                                $result = $conn->query($sql);
-        if($result->num_rows > 0){
 
-          while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
-          }
-        }
-      ?>
-
-
-
-                       
-                            </select>
-                        </body>
-                        </html>
-
-
-	
-
-
-
+<form action="" method="post" >
+<input type="time" name="time" />
+<input type="submit" name="submitform">
+</form>
+?>
