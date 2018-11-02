@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2018 at 11:58 AM
+-- Generation Time: Nov 02, 2018 at 02:17 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -162,7 +162,8 @@ INSERT INTO `joborder` (`Id`, `SerialCode`, `Title`, `DateRequestCreated`, `Camp
 (21, 'test accom', NULL, '2018-11-23', NULL, '1', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-15', 'signa', 'name2', 'designation2', '2018-11-16', 0, NULL, '2018-11-07', '02:00 AM', '2018-11-07', '01:00 PM', 21, 'notcompleted', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (24, '111111', NULL, '2018-11-17', NULL, '11', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-22', 'signa', 'name2', 'designation2', '2018-11-30', 0, NULL, '2018-11-01', '11:01 PM', '2018-11-02', '11:01 AM', 1, 'notcompleted', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (27, 'sampleseri', NULL, '2018-11-03', NULL, 'name of office', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-15', 'signa', 'name2', 'designation2', '2018-11-07', 0, NULL, '2018-11-03', '12:01 PM', '2018-11-03', '02:01 PM', 90, 'completed', 'AccomplishedWork1', 'WorkDoneBy1', 'Signature1', 'AccomplishedWork2', 'WorkDoneBy2', 'Signature2', 'AccomplishedWork3', 'WorkDoneBy3', 'Signature3', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, 'f', NULL, '2018-11-09', NULL, 'asd', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-21', 'signa', 'name2', 'designation2', '2018-07-18', 0, NULL, '2018-11-02', '01:00 AM', '2018-11-03', '02:00 PM', 90, 'completed', 'AccomplishedWork1', 'WorkDoneBy1', 'Signature1', 'AccomplishedWork2', 'WorkDoneBy2', 'Signature2', 'AccomplishedWork3', 'WorkDoneBy3', 'Signature3', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', 'ConformeName', 0, '2018-11-03', 1, 1, 1, 1);
+(28, 'f', NULL, '2018-11-09', NULL, 'asd', 'on', 'on', 'on', NULL, 'on', 'on', NULL, NULL, NULL, 'signa', 'name1', 'designation 1', '2018-11-21', 'signa', 'name2', 'designation2', '2018-07-18', 0, NULL, '2018-11-02', '01:00 AM', '2018-11-03', '02:00 PM', 90, 'completed', 'AccomplishedWork1', 'WorkDoneBy1', 'Signature1', 'AccomplishedWork2', 'WorkDoneBy2', 'Signature2', 'AccomplishedWork3', 'WorkDoneBy3', 'Signature3', 'AccomplishedWork4', 'WorkDoneBy4', 'Signature4', 'ConformeName', 0, '2018-11-03', 1, 1, 1, 1),
+(29, 'testa', NULL, '0000-00-00', NULL, 'a', 'off', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 1, 1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -234,7 +235,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
