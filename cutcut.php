@@ -180,45 +180,33 @@ $conn->close();
 <img src="logo.png" width="100%" height="20%"><br><br>
 <!-- sidebar -->
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large"
-  onclick="w3_close()">Close &times;</button>
-  <div class="w3-dropdown-hover">
-    <button class="w3-button">Records
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-bar-block w3-white">
-      <a href="#" class="w3-bar-item w3-button">Maintenance Record</a>
-      <a href="job-order-record.php" class="w3-bar-item w3-button">Job Order Records</a>
-    </div>
-  </div>
-  <div class="w3-dropdown-hover">
-    <button class="w3-button">Forms
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-bar-block w3-white">
-      <a href="job-order-form.php" class="w3-bar-item w3-button">Job Order Form</a>
-      <a href="#" class="w3-bar-item w3-button">Purchase Request Form</a>
-      <a href="#" class="w3-bar-item w3-button">Request to Repair Form</a>
-    </div>
-  </div>
-   <div class="w3-dropdown-hover">
-    <button class="w3-button">Schedule
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-bar-block">
-      <a href="montly-maintenance-record.php" class="w3-bar-item w3-button">Schedule for Montly Maintenance</a>
-      <a href="#" class="w3-bar-item w3-button">Schedule for Job Order</a>
-    </div>
-  </div>
-  <a href="#" class="w3-bar-item w3-button">Inventory</a>
+
+<div class="col-12" style="color:black; font-size:15px; margin-bottom:5%;">
+  <a href="index.php">
+ <img src="batlogo.png" alt="logo" width="100px;" style="margin-right:5%; margin-top:5%;border-radius:50%;"></a>General Services Office
 </div>
+
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#joborder">Job Order</a>
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#air">Air-conditioning</a>
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#plum">Plumbing</a>
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#ps">Power Supply</a>
+  <a href="j" class="w3-bar-item w3-button" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
+  <a href="job-order-record.php" class="w3-bar-item w3-button" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
+  <a href="scheduling.php" class="w3-bar-item w3-button">Scheduling</a>
+  <a href="inventory.php" class="w3-bar-item w3-button">Inventory</a>
+    <a href="" class="w3-bar-item w3-button"data-toggle="modal" data-target="#admin">Log Out</a>
+<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button><br>
+ 
+
+</div>
+
 
 <div id="main">
 
 <div class="w3-white">
   <button id="openNav" class="w3-button w3-white w3-xlarge" onclick="w3_open()">&#9776;</button>
   <div class="w3-container w3-white">
-    <h1>General Services Office</h1>
+    <h1></h1>
   </div>
 </div>
 
@@ -242,10 +230,123 @@ function w3_close() {
 }
 </script>
 
-<center><h1>Job Order Form - Inspection Order</h1></center>
+
+<!--joborder-->
+<div class="modal fade" id="joborder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="job-order-form.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Form</a><br><br>
+      <a href="job-order-view.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--air-->
+<div class="modal fade" id="air" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="air-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding Form</a><br><br>
+      <a href="air-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--plumbing-->
+<div class="modal fade" id="plum" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="plum-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="plum-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Power supply-->
+<div class="modal fade" id="ps" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="ps-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="ps-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--BWDW-->
+<div class="modal fade" id="bwdw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="bwd-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="bwd-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--GSFC-->
+<div class="modal fade" id="gsfc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="gsfc-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="gsfc-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<center><h1 class="w3-text-red">Job Order Form - Inspection Order</h1></center>
 <div class="container" style="margin-top: 1em;">
     <!-- UPDATE form -->
+<<<<<<< HEAD
+    <form action="joborderinsert.php" method="POST">
+=======
     <form action="" method="POST">
+>>>>>>> 5b093ffae7aee3636eb06cd96b40ce9628dbaf37
         <!-- UPDATE card -->
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
@@ -280,10 +381,10 @@ function w3_close() {
         </div>
         </div>
 <br>
-<center><h1>Job Order Request</h1></center>
+<center><h1 class="w3-text-red">Job Order Request</h1></center>
 <div class="container" style="margin-top: 1em;">
     <!-- UPDATE form -->
-    <form action="" method="POST">
+    <form action="joborderinsert.php" method="POST">
         <!-- UPDATE card -->
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
@@ -363,20 +464,35 @@ function w3_close() {
 </tr>
 <tr>
 <th>Printed Name:</th>
+<<<<<<< HEAD
+<th><input class="w3-input" type="text" name="reqtb"></th>
+<th><input class="w3-input" type="text" name="insptb"></th>
+=======
 <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester"></th>
 <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter"></th>
+>>>>>>> 5b093ffae7aee3636eb06cd96b40ce9628dbaf37
 <th><center>Engr. VICTOR A. SEMIRA</th>
 </tr>
 <tr>
 <th>Designation:</th>
+<<<<<<< HEAD
+<th><input class="w3-input" type="text" name="desg1"></th>
+<th><input class="w3-input" type="text" name="desg2"></th>
+=======
 <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester"></th>
 <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter"></th>
+>>>>>>> 5b093ffae7aee3636eb06cd96b40ce9628dbaf37
 <th><center>Assistant Director of FMSO</th>
 </tr>
 <tr>
 <th>Date:</th>
+<<<<<<< HEAD
+<th><input type="date"  class="form-control" name="reqdate"></th>
+<th><input type="date"  class="form-control" name="inspdate"></th>
+=======
 <th><input type="date"  class="form-control" name="date-requested"></th>
 <th><input type="date"  class="form-control" name="date-inspected"></th>
+>>>>>>> 5b093ffae7aee3636eb06cd96b40ce9628dbaf37
 <th><center>GSO - GPB Main II</th>
 </tr>
 </table>
@@ -389,6 +505,17 @@ function w3_close() {
 </tr>
 <br>
 <tr>
+<<<<<<< HEAD
+<th>Date: <input type="date" name="sosdate"  class="form-control"></th>
+<th><input type="date" name="eosdate"  class="form-control"</th>
+<th rowspan=2><input class="w3-input" type="text" name="noofhrs"></th>
+<th><input class="w3-check" type="checkbox" name="assess1" value="Work completed upon agreed duration">Work completed upon agreed duration</th>
+</tr>
+<tr>
+<th>Time:<input type="time"  class="form-control" name="sostime"></th>
+<th><input type="time" class="form-control" name="eostime"></th>
+<th><input class="w3-check" type="checkbox" name="assess2" value"Work not completed upon agreed duration">Work not completed upon agreed duration</th>
+=======
 <th>Date: <input type="date" name="start-of-service"  class="form-control"></th>
 <th><input type="date" name="end-of-service"  class="form-control"</th>
 <th rowspan=2><input class="w3-input" type="text" name="no-of-hours"></th>
@@ -398,6 +525,7 @@ function w3_close() {
 <th>Time:<input type="time"  class="form-control" name="start-of-service-time"></th>
 <th><input type="time" class="form-control" name="end-of-service-time"></th>
 <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
+>>>>>>> 5b093ffae7aee3636eb06cd96b40ce9628dbaf37
 </tr>
 </table>
 <br>
@@ -408,6 +536,26 @@ function w3_close() {
 <th><center>Signature</th>
 </tr>
 <tr>
+<<<<<<< HEAD
+<th colspan=2><input class="w3-input" type="text" name="awtb1"></th>
+<th><input class="w3-input" type="text" name="wbtb1"></th>
+<th></th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="awtb2"></th>
+<th><input class="w3-input" type="text" name="wbtb2"></th>
+<th></th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="awtb3"></th>
+<th><input class="w3-input" type="text" name="wbtb3"></th>
+<th></th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="awtb4"></th>
+<th><input class="w3-input" type="text" name="wbtb4"></th>
+<th></th>
+=======
 <th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
 <th><input class="w3-input" type="text" name="work-done-by1"></th>
 <th><input class="w3-input" type="text" name="signature1"></th>
@@ -426,6 +574,7 @@ function w3_close() {
 <th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
 <th><input class="w3-input" type="text" name="work-done-by4"></th>
 <th><input class="w3-input" type="text" name="signature4"></th>
+>>>>>>> 5b093ffae7aee3636eb06cd96b40ce9628dbaf37
 </tr>
 <tr>
 <th rowspan=2><center>Conforme:</th>

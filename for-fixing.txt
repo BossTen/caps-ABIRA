@@ -1,0 +1,3 @@
+job-order-form.php
+serial field placeholder YearMonthDate ex.20180924 ---- placeholder sample cannot be like this
+this will result to duplication of serial number
