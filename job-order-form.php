@@ -515,6 +515,12 @@ function w3_close() {
 <input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
 <script>
   
+/*
 
-  
+check date if end is greater than start else display error
+get difference of end and start date
+time convert to 24 hours then subtract
+add the result to the total hours along with the difference of end and start date
+
+*/
 </script>
