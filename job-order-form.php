@@ -504,7 +504,7 @@ function w3_close() {
   </tr>
 
 
-  </tbody>
+</tbody>
 </table>
 </div>
 </div>
@@ -513,3 +513,8 @@ function w3_close() {
 
 
 <input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+<script>
+  
+
+  
+</script>
