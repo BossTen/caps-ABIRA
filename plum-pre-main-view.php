@@ -15,37 +15,23 @@
 <img src="logo.png" width="100%" height="20%"><br><br>
 <!-- sidebar -->
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large"
-  onclick="w3_close()">Close &times;</button>
-  <div class="w3-dropdown-hover">
-    <button class="w3-button">Records
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-bar-block w3-white">
-      <a href="montly-maintenance-record.php" class="w3-bar-item w3-button">Montly Maintenance Record</a>
-      <a href="job-order-record.php" class="w3-bar-item w3-button">Job Order Records</a>
-    </div>
-  </div>
-  <div class="w3-dropdown-hover">
-    <button class="w3-button">Forms
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-bar-block w3-white">
-      <a href="job-order-form.php" class="w3-bar-item w3-button">Job Order Form</a>
-      <a href="#" class="w3-bar-item w3-button">Purchase Request Form</a>
-      <a href="#" class="w3-bar-item w3-button">Request to Repair Form</a>
-    </div>
-  </div>
-   <div class="w3-dropdown-hover">
-    <button class="w3-button">Schedule
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-bar-block">
-      <a href="montly-maintenance-record.php" class="w3-bar-item w3-button">Schedule for Montly Maintenance</a>
-      <a href="#" class="w3-bar-item w3-button">Schedule for Job Order</a>
-    </div>
-  </div>
-  <a href="#" class="w3-bar-item w3-button">Inventory</a>
+
+<div class="col-12" style="color:black; font-size:20px; margin-bottom:5%;">
+  <a href="index.php">
+ <img src="batlogo.png" alt="logo" width="100px;" style="margin-right:0%; margin-top:5%;border-radius:50%;"></a>General Services Office
+</div>
+
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#joborder">Job Order</a>
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#air">Air-conditioning</a>
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#plum">Plumbing</a>
+  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#ps">Power Supply</a>
+  <a href="j" class="w3-bar-item w3-button" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
+  <a href="job-order-record.php" class="w3-bar-item w3-button" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
+  <a href="scheduling.php" class="w3-bar-item w3-button">Scheduling</a>
+  <a href="inventory.php" class="w3-bar-item w3-button">Inventory</a>
+    <a href="" class="w3-bar-item w3-button"data-toggle="modal" data-target="#admin">Log Out</a>
+<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button><br>
+ 
 
 </div>
 
@@ -55,7 +41,7 @@
 <div class="w3-white">
   <button id="openNav" class="w3-button w3-white w3-xlarge" onclick="w3_open()">&#9776;</button>
   <div class="w3-container w3-white">
-    <h1>General Services Office</h1>
+    <h1></h1>
   </div>
 </div>
 
@@ -80,8 +66,134 @@ function w3_close() {
 </script>
 
 
+<!--joborder-->
+<div class="modal fade" id="joborder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="job-order-form.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Form</a><br><br>
+      <a href="job-order-view.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--air-->
+<div class="modal fade" id="air" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="air-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding Form</a><br><br>
+      <a href="air-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--plumbing-->
+<div class="modal fade" id="plum" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="plum-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="plum-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Power supply-->
+<div class="modal fade" id="ps" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="ps-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="ps-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--BWDW-->
+<div class="modal fade" id="bwdw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="bwd-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="bwd-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--GSFC-->
+<div class="modal fade" id="gsfc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="gsfc-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="gsfc-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--body-->
-<center><h1 class="w3-text-red">Plumbing Preventive Maintenance View</h1></center>
+<form action="" method="">
+<div class="container">
+   <div class="form-row">
+      <div class="col-5 w3-text-red"><h2>Plumbing<br> Preventive Maintenance View</h2></div>
+      <div class="col-2"><h4>Department</h4>
+        <select name="services" style="width:80%;"></select>
+      </div>
+      <div class="col-2"><h4>Month</h4>
+        <select name="services" style="width:80%;"></select>
+      </div>
+      <div class="col-2"><h4>Year</h4>
+        <select name="services" style="width:80%;"></select>
+      </div>
+
+      <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
+   </div>
+
+</form>
 <div class="container">      
   <table class="table table-bordered">
     <thead>
@@ -108,3 +220,11 @@ function w3_close() {
           <td>Negrito</td>
           
           </tr>
+                  </tbody>
+      </table>
+    </div>
+
+    <div class="container ">
+       <div class="float-right"><a href="job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+      </div>   
+      </div>
