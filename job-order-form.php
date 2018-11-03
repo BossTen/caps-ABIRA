@@ -108,7 +108,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $courtesy,
                               $qualityOfService
 
-                        );
+                        );  
 // Approved = $directorSignature
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
@@ -192,13 +192,19 @@ require 'navbar.php';
              <div class="row">
               <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
               <h4 class="col-3"><b>Priority</b>&nbsp;
-                <select class="form-control" name="priority" id="priority">
-                  <option value="High" id="High" class="w3-text-red">High</option>
-                  <option value="Medium" id="Medium" class="w3-text-orange">Medium</option>
-                  <option value="Normal" id="Normal" class="w3-text-green">Normal</option>
-                  <option value="Low" id="Low" class="w3-text-blue">Low</option>
-                  
-                </select>
+                <select class="form-control form-control" name="campus" id="campus">
+                              <?php
+                                $sql = "SELECT Id, Name FROM priority";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+
+                                  while ($row =  $result->fetch_assoc()) {
+            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+
+                                  }
+                                }
+                              ?>
+                            </select>
              </div>
 
         <div class="row ">
