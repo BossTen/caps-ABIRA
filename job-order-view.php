@@ -45,6 +45,7 @@ require'navbar.php';
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th>Priority</th>
         <th>Serial</th>
         <th>Campus</th>
         <th>Date</th>
@@ -54,6 +55,7 @@ require'navbar.php';
     </thead>
     <tbody>
     <tr>
+          <td><b></b></td>
           <td><b></b></td>
           <td><b></b></td>
           <td><b></b></td>

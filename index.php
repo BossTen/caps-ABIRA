@@ -24,6 +24,7 @@
 require 'navbar.php';
 ?>
 
+<br><br>
 <div class="container">
    <div class="form-row text-center">
       <div class="col-12"><h1 class="w3-text-red">Schedule for Today</h1></div>
