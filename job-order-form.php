@@ -135,7 +135,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssi", $nameOfOffice,
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
- $assessment = isset($_POST['assessment']) $_POST['assessment'] : "notcompleted"  ;
+ $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
  $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
  $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
  $accomplishedWork1 = $_POST['accomplished-work1'];
@@ -153,10 +153,10 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssi", $nameOfOffice,
  $conformeName = $_POST['conforme-name'];
  $conformeSignature = $_POST['conforme-signature'];
  $conformeDateSigned = $_POST['conforme-date-signed'];
- $responseTime = $_POST['cb1'];
- $accuracyOfWork = $_POST['cb2'];
- $courtesy = $_POST['cb3'];
- $qualityOfService = $_POST['cb4'];
+ $responseTime = isset($_POST['cb1'])? $_POST['cb1'] : "0" ;
+ $accuracyOfWork = isset($_POST['cb2'])? $_POST['cb2'] : "0" ;
+ $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
+ $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
  $priority = $_POST['priority'];
  $campus = $_POST['campus'];
 
