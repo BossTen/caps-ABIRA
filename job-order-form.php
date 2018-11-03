@@ -189,7 +189,16 @@ require 'navbar.php';
         <div class="card">
             <div class="card-body" style="margin-left: 2%;">
 
-             <div class="row"><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
+             <div class="row">
+              <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
+              <h4 class="col-3"><b>Priority</b>&nbsp;
+                <select class="form-control" name="priority" id="priority">
+                  <option value="High" id="High" class="w3-text-red">High</option>
+                  <option value="Medium" id="Medium" class="w3-text-orange">Medium</option>
+                  <option value="Normal" id="Normal" class="w3-text-green">Normal</option>
+                  <option value="Low" id="Low" class="w3-text-blue">Low</option>
+                  
+                </select>
              </div>
 
         <div class="row ">
