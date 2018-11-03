@@ -1,16 +1,15 @@
 <?php
-
 require 'dbcon.php';
-	
 
-if(isset($_POST['submitform'])){
-$formattedtime = date('h:i A', strtotime($_POST['time']));
-echo $formattedtime;exit;
+$sql = "SELECT Priority,SerialCode,CampusId,DateRequestCreated FROM joborder ";
+$result = $conn->query($sql);
+if($result->num_rows >0){
+	while($row = $result->fetch_assoc()){
+		echo $row['Priority'];
+		echo $row['SerialCode'];
+		echo $row['CampusId'];
+		echo $row['DateRequestCreated'];
+	}
 }
+
 ?>
-
-<form action="" method="post" >
-<input type="time" name="time" />
-<input type="submit" name="submitform">
-</form>
-
