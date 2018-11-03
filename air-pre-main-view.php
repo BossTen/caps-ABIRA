@@ -204,13 +204,11 @@ function w3_close() {
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Month</th>
-        <th>Department</th>
-         <th>Floor</th>
-         <th>Area</th>
-         <th>Date Started</th>
-         <th>Date Ended</th>
-         <th>Accomplish by:</th>
+        <th>Dated Requested</th>
+        <th>Job Information</th>
+         <th>Date Approved</th>
+         <th>Status</th>
+         <th>Priority</th>
       </tr>
     </thead>
     <tbody>
@@ -220,8 +218,6 @@ function w3_close() {
           <td>Third</td>
           <td>Room 103</td>
           <td>10/10/18</td>
-          <td>10/10/18</td>
-          <td>Negrito</td>
           
           </tr>
                   </tbody>
