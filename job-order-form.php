@@ -218,7 +218,7 @@ $conn->close();
 
 <script>
 function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("main").style.marginLeft = "250px";
   document.getElementById("mySidebar").style.width = "25%";
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
@@ -340,14 +340,14 @@ function w3_close() {
 </div>
 
 <center><h1>Job Order Form - Inspection Order</h1></center>
-<div class="container" style="margin-top: 1em;">
+<div class="container" style="margin-top: ;">
     <!-- UPDATE form -->
     <form action="" method="POST">
         <!-- UPDATE card -->
         <div class="card">
-            <div class="card-body" style="margin-left:2%;">
+            <div class="card-body" style="margin-left: 2%;">
 
-             <div class="row "><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
+             <div class="row"><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
              </div>
 
         <div class="row ">
@@ -371,32 +371,31 @@ function w3_close() {
                             </select>
         </div>
         <div class="row">
-                             <h4 class="col-12"><b>Name of Office:</b>&nbsp;
+                             <h4 class="col-10"><b>Name of Office:</b>&nbsp;
                              <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" required>
         </div>
         </div>
         </div>
 <br>
 <center><h1>Job Order Request</h1></center>
-<div class="container" style="margin-top: 1em;">
+<div class="container" style="margin-top: ;">
     <!-- UPDATE form -->
     <form action="" method="POST">
         <!-- UPDATE card -->
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
 
-
 <table class="table table-bordered">
   <tbody>
   <tr>
-  <th><center>Kindly put a check mark before the work<br> service and/or assistance to be done</th>
-  <th><center>Inspection report</th>
-  <th colspan=2><center>Material Needed</th>
+  <th colspan="col-5"><center>Kindly put a check mark before the work<br> service and/or assistance to be done</th>
+  <th colspan="2.5"><center>Inspection report</th>
+  <th colspan="2.5"><center>Material Needed</th>
   </tr>
 <tr>
 <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value ="true">
 <label>Air-conditioning Works:</label></th>
-<th rowspan="5"><input class="w3-input" type="tb1"></th>
+<th rowspan="5"><input class="w3-input text-area" type="text-area" name=""></th>
 <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
 </tr>
 <tr>
@@ -445,6 +444,7 @@ function w3_close() {
 </tr>
 </table>
 <br>
+
 <table class="table table-bordered w3-card w3-round">
 <tr>
 <th></th>
@@ -538,7 +538,7 @@ function w3_close() {
 </div>
 </div>
 <br>
-<div class="container" style="margin-top: 1em;">
+<div class="container" style="margin-top: ;">
     <!-- UPDATE form -->
     <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
         <!-- UPDATE card -->
