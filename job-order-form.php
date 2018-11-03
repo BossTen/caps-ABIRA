@@ -10,9 +10,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
-                                               SerialCode, 
+                                               SerialCode,
+                                               CampusId,
                                                DateRequestCreated,
                                                AirCondition,
                                                CarpentryMasonry,
@@ -20,7 +22,6 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                
                                                Plumbing,
                                                Welding,
-
 
                                                RequestorSignature,
                                                RequestorName,
@@ -59,10 +60,12 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                -- ApprovedBy,
                                       
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
+$stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
+                              $nameOfOffice,
                               $serialCode,
+                              $campusId,
                               $date,
                               $airConditioning,
                               $masonryCarpentry,
@@ -113,6 +116,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
  $serialCode = $_POST['serial'];
+ $campusId = $_POST['campus'];
  $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
  $electrical = isset($_POST['Electrical']) ? "on" : 'off';
@@ -131,7 +135,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
- $assessment = $_POST['assessment'];
+ $assessment = isset($_POST['assessment'])?  $_POST['assessment'] : "notcompleted";
  $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
  $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
  $accomplishedWork1 = $_POST['accomplished-work1'];
@@ -612,6 +616,12 @@ function w3_close() {
 <input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
 <script>
   
+/*
 
-  
+check date if end is greater than start else display error
+get difference of end and start date
+time convert to 24 hours then subtract
+add the result to the total hours along with the difference of end and start date
+
+*/
 </script>
