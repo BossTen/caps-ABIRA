@@ -45,7 +45,6 @@ require'navbar.php';
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Priority</th>
         <th>Serial</th>
         <th>Campus</th>
         <th>Date</th>
@@ -53,11 +52,27 @@ require'navbar.php';
       </tr>
     </thead>
     <tbody>
+      <?php
+      require 'dbcon.php';
+                                $sql = "SELECT j.SerialCode,j.CampusId, j.DateRequestCreated, j.statusId, c.Name FROM joborder as j inner join capuses as c ON j.CampusId = c.Id ";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+
+                                  while ($row =  $result->fetch_assoc()) {
+                                    echo "<tr>";
+                        echo "<td>" . $row['SerialCode'] . "</td>";
+                        echo "<td>" . $row['Name'] . "</td>";
+                        echo "<td>" . $row['DateRequestCreated'] . "</td>";
+                        echo "<td>" . $row['statusId'] . "</td>";
+                          echo "</tr>";
+                                  }
+                                }
+                              ?>
     <tr>
           <td><b></b></td>
           <td><b></b></td>
           <td><b></b></td>
-          <td><b></b></td>
+          <td><b></td>
           <td style="color:#28a745"><b></b></td>
           </tr>
         </tbody>
