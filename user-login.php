@@ -18,14 +18,15 @@
 </head>
 <img src="logo.png" width="100%" height="20%">
 <br><br>
-
-<div class="card">
-<div class="card-body" style="margin-bottom: 2%;">
-    <h1 class="w3-text-red w3-center">Student Log In</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">    <h1 class="w3-text-red w3-center">Student Log In</h1>
     <center>
              <form action="" method="post">
-               <div class="form-group"><input type="text" class="form-control col-5" name="username" placeholder="Enter Username"></div>
-               <div class="form-group"><input type="password" class="form-control col-5" name="password" placeholder="Password"></div>
+               <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
+               <div class="form-group"><input type="password" class="form-control" name="password" placeholder="Password"></div>
                <input type="submit" class="btn btn-success w3-xlarge" name="Login" value="Login">
               </form>
              </form>
