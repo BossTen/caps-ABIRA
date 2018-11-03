@@ -236,7 +236,7 @@ require 'navbar.php';
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
 
-<table class="table table-bordered">
+<table class="table table-bordered w3-card w3-round">
   <tbody>
   <tr>
   <th colspan="col-5"><center>Kindly put a check mark before the work<br> service and/or assistance to be done</th>

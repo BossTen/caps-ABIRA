@@ -29,6 +29,9 @@
         <li class="nav-item">
       <a class="nav-link" href="inventory.php"> Inventory</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="inventory.php">Notification</a>
+    </li>
 
 
   </ul>
@@ -115,8 +118,8 @@
       </div>
       <div class="modal-body">
       <center>  
-      <a href="bwd-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
-      <a href="bwd-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
+      <a href="bwdw-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
+      <a href="bwdw-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
