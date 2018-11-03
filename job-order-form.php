@@ -10,11 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
-                                               SerialCode,
-                                               CampusId,
+                                               SerialCode, 
                                                DateRequestCreated,
                                                AirCondition,
                                                CarpentryMasonry,
@@ -22,6 +20,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                
                                                Plumbing,
                                                Welding,
+
 
                                                RequestorSignature,
                                                RequestorName,
@@ -60,12 +59,10 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                -- ApprovedBy,
                                       
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
-                              $nameOfOffice,
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $serialCode,
-                              $campusId,
                               $date,
                               $airConditioning,
                               $masonryCarpentry,
@@ -116,7 +113,6 @@ $stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
  $serialCode = $_POST['serial'];
- $campusId = $_POST['campus'];
  $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
  $electrical = isset($_POST['Electrical']) ? "on" : 'off';
@@ -135,7 +131,7 @@ $stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
- $assessment = isset($_POST['assessment'])?  $_POST['assessment'] : "notcompleted";
+ $assessment = $_POST['assessment'];
  $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
  $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
  $accomplishedWork1 = $_POST['accomplished-work1'];
