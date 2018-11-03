@@ -45,10 +45,10 @@ require'navbar.php';
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th>Priority</th>
         <th>Serial</th>
         <th>Campus</th>
         <th>Date</th>
-         <th>Time</th>
          <th>Status</th>
       </tr>
     </thead>
@@ -57,7 +57,7 @@ require'navbar.php';
           <td><b></b></td>
           <td><b></b></td>
           <td><b></b></td>
-          <td><b></td>
+          <td><b></b></td>
           <td style="color:#28a745"><b></b></td>
           </tr>
         </tbody>
