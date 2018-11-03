@@ -24,6 +24,7 @@
 		<input class="w3-check" type="checkbox" name="Plumbing Works"><label>Plumbing Works</label><br>
 		<input class="w3-check" type="checkbox" name="Welding Works"><label>Welding Works</label><br>
 		<br>
+    <div class="form-group"><textarea class="form-control" rows="15" name="user-textarea"></textarea></div>
 	<h4 class="col-3"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
                   <option value="High" id="High" class="w3-text-red">High</option>

@@ -246,7 +246,7 @@ require 'navbar.php';
 <tr>
 <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value ="true">
 <label>Air-conditioning Works:</label></th>
-<th rowspan="5"><input class="w3-input text-area" type="text-area" name=""></th>
+<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="inspectreport-textarea"></textarea></div></th>
 <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
 </tr>
 <tr>
@@ -276,7 +276,7 @@ require 'navbar.php';
 <tr>
 <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
 <label><center>Plumbing Works:</label></th>
-<th rowspan="5"><input class="w3-input" type="text" name="tb12"></th>
+<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation-textarea"></textarea></div></th>
 <th colspan=2><input class="w3-input" type="text" name="tb13"></th>
 </tr>
 <tr>
