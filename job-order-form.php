@@ -12,7 +12,8 @@ if ($conn->connect_error) {
 
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
-                                               SerialCode, 
+                                               SerialCode,
+
                                                DateRequestCreated,
                                                AirCondition,
                                                CarpentryMasonry,
@@ -55,13 +56,15 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                ResponseTime,
                                                AccuracyOfWork,
                                                Courtesy,
-                                               QualityOfService
+                                               QualityOfService,
+                                               priorityId,
+                                               CampusId
                                                -- ApprovedBy,
                                       
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssi", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -106,8 +109,9 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $responseTime,
                               $accuracyOfWork,
                               $courtesy,
-                              $qualityOfService
-
+                              $qualityOfService,
+                              $priority,
+                              $campus   
                         );  
 // Approved = $directorSignature
 // set parameters and execute
@@ -131,7 +135,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
- $assessment = $_POST['assessment'];
+ $assessment = isset($_POST['assessment']) $_POST['assessment'] : "notcompleted"  ;
  $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
  $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
  $accomplishedWork1 = $_POST['accomplished-work1'];
@@ -153,9 +157,8 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
  $accuracyOfWork = $_POST['cb2'];
  $courtesy = $_POST['cb3'];
  $qualityOfService = $_POST['cb4'];
-
-
-  //echo $campus = $_POST['campus'];
+ $priority = $_POST['priority'];
+ $campus = $_POST['campus'];
 
 $stmt->execute();
 $stmt->close();
@@ -192,7 +195,7 @@ require 'navbar.php';
              <div class="row">
               <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
               <h4 class="col-3"><b>Priority</b>&nbsp;
-                <select class="form-control form-control" name="campus" id="campus">
+                <select class="form-control form-control" name="priority" id="priority">
                               <?php
                                 $sql = "SELECT Id, Name FROM priority";
                                 $result = $conn->query($sql);
