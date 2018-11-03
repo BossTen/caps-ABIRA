@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Preventive Maintenance Power Supply</title>
+  <title>Preventive Maintenance BWSWF</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -17,7 +17,8 @@ require'navbar.php';
 
 ?>
 
-<!-- body -->
+
+<!--body-->
 <br>
 <center><h1 class="w3-text-red">Preventive Maintenance Form</h1></center>
 <div class="container" style="margin-top: 1em;">
@@ -26,12 +27,11 @@ require'navbar.php';
         <div class="card">
             <div class="card-body" style="margin-left:5%;">
             <div class="row">
-            <h2>POWER SUPPLY (Main II)</h2>
+            <h2>Building WALLS, DOORS, WINDOWS and FLOORS (Main II)</h2>
             </div>
 
              <div class="row "><h4 class="col-6"><b>Work:</b>&nbsp;
-              <input type="text" value="POWER SUPPLY" id="powersupply" class="form-control col-12" disabled>
-             </h4>
+             <input type="text" value="Building, Walls, Doors, Windows" id="bwdw" class="form-control col-12" disabled></h4>
                               <h4 class="col-6"><b>Campus:</b>&nbsp;
                              <select class="form-control form-control" name="" id="campus">
                               <option value="">Main I</option>
@@ -50,7 +50,7 @@ require'navbar.php';
         </div>              
         <div class="row">
                              <h4 class="col-6"><b>Month:</b>&nbsp;
-                             <select class="form-control form-control" name="" id="campus">
+                             <select class="form-control form-control" name="" id="Month">
                               <option value="">January</option>
                               <option value="">February</option>
                               <option value="">March</option>
@@ -98,13 +98,12 @@ require'navbar.php';
                             </div>
                             <div class="row">
                              <h4 class="col-6"><b>Type:</b>&nbsp;<select class="form-control form-control" name="" id="campus">
-                              <option value="">LO - Lighting Outlet</option>
-                              <option value="">CO - Convience Outlet</option>
-                              <option value="">Ceiling Fans</option>	
-                              <option value="">Fire Alarms</option>
-                              <option value="">Panel Boards</option>
-                              <option value="">Switching</option>
-                           
+                              <option value="">Door (Repainted; Lock/Knobs repaired/ replaced)</option>
+                              <option value="">Windows (Replaced broken Glass covers; Cleaned)</option>	
+                              <option value="">Floor Rooms (Replaced broken tiles; Mopped/ Cleaned )</option>
+                              <option value="">Lobby (Replaced broken tiles; Mopped/ Cleaned )</option>
+                              <option value="">Walls (Repainted; Cleaned)</option>
+                              <option value="">Toilet (Cleaned; Repaired/ Replaced Fixtures)</option>
                      
                        
                             </select></h4>
