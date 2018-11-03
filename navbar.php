@@ -1,56 +1,38 @@
 
-<img src="logo.png" width="100%" height="20%"><br><br>
-<!-- sidebar -->
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+<img src="logo.png" width="100%" height="20%">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Home</a>
 
-<div class="col-12" style="color:black; font-size:20px; margin-bottom:5%;">
-  <a href="index.php">
- <img src="batlogo.png" alt="logo" width="100px;" style="margin-right:5%; margin-top:5%;border-radius:50%;"></a>General Services Office
-</div>
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+  <a href="" class="nav-link" data-toggle="modal" data-target="#joborder">Job Order</a>
+    </li>
+    <!--dropdown-->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Services
+      </a>
+      <div class="dropdown-menu">
+  <a href="" class="dropdown-item" data-toggle="modal" data-target="#air">Air-conditioning</a>
+  <a href="" class="dropdown-item" data-toggle="modal" data-target="#plum">Plumbing</a>
+  <a href="" class="dropdown-item" data-toggle="modal" data-target="#ps">Power Supply</a>
+  <a href="" class="dropdown-item" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
+  <a href="" class="dropdown-item" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
+      </div>
+    </li>
 
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#joborder">Job Order</a>
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#air">Air-conditioning</a>
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#plum">Plumbing</a>
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#ps">Power Supply</a>
-  <a href="j" class="w3-bar-item w3-button" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
-  <a href="job-order-record.php" class="w3-bar-item w3-button" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
-  <a href="scheduling.php" class="w3-bar-item w3-button">Scheduling</a>
-  <a href="inventory.php" class="w3-bar-item w3-button">Inventory</a>
-    <a href="" class="w3-bar-item w3-button"data-toggle="modal" data-target="#admin">Log Out</a>
-<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button><br>
- 
-
-</div>
-
-
-<div id="main">
-
-<div class="w3-white">
-  <button id="openNav" class="w3-button w3-white w3-xlarge" onclick="w3_open()">&#9776;</button>
-  <div class="w3-container w3-white">
-    <h1></h1>
-  </div>
-</div>
+        <li class="nav-item">
+      <a class="nav-link" href="scheduling.php">Schedule</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link" href="inventory.php"> Inventory</a>
+    </li>
 
 
-<div class="w3-container">
-</div>
-
-</div>
-
-<script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
-  document.getElementById("mySidebar").style.width = "25%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
+  </ul>
+</nav>
 
 
 <!--joborder-->

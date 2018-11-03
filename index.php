@@ -21,7 +21,7 @@
 <body>
 
 <?php
-require 'navbar.php'; 
+require 'navbar.php';
 ?>
 
 <div class="container">

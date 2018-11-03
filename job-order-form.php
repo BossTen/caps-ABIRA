@@ -10,11 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
-                                               SerialCode,
-                                               CampusId,
+                                               SerialCode, 
                                                DateRequestCreated,
                                                AirCondition,
                                                CarpentryMasonry,
@@ -22,6 +20,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                
                                                Plumbing,
                                                Welding,
+
 
                                                RequestorSignature,
                                                RequestorName,
@@ -60,12 +59,10 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                -- ApprovedBy,
                                       
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
-                              $nameOfOffice,
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               $serialCode,
-                              $campusId,
                               $date,
                               $airConditioning,
                               $masonryCarpentry,
@@ -116,7 +113,6 @@ $stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
  $serialCode = $_POST['serial'];
- $campusId = $_POST['campus'];
  $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
  $electrical = isset($_POST['Electrical']) ? "on" : 'off';
@@ -135,7 +131,7 @@ $stmt->bind_param("ssissssssssssssssssssssssssssssssssssssssss",
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
- $assessment = isset($_POST['assessment'])?  $_POST['assessment'] : "notcompleted";
+ $assessment = $_POST['assessment'];
  $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
  $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
  $accomplishedWork1 = $_POST['accomplished-work1'];
@@ -181,169 +177,11 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<img src="logo.png" width="100%" height="20%"><br><br>
-<!-- sidebar -->
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+<?php
+require 'navbar.php';
+?>
 
-<div class="col-12" style="color:black; font-size:20px; margin-bottom:5%;">
-  <a href="index.php">
- <img src="batlogo.png" alt="logo" width="100px;" style="margin-right:0%; margin-top:5%;border-radius:50%;"></a>General Services Office
-</div>
-
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#joborder">Job Order</a>
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#air">Air-conditioning</a>
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#plum">Plumbing</a>
-  <a href="" class="w3-bar-item w3-button" data-toggle="modal" data-target="#ps">Power Supply</a>
-  <a href="j" class="w3-bar-item w3-button" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
-  <a href="job-order-record.php" class="w3-bar-item w3-button" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
-  <a href="scheduling.php" class="w3-bar-item w3-button">Scheduling</a>
-  <a href="inventory.php" class="w3-bar-item w3-button">Inventory</a>
-    <a href="" class="w3-bar-item w3-button"data-toggle="modal" data-target="#admin">Log Out</a>
-<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button><br>
- 
-
-</div>
-
-
-<div id="main">
-
-<div class="w3-white">
-  <button id="openNav" class="w3-button w3-white w3-xlarge" onclick="w3_open()">&#9776;</button>
-  <div class="w3-container w3-white">
-    <h1></h1>
-  </div>
-</div>
-
-
-<div class="w3-container">
-</div>
-
-</div>
-
-<script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "250px";
-  document.getElementById("mySidebar").style.width = "25%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
-
-
-<!--joborder-->
-<div class="modal fade" id="joborder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-      <center>  
-      <a href="job-order-form.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Form</a><br><br>
-      <a href="job-order-view.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--air-->
-<div class="modal fade" id="air" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-      <center>  
-      <a href="air-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding Form</a><br><br>
-      <a href="air-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--plumbing-->
-<div class="modal fade" id="plum" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-      <center>  
-      <a href="plum-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
-      <a href="plum-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Power supply-->
-<div class="modal fade" id="ps" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-      <center>  
-      <a href="ps-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
-      <a href="ps-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--BWDW-->
-<div class="modal fade" id="bwdw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-      <center>  
-      <a href="bwd-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
-      <a href="bwd-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--GSFC-->
-<div class="modal fade" id="gsfc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-      <center>  
-      <a href="gsfc-pre-main-form.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Adding  Form</a><br><br>
-      <a href="gsfc-pre-main-view.php" class="btn btn-danger w3-xlarge" role="button">Preventive Maintenance Records</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<center><h1>Job Order Form - Inspection Order</h1></center>
+<center><h1 class="w3-text-red">Job Order Form - Inspection Order</h1></center>
 <div class="container" style="margin-top: ;">
     <!-- UPDATE form -->
     <form action="" method="POST">
@@ -351,7 +189,16 @@ function w3_close() {
         <div class="card">
             <div class="card-body" style="margin-left: 2%;">
 
-             <div class="row"><h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
+             <div class="row">
+              <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial"  class="form-control col-7" placeholder="YearMonthDate ex.20180924" required/></h4>
+              <h4 class="col-3"><b>Priority</b>&nbsp;
+                <select class="form-control" name="priority" id="priority">
+                  <option value="High" id="High" class="w3-text-red">High</option>
+                  <option value="Medium" id="Medium" class="w3-text-orange">Medium</option>
+                  <option value="Normal" id="Normal" class="w3-text-green">Normal</option>
+                  <option value="Low" id="Low" class="w3-text-blue">Low</option>
+                  
+                </select>
              </div>
 
         <div class="row ">
@@ -381,7 +228,7 @@ function w3_close() {
         </div>
         </div>
 <br>
-<center><h1>Job Order Request</h1></center>
+<center><h1 class="w3-text-red">Job Order Request</h1></center>
 <div class="container" style="margin-top: ;">
     <!-- UPDATE form -->
     <form action="" method="POST">
