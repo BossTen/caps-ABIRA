@@ -355,8 +355,8 @@ require 'navbar.php';
 <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
 </tr>
 <tr>
-<th>Time:<input type="time"  class="form-control" name="start-of-service-time" onchange="serviceCheckTime()" id="startOfServiceTime"></th>
-<th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckTime()" id="endOfServiceTime"></th>
+<th>Time:<input type="time"  class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime"></th>
+<th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime"></th>
 <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
 </tr>
 </table>
@@ -480,46 +480,54 @@ require 'navbar.php';
   $('#endOfServiceTime, #startOfServiceTime').css('border','4px solid red');
 
 
-function serviceCheckTime(){
-  var stime = $('#startOfServiceTime').val();
-  var etime = $('#endOfServiceTime').val();
-  //if time 
+function hrsToMins(hours){
+  return hours * 60;
+}
 
-  //splitting time to minutes and hours
-  var hours = stime.split(":")[0];
-  var minutes = stime.split(":")[1];
-  //if hours is greater than 12 then it is suffix is set to pm else am
-  var suffix = hours >= 12 ? "pm" : "am";
-  // getting the remainder of 12
-  hours = hours % 12 || 12;
-  /*
-    if less than 10 append "0" to hours else just remain the value of hours
-    example
-    hours = 9
-    "0"+ 9 = 09
-    this is just for formatting
-  */
-  hours = hours < 10 ? "0" + hours : hours;
-
-  var displayTime = hours + ":" + minutes + " " + suffix;
-  console.log(displayTime);
-  //console.log(etime);
-  //console.log(stime);
+function minsToHour(mins){
+  return mins / 60;
 }
 
 
 function serviceCheckDate(){
+  // Time Check
+
+  var stime = $('#startOfServiceTime').val();
+  var etime = $('#endOfServiceTime').val();
   //checking if #startOfService and #endOfService has values -- NOTE still need more checking
-  if($('#startOfService').val() && $('#endOfService').val()){
+  if($('#startOfService').val() && $('#endOfService').val() && stime && etime){
+  //TimeCheck
+  //splitting time to minutes and hours
+  var eTimeHours = parseInt(etime.split(":")[0]);
+  var eTimeMinutes = parseInt(etime.split(":")[1]);
+  var sTimeHours = parseInt(stime.split(":")[0]);
+  var sTimeMinutes = parseInt(stime.split(":")[1]);
+
+  /*convert hours to minutes
+    add converted hours to minutes
+    convert back to hours
+  */
+  var eTimeMinutes = hrsToMins(eTimeHours)+eTimeMinutes;
+  var sTimeMinutes = hrsToMins(sTimeHours)+sTimeMinutes;
+  var min = eTimeMinutes - sTimeMinutes;
+  console.log("eTimeMinutes "+eTimeMinutes);
+  console.log("sTimeMinutes "+sTimeMinutes);
+  console.log("min "+min);
+
+  var convertedToHours = minsToHour(min) > 0 ? minsToHour(min) : 0 ;
+  console.log("convertedtohours "+parseInt(convertedToHours));
+  //Time Check
+
       //checks if start and end has different values
-      if($('#startOfService').val() != $('#endOfService').val()){
+
         var sdate = new Date ($('#startOfService').val());
         var edate = new Date ($('#endOfService').val());
         var sTime = $('#startOfServiceTime').val();
         var eTime = $('#endOfServiceTime').val();
 
+        //error messages
         var EMEdateIsLessThanSDate = ' End date must not be less that Start date';
-        var wholeErrorMessage = '';
+        var ZeroErrorMessages = 'Opps, you have zero hours rendered? Are you sure? If you think this is a system bug, kindly report it immediatly'
         //if End Date is Lesser than Start Date
         if(edate < sdate){
           //changing the text value but not the html code itself
@@ -535,23 +543,28 @@ function serviceCheckDate(){
         // subtract 24
         // add stime etime
 
-        var hourDif = (convertToHour(msDiff)-24);
+        var hourDif = convertToHour(msDiff);
 
         console.log("start day" +sdate);
         console.log("end day" +edate);
         console.log(msDiff); 
-        console.log("hours difference" + hourDif);
+        //console.log("hours difference" + hourDif);
 
-
-        
-      $("#con-numhours").append(" has different values,  ");
+        var totalRenderedHours = hourDif+convertedToHours > 0 ? hourDif+convertedToHours : 0;
+        console.log("totalRenderedHours" + totalRenderedHours);
+      
       //noOfHours
-      $("#noOfHours").val(hourDif);
-    }
-    else{
-        $("#con-numhours").append(" same value,");
-    }
+
+      $("#noOfHours").val(totalRenderedHours);
+
+      if(totalRenderedHours===0){
+          $('#assessmentErrorMessage').append();
+      }
+
   }
+}
+function assessmentErrorMessage(){
+
 }
   //takes two dates and returns the miliseconds
   //lastDate  minus firstDate
