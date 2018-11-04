@@ -473,23 +473,15 @@ if(isset($_POST['jos'])){
 
 
                                                                           <input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
-                                                                          <script src = "js/jquery-3.3.1.js"></script>
-                                                                          <script>
-
-                                                                            $('#startOfService, #endOfService').css('border','4px solid red');
-                                                                            $('#endOfServiceTime, #startOfServiceTime').css('border','4px solid red');
+<script src = "js/jquery-3.3.1.js"></script>
+<script>
 
 
-                                                                            function hrsToMins(hours){
-                                                                              return hours * 60;
-                                                                            }
-
-                                                                            function minsToHour(mins){
-                                                                              return mins / 60;
-                                                                            }
 
 
-                                                                            function serviceCheckDate(){
+
+
+  function serviceCheckDate(){
   // Time Check
 
   var stime = $('#startOfServiceTime').val();
@@ -533,9 +525,13 @@ if(isset($_POST['jos'])){
           //changing the text value but not the html code itself
           $('#assessmentErrorMessage').append(EMEdateIsLessThanSDate);
           console.log('wholeErrorMessage ' + wholeErrorMessage);
+          $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').addClass('error-border');
+
         }else{
+          $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').removeClass('error-border');
           //removing the error message
           $("#assessmentErrorMessage").text($('#assessmentErrorMessage').text().replace(EMEdateIsLessThanSDate,""));
+
         }
         //subtract 2 dates
         var msDiff = subtractTwoDates(sdate,edate);
@@ -548,7 +544,7 @@ if(isset($_POST['jos'])){
         console.log(msDiff); 
         //console.log("hours difference" + hourDif);
 
-        var totalRenderedHours = hourDif+convertedToHours > 0 ? hourDif+convertedToHours : 0;
+        var totalRenderedHours = hourDif+convertedToHours > 0 ? Math.trunc(hourDif+convertedToHours) : 0;
         console.log("totalRenderedHours" + totalRenderedHours);
         
       //noOfHours
@@ -572,6 +568,13 @@ if(isset($_POST['jos'])){
   function convertToHour(ms){
     return ms/ 1000 / 60 / 60;
   }
+     function hrsToMins(hours){
+     return hours * 60;
+   }
+
+   function minsToHour(mins){
+     return mins / 60;
+    }
 </script>
 </body>
 </html>
