@@ -256,7 +256,9 @@ require 'navbar.php';
 <tr>
 <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value ="true">
 <label>Air-conditioning Works:</label></th>
-<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="inspectreport-textarea"></textarea></div></th>
+<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450"></textarea>
+<p id="mlInspectionReport"></p>
+</div></th>
 <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
 </tr>
 <tr>
@@ -286,7 +288,9 @@ require 'navbar.php';
 <tr>
 <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
 <label><center>Plumbing Works:</label></th>
-<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation-textarea"></textarea></div></th>
+<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+<p id="mlJobRecommendation"></p>
+</div></th>
 <th colspan=2><input class="w3-input" type="text" name="tb13"></th>
 </tr>
 <tr>
@@ -476,7 +480,12 @@ require 'navbar.php';
 <script src = "js/jquery-3.3.1.js"></script>
 <script>
 
- 
+  $("#inspectionReport").keyup(function(){
+   $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
+ });
+   $("#jobRecommendation").keyup(function(){
+   $("#mlJobRecommendation").text("Characters left: " + (450 - $(this).val().length));
+ });
 
 function hrsToMins(hours){
   return hours * 60;
