@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2018 at 10:38 PM
+-- Generation Time: Nov 04, 2018 at 01:33 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -104,8 +104,8 @@ CREATE TABLE `joborder` (
   `Painting` varchar(5) DEFAULT NULL,
   `Plumbing` varchar(5) DEFAULT NULL,
   `Welding` varchar(5) DEFAULT NULL,
-  `InspectionReport` varchar(200) DEFAULT NULL,
-  `JobRecommendation` varchar(200) DEFAULT NULL,
+  `InspectionReport` varchar(450) DEFAULT NULL,
+  `JobRecommendation` varchar(450) DEFAULT NULL,
   `MaterialsNeeded` varchar(200) DEFAULT NULL,
   `RequestorSignature` varchar(5) DEFAULT NULL,
   `RequestorName` varchar(200) DEFAULT NULL,
