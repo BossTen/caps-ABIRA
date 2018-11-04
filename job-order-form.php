@@ -476,9 +476,7 @@ require 'navbar.php';
 <script src = "js/jquery-3.3.1.js"></script>
 <script>
 
-  $('#startOfService, #endOfService').css('border','4px solid red');
-  $('#endOfServiceTime, #startOfServiceTime').css('border','4px solid red');
-
+ 
 
 function hrsToMins(hours){
   return hours * 60;
@@ -536,7 +534,7 @@ function serviceCheckDate(){
           console.log('wholeErrorMessage ' + wholeErrorMessage);
         }else{
           //removing the error message
-          $("#assessmentErrorMessage").text($('#assessmentErrorMessage').text().replace(EMEdateIsLessThanSDate,""));
+          $("#assessmentErrorMessage").html("");
         }
 
         //subtract 2 dates
@@ -566,7 +564,7 @@ function serviceCheckDate(){
       }else{
         $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').removeClass('error-border');
           //removing the error message
-          $('assessmentErrorMessage').html("");
+         $('assessmentErrorMessage').html("");
 
       }
 
