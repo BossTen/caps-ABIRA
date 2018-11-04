@@ -521,18 +521,7 @@ if(isset($_POST['jos'])){
         var EMEdateIsLessThanSDate = ' End date must not be less that Start date';
         var ZeroErrorMessages = 'Opps, you have zero hours rendered? Are you sure? If you think this is a system bug, kindly report it immediatly'
         //if End Date is Lesser than Start Date
-        if(edate < sdate){
-          //changing the text value but not the html code itself
-          $('#assessmentErrorMessage').append(EMEdateIsLessThanSDate);
-          console.log('wholeErrorMessage ' + wholeErrorMessage);
-          $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').addClass('error-border');
 
-        }else{
-          $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').removeClass('error-border');
-          //removing the error message
-          $("#assessmentErrorMessage").text($('#assessmentErrorMessage').text().replace(EMEdateIsLessThanSDate,""));
-
-        }
         //subtract 2 dates
         var msDiff = subtractTwoDates(sdate,edate);
         //convert ms to hour
@@ -551,8 +540,26 @@ if(isset($_POST['jos'])){
 
       $("#noOfHours").val(totalRenderedHours);
 
+        if(edate < sdate){
+          //changing the text value but not the html code itself
+          $('#assessmentErrorMessage').append(EMEdateIsLessThanSDate);
+          console.log('edate '+edate);
+          console.log('sdate '+sdate);
+          $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').addClass('error-border');
+        }else{
+          $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').removeClass('error-border');
+          //removing the error message
+          //$("#assessmentErrorMessage").text($('#assessmentErrorMessage').text().replace(EMEdateIsLessThanSDate,""));
+          $('assessmentErrorMessage').html("");
+
+        }
       if(totalRenderedHours===0){
-        $('#assessmentErrorMessage').append();
+        $('#assessmentErrorMessage').append(ZeroErrorMessages);
+        $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').addClass('error-border');
+      }else{
+        $('#startOfService, #endOfService, #endOfServiceTime, #startOfServiceTime').removeClass('error-border');
+          //removing the error message
+          $('assessmentErrorMessage').html("");
       }
 
     }
