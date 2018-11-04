@@ -177,6 +177,7 @@ $conn->close();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -348,12 +349,14 @@ require 'navbar.php';
 <tr>
 <th id="con-startDate">Date: <input type="date" name="start-of-service"  onchange="serviceCheckDate()" class="form-control" id="startOfService"></th>
 <th><input type="date" name="end-of-service"  onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-<th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" disabled></th>
+<th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" disabled>
+<p class="error-message" id="assessmentErrorMessage"></p>
+</th>
 <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
 </tr>
 <tr>
-<th>Time:<input type="time"  class="form-control" name="start-of-service-time" id="startOfServiceTime"></th>
-<th><input type="time" class="form-control" name="end-of-service-time" id="endOfServiceTime"></th>
+<th>Time:<input type="time"  class="form-control" name="start-of-service-time" onchange="serviceCheckTime()" id="startOfServiceTime"></th>
+<th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckTime()" id="endOfServiceTime"></th>
 <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
 </tr>
 </table>
@@ -473,9 +476,36 @@ require 'navbar.php';
 <script src = "js/jquery-3.3.1.js"></script>
 <script>
 
-   $('#startOfService, #endOfService').css('border','4px solid red');
+  $('#startOfService, #endOfService').css('border','4px solid red');
   $('#endOfServiceTime, #startOfServiceTime').css('border','4px solid red');
 
+
+function serviceCheckTime(){
+  var stime = $('#startOfServiceTime').val();
+  var etime = $('#endOfServiceTime').val();
+  //if time 
+
+  //splitting time to minutes and hours
+  var hours = stime.split(":")[0];
+  var minutes = stime.split(":")[1];
+  //if hours is greater than 12 then it is suffix is set to pm else am
+  var suffix = hours >= 12 ? "pm" : "am";
+  // getting the remainder of 12
+  hours = hours % 12 || 12;
+  /*
+    if less than 10 append "0" to hours else just remain the value of hours
+    example
+    hours = 9
+    "0"+ 9 = 09
+    this is just for formatting
+  */
+  hours = hours < 10 ? "0" + hours : hours;
+
+  var displayTime = hours + ":" + minutes + " " + suffix;
+  console.log(displayTime);
+  //console.log(etime);
+  //console.log(stime);
+}
 
 
 function serviceCheckDate(){
@@ -485,11 +515,27 @@ function serviceCheckDate(){
       if($('#startOfService').val() != $('#endOfService').val()){
         var sdate = new Date ($('#startOfService').val());
         var edate = new Date ($('#endOfService').val());
+        var sTime = $('#startOfServiceTime').val();
+        var eTime = $('#endOfServiceTime').val();
+
+        var EMEdateIsLessThanSDate = ' End date must not be less that Start date';
+        var wholeErrorMessage = '';
+        //if End Date is Lesser than Start Date
+        if(edate < sdate){
+          //changing the text value but not the html code itself
+          $('#assessmentErrorMessage').append(EMEdateIsLessThanSDate);
+          console.log('wholeErrorMessage ' + wholeErrorMessage);
+        }else{
+          //removing the error message
+          $("#assessmentErrorMessage").text($('#assessmentErrorMessage').text().replace(EMEdateIsLessThanSDate,""));
+        }
         //subtract 2 dates
         var msDiff = subtractTwoDates(sdate,edate);
         //convert ms to hour
-        var hourDif = convertToHour(msDiff);
+        // subtract 24
+        // add stime etime
 
+        var hourDif = (convertToHour(msDiff)-24);
 
         console.log("start day" +sdate);
         console.log("end day" +edate);
@@ -501,10 +547,11 @@ function serviceCheckDate(){
       $("#con-numhours").append(" has different values,  ");
       //noOfHours
       $("#noOfHours").val(hourDif);
-    }else{
+    }
+    else{
         $("#con-numhours").append(" same value,");
     }
-}
+  }
 }
   //takes two dates and returns the miliseconds
   //lastDate  minus firstDate
