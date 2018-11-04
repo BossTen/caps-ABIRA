@@ -346,14 +346,14 @@ require 'navbar.php';
 </tr>
 <br>
 <tr>
-<th>Date: <input type="date" name="start-of-service"  class="form-control"></th>
-<th><input type="date" name="end-of-service"  class="form-control"</th>
-<th rowspan=2><input class="w3-input" type="text" name="no-of-hours"></th>
+<th id="con-startDate">Date: <input type="date" name="start-of-service"  onchange="serviceCheckDate()" class="form-control" id="startOfService"></th>
+<th><input type="date" name="end-of-service"  onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
+<th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" disabled></th>
 <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
 </tr>
 <tr>
-<th>Time:<input type="time"  class="form-control" name="start-of-service-time"></th>
-<th><input type="time" class="form-control" name="end-of-service-time"></th>
+<th>Time:<input type="time"  class="form-control" name="start-of-service-time" id="startOfServiceTime"></th>
+<th><input type="time" class="form-control" name="end-of-service-time" id="endOfServiceTime"></th>
 <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
 </tr>
 </table>
@@ -470,8 +470,52 @@ require 'navbar.php';
 
 
 <input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+<script src = "js/jquery-3.3.1.js"></script>
 <script>
-  
+
+   $('#startOfService, #endOfService').css('border','4px solid red');
+  $('#endOfServiceTime, #startOfServiceTime').css('border','4px solid red');
+
+
+
+function serviceCheckDate(){
+  //checking if #startOfService and #endOfService has values -- NOTE still need more checking
+  if($('#startOfService').val() && $('#endOfService').val()){
+      //checks if start and end has different values
+      if($('#startOfService').val() != $('#endOfService').val()){
+        var sdate = new Date ($('#startOfService').val());
+        var edate = new Date ($('#endOfService').val());
+        //subtract 2 dates
+        var msDiff = subtractTwoDates(sdate,edate);
+        //convert ms to hour
+        var hourDif = convertToHour(msDiff);
+
+
+        console.log("start day" +sdate);
+        console.log("end day" +edate);
+        console.log(msDiff); 
+        console.log("hours difference" + hourDif);
+
+
+        
+      $("#con-numhours").append(" has different values,  ");
+      //noOfHours
+      $("#noOfHours").val(hourDif);
+    }else{
+        $("#con-numhours").append(" same value,");
+    }
+}
+}
+  //takes two dates and returns the miliseconds
+  //lastDate  minus firstDate
+  function subtractTwoDates(d1,d2){
+    // I dont know why but the end date must be first to not produce a negative answer
+    return (d2-d1) >-1 ? d2-d1 : 0;
+  }
+  //converts the miliseconds to hour
+  function convertToHour(ms){
+    return ms/ 1000 / 60 / 60;
+  }
 /*
 
 check date if end is greater than start else display error
@@ -479,5 +523,11 @@ get difference of end and start date
 time convert to 24 hours then subtract
 add the result to the total hours along with the difference of end and start date
 
+
+if the startdate and end date are the same check time
+start time cannot be greater than end time.
+
 */
 </script>
+</body>
+</html>
