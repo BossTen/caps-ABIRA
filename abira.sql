@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2018 at 01:33 PM
+-- Generation Time: Nov 05, 2018 at 01:25 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -153,7 +153,8 @@ CREATE TABLE `joborder` (
 INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `CampusId`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeeded`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assesment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`, `statusId`, `priorityId`) VALUES
 (1, '8765', '2018-11-01', 4, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-07-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'hyu', 'hyuh', 'Signature1', '', '', '', '', '', '', '', '', '', 'earl', 0, '0000-00-00', 5, 5, 5, 5, 1, NULL),
 (2, '09766', '2018-11-01', 2, 'ceafa deans', 'off', 'off', 'on', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-06', '01:00 PM', 0, NULL, 'wda', 'aqdx', '', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-22', 5, 4, 3, 3, 1, 2),
-(3, '54546', '2018-11-01', 1, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2017-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'gfs', 'sva', 'sv', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-09', 5, 5, 5, 5, 1, 2);
+(3, '54546', '2018-11-01', 1, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2017-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'gfs', 'sva', 'sv', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-09', 5, 5, 5, 5, 1, 2),
+(4, 'test seria', '0000-00-00', 1, 'a', 'off', 'off', 'off', NULL, 'off', 'off', 'test inspection report', 'test job recommendation', NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', NULL, 'notcompleted', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -285,7 +286,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `priority`
