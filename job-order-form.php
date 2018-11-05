@@ -662,18 +662,10 @@ require 'navbar.php';
                         function convertToHour(ms) {
                             return ms / 1000 / 60 / 60;
                         }
-                        /*
+                        
+                        
 
-                        check date if end is greater than start else display error
-                        get difference of end and start date
-                        time convert to 24 hours then subtract
-                        add the result to the total hours along with the difference of end and start date
-
-
-                        if the startdate and end date are the same check time
-                        start time cannot be greater than end time.
-
-                        */
+                        
 
                     </script>
 </body>
