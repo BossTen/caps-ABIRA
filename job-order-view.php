@@ -1,3 +1,7 @@
+<?php
+require='dbcon.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
