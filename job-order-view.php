@@ -68,7 +68,9 @@ require'navbar.php';
             <tbody>
                 <?php
       require 'dbcon.php';
-                                $sql = "SELECT j.SerialCode,j.CampusId, j.DateRequestCreated, j.statusId, c.Name FROM joborder as j inner join capuses as c ON j.CampusId = c.Id ";
+                                $sql = "SELECT j.SerialCode,j.CampusId, j.DateRequestCreated, j.statusId, c.Name, s.Name as StatusName FROM(( joborder as j 
+                                inner join capuses as c ON j.CampusId = c.Id) 
+                                inner join status as s on j.statusId = s.Id )";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
 
@@ -77,7 +79,7 @@ require'navbar.php';
                         echo "<td>" . $row['SerialCode'] . "</td>";
                         echo "<td>" . $row['Name'] . "</td>";
                         echo "<td>" . $row['DateRequestCreated'] . "</td>";
-                        echo "<td>" . $row['statusId'] . "</td>";
+                        echo "<td>" . $row['StatusName'] . "</td>";
                           echo "</tr>";
                                   }
                                 }
