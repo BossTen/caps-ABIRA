@@ -1,7 +1,7 @@
 <?php
 require = 'dbcon.php';
     
-if(isset($_POST[''])){
+if(isset($_POST['submit'])){
     if($conn->connect_error){
         die("Connection Failed: " . $conn->connect_error);
     }
@@ -13,7 +13,7 @@ if(isset($_POST[''])){
                                                Welding,
                                                Requester
                                                ) VALUES (?, ?, ?, ?, ?, ?)" );
-                                                    //CONTINUE
+                                                    //CONTINUE add serial date
 //add requested by in database
 //get requester in api
 //i think this should be id/srcode
