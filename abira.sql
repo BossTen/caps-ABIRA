@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2018 at 01:25 PM
+-- Generation Time: Nov 05, 2018 at 11:43 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -106,7 +106,7 @@ CREATE TABLE `joborder` (
   `Welding` varchar(5) DEFAULT NULL,
   `InspectionReport` varchar(450) DEFAULT NULL,
   `JobRecommendation` varchar(450) DEFAULT NULL,
-  `MaterialsNeeded` varchar(200) DEFAULT NULL,
+  `MaterialsNeededId` int(10) DEFAULT NULL,
   `RequestorSignature` varchar(5) DEFAULT NULL,
   `RequestorName` varchar(200) DEFAULT NULL,
   `RequestorDesignation` varchar(200) DEFAULT NULL,
@@ -143,18 +143,39 @@ CREATE TABLE `joborder` (
   `Courtesy` int(10) DEFAULT NULL,
   `QualityOfService` int(10) DEFAULT NULL,
   `statusId` int(10) DEFAULT NULL,
-  `priorityId` int(10) DEFAULT NULL
+  `priorityId` int(10) DEFAULT NULL,
+  `Requester` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `joborder`
 --
 
-INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `CampusId`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeeded`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assesment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`, `statusId`, `priorityId`) VALUES
-(1, '8765', '2018-11-01', 4, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-07-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'hyu', 'hyuh', 'Signature1', '', '', '', '', '', '', '', '', '', 'earl', 0, '0000-00-00', 5, 5, 5, 5, 1, NULL),
-(2, '09766', '2018-11-01', 2, 'ceafa deans', 'off', 'off', 'on', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-06', '01:00 PM', 0, NULL, 'wda', 'aqdx', '', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-22', 5, 4, 3, 3, 1, 2),
-(3, '54546', '2018-11-01', 1, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2017-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'gfs', 'sva', 'sv', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-09', 5, 5, 5, 5, 1, 2),
-(4, 'test seria', '0000-00-00', 1, 'a', 'off', 'off', 'off', NULL, 'off', 'off', 'test inspection report', 'test job recommendation', NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', NULL, 'notcompleted', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, NULL, 1);
+INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `CampusId`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeededId`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assesment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`, `statusId`, `priorityId`, `Requester`) VALUES
+(1, '8765', '2018-11-01', 4, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-07-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'hyu', 'hyuh', 'Signature1', '', '', '', '', '', '', '', '', '', 'earl', 0, '0000-00-00', 5, 5, 5, 5, 1, NULL, NULL),
+(2, '09766', '2018-11-01', 2, 'ceafa deans', 'off', 'off', 'on', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-06', '01:00 PM', 0, NULL, 'wda', 'aqdx', '', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-22', 5, 4, 3, 3, 1, 2, NULL),
+(3, '54546', '2018-11-01', 1, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2017-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'gfs', 'sva', 'sv', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-09', 5, 5, 5, 5, 1, 2, NULL),
+(4, 'test seria', '0000-00-00', 1, 'a', 'off', 'off', 'off', NULL, 'off', 'off', 'test inspection report', 'test job recommendation', NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', NULL, 'notcompleted', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 3, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `materialsneeded`
+--
+
+CREATE TABLE `materialsneeded` (
+  `Id` int(10) NOT NULL,
+  `M1` varchar(250) DEFAULT NULL,
+  `M2` varchar(250) DEFAULT NULL,
+  `M3` varchar(250) DEFAULT NULL,
+  `M4` varchar(250) DEFAULT NULL,
+  `M5` varchar(250) DEFAULT NULL,
+  `M6` varchar(250) DEFAULT NULL,
+  `M7` varchar(250) DEFAULT NULL,
+  `M8` varchar(250) DEFAULT NULL,
+  `M9` varchar(250) DEFAULT NULL,
+  `M10` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -240,7 +261,14 @@ ALTER TABLE `joborder`
   ADD UNIQUE KEY `serial` (`SerialCode`),
   ADD KEY `CampusId` (`CampusId`),
   ADD KEY `statusId` (`statusId`),
-  ADD KEY `priorityId` (`priorityId`);
+  ADD KEY `priorityId` (`priorityId`),
+  ADD KEY `MaterialsNeededId` (`MaterialsNeededId`);
+
+--
+-- Indexes for table `materialsneeded`
+--
+ALTER TABLE `materialsneeded`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `priority`
@@ -289,6 +317,12 @@ ALTER TABLE `joborder`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `materialsneeded`
+--
+ALTER TABLE `materialsneeded`
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `priority`
 --
 ALTER TABLE `priority`
@@ -314,7 +348,10 @@ ALTER TABLE `employees`
 -- Constraints for table `joborder`
 --
 ALTER TABLE `joborder`
-  ADD CONSTRAINT `joborder_ibfk_1` FOREIGN KEY (`CampusId`) REFERENCES `capuses` (`Id`);
+  ADD CONSTRAINT `joborder_ibfk_1` FOREIGN KEY (`CampusId`) REFERENCES `capuses` (`Id`),
+  ADD CONSTRAINT `joborder_ibfk_2` FOREIGN KEY (`statusId`) REFERENCES `status` (`Id`),
+  ADD CONSTRAINT `joborder_ibfk_3` FOREIGN KEY (`priorityId`) REFERENCES `priority` (`Id`),
+  ADD CONSTRAINT `joborder_ibfk_4` FOREIGN KEY (`MaterialsNeededId`) REFERENCES `materialsneeded` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
