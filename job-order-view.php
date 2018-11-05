@@ -1,5 +1,5 @@
 <?php
-require='dbcon.php';
+require 'dbcon.php';
 
 ?>
 <!DOCTYPE html>
