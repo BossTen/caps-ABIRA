@@ -1,6 +1,23 @@
 <?php
 require = 'dbcon.php';
-
+    
+if(isset($_POST[''])){
+    if($conn->connect_error){
+        die("Connection Failed: " . $conn->connect_error);
+    }
+    
+    $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
+                                               CarpentryMasonry,
+                                               ElectricalWorks,
+                                               Plumbing,
+                                               Welding,
+                                               Requester
+                                               ) VALUES (?, ?, ?, ?, ?, ?)" );
+                                                    //CONTINUE
+//add requested by in database
+//get requester in api
+//i think this should be id/srcode
+}
 
 
 ?>
