@@ -58,13 +58,15 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                Courtesy,
                                                QualityOfService,
                                                priorityId,
-                                               CampusId
+                                               CampusId,
+                                               JobRecommendation,
+                                               InspectionReport 
                                                -- ApprovedBy,
                                       
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssi", $nameOfOffice,
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -111,7 +113,9 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssi", $nameOfOffice,
                               $courtesy,
                               $qualityOfService,
                               $priority,
-                              $campus   
+                              $campus,
+                              $jobRecommendation,
+                              $inspectionReport   
                         );  
 // Approved = $directorSignature
 // set parameters and execute
@@ -159,6 +163,8 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssi", $nameOfOffice,
  $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
  $priority = $_POST['priority'];
  $campus = $_POST['campus'];
+ $jobRecommendation = $_POST['job-recommendation'];
+ $inspectionReport = $_POST['inspect-report'];
 
 $stmt->execute();
 $stmt->close();
