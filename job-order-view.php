@@ -13,7 +13,7 @@ require 'dbcon.php';
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -47,7 +47,11 @@ require'navbar.php';
                 </div> 
 
                 <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>-->
-
+                <div class="col-2">
+                    <h4>Filter</h4>
+                    <select name="services" style="width:80%;"></select>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                </div>
             </div>
 
     </form>
@@ -84,7 +88,7 @@ require'navbar.php';
                                   }
                                 }
                               ?>
-                
+
             </tbody>
         </table>
     </div>
@@ -146,6 +150,24 @@ require'navbar.php';
                     if (switchcount == 0 && dir == "asc") {
                         dir = "desc";
                         switching = true;
+                    }
+                }
+            }
+        }
+
+        function filterTable() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
                     }
                 }
             }
