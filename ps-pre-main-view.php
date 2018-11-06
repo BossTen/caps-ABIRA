@@ -39,7 +39,7 @@ require'navbar.php';
 
 </form>
 <div class="container">      
-  <table class="table table-bordered">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Month</th>

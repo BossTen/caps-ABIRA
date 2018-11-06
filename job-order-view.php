@@ -42,7 +42,7 @@ require'navbar.php';
 
 
 <div class="container">      
-  <table class="table table-bordered">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Serial</th>
