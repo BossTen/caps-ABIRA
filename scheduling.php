@@ -39,6 +39,44 @@ require'navbar.php';
 
 ?>
 
+<<<<<<< HEAD
+<!--body-->
+<br>
+<div class="container">
+   <div class="form-row text-center">
+      <div class="col-12"><h1 class="w3-text-red">Scheduling</h1></div>
+   </div>
+</div>
+
+
+
+<div class="container">      
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Set as</th>
+        <th>Serial</th>
+        <th>Campus</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>  
+          <td><b>urgernt</b></td>
+          <td><b>1111</b></td>
+          <td><b>Main II</b></td>
+          <td><b>10/10/18</b></td>
+          <td style="color:#28a745"><b>Ongoing</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+<div class="container ">
+       <div class="float-right"><a href=""> <button type="button" class="btn btn-success">Add</button></a>
+      </div>   
+      </div>
+=======
     <!--body-->
     <br>
     <div class="container">
@@ -98,3 +136,4 @@ require'navbar.php';
             //add script for priority
 
         </script>
+>>>>>>> 843a66f795bb7a91fce13727edc759bc6efddb69

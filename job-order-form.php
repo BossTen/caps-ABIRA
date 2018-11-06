@@ -240,6 +240,268 @@ require 'navbar.php';
                                 }
                               ?>
                             </select>
+<<<<<<< HEAD
+        </div>
+        <div class="row">
+                             <h4 class="col-10"><b>Name of Office:</b>&nbsp;
+                             <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" required>
+        </div>
+        </div>
+        </div>
+<br>
+<center><h1 class="w3-text-red">Job Order Request</h1></center>
+<div class="container" style="margin-top: ;">
+    <!-- UPDATE form -->
+    <form action="" method="POST">
+        <!-- UPDATE card -->
+        <div class="card">
+            <div class="card-body" style="margin-left:2%;">
+
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
+  <tbody>
+  <tr>
+  <th colspan="col-5"><center>Kindly put a check mark before the work<br> service and/or assistance to be done</th>
+  <th colspan="2.5"><center>Inspection report</th>
+  <th colspan="2.5"><center>Material Needed</th>
+  </tr>
+<tr>
+<th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value ="true">
+<label>Air-conditioning Works:</label></th>
+<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="inspectreport-textarea"></textarea></div></th>
+<th colspan=2><input class="w3-input" type="text" name="tb2"></th>
+</tr>
+<tr>
+
+<th colspan=2><input class="w3-input" type="text" name="tb4"></th>
+</tr>
+<tr>
+<th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry">
+<label><center>Carpentry/ Masonary Works:</label></th>
+
+<th colspan=2><input class="w3-input" type="text" name="tb6"></th>
+</tr>
+<tr>
+
+<th colspan=2><input class="w3-input" type="text" name="tb8"></th>
+</tr>
+<tr>
+<th rowspan=2><input class="w3-check" type="checkbox" name="Electrical">
+<label>Electrical Works:</label></th>
+
+<th colspan=2><input class="w3-input" type="text" name="tb10"></th>
+</tr>
+<tr>
+<th><center>Job Recommendation</th>
+<th colspan=2><input class="w3-input" type="text" name="tb11"></th>
+</tr>
+<tr>
+<th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
+<label><center>Plumbing Works:</label></th>
+<th rowspan="5"><div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation-textarea"></textarea></div></th>
+<th colspan=2><input class="w3-input" type="text" name="tb13"></th>
+</tr>
+<tr>
+
+<th colspan=2><input class="w3-input" type="text" name="tb14"></th>
+</tr>
+<tr>
+<th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+<label><center>Welding Works:</label></th>
+
+<th colspan=2><input class="w3-input" type="text" name="16"></th>
+</tr>
+<tr>
+
+<th colspan=2><input class="w3-input" type="text" name="tb18"></th>
+</tr>
+</table>
+<br>
+</div>
+
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
+<tr>
+<th></th>
+<th><center>Requested by:</th>
+<th><center>Inspected by:</th>
+<th><center>Approved by:</th>
+</tr>
+<tr>
+<th>Signature:</th>
+<th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" disabled></th>
+<th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature" disabled></th>
+<th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" disabled></th>
+</tr>
+<tr>
+<th>Printed Name:</th>
+<th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester"></th>
+<th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter"></th>
+<th><center>Engr. VICTOR A. SEMIRA</th>
+</tr>
+<tr>
+<th>Designation:</th>
+<th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester"></th>
+<th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter"></th>
+<th><center>Assistant Director of FMSO</th>
+</tr>
+<tr>
+<th>Date:</th>
+<th><input type="date"  class="form-control" name="date-requested"></th>
+<th><input type="date"  class="form-control" name="date-inspected"></th>
+<th><center>GSO - GPB Main II</th>
+</tr>
+</table>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
+<tr>
+<th>Start of Service</th>
+<th>End of Service</th>
+<th>No. of hrs</th>
+<th>Assessment</th>
+</tr>
+<br>
+<tr>
+<th>Date: <input type="date" name="start-of-service"  class="form-control"></th>
+<th><input type="date" name="end-of-service"  class="form-control"</th>
+<th rowspan=2><input class="w3-input" type="text" name="no-of-hours"></th>
+<th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
+</tr>
+<tr>
+<th>Time:<input type="time"  class="form-control" name="start-of-service-time"></th>
+<th><input type="time" class="form-control" name="end-of-service-time"></th>
+<th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
+</tr>
+</table>
+<br>
+<table class="table table-bordered w-auto">
+<tr>
+<th colspan=2><center>Accomplished Works</th>
+<th><center>Work done by:</th>
+<th><center>Signature</th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
+<th><input class="w3-input" type="text" name="work-done-by1"></th>
+<th><input class="w3-input" type="text" name="signature1"></th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work2"></th>
+<th><input class="w3-input" type="text" name="work-done-by2"></th>
+<th><input class="w3-input" type="text" name="signature2"></th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work3"></th>
+<th><input class="w3-input" type="text" name="work-done-by3"></th>
+<th><input class="w3-input" type="text" name="signature3"></th>
+</tr>
+<tr>
+<th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
+<th><input class="w3-input" type="text" name="work-done-by4"></th>
+<th><input class="w3-input" type="text" name="signature4"></th>
+</tr>
+<tr>
+<th rowspan=2><center>Conforme:</th>
+<th><input class="w3-input" type="text" name="conforme-name"></th>
+<th><input class="w3-input" type="text" name="conforme-signature"></th>
+<th><center><input type="date" class="form-control" name="conforme-date-signed"></th>
+</tr>
+<tr>
+<th><center>Name</th>
+<th><center>Signature</th>
+<th><center>Date signed</th>
+</table>
+</div>
+</div>
+</div>
+<br>
+<div class="container" style="margin-top: ;">
+    <!-- UPDATE form -->
+    <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
+        <!-- UPDATE card -->
+        <div class="card">
+            <div class="card-body" style="margin-left:2%;">
+
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
+  <tbody>
+  <tr>
+  <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
+  </tr>
+  <tr>
+  <th rowspan="2" colspan="4"><center>EVALUATION STATEMENTS</th>
+  <th>Outstanding</th>
+  <th>Very Satisfactory</th>
+  <th>Satisfactory</th>
+  <th>Unsatisfactory</th>
+  <th>Poor</th>
+  </tr>
+  <tr>
+  <center>
+  <th><center>5</center></th>
+  <th><center>4</center></th>
+  <th><center>3</center></th>
+  <th><center>2</center></th>
+  <th><center>1</center></th>
+  </tr>
+
+  <tr>
+  <th colspan="4">Accuracy of work and efficiency to save time</th>
+  <th><input type="radio" value="5" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb1"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb1"></th>
+  </tr>
+  <tr>
+  <th colspan="4">Accuracy of work and efficiency to save time</th>
+  <th><input type="radio" value="5" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb2"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb2"></th>
+  </tr>
+  <tr>
+  <th colspan="4">Courtesy and professionalis of the attending personel</th>
+  <th><input type="radio" value="5" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb3"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb3"></th>
+  </tr>
+  <tr>
+  <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
+  <th><input type="radio" value="5" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="4" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="3" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="2" class="form-control" name="cb4"></th>
+  <th><input type="radio" value="1" class="form-control" name="cb4"></th>
+  </tr>
+
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<br>
+
+
+<input name ="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+<script>
+  
+/*
+
+check date if end is greater than start else display error
+get difference of end and start date
+time convert to 24 hours then subtract
+add the result to the total hours along with the difference of end and start date
+
+*/
+</script>
+=======
                     </div>
                     <div class="row">
                         <h4 class="col-10"><b>Name of Office:</b>&nbsp;
@@ -671,3 +933,4 @@ require 'navbar.php';
 </body>
 
 </html>
+>>>>>>> 843a66f795bb7a91fce13727edc759bc6efddb69
