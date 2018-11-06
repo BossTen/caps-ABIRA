@@ -2,9 +2,17 @@
 require 'dbcon.php';
 
 if(isset($_GET['serial'])){
+    //echo $sId;
+    $stmt = $conn->prepare("select NameOfOffice FROM joborder WHERE SerialCode=?");
+    $stmt->bind_param('s',$sId);
     $sId = $_GET['serial'];
-    echo $sId;
-    $sql = "";  
+    $stmt->execute();
+    $stmt->bind_result($nameOfOffice);
+    
+    while($stmt->fetch()){
+        echo $nameOfOffice;
+    }
+    
 }
 
 
