@@ -274,11 +274,11 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
  $serialCode = $_POST['serial'];
- $airConditioning = isset($_POST['air-conditioning']) ? "on" : 'off';
- $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "on" : 'off';
- $electrical = isset($_POST['Electrical']) ? "on" : 'off';
- $plumbing = isset($_POST['Plumbing']) ? "on" : 'off';
- $welding = isset($_POST['Welding']) ? "on" : 'off';
+ $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
+ $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
+ $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
+ $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
+ $welding = isset($_POST['Welding']) ? "checked" : 'off';
  $date = $_POST['date1'];
  $requesterSignature = $_POST['requester-signature']; 
  $inspecterSignature = $_POST['inspecter-signature'];
