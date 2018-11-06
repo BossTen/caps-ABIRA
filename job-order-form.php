@@ -245,7 +245,8 @@ require 'navbar.php';
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
 
-<table class="table table-bordered w3-card w3-round">
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
   <tbody>
   <tr>
   <th colspan="col-5"><center>Kindly put a check mark before the work<br> service and/or assistance to be done</th>
@@ -304,8 +305,10 @@ require 'navbar.php';
 </tr>
 </table>
 <br>
+</div>
 
-<table class="table table-bordered w3-card w3-round">
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
 <tr>
 <th></th>
 <th><center>Requested by:</th>
@@ -314,9 +317,9 @@ require 'navbar.php';
 </tr>
 <tr>
 <th>Signature:</th>
-<th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
-<th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-<th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
+<th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" disabled></th>
+<th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature" disabled></th>
+<th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" disabled></th>
 </tr>
 <tr>
 <th>Printed Name:</th>
@@ -337,7 +340,9 @@ require 'navbar.php';
 <th><center>GSO - GPB Main II</th>
 </tr>
 </table>
-<table class="table table-bordered w3-card w3-round">
+</div>
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
 <tr>
 <th>Start of Service</th>
 <th>End of Service</th>
@@ -358,7 +363,7 @@ require 'navbar.php';
 </tr>
 </table>
 <br>
-<table class="table table-bordered w3-card w3-round">
+<table class="table table-bordered w-auto">
 <tr>
 <th colspan=2><center>Accomplished Works</th>
 <th><center>Work done by:</th>
@@ -397,6 +402,7 @@ require 'navbar.php';
 </table>
 </div>
 </div>
+</div>
 <br>
 <div class="container" style="margin-top: ;">
     <!-- UPDATE form -->
@@ -405,7 +411,8 @@ require 'navbar.php';
         <div class="card">
             <div class="card-body" style="margin-left:2%;">
 
-<table class="table table-bordered">
+<div class="table-responsive">
+<table class="table table-bordered w-auto">
   <tbody>
   <tr>
   <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
@@ -463,6 +470,7 @@ require 'navbar.php';
 
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
