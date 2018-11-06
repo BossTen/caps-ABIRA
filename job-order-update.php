@@ -312,7 +312,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
         echo $CampusId;
         echo $JobRecommendation;
         echo $InspectionReport;
-    }
+
     
 
 
@@ -395,7 +395,7 @@ require 'navbar.php';
                     
             <div class="row">
                 <h4 class="col-10"><b>Name of Office:</b>&nbsp;
-                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" required>
+                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $nameOfOffice; ?>"required>
             </div>
     </div>
     </div>
@@ -700,6 +700,7 @@ require 'navbar.php';
 
             <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
                <?php 
+            }
 $stmt->execute();
 $stmt->close();
 $conn->close();
