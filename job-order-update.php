@@ -422,7 +422,7 @@ require 'navbar.php';
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?>>
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
@@ -462,7 +462,7 @@ require 'navbar.php';
                                         <center>Plumbing Works:
                                     </label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450" ><?php echo $JobRecommendation; ?></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
@@ -511,7 +511,7 @@ require 'navbar.php';
                             <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
                             <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
                             <th>
-                                <center>Engr. VICTOR A. SEMIRA
+                                <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
                         </tr>
                         <tr>
@@ -519,7 +519,7 @@ require 'navbar.php';
                             <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>"></th>
                             <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
                             <th>
-                                <center>Assistant Director of FMSO
+                                <center>Assistant Director of FMSO</center>
                             </th>
                         </tr>
                         <tr>
@@ -527,7 +527,7 @@ require 'navbar.php';
                             <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequested;?>"></th>
                             <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"></th>
                             <th>
-                                <center>GSO - GPB Main II
+                                <center>GSO - GPB Main II</center>
                             </th>
                         </tr>
                     </table>
