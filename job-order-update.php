@@ -567,33 +567,33 @@ require 'navbar.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1"></th>
-                            <th><input class="w3-input" type="text" name="signature1"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2"></th>
-                            <th><input class="w3-input" type="text" name="signature2"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3"></th>
-                            <th><input class="w3-input" type="text" name="signature3"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4"></th>
-                            <th><input class="w3-input" type="text" name="signature4"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input" type="text" name="conforme-name"></th>
+                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
                             <th><input class="w3-input" type="text" name="conforme-signature"></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed">
+                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">
                             </th>
                         </tr>
                         <tr>
@@ -653,35 +653,35 @@ require 'navbar.php';
 
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb1"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo $ResponseTime == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo $ResponseTime == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo $ResponseTime == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb1" <?php echo $ResponseTime == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb1" <?php echo $ResponseTime == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb2"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Courtesy and professionalis of the attending personel</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb3"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb3" <?php echo $Courtesy == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb3" <?php echo $Courtesy == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb3" <?php echo $Courtesy == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb3" <?php echo $Courtesy == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb3" <?php echo $Courtesy == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb4"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb4" <?php echo $QualityOfService == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb4" <?php echo $QualityOfService == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb4" <?php echo $QualityOfService == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb4" <?php echo $QualityOfService == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb4" <?php echo $QualityOfService == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
 
 
