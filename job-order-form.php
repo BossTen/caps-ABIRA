@@ -658,7 +658,7 @@ require 'navbar.php';
                         console.log("totalRenderedHours" + totalRenderedHours);
 
                         //noOfHours
-
+                        //TODO ADD TRUNCATION TO REMOVE DECIMAL VALUES  
                         $("#noOfHours").val(totalRenderedHours);
 
 
