@@ -44,12 +44,14 @@ require'navbar.php';
 
 
 
-<div class="container">      
+<div class="container">
+<div class="table-reponsive">    
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Serial</th>
-        <th>Campus</th>
+        <th>Subject</th>
+        <th>Description</th>
         <th>Date</th>
          <th>Status</th>
       </tr>
@@ -76,6 +78,7 @@ require'navbar.php';
 
             </tbody>
         </table>
+      </div>
     </div>
 
     <div class="container ">
