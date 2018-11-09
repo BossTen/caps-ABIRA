@@ -66,7 +66,7 @@ require'navbar.php';
 
                                   while ($row =  $result->fetch_assoc()) {
                                     echo "<tr>";
-                        echo "<td>" . $row['SerialCode'] . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
                         echo "<td>" . $row['Name'] . "</td>";
                         echo "<td>" . $row['DateRequestCreated'] . "</td>";
                         echo "<td>" . $row['statusId'] . "</td>";

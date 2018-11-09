@@ -1,6 +1,7 @@
 <?php
 require 'dbcon.php';
 
+
 if(isset($_POST['jos'])){
   //nameofoffice
   //serial
@@ -13,12 +14,16 @@ if ($conn->connect_error) {
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                SerialCode,
+
                                                DateRequestCreated,
                                                AirCondition,
                                                CarpentryMasonry,
                                                ElectricalWorks,
+                                               
                                                Plumbing,
                                                Welding,
+
+
                                                RequestorSignature,
                                                RequestorName,
                                                RequestorDesignation,
@@ -31,7 +36,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                StartOfService,
                                                EndOfService,
                                                NoOfHours,
-                                               Assessment,
+                                               Assesment,
                                                StartOfServiceTime,
                                                EndOfServiceTime,
                                                AccomplishedWork1,
@@ -56,22 +61,13 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                priorityId,
                                                CampusId,
                                                JobRecommendation,
-                                               InspectionReport,
-                                               m1,
-                                               m2,
-                                               m3,
-                                               m4,
-                                               m5,
-                                               m6,
-                                               m7,
-                                               m8,
-                                               m9,
-                                               m10
-
+                                               InspectionReport 
+                                               -- ApprovedBy,
+                                      
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?,?,?,?,?,?,?,?,?,?,?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $nameOfOffice,
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -120,27 +116,17 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
                               $priority,
                               $campus,
                               $jobRecommendation,
-                              $inspectionReport,
-                              $m1,
-                                               $m2,
-                                               $m3,
-                                               $m4,
-                                               $m5,
-                                               $m6,
-                                               $m7,
-                                               $m8,
-                                               $m9,
-                                               $m10
+                              $inspectionReport   
                         );  
 // Approved = $directorSignature
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
  $serialCode = $_POST['serial'];
- $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
- $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
- $electrical = isset($_POST['Electrical']) ? "checked" : '';
- $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
- $welding = isset($_POST['Welding']) ? "checked" : '';
+ $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
+ $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
+ $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
+ $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
+ $welding = isset($_POST['Welding']) ? "checked" : 'off';
  $date = $_POST['date1'];
  $requesterSignature = $_POST['requester-signature']; 
  $inspecterSignature = $_POST['inspecter-signature'];
@@ -180,20 +166,155 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
- $m1 = $_POST['m1'];
- $m2 = $_POST['m2'];
- $m3 = $_POST['m3'];
- $m4 = $_POST['m4'];
- $m5 = $_POST['m5'];
- $m6 = $_POST['m6'];
- $m7 = $_POST['m7'];
- $m8 = $_POST['m8'];
- $m9 = $_POST['m9'];
- $m10 = $_POST['m10'];
-$stmt->execute();
-$stmt->close();
-$conn->close();
 }
+
+    //echo $sId;
+    $stmt = $conn->prepare("select
+                           NameOfOffice,
+                           SerialCode,
+                           DateRequestCreated,
+                           AirCondition,
+                           CarpentryMasonry,
+                           ElectricalWorks,
+                           Plumbing,Welding,
+                           RequestorSignature,
+                           RequestorName,
+                           RequestorDesignation,
+                           DateRequested,
+                           signatureOfInspector,
+                           InspectorName,
+                           InspectorDesignation,
+                           DateInspected,
+                           Approved,
+                           StartOfService,
+                           EndOfService,
+                           NoOfHours,
+                           Assessment,
+                           StartOfServiceTime,
+                           EndOfServiceTime,
+                           AccomplishedWork1,
+                           WorkDoneBy1,
+                           Signature1,
+                           AccomplishedWork2,
+                           WorkDoneBy2,
+                           Signature2,
+                           AccomplishedWork3,
+                           WorkDoneBy3,
+                           Signature3,
+                           AccomplishedWork4,
+                           WorkDoneBy4,
+                           Signature4,
+                           ConformeName,
+                           ConformeApproved,
+                           ConformeDateApproved,
+                           ResponseTime,
+                           AccuracyOfWork,
+                           Courtesy,
+                           QualityOfService,
+                           priorityId,
+                           CampusId,
+                           JobRecommendation,
+                           InspectionReport 
+                           FROM joborder WHERE SerialCode=?");
+    $stmt->bind_param('s',$sId);
+    $sId = $_GET['serial'];
+    $stmt->execute();
+    $stmt->bind_result($NameOfOffice,
+                       $SerialCode,
+                       $DateRequestCreated,
+                       $AirCondition,
+                       $CarpentryMasonry,
+                       $ElectricalWorks,
+                       $Plumbing,
+                       $Welding,
+                       $RequestorSignature,
+                       $RequestorName,
+                       $RequestorDesignation,
+                       $DateRequested,
+                       $signatureOfInspector,
+                       $InspectorName,
+                       $InspectorDesignation,
+                       $DateInspected,
+                       $Approved,
+                       $StartOfService,
+                       $EndOfService,
+                       $NoOfHours,
+                       $Assessment,
+                       $StartOfServiceTime,
+                       $EndOfServiceTime,
+                       $AccomplishedWork1,
+                       $WorkDoneBy1,
+                       $Signature1,
+                       $AccomplishedWork2,
+                       $WorkDoneBy2,
+                       $Signature2,
+                       $AccomplishedWork3,
+                       $WorkDoneBy3,
+                       $Signature3,
+                       $AccomplishedWork4,
+                       $WorkDoneBy4,
+                       $Signature4,
+                       $ConformeName,
+                       $ConformeApproved,
+                       $ConformeDateApproved,
+                       $ResponseTime,
+                       $AccuracyOfWork,
+                       $Courtesy,
+                       $QualityOfService,
+                       $priorityId,
+                       $CampusId,
+                       $JobRecommendation,
+                       $InspectionReport);
+
+    while($stmt->fetch()){
+//        echo $NameOfOffice;
+//        echo $DateRequestCreated;
+//        echo $AirCondition;
+//        echo $CarpentryMasonry;
+//        echo $ElectricalWorks;
+//        echo $Plumbing;
+//        echo $Welding;
+//        echo $RequestorSignature;
+//        echo $RequestorName;
+//        echo $RequestorDesignation;
+//        echo $DateRequested;
+//        echo $signatureOfInspector;
+//        echo $InspectorName;
+//        echo $InspectorDesignation;
+//        echo $DateInspected;
+//        echo $Approved;
+//        echo $StartOfService;
+//        echo $EndOfService;
+//        echo $NoOfHours;
+//        echo $Assessment;
+//        echo $StartOfServiceTime;
+//        echo $EndOfServiceTime;
+//        echo $AccomplishedWork1;
+//        echo $WorkDoneBy1;
+//        echo $Signature1;
+//        echo $AccomplishedWork2;
+//        echo $WorkDoneBy2;
+//        echo $Signature2;
+//        echo $AccomplishedWork3;
+//        echo $WorkDoneBy3;
+//        echo $Signature3;
+//        echo $AccomplishedWork4;
+//        echo $WorkDoneBy4;
+//        echo $Signature4;
+//        echo $ConformeName;
+//        echo $ConformeApproved;
+//        echo $ConformeDateApproved;
+//        echo $ResponseTime;
+//        echo $AccuracyOfWork;
+//        echo $Courtesy;
+//        echo $QualityOfService;
+//        echo $priorityId;
+//        echo $CampusId;
+//        echo $JobRecommendation;
+//        echo $InspectionReport;
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -228,7 +349,7 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" required /></h4>
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" Disabled/></h4>
                         <h4 class="col-3"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
@@ -246,7 +367,7 @@ require 'navbar.php';
                     </div>
 
                     <div class="row ">
-
+                        
                         <h4 class="col-6"><b>Date:</b>&nbsp;
                             <input type="date" class="form-control col-7" name="date1" />
                         </h4>
@@ -265,11 +386,11 @@ require 'navbar.php';
                               ?>
                             </select>
 
-
-            </div>
+                    </div>
+                    
             <div class="row">
                 <h4 class="col-10"><b>Name of Office:</b>&nbsp;
-                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" required>
+                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"required>
             </div>
     </div>
     </div>
@@ -298,70 +419,70 @@ require 'navbar.php';
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value="true">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?>>
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb4"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb6"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb8"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb10"></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb11"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450" ><?php echo $JobRecommendation; ?></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb13"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m8"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb14"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
                                     <label>
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m9"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="16"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="tb18"></th>
                             </tr>
                     </table>
                     <br>
@@ -387,26 +508,26 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester"></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter"></th>
+                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
+                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
                             <th>
-                                <center>Engr. VICTOR A. SEMIRA
+                                <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Designation:</th>
-                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester"></th>
-                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter"></th>
+                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>"></th>
+                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
                             <th>
-                                <center>Assistant Director of FMSO
+                                <center>Assistant Director of FMSO</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested"></th>
-                            <th><input type="date" class="form-control" name="date-inspected"></th>
+                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequested;?>"></th>
+                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"></th>
                             <th>
-                                <center>GSO - GPB Main II
+                                <center>GSO - GPB Main II</center>
                             </th>
                         </tr>
                     </table>
@@ -419,17 +540,17 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService"></th>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>"></th>
                             <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" disabled>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" disabled>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?>>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime"></th>
-                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime"></th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
+                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>"></th>
+                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>"></th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                     <br>
@@ -446,33 +567,33 @@ require 'navbar.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1"></th>
-                            <th><input class="w3-input" type="text" name="signature1"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2"></th>
-                            <th><input class="w3-input" type="text" name="signature2"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3"></th>
-                            <th><input class="w3-input" type="text" name="signature3"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4"></th>
-                            <th><input class="w3-input" type="text" name="signature4"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>"></th>
+                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
+                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input" type="text" name="conforme-name"></th>
+                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
                             <th><input class="w3-input" type="text" name="conforme-signature"></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed">
+                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">
                             </th>
                         </tr>
                         <tr>
@@ -532,35 +653,35 @@ require 'navbar.php';
 
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb1"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo $ResponseTime == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo $ResponseTime == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo $ResponseTime == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb1" <?php echo $ResponseTime == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb1" <?php echo $ResponseTime == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb2"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Courtesy and professionalis of the attending personel</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb3"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb3" <?php echo $Courtesy == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb3" <?php echo $Courtesy == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb3" <?php echo $Courtesy == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb3" <?php echo $Courtesy == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb3" <?php echo $Courtesy == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb4"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb4" <?php echo $QualityOfService == 5 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb4" <?php echo $QualityOfService == 4 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb4" <?php echo $QualityOfService == 3 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb4" <?php echo $QualityOfService == 2 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb4" <?php echo $QualityOfService == 1 ? 'checked' : '' ?> ></th>
                                 </tr>
 
 
@@ -573,8 +694,14 @@ require 'navbar.php';
 
 
             <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+               <?php 
+            }
+$stmt->execute();
+$stmt->close();
+$conn->close();
+                ?>
             <script src="js/jquery-3.3.1.js"></script>
-            <script>    
+            <script>
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
                 });
@@ -658,7 +785,7 @@ require 'navbar.php';
                         console.log("totalRenderedHours" + totalRenderedHours);
 
                         //noOfHours
-                        //TODO ADD TRUNCATION TO REMOVE DECIMAL VALUES  
+
                         $("#noOfHours").val(totalRenderedHours);
 
 
