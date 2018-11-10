@@ -1,65 +1,126 @@
 <?php
-  require 'checklogin.php';
+require '../api/dbcon.php';
+
+if(isset($_POST['admin-login'])){
+  $api->authenticate_student($_POST['admin-name'],$_POST['admin-password']);
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home</title>
+  <title>Main Index</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.3.1.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
 </head>
-
+</style>
 <body>
 
-<?php
-require 'navbar.php';
-?>
+<img src="logo.png" width="100%" height="20%"><br><br>
 
-<br><br>
 <div class="container">
-   <div class="form-row text-center">
-      <div class="col-12"><h1 class="w3-text-red">Schedule for Today</h1></div>
-   </div>
+<div class="text-center">
+<img src="batlogo.png" style="width:400px;">
+</div>
 </div>
 
+<br>
+<div class="container">
+<div class="card">
+  <div class="card-body">
+<div class="form-row text-center">
+<div class="col-6">
+  <button type="button" class="btn btn-danger custom" data-toggle="modal" data-target="#admin" style="width: 300px;">
+    <img src="adminlogo.png" alt="logo" width="100px" height="100px"><b>Administrator</b></button>
+  </div>
+<div class="col-6">
+  <button type="button" class="btn btn-danger custom" data-toggle="modal" data-target="#director" style="width: 300px;">
+  <img src="adminlogo.png" alt="logo" width="100px" height="100px">Director</button>
+  </div>
 
+</div>
+</div>
 
-<div class="container">      
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Set as</th>
-        <th>Serial</th>
-        <th>Campus</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>  
-          <td><b>urgernt</b></td>
-          <td><b>1111</b></td>
-          <td><b>Main II</b></td>
-          <td><b>10/10/18</b></td>
-          <td style="color:#28a745"><b>Ongoing</b></td>
-          </tr>
-        </tbody>
-      </table>
+</div>
+</div>
+</div>
 
-<div class="container ">
-       <div class="float-right"><a href=""> <button type="button" class="btn btn-success">Add</button></a>
-      </div>   
+ <!-- admin -->
+<div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLongTitle"><img src="adminlogo.png" alt="logo" width="75px" height="75px">Administrator</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </body>
-    </html>
+      <div class="modal-body">
+      <center>  
+
+
+  <form action="" method="post">
+    <label>Username</label>
+    <input type="text" id="username" name="admin-name" class="w3-border-round">
+    <br>
+    <label>Password</label>
+    <input type="password" id="password" name="admin-password">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default" name="admin-login">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- director -->
+<div class="modal fade" id="director" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLongTitle"><img src="adminlogo.png" alt="logo" width="75px" height="75px">Director</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <center>  
+  <form action="" method="post">
+    <label>Username</label>
+    <input type="text" id="username" name="username" class="w3-border-round">
+    <br>
+    <label>Password</label>
+    <input type="password" id="password" name="password">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default" name="login">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
