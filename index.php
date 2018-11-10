@@ -1,6 +1,8 @@
 <?php
 require '../api/dbcon.php';
 
+//first check if userType session is null if not, then check if it is admin or faculty else redirect to logout to remove $_SESSION['userType']
+if(!$_SESSION['userType']){
 if(isset($_POST['admin-login'])){
   session_start();
   $_SESSION['userType'] = '';
@@ -11,11 +13,16 @@ if(isset($_POST['admin-login'])){
   $isFaculty = $api->authenticate_student($_POST['admin-name'],$_POST['admin-password'])!='null'? true : false;
   if($isFaculty){
     $_SESSION['userType'] = 'Faculty';
+
+    echo $_SESSION['userType'];
+    die();
   }else {
+    $_SESSION['userType'] = 'Admin';
     //do query, if query returns false then do an error statement that says, "it appears you are not an applicable user, please try again" something like that.
+    echo $_SESSION['userType'];
   }
 }
-
+}
 
 ?>
 <!DOCTYPE html>

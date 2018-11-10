@@ -4,7 +4,7 @@ require '../api/dbcon.php';
 	$adminPass = 'tintin';
 		
 			$user     	="13-12053";
-			$password 	="tintin";
+			$password 	="";
 			$schoolyear ="2013-2014";
 			$semester   ="FIRST";
 			$campus = 'alangilan';
