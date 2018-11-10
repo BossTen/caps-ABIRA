@@ -2,8 +2,18 @@
 require '../api/dbcon.php';
 
 if(isset($_POST['admin-login'])){
-  $api->authenticate_student($_POST['admin-name'],$_POST['admin-password']);
+  session_start();
+  $_SESSION['userType'] = '';
 
+
+  //search how to check for null json return value
+  //change function to authenticate_faculty afterwards
+  $isFaculty = $api->authenticate_student($_POST['admin-name'],$_POST['admin-password'])!='null'? true : false;
+  if($isFaculty){
+    $_SESSION['userType'] = 'Faculty';
+  }else {
+    //do query, if query returns false then do an error statement that says, "it appears you are not an applicable user, please try again" something like that.
+  }
 }
 
 

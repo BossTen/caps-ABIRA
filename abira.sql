@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2018 at 12:55 PM
+-- Generation Time: Nov 10, 2018 at 02:00 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -38,25 +38,12 @@ CREATE TABLE `accomplishedwork` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accountrole`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `accountrole` (
-  `ID` int(10) NOT NULL,
-  `Name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employees`
---
-
-CREATE TABLE `employees` (
-  `Id` int(11) NOT NULL,
-  `AccountRoleID` int(100) NOT NULL,
-  `Fname` varchar(200) NOT NULL,
-  `Lname` varchar(200) NOT NULL
+CREATE TABLE `admin` (
+  `username` varchar(100) NOT NULL,
+  `password` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -198,19 +185,6 @@ ALTER TABLE `accomplishedwork`
   ADD KEY `JobOrderId` (`JobOrderId`);
 
 --
--- Indexes for table `accountrole`
---
-ALTER TABLE `accountrole`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `employees`
---
-ALTER TABLE `employees`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `AccountRoleID` (`AccountRoleID`);
-
---
 -- Indexes for table `joborder`
 --
 ALTER TABLE `joborder`
@@ -250,18 +224,6 @@ ALTER TABLE `accomplishedwork`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `accountrole`
---
-ALTER TABLE `accountrole`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `employees`
---
-ALTER TABLE `employees`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
@@ -288,12 +250,6 @@ ALTER TABLE `status`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `employees`
---
-ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`AccountRoleID`) REFERENCES `accountrole` (`ID`);
 
 --
 -- Constraints for table `joborder`
