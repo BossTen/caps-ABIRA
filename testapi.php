@@ -2,7 +2,7 @@
 require '../api/dbcon.php';
 	$adminName = '13-12053';
 	$adminPass = 'tintin';
-		$api = new batsu_api('92240de7daae2b4b7f167f5acd4c3941');
+		
 			$user     	="13-12053";
 			$password 	="tintin";
 			$schoolyear ="2013-2014";
@@ -12,12 +12,17 @@ require '../api/dbcon.php';
 			$facultyId = '03210';
 			
 			//$auth_student = $api->authenticate_student($user,$password);
-			$data = $api->authenticate_faculty('','');
+			$data = json_decode($api->fetch_campuses(),true);
 			//fac_profile = $api->authenticate_faculty('','');
 			//$fac_c_listing = $api->fetch_faculty_class_listing('','','');
 			//echo $auth_student;
-			echo $data;
+			//echo $data;
+
+			foreach($data as $d){
+				echo $d['code'];
+			}
 				die();
+
 			//echo $api->fetch_semester();
 			//echo $api->fetch_faculty_listing($schoolyear,$semester,$campus,$college);
 		
