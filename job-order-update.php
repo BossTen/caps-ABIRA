@@ -1,5 +1,5 @@
 <?php
-require 'dbcon.php';
+require '../api/dbcon.php';
 
 
 if(isset($_POST['jos'])){
@@ -168,6 +168,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
  $inspectionReport = $_POST['inspect-report'];
 }
 
+require '../api/dbcon.php';
     //echo $sId;
     $stmt = $conn->prepare("select
                            NameOfOffice,
@@ -176,7 +177,8 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
                            AirCondition,
                            CarpentryMasonry,
                            ElectricalWorks,
-                           Plumbing,Welding,
+                           Plumbing,
+                           Welding,
                            RequestorSignature,
                            RequestorName,
                            RequestorDesignation,
@@ -212,7 +214,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
                            Courtesy,
                            QualityOfService,
                            priorityId,
-                           CampusId,
+                           Campus,
                            JobRecommendation,
                            InspectionReport 
                            FROM joborder WHERE SerialCode=?");
