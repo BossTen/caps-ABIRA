@@ -60,14 +60,16 @@ require'navbar.php';
       <?php
 
       require '../api/dbcon.php';
-                                $sql = "SELECT SerialCode,Campus, DateRequestCreated, statusId FROM joborder";
+                                $sql = "SELECT SerialCode,Campus, UserJobDescription, JobRecommendation, DateRequestCreated, statusId FROM joborder";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
 
                                   while ($row =  $result->fetch_assoc()) {
+                                   $description =   empty($row['JobRecommendation']) ? $row['UserJobDescription'] : $row['JobRecommendation'];
                                     echo "<tr>";
                         echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
                         echo "<td>" . $row['Campus'] . "</td>";
+                        echo "<td>" .$description. "</td>";
                         echo "<td>" . $row['DateRequestCreated'] . "</td>";
                         echo "<td>" . $row['statusId'] . "</td>";
                           echo "</tr>";
