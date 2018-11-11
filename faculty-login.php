@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>User Login</title>
+  <title>Faculty Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
-          <div class="card-body">    <h1 class="w3-text-red w3-center">Student Log In</h1>
+          <div class="card-body">    <h1 class="w3-text-red w3-center">Faculty Log In</h1>
     <center>
              <form action="" method="post">
                <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
