@@ -1,5 +1,5 @@
 <?php
-require  '../api/dbcon.php';
+require  '../api/dbconNApi.php';
 session_start();
 if(isset($_SESSION['usr_type'])){
     //echo $_SESSION['usr_type'];
@@ -9,8 +9,10 @@ if(isset($_SESSION['usr_type'])){
 }
 
 if(isset($_POST['submit'])){
+
 date_default_timezone_set('Asia/Hong_Kong');
 $todaysSerialCode='';
+
 
     if($conn->connect_error){
         die("Connection Failed: " . $conn->connect_error);
@@ -29,7 +31,7 @@ $todaysSerialCode='';
     $stmt->bind_result($latestSerialCode);
     if($stmt->fetch()){
     // getting the last 2 digits of the serial code and adding 1
-     $latestSerialNum = substr($latestSerialCode, 8,10)+1;
+    $latestSerialNum = substr($latestSerialCode, 8,10)+1;
      /*
         in adding one for example
         04 + 1 the result would be 4
@@ -46,8 +48,10 @@ $todaysSerialCode='';
     }else{
         $todaysSerialCode = $todaysSerialCode . '01';
     }
+    
 
-    $stmt=$conn->prepare("SELECT Id FROM priority where Name = ?");
+require '../api/dbcon.php';
+        $stmt=$conn->prepare("SELECT Id FROM priority where Name = ?");
     $stmt->bind_param('s', $priority);
     $priority = $_POST["priority"];
     //echo $priority;
@@ -60,17 +64,19 @@ $todaysSerialCode='';
 
     echo  $priorityId;
     //now inserting data
+require '../api/dbcon.php';
+    
     $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
                                                CarpentryMasonry,
                                                ElectricalWorks,
                                                Plumbing,
                                                Welding,
                                                Campus,
-                                               priority, 
-                                               Requester,
+                                               priorityId, 
+                                               RequestorName,
                                                UserJobDescription,
                                                SerialCode
-                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
                                                     
 $stmt->bind_param('ssssssssss',
                     $airConditioning,
