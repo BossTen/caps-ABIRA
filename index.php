@@ -52,8 +52,8 @@ if(isset($_POST['admin-login'])){
 //       echo 'no record found';
 //     }
 
-//     $stmt->close();
-//     $conn->close();
+    // $stmt->close();
+    // $conn->close();
 //     //do query, if query returns false then do an error statement that says, "it appears you are not an applicable user, please try again" something like that.
 //   }else{
 //     echo 'isnot and admin and not a faculty';

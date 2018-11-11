@@ -16,47 +16,49 @@ $todaysSerialCode='';
         die("Connection Failed: " . $conn->connect_error);
     }
 
-    // /*GETTING LATEST SERIAL CODE LAST VALUE
-    //     -query database
-    //     -if no result is given/null then the assumption is the there are no serialcode created for that date
-    //     -if there are no serial code then append int 01 else then add one to the latest value
-    // */
-    // $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
-    // $stmt=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
-    // $stmt->bind_param('s',$searchForLatestSerialCode);
-    // echo $searchForLatestSerialCode= $todaysSerialCode . '__';
-    // $stmt->execute();
-    // $stmt->bind_result($latestSerialCode);
-    // if($stmt->fetch()){
-    // // getting the last 2 digits of the serial code and adding 1
-    //  $latestSerialNum = substr($latestSerialCode, 8,10)+1;
-    //  /*
-    //     in adding one for example
-    //     04 + 1 the result would be 4
-    //     so we need to append again a zero below
-    //     so if the length of the value is less than or equal to one 
-    //     we append a zero in front of it
-    //  */
-    //  if(strlen($latestSerialNum)<=1)
-    //     $latestSerialNum = '0'.$latestSerialNum;
+    /*GETTING LATEST SERIAL CODE LAST VALUE
+        -query database
+        -if no result is given/null then the assumption is the there are no serialcode created for that date
+        -if there are no serial code then append int 01 else then add one to the latest value
+    */
+    $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
+    $stmt=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
+    $stmt->bind_param('s',$searchForLatestSerialCode);
+    echo $searchForLatestSerialCode= $todaysSerialCode . '__';
+    $stmt->execute();
+    $stmt->bind_result($latestSerialCode);
+    if($stmt->fetch()){
+    // getting the last 2 digits of the serial code and adding 1
+     $latestSerialNum = substr($latestSerialCode, 8,10)+1;
+     /*
+        in adding one for example
+        04 + 1 the result would be 4
+        so we need to append again a zero below
+        so if the length of the value is less than or equal to one 
+        we append a zero in front of it
+     */
+
+     if(strlen($latestSerialNum)<=1)
+        $latestSerialNum = '0'.$latestSerialNum;
         
-    // //appending the latest number
-    //     echo $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
-    // }else{
-    //   echo 'no record found for serialcode found';
-    // }
+    //appending the latest number
+        echo $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
+    }else{
+        $todaysSerialCode = $todaysSerialCode . '01';
+    }
 
     $stmt=$conn->prepare("SELECT Id FROM priority where Name = ?");
-    $stmt->bind_param('s',
-                    $priority
-                    );
+    $stmt->bind_param('s', $priority);
     $priority = $_POST["priority"];
-    echo $priority;
+    //echo $priority;
     $stmt->execute();
     $stmt->bind_result($priorityId);
-    if($stmt->fetch())
-    echo $priorityId;
-    die();
+    $stmt->fetch();
+
+    
+    
+
+    echo  $priorityId;
     //now inserting data
     $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
                                                CarpentryMasonry,
@@ -81,6 +83,7 @@ $stmt->bind_param('ssssssssss',
                     $requester,
                     $userJobDescription,
                     $serialCode);
+
 echo $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
 echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
 echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
