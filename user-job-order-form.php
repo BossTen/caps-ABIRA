@@ -9,29 +9,90 @@ if(isset($_SESSION['usr_type'])){
 }
 
 if(isset($_POST['submit'])){
+date_default_timezone_set('Asia/Hong_Kong');
+$todaysSerialCode='';
+
     if($conn->connect_error){
         die("Connection Failed: " . $conn->connect_error);
     }
-    
-    // $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
-    //                                            CarpentryMasonry,
-    //                                            ElectricalWorks,
-    //                                            Plumbing,
-    //                                            Welding,
-    //                                            Requester
-    //                                            ) VALUES (?, ?, ?, ?, ?, ?)" );
-                                                    //CONTINUE add serial date
-//add requested by in database
-//get requester in api
-//i think this should be id/srcode
+
+    // /*GETTING LATEST SERIAL CODE LAST VALUE
+    //     -query database
+    //     -if no result is given/null then the assumption is the there are no serialcode created for that date
+    //     -if there are no serial code then append int 01 else then add one to the latest value
+    // */
+    // $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
+    // $stmt=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
+    // $stmt->bind_param('s',$searchForLatestSerialCode);
+    // echo $searchForLatestSerialCode= $todaysSerialCode . '__';
+    // $stmt->execute();
+    // $stmt->bind_result($latestSerialCode);
+    // if($stmt->fetch()){
+    // // getting the last 2 digits of the serial code and adding 1
+    //  $latestSerialNum = substr($latestSerialCode, 8,10)+1;
+    //  /*
+    //     in adding one for example
+    //     04 + 1 the result would be 4
+    //     so we need to append again a zero below
+    //     so if the length of the value is less than or equal to one 
+    //     we append a zero in front of it
+    //  */
+    //  if(strlen($latestSerialNum)<=1)
+    //     $latestSerialNum = '0'.$latestSerialNum;
+        
+    // //appending the latest number
+    //     echo $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
+    // }else{
+    //   echo 'no record found for serialcode found';
+    // }
+
+    $stmt=$conn->prepare("SELECT Id FROM priority where Name = ?");
+    $stmt->bind_param('s',
+                    $priority
+                    );
+    $priority = $_POST["priority"];
+    echo $priority;
+    $stmt->execute();
+    $stmt->bind_result($priorityId);
+    if($stmt->fetch())
+    echo $priorityId;
+    die();
+    //now inserting data
+    $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
+                                               CarpentryMasonry,
+                                               ElectricalWorks,
+                                               Plumbing,
+                                               Welding,
+                                               Campus,
+                                               priority, 
+                                               Requester,
+                                               UserJobDescription,
+                                               SerialCode
+                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                                    
+$stmt->bind_param('ssssssssss',
+                    $airConditioning,
+                    $masonryCarpentry,
+                    $electrical,
+                    $plumbing,
+                    $welding,
+                    $campus,
+                    $priority,
+                    $requester,
+                    $userJobDescription,
+                    $serialCode);
 echo $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
 echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
 echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
 echo $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
 echo $welding = isset($_POST['Welding']) ? "checked" : '';
 echo $campus =  $_POST['campus'];
-echo $priority =  $_POST['priority'];
-echo $_SESSION['usr_fullname'];
+echo $priority =  $priorityId;
+echo $requester = $_SESSION['usr_fullname'];
+echo $userJobDescription = $_POST['user-job-description'];
+//create serial code
+echo $serialCode= $todaysSerialCode;
+
 }
 
 
