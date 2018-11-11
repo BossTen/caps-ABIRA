@@ -219,10 +219,11 @@ require '../api/dbcon.php';
                            priorityId,
                            Campus,
                            JobRecommendation,
-                           InspectionReport 
+                           InspectionReport,
+                           statusId
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
-    $sId = $_GET['serial'];
+    $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
     $stmt->execute();
     $stmt->bind_result($NameOfOffice,
                        $SerialCode,
@@ -269,7 +270,8 @@ require '../api/dbcon.php';
                        $priorityId,
                        $Campus,
                        $JobRecommendation,
-                       $InspectionReport);
+                       $InspectionReport,
+                       $statusId);
 
     while($stmt->fetch()){
 //        echo $NameOfOffice;
@@ -354,7 +356,7 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" Disabled/></h4>
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
                         <h4 class="col-3"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
@@ -364,6 +366,23 @@ require 'navbar.php';
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
                                   $selected = $row['Id']==$priorityId ? 'selected' : '';
+
+            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+
+                                  }
+                                }
+                              ?>
+                            </select>
+
+                             <h4 class="col-3"><b>Status</b>&nbsp;
+                            <select class="form-control form-control" name="status" id="status">
+                                <?php
+                                require '../api/dbcon.php';
+                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'For Approval' AND Name <> 'Approved' AND Name <> 'Denied'  ";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+                                  while ($row =  $result->fetch_assoc()) {
+                                  $selected = $row['Id']==$statusId ? 'selected' : '';
 
             echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
 
@@ -392,7 +411,10 @@ require 'navbar.php';
                               ?>
                             </select>
 
+
+
                     </div>
+
                     
             <div class="row">
                 <h4 class="col-10"><b>Name of Office:</b>&nbsp;
@@ -548,7 +570,7 @@ require 'navbar.php';
                         <tr>
                             <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>"></th>
                             <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" disabled>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?>>Work completed upon agreed duration</th>
