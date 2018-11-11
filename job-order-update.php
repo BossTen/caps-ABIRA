@@ -395,7 +395,7 @@ require 'navbar.php';
                     <div class="row ">
                         
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-7" name="date1" />
+                            <input type="date" class="form-control col-7" name="date1" value="<?php echo $DateRequestCreated ?>"/>
                         </h4>
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus" readonly>
