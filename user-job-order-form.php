@@ -140,9 +140,9 @@ $conn->close();
         <h3>Good Day! </h3>
                             <div class="row ">
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus">
+                            <!-- <select class="form-control form-control" name="campus" id="campus">
                                 <?php
-                                
+                                require '../api/apiOnly.php';
                                   $campuses = json_decode($api->fetch_campuses(),true);
                                   foreach ($campuses as $campus) {
                                    echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
@@ -150,7 +150,7 @@ $conn->close();
                                   }
 
                               ?>
-                            </select>
+                            </select> -->
 
 
             </div>

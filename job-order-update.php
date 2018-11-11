@@ -12,63 +12,61 @@ if ($conn->connect_error) {
 }
 
 // prepare and binds
-$stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
-                                               SerialCode,
-
-                                               DateRequestCreated,
-                                               AirCondition,
-                                               CarpentryMasonry,
-                                               ElectricalWorks,
+$stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
+                                               DateRequestCreated=?,
+                                               AirCondition=?,
+                                               CarpentryMasonry=?,
+                                               ElectricalWorks=?,
                                                
-                                               Plumbing,
-                                               Welding,
+                                               Plumbing=?,
+                                               Welding=?,
 
 
-                                               RequestorSignature,
-                                               RequestorName,
-                                               RequestorDesignation,
-                                               DateRequested,
-                                               signatureOfInspector,
-                                               InspectorName,
-                                               InspectorDesignation,
-                                               DateInspected,
-                                               Approved,
-                                               StartOfService,
-                                               EndOfService,
-                                               NoOfHours,
-                                               Assessment,
-                                               StartOfServiceTime,
-                                               EndOfServiceTime,
-                                               AccomplishedWork1,
-                                               WorkDoneBy1,
-                                               Signature1,
-                                               AccomplishedWork2,
-                                               WorkDoneBy2,
-                                               Signature2,
-                                               AccomplishedWork3,
-                                               WorkDoneBy3,
-                                               Signature3,
-                                               AccomplishedWork4,
-                                               WorkDoneBy4,
-                                               Signature4,
-                                               ConformeName,
-                                               ConformeApproved,
-                                               ConformeDateApproved,
-                                               ResponseTime,
-                                               AccuracyOfWork,
-                                               Courtesy,
-                                               QualityOfService,
-                                               priorityId,
-                                               Campus,
-                                               JobRecommendation,
-                                               InspectionReport 
+                                               RequestorSignature=?,
+                                               RequestorName=?,
+                                               RequestorDesignation=?,
+                                               DateRequested=?,
+                                               signatureOfInspector=?,
+                                               InspectorName=?,
+                                               InspectorDesignation=?,
+                                               DateInspected=?,
+                                               Approved=?,
+                                               StartOfService=?,
+                                               EndOfService=?,
+                                               NoOfHours=?,
+                                               Assessment=?,
+                                               StartOfServiceTime=?,
+                                               EndOfServiceTime=?,
+                                               AccomplishedWork1=?,
+                                               WorkDoneBy1=?,
+                                               Signature1=?,
+                                               AccomplishedWork2=?,
+                                               WorkDoneBy2=?,
+                                               Signature2=?,
+                                               AccomplishedWork3=?,
+                                               WorkDoneBy3=?,
+                                               Signature3=?,
+                                               AccomplishedWork4=?,
+                                               WorkDoneBy4=?,
+                                               Signature4=?,
+                                               ConformeName=?,
+                                               ConformeApproved=?,
+                                               ConformeDateApproved=?,
+                                               ResponseTime=?,
+                                               AccuracyOfWork=?,
+                                               Courtesy=?,
+                                               QualityOfService=?,
+                                               priorityId=?,
+                                               Campus=?,
+                                               JobRecommendation=?,
+                                               InspectionReport=? 
                                                -- ApprovedBy,
                                       
-                                               ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
+                                                WHERE SerialCode = ?
+                                               ");
 
 $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffice,
-                              $serialCode,
+                              
                               $date,
                               $airConditioning,
                               $masonryCarpentry,
@@ -116,7 +114,8 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
                               $priority,
                               $campus,
                               $jobRecommendation,
-                              $inspectionReport   
+                              $inspectionReport,
+                              $serialCode  
                         );  
 // Approved = $directorSignature
 // set parameters and execute
@@ -166,9 +165,9 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
-    $stmt->execute();
-    $stmt->close();
-    $conn->close(); 
+ $stmt->execute();
+ $stmt->close();
+ $conn->close(); 
 
 }
 
@@ -380,15 +379,13 @@ require 'navbar.php';
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
                                 <?php
-                                $sql = "SELECT Id, Name FROM capuses";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
-
-                                  while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+                                require_once '../api/api.php';
+                                $campuses = json_decode($api->fetch_campuses(),true);
+                                  foreach ($campuses as $campus) {
+                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
 
                                   }
-                                }
+
                               ?>
                             </select>
 
