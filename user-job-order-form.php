@@ -2,10 +2,8 @@
 require  '../api/dbcon.php';
 session_start();
 if(isset($_SESSION['usr_type'])){
-    echo $_SESSION['usr_type'];
-}else{
-    
-    //echo 'failed condition';
+    //echo $_SESSION['usr_type'];
+}else{    
     header('location: not-allowed.php');
     exit;
 }
@@ -15,23 +13,24 @@ if(isset($_POST['submit'])){
         die("Connection Failed: " . $conn->connect_error);
     }
     
-    $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
-                                               CarpentryMasonry,
-                                               ElectricalWorks,
-                                               Plumbing,
-                                               Welding,
-                                               Requester
-                                               ) VALUES (?, ?, ?, ?, ?, ?)" );
+    // $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
+    //                                            CarpentryMasonry,
+    //                                            ElectricalWorks,
+    //                                            Plumbing,
+    //                                            Welding,
+    //                                            Requester
+    //                                            ) VALUES (?, ?, ?, ?, ?, ?)" );
                                                     //CONTINUE add serial date
 //add requested by in database
 //get requester in api
 //i think this should be id/srcode
- $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
- $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
- $electrical = isset($_POST['Electrical']) ? "checked" : '';
- $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
- $welding = isset($_POST['Welding']) ? "checked" : '';
- $_SESSION['usr_fullname'];
+echo $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
+echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
+echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
+echo $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
+echo $welding = isset($_POST['Welding']) ? "checked" : '';
+echo $campus = iiset($_POST['campus']);
+echo $_SESSION['usr_fullname'];
 }
 
 
@@ -46,9 +45,9 @@ if(isset($_POST['submit'])){
     <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -61,11 +60,27 @@ if(isset($_POST['submit'])){
         <div class="card">
 	<div class=" card-body">
         <h3>Good Day! </h3>
-            <input class="w3-check" type="checkbox" name="Air-conditioning Works"><label>Air-conditioning Works</label><br>
-            <input class="w3-check" type="checkbox" name="Carpentry/Masonary Works"><label>Carpentry/Masonary Works</label><br>
-            <input class="w3-check" type="checkbox" name="Electrical Works"><label>Electrical Works</label><br>
-            <input class="w3-check" type="checkbox" name="Plumbing Works"><label>Plumbing Works</label><br>
-            <input class="w3-check" type="checkbox" name="Welding Works"><label>Welding Works</label><br>
+                            <div class="row ">
+                        <h4 class="col-3"><b>Campus:</b>&nbsp;
+                            <select class="form-control form-control" name="campus" id="campus">
+                                <?php
+                                
+                                  $campuses = json_decode($api->fetch_campuses(),true);
+                                  foreach ($campuses as $campus) {
+                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
+
+                                  }
+
+                              ?>
+                            </select>
+
+
+            </div>
+            <input class="w3-check" type="checkbox" name="Air-conditioning"><label>Air-conditioning Works</label><br>
+            <input class="w3-check" type="checkbox" name="Carpentry/Masonary"><label>Carpentry/Masonary Works</label><br>
+            <input class="w3-check" type="checkbox" name="Electrical"><label>Electrical Works</label><br>
+            <input class="w3-check" type="checkbox" name="Plumbing"><label>Plumbing Works</label><br>
+            <input class="w3-check" type="checkbox" name="Welding"><label>Welding Works</label><br>
             <br>
             <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
             <h4 class="col-3"><b>Priority</b>&nbsp;
