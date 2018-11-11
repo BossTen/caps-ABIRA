@@ -140,7 +140,7 @@ $conn->close();
         <h3>Good Day! </h3>
                             <div class="row ">
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
-                            <!-- <select class="form-control form-control" name="campus" id="campus">
+                             <select class="form-control form-control" name="campus" id="campus">
                                 <?php
                                 require '../api/apiOnly.php';
                                   $campuses = json_decode($api->fetch_campuses(),true);
@@ -150,8 +150,7 @@ $conn->close();
                                   }
 
                               ?>
-                            </select> -->
-
+                            </select> 
 
             </div>
             <input class="w3-check" type="checkbox" name="Air-conditioning"><label>Air-conditioning Works</label><br>

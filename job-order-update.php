@@ -267,7 +267,7 @@ require '../api/dbcon.php';
                        $Courtesy,
                        $QualityOfService,
                        $priorityId,
-                       $CampusId,
+                       $Campus,
                        $JobRecommendation,
                        $InspectionReport);
 
@@ -358,12 +358,14 @@ require 'navbar.php';
                         <h4 class="col-3"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
+                                require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
-
                                   while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+                                  $selected = $row['Id']==$priorityId ? 'selected' : '';
+
+            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
 
                                   }
                                 }
@@ -379,10 +381,11 @@ require 'navbar.php';
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
                                 <?php
-                                require_once '../api/api.php';
+                                require_once '../api/apiOnly.php';
                                 $campuses = json_decode($api->fetch_campuses(),true);
                                   foreach ($campuses as $campus) {
-                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
+                                    $selected = $campus['code'] == $Campus? 'selected' : '';
+                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
 
                                   }
 
