@@ -1,9 +1,15 @@
 <?php
 require  '../api/dbcon.php';
 session_start();
-echo $_SESSION['userType'];
-echo $_SESSION['usr_fullname'];
-die();
+if(isset($_SESSION['usr_type'])){
+    echo $_SESSION['usr_type'];
+}else{
+    
+    //echo 'failed condition';
+    header('location: not-allowed.php');
+    exit;
+}
+
 if(isset($_POST['submit'])){
     if($conn->connect_error){
         die("Connection Failed: " . $conn->connect_error);
