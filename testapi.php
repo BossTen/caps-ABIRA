@@ -1,23 +1,24 @@
 <?php
 require '../api/dbcon.php';
 	$adminName = '13-12053';
-	$adminPass = 'tintin';
+	$adminPass = '';
 		
 			$user     	="13-12053";
 			$password 	="";
 			$schoolyear ="2013-2014";
 			$semester   ="FIRST";
 			$campus = 'alangilan';
-			$college = 'ceafa';
+			$college = 'cics';
 			$facultyId = '03210';
 			
 			//$auth_student = $api->authenticate_student($user,$password);
-			$data = json_decode($api->fetch_campuses(),true);
+			$data =$api->authenticate_faculty('','');
 			//fac_profile = $api->authenticate_faculty('','');
 			//$fac_c_listing = $api->fetch_faculty_class_listing('','','');
 			//echo $auth_student;
 			//echo $data;
-
+			echo $data;
+			die();
 			foreach($data as $d){
 				echo $d['code'];
 			}

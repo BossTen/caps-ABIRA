@@ -1,27 +1,50 @@
 <?php
 require '../api/dbcon.php';
 
-//first check if userType session is null if not, then check if it is admin or faculty else redirect to logout to remove $_SESSION['userType']
-if(!$_SESSION['userType']){
-if(isset($_POST['admin-login'])){
   session_start();
-  $_SESSION['userType'] = '';
 
+if(!isset($_SESSION['userType'])){
+echo 'usertype is not set  ';
+if(isset($_POST['admin-login'])){
 
-  //search how to check for null json return value
-  //change function to authenticate_faculty afterwards
-  $isFaculty = $api->authenticate_student($_POST['admin-name'],$_POST['admin-password'])!='null'? true : false;
-  if($isFaculty){
-    $_SESSION['userType'] = 'Faculty';
+  $faculty = json_decode($api->authenticate_student($_POST['admin-name'],$_POST['admin-password']),true);
+  //checking the first array of faculty, and if it is empty
+  if(!empty($faculty[0])){
 
-    echo $_SESSION['userType'];
-    die();
-  }else {
-    $_SESSION['userType'] = 'Admin';
+    echo $_SESSION['userType'] = 'Faculty';
+    echo $_SESSION['usr_fullname'] = $faculty[0]['user'];
+    //redirect to 
+    header('location : http://localhost/user-job-order.php');
+  }else if(empty($faculty)){
+    //nested if checking if conn is okay
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
+    //now doing admin user checking
+
+    $stmt = $conn->prepare('SELECT username FROM admin WHERE username = ? && password = ?'); 
+    $stmt->bind_param('ss',$adminName, $adminPass);
+    $adminName = $_POST['admin-name'];
+    $adminPass = $_POST['admin-password'];
+    $stmt->execute();
+    $stmt->bind_result($username);
+    if($stmt->fetch()){
+      echo 'username '. $username;  
+    }else{
+      echo 'no record found';
+    }
+
+    $stmt->close();
+    $conn->close();
     //do query, if query returns false then do an error statement that says, "it appears you are not an applicable user, please try again" something like that.
-    echo $_SESSION['userType'];
+  }else{
+    echo 'isnot and admin and not a faculty';
   }
 }
+}else{
+  echo 'user type is set ';
+ // header('location : http://localhost/signout.php');
+ // exit;
 }
 
 ?>

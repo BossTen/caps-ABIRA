@@ -1,6 +1,8 @@
 <?php
-require = 'dbcon.php';
-    
+require  '../api/dbcon.php';
+session_start();
+echo $_SESSION['userType'];
+die();
 if(isset($_POST['submit'])){
     if($conn->connect_error){
         die("Connection Failed: " . $conn->connect_error);
@@ -17,6 +19,8 @@ if(isset($_POST['submit'])){
 //add requested by in database
 //get requester in api
 //i think this should be id/srcode
+    $_
+    $_SESSION['usr_fullname'];
 }
 
 
@@ -43,15 +47,16 @@ if(isset($_POST['submit'])){
     <br><br>
 
     <div class="container" style="margin-bottom: 5%;">
-        <div class="card"">
+        <div class="card">
 	<div class=" card-body">
+        <h3>Good Day! </h3>
             <input class="w3-check" type="checkbox" name="Air-conditioning Works"><label>Air-conditioning Works</label><br>
             <input class="w3-check" type="checkbox" name="Carpentry/Masonary Works"><label>Carpentry/Masonary Works</label><br>
             <input class="w3-check" type="checkbox" name="Electrical Works"><label>Electrical Works</label><br>
             <input class="w3-check" type="checkbox" name="Plumbing Works"><label>Plumbing Works</label><br>
             <input class="w3-check" type="checkbox" name="Welding Works"><label>Welding Works</label><br>
             <br>
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-textarea"></textarea></div>
+            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
             <h4 class="col-3"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
                     <option value="High" name="High" id="High" class="w3-text-red">High</option>
