@@ -75,10 +75,11 @@ require '../api/dbcon.php';
                                                priorityId, 
                                                RequestorName,
                                                UserJobDescription,
-                                               SerialCode
-                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                               SerialCode,
+                                               statusId
+                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
                                                     
-$stmt->bind_param('ssssssssss',
+$stmt->bind_param('sssssssssss',
                     $airConditioning,
                     $masonryCarpentry,
                     $electrical,
@@ -88,19 +89,22 @@ $stmt->bind_param('ssssssssss',
                     $priority,
                     $requester,
                     $userJobDescription,
-                    $serialCode);
+                    $serialCode,
+                    $statusId);
 
-echo $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
-echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
-echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
-echo $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
-echo $welding = isset($_POST['Welding']) ? "checked" : '';
-echo $campus =  $_POST['campus'];
-echo $priority =  $priorityId;
-echo $requester = $_SESSION['usr_fullname'];
-echo $userJobDescription = $_POST['user-job-description'];
+$airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
+$masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
+$electrical = isset($_POST['Electrical']) ? "checked" : '';
+$plumbing = isset($_POST['Plumbing']) ? "checked" : '';
+$welding = isset($_POST['Welding']) ? "checked" : '';
+$campus =  $_POST['campus'];
+$priority =  $priorityId;
+$requester = $_SESSION['usr_fullname'];
+$userJobDescription = $_POST['user-job-description'];
 //create serial code
-echo $serialCode= $todaysSerialCode;
+$serialCode= $todaysSerialCode;
+$statusId = '1';
+
 $stmt->execute();
 $stmt->close();
 $conn->close();

@@ -59,15 +59,15 @@ require'navbar.php';
     <tbody>
       <?php
 
-      require 'dbcon.php';
-                                $sql = "SELECT j.SerialCode,j.CampusId, j.DateRequestCreated, j.statusId, c.Name FROM joborder as j inner join capuses as c ON j.CampusId = c.Id ";
+      require '../api/dbcon.php';
+                                $sql = "SELECT SerialCode,Campus, DateRequestCreated, statusId FROM joborder";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
 
                                   while ($row =  $result->fetch_assoc()) {
                                     echo "<tr>";
                         echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
-                        echo "<td>" . $row['Name'] . "</td>";
+                        echo "<td>" . $row['Campus'] . "</td>";
                         echo "<td>" . $row['DateRequestCreated'] . "</td>";
                         echo "<td>" . $row['statusId'] . "</td>";
                           echo "</tr>";
