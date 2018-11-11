@@ -29,7 +29,8 @@ echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
 echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
 echo $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
 echo $welding = isset($_POST['Welding']) ? "checked" : '';
-echo $campus = iiset($_POST['campus']);
+echo $campus =  $_POST['campus'];
+echo $priority =  $_POST['priority'];
 echo $_SESSION['usr_fullname'];
 }
 
@@ -52,12 +53,13 @@ echo $_SESSION['usr_fullname'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body>  
     <img src="logo.png" width="100%" height="20%">
     <br><br>
 
     <div class="container" style="margin-bottom: 5%;">
-        <div class="card">
+        <form action="" method="POST">
+            <div class="card">
 	<div class=" card-body">
         <h3>Good Day! </h3>
                             <div class="row ">
@@ -85,14 +87,14 @@ echo $_SESSION['usr_fullname'];
             <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
             <h4 class="col-3"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
-                    <option value="High" name="High" id="High" class="w3-text-red">High</option>
-                    <option value="Medium" name="Medium" id="Medium" class="w3-text-orange">Medium</option>
-                    <option value="Normal" name="Normal" id="Normal" class="w3-text-green">Normal</option>
                     <option value="Low" id="Low" name="Low" class="w3-text-blue">Low</option>
-
+                    <option value="Normal" name="Normal" id="Normal" class="w3-text-green">Normal</option>
+                    <option value="Medium" name="Medium" id="Medium" class="w3-text-orange">Medium</option>
+                    <option value="High" name="High" id="High" class="w3-text-red">High</option>
                 </select>
             </h4>
         </div>
 
-        <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
+        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="submit">
+    </form>
     </div>
