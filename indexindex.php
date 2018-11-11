@@ -53,11 +53,11 @@ echo '<script> alert("Worng username or Password") </script>';
   <div class="card-body">
 <div class="form-row text-center">
 <div class="col-6">
-  <button type="button" class="btn btn-danger custom" data-toggle="modal" data-target="#admin" style="width: 300px;">
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#admin">
     <img src="adminlogo.png" alt="logo" width="100px" height="100px"><b>Administrator</b></button>
   </div>
 <div class="col-6">
-  <button type="button" class="btn btn-danger custom" data-toggle="modal" data-target="#director" style="width: 300px;">
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#director">
   <img src="adminlogo.png" alt="logo" width="100px" height="100px">Director</button>
   </div>
 
