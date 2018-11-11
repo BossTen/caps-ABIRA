@@ -65,7 +65,7 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffice,
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
                               
                               $date,
                               $airConditioning,
@@ -398,7 +398,7 @@ require 'navbar.php';
                             <input type="date" class="form-control col-7" name="date1" />
                         </h4>
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus">
+                            <select class="form-control form-control" name="campus" id="campus" readonly>
                                 <?php
                                 require_once '../api/apiOnly.php';
                                 $campuses = json_decode($api->fetch_campuses(),true);
