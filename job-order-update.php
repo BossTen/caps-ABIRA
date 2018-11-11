@@ -36,7 +36,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                StartOfService,
                                                EndOfService,
                                                NoOfHours,
-                                               Assesment,
+                                               Assessment,
                                                StartOfServiceTime,
                                                EndOfServiceTime,
                                                AccomplishedWork1,
@@ -59,7 +59,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                Courtesy,
                                                QualityOfService,
                                                priorityId,
-                                               CampusId,
+                                               Campus,
                                                JobRecommendation,
                                                InspectionReport 
                                                -- ApprovedBy,
@@ -166,6 +166,10 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
+    $stmt->execute();
+    $stmt->close();
+    $conn->close(); 
+
 }
 
 require '../api/dbcon.php';
@@ -695,7 +699,7 @@ require 'navbar.php';
             <br>
 
 
-            <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+            <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
                <?php 
             }
 $stmt->execute();
