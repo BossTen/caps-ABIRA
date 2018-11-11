@@ -101,7 +101,9 @@ echo $requester = $_SESSION['usr_fullname'];
 echo $userJobDescription = $_POST['user-job-description'];
 //create serial code
 echo $serialCode= $todaysSerialCode;
-
+$stmt->execute();
+$stmt->close();
+$conn->close();
 }
 
 

@@ -25,7 +25,7 @@ $stmt->bind_param('ssssssssss',
                     $userJobDescription,
                     $serialCode);
 
- $airConditioning = "check";
+$airConditioning = "check";
 $masonryCarpentry = "check";
 $electrical = "check";
 $plumbing = "check";
@@ -36,5 +36,9 @@ $requester = "magnaye";
 $userJobDescription ="test";
 //create serial code
 $serialCode= "na12321";
+
+$stmt->execute();
+$stmt->close();
+$conn->close();
 
 ?>
