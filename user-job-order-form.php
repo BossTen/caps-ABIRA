@@ -2,6 +2,7 @@
 require  '../api/dbcon.php';
 session_start();
 echo $_SESSION['userType'];
+echo $_SESSION['usr_fullname'];
 die();
 if(isset($_POST['submit'])){
     if($conn->connect_error){
@@ -19,8 +20,12 @@ if(isset($_POST['submit'])){
 //add requested by in database
 //get requester in api
 //i think this should be id/srcode
-    $_
-    $_SESSION['usr_fullname'];
+ $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
+ $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
+ $electrical = isset($_POST['Electrical']) ? "checked" : '';
+ $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
+ $welding = isset($_POST['Welding']) ? "checked" : '';
+ $_SESSION['usr_fullname'];
 }
 
 

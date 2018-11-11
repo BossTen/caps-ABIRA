@@ -1,51 +1,69 @@
 <?php
 require '../api/dbcon.php';
-
+  
   session_start();
+//FACULTY - USER LOGIN
 
-if(!isset($_SESSION['userType'])){
-echo 'usertype is not set  ';
+
 if(isset($_POST['admin-login'])){
 
   $faculty = json_decode($api->authenticate_student($_POST['admin-name'],$_POST['admin-password']),true);
-  //checking the first array of faculty, and if it is empty
-  if(!empty($faculty[0])){
-
-    echo $_SESSION['userType'] = 'Faculty';
-    echo $_SESSION['usr_fullname'] = $faculty[0]['user'];
-    //redirect to 
-    header('location : http://localhost/user-job-order.php');
-  }else if(empty($faculty)){
-    //nested if checking if conn is okay
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-    //now doing admin user checking
-
-    $stmt = $conn->prepare('SELECT username FROM admin WHERE username = ? && password = ?'); 
-    $stmt->bind_param('ss',$adminName, $adminPass);
-    $adminName = $_POST['admin-name'];
-    $adminPass = $_POST['admin-password'];
-    $stmt->execute();
-    $stmt->bind_result($username);
-    if($stmt->fetch()){
-      echo 'username '. $username;  
-    }else{
-      echo 'no record found';
-    }
-
-    $stmt->close();
-    $conn->close();
-    //do query, if query returns false then do an error statement that says, "it appears you are not an applicable user, please try again" something like that.
+  if(!empty($faculty[0]['usr_fullname'])){
+  $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+   $_SESSION['usr_type'] = 'faculty';
+   header('location: user-job-order-form.php');
   }else{
-    echo 'isnot and admin and not a faculty';
+    echo 'no retrieved value ';
+    die();
   }
+
+
 }
-}else{
-  echo 'user type is set ';
- // header('location : http://localhost/signout.php');
- // exit;
-}
+
+// if(!isset($_SESSION['userType'])){
+// //echo 'usertype is not set  ';
+// if(isset($_POST['admin-login'])){
+
+//     $faculty = json_decode($api->authenticate_student($_POST['admin-name'],$_POST['admin-password']),true);
+//     //echo $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+//   //checking the first array of faculty, and if it is empty
+//   if(!empty($faculty[0])){
+
+//     $_SESSION['userType'] = 'Faculty';
+//     $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+//     //redirect to 
+//     header('location : user-job-order.php');
+//   }else if(empty($faculty)){
+//     //nested if checking if conn is okay
+//     if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+//     }
+//     //now doing admin user checking
+
+//     $stmt = $conn->prepare('SELECT username FROM admin WHERE username = ? && password = ?'); 
+//     $stmt->bind_param('ss',$adminName, $adminPass);
+//     $adminName = $_POST['admin-name'];
+//     $adminPass = $_POST['admin-password'];
+//     $stmt->execute();
+//     $stmt->bind_result($username);
+//     if($stmt->fetch()){
+//       echo 'username '. $username;  
+//     }else{
+//       echo 'no record found';
+//     }
+
+//     $stmt->close();
+//     $conn->close();
+//     //do query, if query returns false then do an error statement that says, "it appears you are not an applicable user, please try again" something like that.
+//   }else{
+//     echo 'isnot and admin and not a faculty';
+//   }
+// }
+// }else{
+//   echo 'user type is set ';
+//  // header('location : http://localhost/signout.php');
+//  // exit;
+// }
 
 ?>
 <!DOCTYPE html>

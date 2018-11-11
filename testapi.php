@@ -12,7 +12,7 @@ require '../api/dbcon.php';
 			$facultyId = '03210';
 			
 			//$auth_student = $api->authenticate_student($user,$password);
-			$data =$api->authenticate_faculty('','');
+			$data =$api->authenticate_student($user,'tintin');
 			//fac_profile = $api->authenticate_faculty('','');
 			//$fac_c_listing = $api->fetch_faculty_class_listing('','','');
 			//echo $auth_student;
