@@ -1,5 +1,5 @@
 <?php
-require 'dbcon.php';
+require '../api/dbcon.php';
 
 if(isset($_POST['jos'])){
   //nameofoffice
@@ -122,15 +122,15 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
                               $jobRecommendation,
                               $inspectionReport,
                               $m1,
-                                               $m2,
-                                               $m3,
-                                               $m4,
-                                               $m5,
-                                               $m6,
-                                               $m7,
-                                               $m8,
-                                               $m9,
-                                               $m10
+                              $m2,
+                              $m3,
+                              $m4,
+                              $m5,
+                              $m6,
+                              $m7,
+                              $m8,
+                              $m9,
+                              $m10
                         );  
 // Approved = $directorSignature
 // set parameters and execute
@@ -204,9 +204,9 @@ $conn->close();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="w3.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -253,15 +253,13 @@ require 'navbar.php';
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
                                 <?php
-                                $sql = "SELECT Id, Name FROM capuses";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
-
-                                  while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+                                
+                                  $campuses = json_decode($api->fetch_campuses(),true);
+                                  foreach ($campuses as $campus) {
+                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
 
                                   }
-                                }
+
                               ?>
                             </select>
 

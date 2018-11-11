@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2018 at 11:43 PM
+-- Generation Time: Nov 10, 2018 at 02:00 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -38,52 +38,12 @@ CREATE TABLE `accomplishedwork` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accountrole`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `accountrole` (
-  `ID` int(10) NOT NULL,
-  `Name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `capuses`
---
-
-CREATE TABLE `capuses` (
-  `Id` int(11) NOT NULL,
-  `Name` varchar(200) NOT NULL,
-  `Code` varchar(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `capuses`
---
-
-INSERT INTO `capuses` (`Id`, `Name`, `Code`) VALUES
-(1, 'Main I', 'M1'),
-(2, 'Main II', 'M2'),
-(3, 'Lemery', 'LE'),
-(4, 'Balayan', 'BA'),
-(5, 'Nasugbu', 'NA'),
-(6, 'Malvar', 'MA'),
-(7, 'Rosario', 'RO'),
-(8, 'Lobo', 'LO'),
-(9, 'San Juan', 'SJ');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employees`
---
-
-CREATE TABLE `employees` (
-  `Id` int(11) NOT NULL,
-  `AccountRoleID` int(100) NOT NULL,
-  `Fname` varchar(200) NOT NULL,
-  `Lname` varchar(200) NOT NULL
+CREATE TABLE `admin` (
+  `username` varchar(100) NOT NULL,
+  `password` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,7 +56,7 @@ CREATE TABLE `joborder` (
   `Id` int(10) NOT NULL,
   `SerialCode` varchar(10) DEFAULT NULL,
   `DateRequestCreated` date DEFAULT NULL,
-  `CampusId` int(10) DEFAULT NULL,
+  `CampusId` varchar(250) DEFAULT NULL,
   `NameOfOffice` varchar(200) DEFAULT NULL,
   `AirCondition` varchar(5) DEFAULT NULL,
   `CarpentryMasonry` varchar(5) DEFAULT NULL,
@@ -146,16 +106,6 @@ CREATE TABLE `joborder` (
   `priorityId` int(10) DEFAULT NULL,
   `Requester` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `joborder`
---
-
-INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `CampusId`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeededId`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assesment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`, `statusId`, `priorityId`, `Requester`) VALUES
-(1, '8765', '2018-11-01', 4, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-07-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'hyu', 'hyuh', 'Signature1', '', '', '', '', '', '', '', '', '', 'earl', 0, '0000-00-00', 5, 5, 5, 5, 1, NULL, NULL),
-(2, '09766', '2018-11-01', 2, 'ceafa deans', 'off', 'off', 'on', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2018-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-06', '01:00 PM', 0, NULL, 'wda', 'aqdx', '', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-22', 5, 4, 3, 3, 1, 2, NULL),
-(3, '54546', '2018-11-01', 1, 'deans', 'on', 'off', 'off', NULL, 'off', 'off', NULL, NULL, NULL, '', 'earl', 'designation 1', '2018-11-02', '', 'name2', 'designation2', '2017-11-03', 0, NULL, '2018-11-04', '01:00 PM', '2018-11-05', '01:00 PM', 24, 'completed', 'gfs', 'sva', 'sv', '', '', '', '', '', '', '', '', '', 'earl', 0, '2018-11-09', 5, 5, 5, 5, 1, 2, NULL),
-(4, 'test seria', '0000-00-00', 1, 'a', 'off', 'off', 'off', NULL, 'off', 'off', 'test inspection report', 'test job recommendation', NULL, '', '', '', '0000-00-00', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', NULL, 'notcompleted', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -235,25 +185,6 @@ ALTER TABLE `accomplishedwork`
   ADD KEY `JobOrderId` (`JobOrderId`);
 
 --
--- Indexes for table `accountrole`
---
-ALTER TABLE `accountrole`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `capuses`
---
-ALTER TABLE `capuses`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `employees`
---
-ALTER TABLE `employees`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `AccountRoleID` (`AccountRoleID`);
-
---
 -- Indexes for table `joborder`
 --
 ALTER TABLE `joborder`
@@ -293,24 +224,6 @@ ALTER TABLE `accomplishedwork`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `accountrole`
---
-ALTER TABLE `accountrole`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `capuses`
---
-ALTER TABLE `capuses`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `employees`
---
-ALTER TABLE `employees`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
@@ -339,16 +252,9 @@ ALTER TABLE `status`
 --
 
 --
--- Constraints for table `employees`
---
-ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`AccountRoleID`) REFERENCES `accountrole` (`ID`);
-
---
 -- Constraints for table `joborder`
 --
 ALTER TABLE `joborder`
-  ADD CONSTRAINT `joborder_ibfk_1` FOREIGN KEY (`CampusId`) REFERENCES `capuses` (`Id`),
   ADD CONSTRAINT `joborder_ibfk_2` FOREIGN KEY (`statusId`) REFERENCES `status` (`Id`),
   ADD CONSTRAINT `joborder_ibfk_3` FOREIGN KEY (`priorityId`) REFERENCES `priority` (`Id`),
   ADD CONSTRAINT `joborder_ibfk_4` FOREIGN KEY (`MaterialsNeededId`) REFERENCES `materialsneeded` (`Id`);
