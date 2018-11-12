@@ -199,7 +199,6 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Job Order Form</title>
     <meta charset="utf-8">
