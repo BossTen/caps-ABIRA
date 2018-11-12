@@ -31,19 +31,20 @@ require'navbar.php';
 
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-                <input type="text" value="AIR-CONDITIONING" id="airconditioning" class="form-control col-12" disabled>
+                <input type="text" name="work" value="AIR-CONDITIONING" id="airconditioning" class="form-control col-12" readonly>
               </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
-                             <select class="form-control form-control" name="" id="campus">
-                              <option value="">Main I</option>
-                              <option value="">Main II</option>
-                              <option value="">Lemery</option>
-                              <option value="">Balayan</option>
-                              <option value="">Nasugbu</option>
-                              <option value="">Malvar</option>
-                              <option value="">Rosario</option>
-                              <option value="">Lobo</option>
-                              <option value="">San Juan</option>
+                             <select class="form-control form-control" name="campus" id="campus">
+                                <?php
+                                require '../api/apiOnly.php';
+                                  $campuses = json_decode($api->fetch_campuses(),true);
+                                  foreach ($campuses as $campus) {
+                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
+
+                                  }
+
+                              ?>
+                            
                      
                        
                             </select></h4>
@@ -70,20 +71,18 @@ require'navbar.php';
 
         </div>
         <div class="row">
-                             <h4 class="col-6"><b>Department:</b>&nbsp;
-                             <select class="form-control form-control" name="" id="campus">
-                              <option value="">CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.
-</option>
-                              <option value="">CICS (College of Informatics & Computing Sciences) Bldg.
-</option>
-                              <option value="">CIT (College of Industrial Technology) Bldg.</option>
-                              <option value="">RG RECTO Bldg. (RGR)</option>
-                              <option value="">STUDENT Center Bldg. (SSC)</option>
-                              <option value="">FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office
-</option>
-                              <option value="">RSFIHM (School of Food & International Hotel Management) Bldg.</option>
-                              <option value="">Gymnasium Area</option>
-                              <option value="">Food Innovation Center Building </option>
+                             <h4 class="col-6"><b>College:</b>&nbsp;
+                             <select class="form-control form-control" name="college" id="college">
+                                <?php
+                                require '../api/apiOnly.php';
+                                  $colleges = json_decode($api->fetch_colleges(),true);
+                                  foreach ($colleges as $college) {
+                                   echo "<option value='".$college['description']."'>".$college['description']."</option>";
+
+                                  }
+
+                              ?>
+                            
                      
                        
                             </select></h4>
