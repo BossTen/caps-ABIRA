@@ -16,7 +16,7 @@ if(isset($_POST['login'])){
   if($stmt->fetch()){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = 'director';
-   header('location: job-order-none.php');
+   header('location: job-order-view.php');
   }else{
    
     //ERROR MESSAGE HERE

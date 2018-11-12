@@ -16,7 +16,10 @@ if(isset($_POST['login'])){
   if($stmt->fetch()){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = 'admin';
+   
+   
    header('location: job-order-view.php');
+   exit();
   }else{
    
     //ERROR MESSAGE HERE

@@ -1,7 +1,6 @@
 <?php
-    require 'testadmin.php';
-
-
+    require 'test-director-admin.php';
+    echo $_SESSION['usr_type'];
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +65,9 @@ require'navbar.php';
       <?php
 
       require '../api/dbcon.php';
-                                $sql = "SELECT SerialCode,Campus, UserJobDescription, JobRecommendation, DateRequestCreated, statusId FROM joborder";
+
+                    if($_SESSION['usr_type']=='director'){
+                                $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 1 OR j.statusId = 2 OR j.statusId = 3";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
 
@@ -77,10 +78,29 @@ require'navbar.php';
                         echo "<td>" . $row['Campus'] . "</td>";
                         echo "<td>" .$description. "</td>";
                         echo "<td>" . $row['DateRequestCreated'] . "</td>";
-                        echo "<td>" . $row['statusId'] . "</td>";
+                        echo "<td>" . $row['statusName'] . "</td>";
                           echo "</tr>";
                                   }
                                 }
+                    }else if($_SESSION['usr_type']=='admin'){
+                                                        $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 4 OR j.statusId = 5 OR j.statusId = 6 OR j.statusId = 2";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+
+                                  while ($row =  $result->fetch_assoc()) {
+                                   $description =   empty($row['JobRecommendation']) ? $row['UserJobDescription'] : $row['JobRecommendation'];
+                                    echo "<tr>";
+                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
+                        echo "<td>" . $row['Campus'] . "</td>";
+                        echo "<td>" .$description. "</td>";
+                        echo "<td>" . $row['DateRequestCreated'] . "</td>";
+                        echo "<td>" . $row['statusName'] . "</td>";
+                          echo "</tr>";
+                                  }
+                                }
+                    }
+
+
                               ?>
 
 
