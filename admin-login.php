@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
-          <div class="card-body">    <h1 class="w3-text-red w3-center">Administrator Log In</h1>
+          <div class="card-body">    <h1 class="w3-text-red w3-center">Administrato rLog In</h1>
     <center>
              <form action="" method="post">
                <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
