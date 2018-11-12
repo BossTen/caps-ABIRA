@@ -1,6 +1,6 @@
 <?php
     require 'test-director-admin.php';
-    //echo $_SESSION['usr_type'];
+    //echo $_SESSION['usr_campus'];
 ?>
 
 <!DOCTYPE html>

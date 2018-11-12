@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2018 at 12:22 PM
+-- Generation Time: Nov 12, 2018 at 02:23 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -191,13 +191,27 @@ CREATE TABLE `preventive_maintenance` (
   `work` varchar(150) DEFAULT NULL,
   `campus` varchar(150) DEFAULT NULL,
   `month` varchar(150) DEFAULT NULL,
-  `department` varchar(150) DEFAULT NULL,
+  `college` varchar(150) DEFAULT NULL,
   `floor` varchar(150) DEFAULT NULL,
   `area` varchar(150) DEFAULT NULL,
-  `dateStarted` varchar(150) DEFAULT NULL,
-  `dateEnded` varchar(150) DEFAULT NULL,
+  `dateStarted` date DEFAULT NULL,
+  `dateEnded` date DEFAULT NULL,
   `accomplishedBy` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `preventive_maintenance`
+--
+
+INSERT INTO `preventive_maintenance` (`id`, `work`, `campus`, `month`, `college`, `floor`, `area`, `dateStarted`, `dateEnded`, `accomplishedBy`) VALUES
+(1, 'dfg', 'dfg', 'dfg', 'dfgg', 'qw', 'qqq', '0000-00-00', '0000-00-00', 'q'),
+(2, 'AIR-CONDITIONING', 'NASUGBU', 'January', 'College of Accountancy, Business, Economics and International Hospitality Management  ', 'Basement Floor', 'area', '2018-11-03', '2018-11-13', 'tenorio'),
+(3, 'AIR-CONDITIONING', 'NASUGBU', 'January', 'College of Accountancy, Business, Economics and International Hospitality Management  ', 'Basement Floor', 'area', '2018-11-03', '2018-11-13', 'tenorio'),
+(4, '', '', '', '', '', '', '0000-00-00', '0000-00-00', ''),
+(5, '', '', '', '', '', '', '0000-00-00', '0000-00-00', ''),
+(6, '', '', '', '', '', '', '0000-00-00', '0000-00-00', ''),
+(7, '', '', '', '', '', '', '0000-00-00', '0000-00-00', ''),
+(8, '', '', '', '', '', '', '0000-00-00', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -323,6 +337,12 @@ ALTER TABLE `director`
 --
 ALTER TABLE `joborder`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `preventive_maintenance`
+--
+ALTER TABLE `preventive_maintenance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `priority`
