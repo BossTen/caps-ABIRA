@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2018 at 02:00 PM
+-- Generation Time: Nov 12, 2018 at 04:29 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -42,9 +42,72 @@ CREATE TABLE `accomplishedwork` (
 --
 
 CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(300) NOT NULL,
+  `campus` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `campus`) VALUES
+(2, 'admin_nasugbu', 'admin', 'nasugbu'),
+(3, 'admin_balayan', 'admin', 'balayan'),
+(4, 'admin_malvar', 'admin', 'malvar'),
+(5, 'admin_lemery', 'admin', 'lemery'),
+(6, 'admin_lipa', 'admin', 'lipa'),
+(7, 'admin_lobo', 'admin', 'lobo'),
+(8, 'admin_mabini', 'admin', 'mabini'),
+(9, 'admin_main', 'admin', 'main'),
+(10, 'admin_alangilan', 'admin', 'alangilan'),
+(11, 'admin_rosario', 'admin', 'rosario'),
+(12, 'admin_taysan', 'admin', 'taysan'),
+(13, 'admin_sanjaun', 'admin', 'sanjuan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campusaccounts`
+--
+
+CREATE TABLE `campusaccounts` (
+  `Id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `director`
+--
+
+CREATE TABLE `director` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(300) DEFAULT NULL,
+  `campus` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `director`
+--
+
+INSERT INTO `director` (`id`, `username`, `password`, `campus`) VALUES
+(1, 'director_nasugbu', 'admin', 'nasugbu'),
+(2, 'director_balayan', 'admin', 'balayan'),
+(3, 'director_malvar', 'admin', 'malvar'),
+(4, 'director_lemery', 'admin', 'lemery'),
+(5, 'director_lipa', 'admin', 'lipa'),
+(6, 'director_lobo', 'admin', 'lobo'),
+(7, 'director_mabini', 'admin', 'mabini'),
+(8, 'director_main', 'admin', 'main'),
+(9, 'director_alangilan', 'admin', 'alangilan'),
+(10, 'director_rosario', 'admin', 'rosario'),
+(11, 'director_taysan', 'admin', 'taysan'),
+(12, 'director_sanjaun', 'admin', 'sanjuan');
 
 -- --------------------------------------------------------
 
@@ -56,14 +119,14 @@ CREATE TABLE `joborder` (
   `Id` int(10) NOT NULL,
   `SerialCode` varchar(10) DEFAULT NULL,
   `DateRequestCreated` date DEFAULT NULL,
-  `CampusId` varchar(250) DEFAULT NULL,
+  `Campus` varchar(250) DEFAULT NULL,
   `NameOfOffice` varchar(200) DEFAULT NULL,
-  `AirCondition` varchar(5) DEFAULT NULL,
-  `CarpentryMasonry` varchar(5) DEFAULT NULL,
-  `ElectricalWorks` varchar(5) DEFAULT NULL,
-  `Painting` varchar(5) DEFAULT NULL,
-  `Plumbing` varchar(5) DEFAULT NULL,
-  `Welding` varchar(5) DEFAULT NULL,
+  `AirCondition` varchar(10) DEFAULT NULL,
+  `CarpentryMasonry` varchar(10) DEFAULT NULL,
+  `ElectricalWorks` varchar(10) DEFAULT NULL,
+  `Painting` varchar(10) DEFAULT NULL,
+  `Plumbing` varchar(10) DEFAULT NULL,
+  `Welding` varchar(10) DEFAULT NULL,
   `InspectionReport` varchar(450) DEFAULT NULL,
   `JobRecommendation` varchar(450) DEFAULT NULL,
   `MaterialsNeededId` int(10) DEFAULT NULL,
@@ -82,7 +145,7 @@ CREATE TABLE `joborder` (
   `EndOfService` date DEFAULT NULL,
   `EndOfServiceTime` varchar(15) DEFAULT NULL,
   `NoOfHours` int(10) DEFAULT NULL,
-  `Assesment` varchar(200) DEFAULT NULL,
+  `Assessment` varchar(200) DEFAULT NULL,
   `AccomplishedWork1` varchar(250) DEFAULT NULL,
   `WorkDoneBy1` varchar(250) DEFAULT NULL,
   `Signature1` varchar(250) DEFAULT NULL,
@@ -104,27 +167,17 @@ CREATE TABLE `joborder` (
   `QualityOfService` int(10) DEFAULT NULL,
   `statusId` int(10) DEFAULT NULL,
   `priorityId` int(10) DEFAULT NULL,
-  `Requester` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `materialsneeded`
---
-
-CREATE TABLE `materialsneeded` (
-  `Id` int(10) NOT NULL,
-  `M1` varchar(250) DEFAULT NULL,
-  `M2` varchar(250) DEFAULT NULL,
-  `M3` varchar(250) DEFAULT NULL,
-  `M4` varchar(250) DEFAULT NULL,
-  `M5` varchar(250) DEFAULT NULL,
-  `M6` varchar(250) DEFAULT NULL,
-  `M7` varchar(250) DEFAULT NULL,
-  `M8` varchar(250) DEFAULT NULL,
-  `M9` varchar(250) DEFAULT NULL,
-  `M10` varchar(250) DEFAULT NULL
+  `UserJobDescription` varchar(450) DEFAULT NULL,
+  `materialsNeeded1` varchar(250) DEFAULT NULL,
+  `materialsNeeded2` varchar(250) DEFAULT NULL,
+  `materialsNeeded3` varchar(250) DEFAULT NULL,
+  `materialsNeeded4` varchar(250) DEFAULT NULL,
+  `materialsNeeded5` varchar(250) DEFAULT NULL,
+  `materialsNeeded6` varchar(250) DEFAULT NULL,
+  `materialsNeeded7` varchar(250) DEFAULT NULL,
+  `materialsNeeded8` varchar(250) DEFAULT NULL,
+  `materialsNeeded9` varchar(250) DEFAULT NULL,
+  `materialsNeeded10` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -169,8 +222,8 @@ INSERT INTO `status` (`Id`, `Name`, `Color`) VALUES
 (1, 'For Approval', NULL),
 (2, 'Approved', NULL),
 (3, 'Denied', NULL),
-(4, 'On-Going', NULL),
-(5, 'Pending', NULL),
+(4, 'Pending', NULL),
+(5, 'On-Going', NULL),
 (6, 'Done', NULL);
 
 --
@@ -185,21 +238,26 @@ ALTER TABLE `accomplishedwork`
   ADD KEY `JobOrderId` (`JobOrderId`);
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `director`
+--
+ALTER TABLE `director`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `joborder`
 --
 ALTER TABLE `joborder`
   ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `serial` (`SerialCode`),
-  ADD KEY `CampusId` (`CampusId`),
+  ADD KEY `CampusId` (`Campus`),
   ADD KEY `statusId` (`statusId`),
   ADD KEY `priorityId` (`priorityId`),
   ADD KEY `MaterialsNeededId` (`MaterialsNeededId`);
-
---
--- Indexes for table `materialsneeded`
---
-ALTER TABLE `materialsneeded`
-  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `priority`
@@ -224,16 +282,22 @@ ALTER TABLE `accomplishedwork`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `director`
+--
+ALTER TABLE `director`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `materialsneeded`
---
-ALTER TABLE `materialsneeded`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `priority`
@@ -256,8 +320,7 @@ ALTER TABLE `status`
 --
 ALTER TABLE `joborder`
   ADD CONSTRAINT `joborder_ibfk_2` FOREIGN KEY (`statusId`) REFERENCES `status` (`Id`),
-  ADD CONSTRAINT `joborder_ibfk_3` FOREIGN KEY (`priorityId`) REFERENCES `priority` (`Id`),
-  ADD CONSTRAINT `joborder_ibfk_4` FOREIGN KEY (`MaterialsNeededId`) REFERENCES `materialsneeded` (`Id`);
+  ADD CONSTRAINT `joborder_ibfk_3` FOREIGN KEY (`priorityId`) REFERENCES `priority` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
