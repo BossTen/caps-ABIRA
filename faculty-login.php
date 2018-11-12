@@ -11,9 +11,11 @@ if(isset($_POST['login'])){
   if(!empty($faculty[0]['usr_fullname'])){
   $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
    $_SESSION['usr_type'] = 'faculty';
-   header('location: user-job-order-form.php');
+   header('location: faculty-index.php');
   }else{
-    echo 'username or password is not correct please try';
+    echo "<script type='text/javascript'>
+                alert ('Username and Password unmatched!'); 
+                window.location.href='faculty-login.php';</script>";
 
   }
 

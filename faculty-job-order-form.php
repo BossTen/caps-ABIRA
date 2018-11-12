@@ -127,15 +127,20 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>  
-    <img src="logo.png" width="100%" height="20%">
-    <br><br>
+<body>
+<?php
+
+require 'navbar-faculty.php';
+
+?>
+
+<br><br>
 
     <div class="container" style="margin-bottom: 5%;">
         <form action="" method="POST">
+          <h1>Good Day! What's the problem?</h1>
             <div class="card">
 	<div class=" card-body">
-        <h3>Good Day! </h3>
                             <div class="row ">
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
                              <select class="form-control form-control" name="campus" id="campus">
@@ -151,12 +156,19 @@ $conn->close();
                             </select> 
 
             </div>
+            <h4><b>Services</b></h4>
+            <div class="card">
+            <div class="card-body">
             <input class="w3-check" type="checkbox" name="Air-conditioning"><label>Air-conditioning Works</label><br>
             <input class="w3-check" type="checkbox" name="Carpentry/Masonary"><label>Carpentry/Masonary Works</label><br>
             <input class="w3-check" type="checkbox" name="Electrical"><label>Electrical Works</label><br>
             <input class="w3-check" type="checkbox" name="Plumbing"><label>Plumbing Works</label><br>
             <input class="w3-check" type="checkbox" name="Welding"><label>Welding Works</label><br>
             <br>
+          </div>
+        </div>
+        <br />
+        <h4><b>Report Description:</b>&nbsp;
             <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
             <h4 class="col-3"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
@@ -168,6 +180,6 @@ $conn->close();
             </h4>
         </div>
 
-        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="submit">
+        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
     </form>
     </div>

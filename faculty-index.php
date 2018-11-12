@@ -12,38 +12,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<img src="logo.png" width="100%" height="20%">
+<?php
 
-<div class="container">
-	<div class="w3-right row" style="margin-top:3%; margin-right:5%;"><button type="submit" class="btn btn-success ">ADD</button>
-	</div>
-</div><br><br>
-<div class="container">    
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-      	<th>Priority</th>
-      	<th>Serial</th>
-        <th>Date Requested</th>
-        <th>Job Information</th>
-        <th>Date Approved</th>
-        <th>Status</th>
+require 'navbar-faculty.php';
+
+?>
+
+<br><br>
 
 
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-          <td>High</td>
-          <td>181103M201</td>
-          <td>11/03/18</td>
-          <td>Air-conditiong</td>
-          <td>11/05/18</td>
-          <td>On going</td>
-          </tr>
-                  </tbody>
-      </table>
-    </div>
 </body>
 </html>
 

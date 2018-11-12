@@ -23,7 +23,9 @@ if(isset($_POST['login'])){
   }else{
    
     //ERROR MESSAGE HERE
-    echo 'username or password is not correct please try';
+    echo "<script type='text/javascript'>
+                alert ('Username and Password unmatched!'); 
+                window.location.href='faculty-login.php';</script>";
     
   }
   $stmt->close();
