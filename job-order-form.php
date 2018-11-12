@@ -1,6 +1,7 @@
 <?php
-require '../api/dbcon.php';
-
+require '../api/dbconNAPI.php';
+require 'testadmin.php';
+echo $_SESSION['usr_type'];
 if(isset($_POST['jos'])){
   //nameofoffice
   //serial

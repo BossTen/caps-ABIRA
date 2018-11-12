@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
   $stmt->bind_result($username);
   if($stmt->fetch()){
    $_SESSION['usr_fullname'] = $username;
-   $_SESSION['usr_type'] = 'admin';
+   $_SESSION['usr_type'] = 'director';
    header('location: job-order-none.php');
   }else{
    
