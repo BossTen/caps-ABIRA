@@ -1,3 +1,25 @@
+<?php
+require '../api/dbconNApi.php';
+  
+  session_start();
+//FACULTY - USER LOGIN
+
+
+if(isset($_POST['login'])){
+
+  $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
+  if(!empty($faculty[0]['usr_fullname'])){
+  $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+   $_SESSION['usr_type'] = 'faculty';
+   header('location: user-job-order-form.php');
+  }else{
+    echo 'username or password is not correct please try';
+
+  }
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +49,7 @@
              <form action="" method="post">
                <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
                <div class="form-group"><input type="password" class="form-control" name="password" placeholder="Password"></div>
-               <input type="submit" class="btn btn-success w3-xlarge" name="Login" value="Login">
+               <input type="submit" class="btn btn-success w3-xlarge" name="login" value="Login">
               </form>
              </form>
             </div>

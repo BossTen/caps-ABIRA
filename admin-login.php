@@ -7,10 +7,10 @@ require '../api/dbcon.php';
  
 if(isset($_POST['login'])){
   //do query here
-  $stmt = $conn->prepare('SELECT username, password FROM admin where username = ? AND password = ? ');
+  $stmt = $conn->prepare('SELECT username FROM admin where username = ? AND password = ? ');
   $stmt->bind_param('ss', $u, $p);
   $u=$_POST['username'];
-  $p=$_POST['password'];
+  $p=md5($_POST['password']);
   $stmt->execute();
   $stmt->bind_result($username);
   if($stmt->fetch()){
@@ -18,8 +18,10 @@ if(isset($_POST['login'])){
    $_SESSION['usr_type'] = 'admin';
    header('location: job-order-view.php');
   }else{
-    echo 'no retrieved value ';
-    die();
+   
+    //ERROR MESSAGE HERE
+    echo 'username or password is not correct please try';
+    
   }
   $stmt->close();
   $conn->close();

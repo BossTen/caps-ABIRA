@@ -1,3 +1,9 @@
+<?php
+    require 'testadmin.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

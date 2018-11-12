@@ -1,12 +1,7 @@
 <?php
 require  '../api/dbconNApi.php';
-session_start();
-if(isset($_SESSION['usr_type'])){
-    //echo $_SESSION['usr_type'];
-}else{    
-    header('location: not-allowed.php');
-    exit;
-}
+
+require 'testfaculty.php';
 
 if(isset($_POST['submit'])){
 
@@ -26,7 +21,7 @@ $todaysSerialCode='';
     $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
     $stmt=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
     $stmt->bind_param('s',$searchForLatestSerialCode);
-    echo $searchForLatestSerialCode= $todaysSerialCode . '__';
+    $searchForLatestSerialCode= $todaysSerialCode . '__';
     $stmt->execute();
     $stmt->bind_result($latestSerialCode);
     if($stmt->fetch()){
@@ -44,7 +39,7 @@ $todaysSerialCode='';
         $latestSerialNum = '0'.$latestSerialNum;
         
     //appending the latest number
-        echo $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
+         $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
     }else{
         $todaysSerialCode = $todaysSerialCode . '01';
     }
@@ -62,7 +57,7 @@ require '../api/dbcon.php';
     
     
 
-    echo  $priorityId;
+      $priorityId;
     //now inserting data
 require '../api/dbcon.php';
     
@@ -76,10 +71,11 @@ require '../api/dbcon.php';
                                                RequestorName,
                                                UserJobDescription,
                                                SerialCode,
-                                               statusId
-                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                               statusId,
+                                               DateRequestCreated
+                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
                                                     
-$stmt->bind_param('sssssssssss',
+$stmt->bind_param('ssssssssssss',
                     $airConditioning,
                     $masonryCarpentry,
                     $electrical,
@@ -90,7 +86,8 @@ $stmt->bind_param('sssssssssss',
                     $requester,
                     $userJobDescription,
                     $serialCode,
-                    $statusId);
+                    $statusId,
+                    $DateRequestCreated);
 
 $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
 $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
@@ -104,6 +101,7 @@ $userJobDescription = $_POST['user-job-description'];
 //create serial code
 $serialCode= $todaysSerialCode;
 $statusId = '1';
+$DateRequestCreated = date('y-m-d');
 
 $stmt->execute();
 $stmt->close();
