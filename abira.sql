@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2018 at 04:29 AM
+-- Generation Time: Nov 12, 2018 at 06:28 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -53,18 +53,18 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `campus`) VALUES
-(2, 'admin_nasugbu', 'admin', 'nasugbu'),
-(3, 'admin_balayan', 'admin', 'balayan'),
-(4, 'admin_malvar', 'admin', 'malvar'),
-(5, 'admin_lemery', 'admin', 'lemery'),
-(6, 'admin_lipa', 'admin', 'lipa'),
-(7, 'admin_lobo', 'admin', 'lobo'),
-(8, 'admin_mabini', 'admin', 'mabini'),
-(9, 'admin_main', 'admin', 'main'),
-(10, 'admin_alangilan', 'admin', 'alangilan'),
-(11, 'admin_rosario', 'admin', 'rosario'),
-(12, 'admin_taysan', 'admin', 'taysan'),
-(13, 'admin_sanjaun', 'admin', 'sanjuan');
+(2, 'admin_nasugbu', '21232f297a57a5a743894a0e4a801fc3', 'nasugbu'),
+(3, 'admin_balayan', '21232f297a57a5a743894a0e4a801fc3', 'balayan'),
+(4, 'admin_malvar', '21232f297a57a5a743894a0e4a801fc3', 'malvar'),
+(5, 'admin_lemery', '21232f297a57a5a743894a0e4a801fc3', 'lemery'),
+(6, 'admin_lipa', '21232f297a57a5a743894a0e4a801fc3', 'lipa'),
+(7, 'admin_lobo', '21232f297a57a5a743894a0e4a801fc3', 'lobo'),
+(8, 'admin_mabini', '21232f297a57a5a743894a0e4a801fc3', 'mabini'),
+(9, 'admin_main', '21232f297a57a5a743894a0e4a801fc3', 'main'),
+(10, 'admin_alangilan', '21232f297a57a5a743894a0e4a801fc3', 'alangilan'),
+(11, 'admin_rosario', '21232f297a57a5a743894a0e4a801fc3', 'rosario'),
+(12, 'admin_taysan', '21232f297a57a5a743894a0e4a801fc3', 'taysan'),
+(13, 'admin_sanjaun', '21232f297a57a5a743894a0e4a801fc3', 'sanjuan');
 
 -- --------------------------------------------------------
 
@@ -96,18 +96,18 @@ CREATE TABLE `director` (
 --
 
 INSERT INTO `director` (`id`, `username`, `password`, `campus`) VALUES
-(1, 'director_nasugbu', 'admin', 'nasugbu'),
-(2, 'director_balayan', 'admin', 'balayan'),
-(3, 'director_malvar', 'admin', 'malvar'),
-(4, 'director_lemery', 'admin', 'lemery'),
-(5, 'director_lipa', 'admin', 'lipa'),
-(6, 'director_lobo', 'admin', 'lobo'),
-(7, 'director_mabini', 'admin', 'mabini'),
-(8, 'director_main', 'admin', 'main'),
-(9, 'director_alangilan', 'admin', 'alangilan'),
-(10, 'director_rosario', 'admin', 'rosario'),
-(11, 'director_taysan', 'admin', 'taysan'),
-(12, 'director_sanjaun', 'admin', 'sanjuan');
+(1, 'director_nasugbu', '21232f297a57a5a743894a0e4a801fc3', 'nasugbu'),
+(2, 'director_balayan', '21232f297a57a5a743894a0e4a801fc3', 'balayan'),
+(3, 'director_malvar', '21232f297a57a5a743894a0e4a801fc3', 'malvar'),
+(4, 'director_lemery', '21232f297a57a5a743894a0e4a801fc3', 'lemery'),
+(5, 'director_lipa', '21232f297a57a5a743894a0e4a801fc3', 'lipa'),
+(6, 'director_lobo', '21232f297a57a5a743894a0e4a801fc3', 'lobo'),
+(7, 'director_mabini', '21232f297a57a5a743894a0e4a801fc3', 'mabini'),
+(8, 'director_main', '21232f297a57a5a743894a0e4a801fc3', 'main'),
+(9, 'director_alangilan', '21232f297a57a5a743894a0e4a801fc3', 'alangilan'),
+(10, 'director_rosario', '21232f297a57a5a743894a0e4a801fc3', 'rosario'),
+(11, 'director_taysan', '21232f297a57a5a743894a0e4a801fc3', 'taysan'),
+(12, 'director_sanjaun', '21232f297a57a5a743894a0e4a801fc3', 'sanjuan');
 
 -- --------------------------------------------------------
 
@@ -179,6 +179,14 @@ CREATE TABLE `joborder` (
   `materialsNeeded9` varchar(250) DEFAULT NULL,
   `materialsNeeded10` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `joborder`
+--
+
+INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `Campus`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeededId`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assessment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`, `statusId`, `priorityId`, `UserJobDescription`, `materialsNeeded1`, `materialsNeeded2`, `materialsNeeded3`, `materialsNeeded4`, `materialsNeeded5`, `materialsNeeded6`, `materialsNeeded7`, `materialsNeeded8`, `materialsNeeded9`, `materialsNeeded10`) VALUES
+(16, 'NA18111201', '2018-11-12', 'NASUGBU', NULL, '', '', 'checked', NULL, '', 'checked', NULL, NULL, NULL, NULL, 'MAGNAYE, CHRISTINA ANCHETA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, 'This is my request', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'NA18111202', '2018-11-12', 'NASUGBU', NULL, '', '', 'checked', NULL, '', 'checked', NULL, NULL, NULL, NULL, 'MAGNAYE, CHRISTINA ANCHETA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, 'This is my request', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -297,7 +305,7 @@ ALTER TABLE `director`
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `priority`
