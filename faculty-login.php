@@ -6,16 +6,17 @@ require '../api/dbconNApi.php';
 
 
 if(isset($_POST['login'])){
+  $faculty = $api->authenticate_faculty($_POST['username'],$_POST['password']);
+  echo $faculty;
+  // $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
+  // if(!empty($faculty[0]['usr_fullname'])){
+  // $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+  //  $_SESSION['usr_type'] = 'faculty';
+  //  header('location: user-job-order-form.php');
+  // }else{
+  //   echo 'username or password is not correct please try';
 
-  $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
-  if(!empty($faculty[0]['usr_fullname'])){
-  $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
-   $_SESSION['usr_type'] = 'faculty';
-   header('location: user-job-order-form.php');
-  }else{
-    echo 'username or password is not correct please try';
-
-  }
+  // }
 
 
 }

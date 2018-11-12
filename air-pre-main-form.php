@@ -1,6 +1,7 @@
 <?php
 require '../api/dbcon.php';
 require 'test-director-admin.php';
+
 $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               work,
                                               campus,
@@ -72,14 +73,14 @@ require'navbar.php';
                 <input type="text" name="work" value="AIR-CONDITIONING" id="airconditioning" class="form-control col-12" readonly>
               </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
-                             <select class="form-control form-control" name="campus" id="campus">
+                             <select class="form-control form-control" name="campus" id="campus" readonly>
                                 <?php
                                 require '../api/apiOnly.php';
                                   $campuses = json_decode($api->fetch_campuses(),true);
                                   foreach ($campuses as $campus) {
                                     //$_SESSION['usr_campus'] = 'SAN JUAN';
 
-                              $selected = $campus['code'] == $_SESSION['usr_campus'] ? 'selected' : '';
+                                  $selected = strtolower($campus['code']) == strtolower($_SESSION['usr_campus']) ? 'selected' : '';
 
                                    echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
 
