@@ -7,15 +7,16 @@ require '../api/dbcon.php';
  
 if(isset($_POST['login'])){
   //do query here
-  $stmt = $conn->prepare('SELECT username FROM  director WHERE username = ? AND password = ? ');
+  $stmt = $conn->prepare('SELECT username, campus FROM  director WHERE username = ? AND password = ? ');
   $stmt->bind_param('ss', $u, $p);
   $u=$_POST['username'];
   $p=md5($_POST['password']);
   $stmt->execute();
-  $stmt->bind_result($username);
+  $stmt->bind_result($username,$campus);
   if($stmt->fetch()){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = 'director';
+   $_SESSION['usr_campus'] = $campus;
    header('location: job-order-view.php');
   }else{
    
