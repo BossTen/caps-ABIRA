@@ -47,7 +47,7 @@
       <div class="modal-body">
       <center>  
       <a href="job-order-form.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Form</a><br><br>
-      <a href="job-order-view.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
+      <a href="job-order-view.php "class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
