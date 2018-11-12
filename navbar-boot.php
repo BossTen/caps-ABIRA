@@ -1,7 +1,21 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/navbar.css">
+<script src="js/search.js"></script>
 
+<body>
 <img src="logo.png" width="100%" height="20%">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="home.php">Home</a>
+  <a class="navbar-brand" href="#">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,26 +29,23 @@
           Services
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#air">Air-conditioning</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#plum">Plumbing</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#ps">Power Supply</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
+  			<a href="" class="dropdown-item" data-toggle="modal" data-target="#air">Air-conditioning</a>
+  			<a href="" class="dropdown-item" data-toggle="modal" data-target="#plum">Plumbing</a>
+  			<a href="" class="dropdown-item" data-toggle="modal" data-target="#ps">Power Supply</a>
+  			<a href="" class="dropdown-item" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
+  			<a href="" class="dropdown-item" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="scheduling.php">Schedule</a>
+        <a class="nav-link" href="#">Schedule</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inventory.php">Inventory</a>
+        <a class="nav-link" href="#">Inventory</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Notification</a>
+        <a class="nav-link" href="#">Notification</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-      </li>
-    </ul>
+  	</ul>
   </div>
       <form class="form-inline my-2 my-lg-0 w3-right">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -150,4 +161,3 @@
     </div>
   </div>
 </div>
-

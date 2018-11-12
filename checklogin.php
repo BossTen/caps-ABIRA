@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect('localhost', 'root', '', 'testing');
+$connect = mysqli_connect('localhost', 'root', '', 'abira');
 
 if (isset($_POST['login'])) {
 	if (empty($_POST['username']) && empty($_POST['password'])){
