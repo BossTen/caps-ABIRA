@@ -60,16 +60,16 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                Campus=?,
                                                JobRecommendation=?,
                                                InspectionReport=?,
-                                               m1=?,
-                                               m2=?,
-                                               m3=?,
-                                               m4=?,
-                                               m5=?,
-                                               m6=?,
-                                               m7=?,
-                                               m8=?,
-                                               m9=?,
-                                               m10=? 
+                                               materialsNeeded1=?,
+                                               materialsNeeded2=?,
+                                               materialsNeeded3=?,
+                                               materialsNeeded4=?,
+                                               materialsNeeded5=?,
+                                               materialsNeeded6=?,
+                                               materialsNeeded7=?,
+                                               materialsNeeded8=?,
+                                               materialsNeeded9=?,
+                                               materialsNeeded10=? 
                                                -- ApprovedBy,
                                       
                                                 WHERE SerialCode = ?
@@ -83,19 +83,15 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $electrical,
                               $plumbing,
                               $welding,
-
                               $requesterSignature,
                               $nameOfRequester,
                               $designationOfRequester,
                               $dateRequested,
-
                               $inspecterSignature,
                               $nameOfInspector,
                               $designationOfInspecter,
                               $dateInspected,
-
                               $directorSignature,
-
                               $startOfService,
                               $endOfService,
                               $noOfHours,
@@ -125,17 +121,18 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $campus,
                               $jobRecommendation,
                               $inspectionReport,
-                              $serialCode,
-                              $m1,
-                              $m2,
-                              $m3,
-                              $m4,
-                              $m5,
-                              $m6,
-                              $m7,
-                              $m8,
-                              $m9,
-                              $m10 
+                              $m1get,
+                              $m2get,
+                              $m3get,
+                              $m4get,
+                              $m5get,
+                              $m6get,
+                              $m7get,
+                              $m8get,
+                              $m9get,
+                              $m10get,
+                              $serialCode
+
                         );  
 // Approved = $directorSignature
 // set parameters and execute
@@ -184,16 +181,16 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
- $m1 = $_POST['m1'];
- $m2 = $_POST['m2'];
- $m3 = $_POST['m3'];
- $m4 = $_POST['m4'];
- $m5 = $_POST['m5'];
- $m6 = $_POST['m6'];
- $m7 = $_POST['m7'];
- $m8 = $_POST['m8'];
- $m9 = $_POST['m9'];
- $m10 =$_POST['m10'];
+ $m1get = isset($_POST['m2']) ? $_POST['m2'] : '';
+ $m2get = isset($_POST['m2']) ? $_POST['m2'] : '';
+ $m3get = isset($_POST['m3']) ? $_POST['m3'] : '';
+ $m4get = isset($_POST['m4']) ? $_POST['m4'] : '';
+ $m5get = isset($_POST['m5']) ? $_POST['m5'] : '';
+ $m6get = isset($_POST['m6']) ? $_POST['m6'] : '';
+ $m7get = isset($_POST['m7']) ? $_POST['m7'] : '';
+ $m8get = isset($_POST['m8']) ? $_POST['m8'] : '';
+ $m9get = isset($_POST['m9']) ? $_POST['m9'] : '';
+ $m10get =isset($_POST['m10']) ? $_POST['m10'] : '';
  $serialCode = $_POST['serial'];
 
  $stmt->execute();
@@ -252,16 +249,16 @@ require '../api/dbcon.php';
                            JobRecommendation,
                            InspectionReport,
                            statusId,
-                           m1,
-                           m2,
-                           m3,
-                           m4,
-                           m5,
-                           m6,
-                           m7,
-                           m8,
-                           m9,
-                           m10
+                                               materialsNeeded1,
+                                               materialsNeeded2,
+                                               materialsNeeded3,
+                                               materialsNeeded4,
+                                               materialsNeeded5,
+                                               materialsNeeded6,
+                                               materialsNeeded7,
+                                               materialsNeeded8,
+                                               materialsNeeded9,
+                                               materialsNeeded10 
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -506,7 +503,7 @@ require 'navbar.php';
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
                             </tr>
                             <tr>
 
