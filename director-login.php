@@ -1,3 +1,34 @@
+<?php
+require '../api/dbcon.php';
+  
+  session_start();
+//FACULTY - USER LOGIN
+
+ 
+if(isset($_POST['login'])){
+  //do query here
+  $stmt = $conn->prepare('SELECT username FROM  director WHERE username = ? AND password = ? ');
+  $stmt->bind_param('ss', $u, $p);
+  $u=$_POST['username'];
+  $p=md5($_POST['password']);
+  $stmt->execute();
+  $stmt->bind_result($username);
+  if($stmt->fetch()){
+   $_SESSION['usr_fullname'] = $username;
+   $_SESSION['usr_type'] = 'director';
+   header('location: job-order-view.php');
+  }else{
+   
+    //ERROR MESSAGE HERE
+    echo 'username or password is not correct please try';
+    
+  }
+  $stmt->close();
+  $conn->close();
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +58,11 @@
              <form action="" method="post">
                <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
                <div class="form-group"><input type="password" class="form-control" name="password" placeholder="Password"></div>
-               <input type="submit" class="btn btn-success w3-xlarge" name="Login" value="Login">
+               <input type="submit" class="btn btn-success w3-xlarge" name="login" value="Login">
               </form>
              </form>
             </div>
   </div>
 </div>
+</body>
+</html>

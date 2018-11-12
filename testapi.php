@@ -1,5 +1,5 @@
 <?php
-require '../api/dbcon.php';
+require '../api/dbconNApi.php';
 	$adminName = '13-12053';
 	$adminPass = '';
 		
@@ -12,11 +12,12 @@ require '../api/dbcon.php';
 			$facultyId = '03210';
 			
 			//$auth_student = $api->authenticate_student($user,$password);
-			$data =$api->authenticate_student($user,'tintin');
+			$data =$api->fetch_campuses();
 			//fac_profile = $api->authenticate_faculty('','');
 			//$fac_c_listing = $api->fetch_faculty_class_listing('','','');
 			//echo $auth_student;
 			//echo $data;
+			
 			echo $data;
 			die();
 			foreach($data as $d){

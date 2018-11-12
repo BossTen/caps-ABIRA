@@ -12,82 +12,86 @@ if ($conn->connect_error) {
 }
 
 // prepare and binds
-$stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
-                                               SerialCode,
-
-                                               DateRequestCreated,
-                                               AirCondition,
-                                               CarpentryMasonry,
-                                               ElectricalWorks,
+$stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
+                                               DateRequestCreated=?,
+                                               AirCondition=?,
+                                               CarpentryMasonry=?,
+                                               ElectricalWorks=?,
                                                
-                                               Plumbing,
-                                               Welding,
+                                               Plumbing=?,
+                                               Welding=?,
 
 
-                                               RequestorSignature,
-                                               RequestorName,
-                                               RequestorDesignation,
-                                               DateRequested,
-                                               signatureOfInspector,
-                                               InspectorName,
-                                               InspectorDesignation,
-                                               DateInspected,
-                                               Approved,
-                                               StartOfService,
-                                               EndOfService,
-                                               NoOfHours,
-                                               Assesment,
-                                               StartOfServiceTime,
-                                               EndOfServiceTime,
-                                               AccomplishedWork1,
-                                               WorkDoneBy1,
-                                               Signature1,
-                                               AccomplishedWork2,
-                                               WorkDoneBy2,
-                                               Signature2,
-                                               AccomplishedWork3,
-                                               WorkDoneBy3,
-                                               Signature3,
-                                               AccomplishedWork4,
-                                               WorkDoneBy4,
-                                               Signature4,
-                                               ConformeName,
-                                               ConformeApproved,
-                                               ConformeDateApproved,
-                                               ResponseTime,
-                                               AccuracyOfWork,
-                                               Courtesy,
-                                               QualityOfService,
-                                               priorityId,
-                                               CampusId,
-                                               JobRecommendation,
-                                               InspectionReport 
+                                               RequestorSignature=?,
+                                               RequestorName=?,
+                                               RequestorDesignation=?,
+                                               DateRequested=?,
+                                               signatureOfInspector=?,
+                                               InspectorName=?,
+                                               InspectorDesignation=?,
+                                               DateInspected=?,
+                                               Approved=?,
+                                               StartOfService=?,
+                                               EndOfService=?,
+                                               NoOfHours=?,
+                                               Assessment=?,
+                                               StartOfServiceTime=?,
+                                               EndOfServiceTime=?,
+                                               AccomplishedWork1=?,
+                                               WorkDoneBy1=?,
+                                               Signature1=?,
+                                               AccomplishedWork2=?,
+                                               WorkDoneBy2=?,
+                                               Signature2=?,
+                                               AccomplishedWork3=?,
+                                               WorkDoneBy3=?,
+                                               Signature3=?,
+                                               AccomplishedWork4=?,
+                                               WorkDoneBy4=?,
+                                               Signature4=?,
+                                               ConformeName=?,
+                                               ConformeApproved=?,
+                                               ConformeDateApproved=?,
+                                               ResponseTime=?,
+                                               AccuracyOfWork=?,
+                                               Courtesy=?,
+                                               QualityOfService=?,
+                                               priorityId=?,
+                                               Campus=?,
+                                               JobRecommendation=?,
+                                               InspectionReport=?,
+                                               materialsNeeded1=?,
+                                               materialsNeeded2=?,
+                                               materialsNeeded3=?,
+                                               materialsNeeded4=?,
+                                               materialsNeeded5=?,
+                                               materialsNeeded6=?,
+                                               materialsNeeded7=?,
+                                               materialsNeeded8=?,
+                                               materialsNeeded9=?,
+                                               materialsNeeded10=? 
                                                -- ApprovedBy,
                                       
-                                               ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
+                                                WHERE SerialCode = ?
+                                               ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffice,
-                              $serialCode,
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+                              $nameOfOffice,
                               $date,
                               $airConditioning,
                               $masonryCarpentry,
                               $electrical,
                               $plumbing,
                               $welding,
-
                               $requesterSignature,
                               $nameOfRequester,
                               $designationOfRequester,
                               $dateRequested,
-
                               $inspecterSignature,
                               $nameOfInspector,
                               $designationOfInspecter,
                               $dateInspected,
-
                               $directorSignature,
-
                               $startOfService,
                               $endOfService,
                               $noOfHours,
@@ -116,12 +120,23 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
                               $priority,
                               $campus,
                               $jobRecommendation,
-                              $inspectionReport   
+                              $inspectionReport,
+                              $m1get,
+                              $m2get,
+                              $m3get,
+                              $m4get,
+                              $m5get,
+                              $m6get,
+                              $m7get,
+                              $m8get,
+                              $m9get,
+                              $m10get,
+                              $serialCode
+
                         );  
 // Approved = $directorSignature
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
- $serialCode = $_POST['serial'];
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
  $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
@@ -166,6 +181,22 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssiss", $nameOfOffic
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
+ $m1get = isset($_POST['m2']) ? $_POST['m2'] : '';
+ $m2get = isset($_POST['m2']) ? $_POST['m2'] : '';
+ $m3get = isset($_POST['m3']) ? $_POST['m3'] : '';
+ $m4get = isset($_POST['m4']) ? $_POST['m4'] : '';
+ $m5get = isset($_POST['m5']) ? $_POST['m5'] : '';
+ $m6get = isset($_POST['m6']) ? $_POST['m6'] : '';
+ $m7get = isset($_POST['m7']) ? $_POST['m7'] : '';
+ $m8get = isset($_POST['m8']) ? $_POST['m8'] : '';
+ $m9get = isset($_POST['m9']) ? $_POST['m9'] : '';
+ $m10get =isset($_POST['m10']) ? $_POST['m10'] : '';
+ $serialCode = $_POST['serial'];
+
+ $stmt->execute();
+ $stmt->close();
+ $conn->close(); 
+
 }
 
 require '../api/dbcon.php';
@@ -216,10 +247,21 @@ require '../api/dbcon.php';
                            priorityId,
                            Campus,
                            JobRecommendation,
-                           InspectionReport 
+                           InspectionReport,
+                           statusId,
+                                               materialsNeeded1,
+                                               materialsNeeded2,
+                                               materialsNeeded3,
+                                               materialsNeeded4,
+                                               materialsNeeded5,
+                                               materialsNeeded6,
+                                               materialsNeeded7,
+                                               materialsNeeded8,
+                                               materialsNeeded9,
+                                               materialsNeeded10 
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
-    $sId = $_GET['serial'];
+    $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
     $stmt->execute();
     $stmt->bind_result($NameOfOffice,
                        $SerialCode,
@@ -264,9 +306,21 @@ require '../api/dbcon.php';
                        $Courtesy,
                        $QualityOfService,
                        $priorityId,
-                       $CampusId,
+                       $Campus,
                        $JobRecommendation,
-                       $InspectionReport);
+                       $InspectionReport,
+                       $statusId,
+                       $m1,
+                       $m2,
+                       $m3,
+                       $m4,
+                       $m5,
+                       $m6,
+                       $m7,
+                       $m8,
+                       $m9,
+                       $m10
+                     );
 
     while($stmt->fetch()){
 //        echo $NameOfOffice;
@@ -351,16 +405,35 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" Disabled/></h4>
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
                         <h4 class="col-3"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
+                                require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
-
                                   while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+                                  $selected = $row['Id']==$priorityId ? 'selected' : '';
+
+            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+
+                                  }
+                                }
+                              ?>
+                            </select>
+
+                             <h4 class="col-3"><b>Status</b>&nbsp;
+                            <select class="form-control form-control" name="status" id="status">
+                                <?php
+                                require '../api/dbcon.php';
+                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'For Approval' AND Name <> 'Approved' AND Name <> 'Denied'  ";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+                                  while ($row =  $result->fetch_assoc()) {
+                                  $selected = $row['Id']==$statusId ? 'selected' : '';
+
+            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
 
                                   }
                                 }
@@ -371,24 +444,26 @@ require 'navbar.php';
                     <div class="row ">
                         
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-7" name="date1" />
+                            <input type="date" class="form-control col-7" name="date1" value="<?php echo $DateRequestCreated ?>"/>
                         </h4>
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus">
+                            <select class="form-control form-control" name="campus" id="campus" readonly>
                                 <?php
-                                $sql = "SELECT Id, Name FROM capuses";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
-
-                                  while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+                                require_once '../api/apiOnly.php';
+                                $campuses = json_decode($api->fetch_campuses(),true);
+                                  foreach ($campuses as $campus) {
+                                    $selected = $campus['code'] == $Campus? 'selected' : '';
+                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
 
                                   }
-                                }
+
                               ?>
                             </select>
 
+
+
                     </div>
+
                     
             <div class="row">
                 <h4 class="col-10"><b>Name of Office:</b>&nbsp;
@@ -428,11 +503,11 @@ require 'navbar.php';
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb4"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
@@ -440,23 +515,23 @@ require 'navbar.php';
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb6"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb8"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb10"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="tb11"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
@@ -468,11 +543,11 @@ require 'navbar.php';
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="tb13"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb14"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
@@ -480,11 +555,11 @@ require 'navbar.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="16"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb18"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                     </table>
                     <br>
@@ -544,7 +619,7 @@ require 'navbar.php';
                         <tr>
                             <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>"></th>
                             <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" disabled>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?>>Work completed upon agreed duration</th>
@@ -695,7 +770,7 @@ require 'navbar.php';
             <br>
 
 
-            <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+            <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
                <?php 
             }
 $stmt->execute();

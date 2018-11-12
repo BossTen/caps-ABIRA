@@ -1,13 +1,35 @@
+<?php
+require '../api/dbconNApi.php';
+  
+  session_start();
+//FACULTY - USER LOGIN
+
+
+if(isset($_POST['login'])){
+
+  $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
+  if(!empty($faculty[0]['usr_fullname'])){
+  $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+   $_SESSION['usr_type'] = 'faculty';
+   header('location: user-job-order-form.php');
+  }else{
+    echo 'username or password is not correct please try';
+
+  }
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Faculty Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
@@ -27,7 +49,7 @@
              <form action="" method="post">
                <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
                <div class="form-group"><input type="password" class="form-control" name="password" placeholder="Password"></div>
-               <input type="submit" class="btn btn-success w3-xlarge" name="Login" value="Login">
+               <input type="submit" class="btn btn-success w3-xlarge" name="login" value="Login">
               </form>
              </form>
             </div>
