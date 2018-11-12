@@ -59,14 +59,24 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                priorityId=?,
                                                Campus=?,
                                                JobRecommendation=?,
-                                               InspectionReport=? 
+                                               InspectionReport=?,
+                                               m1=?,
+                                               m2=?,
+                                               m3=?,
+                                               m4=?,
+                                               m5=?,
+                                               m6=?,
+                                               m7=?,
+                                               m8=?,
+                                               m9=?,
+                                               m10=? 
                                                -- ApprovedBy,
                                       
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssss", $nameOfOffice,
-                              
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+                              $nameOfOffice,
                               $date,
                               $airConditioning,
                               $masonryCarpentry,
@@ -115,12 +125,21 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssss", $nameOfOffic
                               $campus,
                               $jobRecommendation,
                               $inspectionReport,
-                              $serialCode  
+                              $serialCode,
+                              $m1,
+                              $m2,
+                              $m3,
+                              $m4,
+                              $m5,
+                              $m6,
+                              $m7,
+                              $m8,
+                              $m9,
+                              $m10 
                         );  
 // Approved = $directorSignature
 // set parameters and execute
  $nameOfOffice = $_POST['nameofoffice'];
- $serialCode = $_POST['serial'];
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
  $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
@@ -165,6 +184,18 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssss", $nameOfOffic
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
+ $m1 = $_POST['m1'];
+ $m2 = $_POST['m2'];
+ $m3 = $_POST['m3'];
+ $m4 = $_POST['m4'];
+ $m5 = $_POST['m5'];
+ $m6 = $_POST['m6'];
+ $m7 = $_POST['m7'];
+ $m8 = $_POST['m8'];
+ $m9 = $_POST['m9'];
+ $m10 =$_POST['m10'];
+ $serialCode = $_POST['serial'];
+
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
@@ -220,7 +251,17 @@ require '../api/dbcon.php';
                            Campus,
                            JobRecommendation,
                            InspectionReport,
-                           statusId
+                           statusId,
+                           m1,
+                           m2,
+                           m3,
+                           m4,
+                           m5,
+                           m6,
+                           m7,
+                           m8,
+                           m9,
+                           m10
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -271,7 +312,18 @@ require '../api/dbcon.php';
                        $Campus,
                        $JobRecommendation,
                        $InspectionReport,
-                       $statusId);
+                       $statusId,
+                       $m1,
+                       $m2,
+                       $m3,
+                       $m4,
+                       $m5,
+                       $m6,
+                       $m7,
+                       $m8,
+                       $m9,
+                       $m10
+                     );
 
     while($stmt->fetch()){
 //        echo $NameOfOffice;
@@ -454,11 +506,11 @@ require 'navbar.php';
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="tb2"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb4"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
@@ -466,23 +518,23 @@ require 'navbar.php';
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb6"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb8"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb10"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="tb11"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
@@ -494,11 +546,11 @@ require 'navbar.php';
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="tb13"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb14"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
@@ -506,11 +558,11 @@ require 'navbar.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="16"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="tb18"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                     </table>
                     <br>
