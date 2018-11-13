@@ -14,7 +14,7 @@ if(isset($_POST['login'])){
    if(!empty($faculty[0]['usr_fullname'])){
    $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
     $_SESSION['usr_type'] = 'faculty';
-    header('location: user-job-order-form.php');
+    header('location: faculty-job-order-form.php');
    }else{
      echo 'username or password is not correct please try';
 }}
