@@ -74,6 +74,16 @@ require '../api/dbcon.php';
                                                statusId,
                                                DateRequestCreated
                                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+
+    if($stmt){
+    echo "<script type='text/javascript'>
+                alert ('Successful insertion of data'); 
+                window.location.href='faculty-job-order-form.php';</script>";
+    }else{
+    echo "<script type='text/javascript'>
+                alert ('Not Successful insertion of data'); 
+                window.location.href='faculty-job-order-form.php';</script>";
+    }
                                                     
 $stmt->bind_param('ssssssssssss',
                     $airConditioning,
@@ -100,7 +110,7 @@ $requester = $_SESSION['usr_fullname'];
 $userJobDescription = $_POST['user-job-description'];
 //create serial code
 $serialCode= $todaysSerialCode;
-$statusId = '1';
+$statusId = '7';
 $DateRequestCreated = date('y-m-d');
 
 $stmt->execute();
