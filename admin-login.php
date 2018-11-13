@@ -19,7 +19,7 @@ if(isset($_POST['login'])){
    $_SESSION['usr_campus'] = $campus;
    
    
-   header('location: job-order-view.php');
+   header('location: home.php');
    exit();
   }else{
    
