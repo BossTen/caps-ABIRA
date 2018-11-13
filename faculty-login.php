@@ -1,4 +1,5 @@
 <?php
+
 require '../api/dbconNApi.php';
   
   session_start();
@@ -16,11 +17,10 @@ if(isset($_POST['login'])){
     header('location: user-job-order-form.php');
    }else{
      echo 'username or password is not correct please try';
+}}
 
-
-
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
