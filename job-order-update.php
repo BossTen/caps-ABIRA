@@ -12,7 +12,8 @@ if ($conn->connect_error) {
 }
 
 // prepare and binds
-$stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
+$stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
+                                      NameOfOffice=?,
                                                DateRequestCreated=?,
                                                AirCondition=?,
                                                CarpentryMasonry=?,
@@ -57,7 +58,7 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                Courtesy=?,
                                                QualityOfService=?,
                                                priorityId=?,
-                                               
+                                                
                                                JobRecommendation=?,
                                                InspectionReport=?,
                                                materialsNeeded1=?,
@@ -75,7 +76,8 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+                              $sIdu,
                               $nameOfOffice,
                               $date,
                               $airConditioning,
@@ -136,6 +138,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                         );  
 // Approved = $directorSignature
 // set parameters and execute
+  $sIdu = 1;
  $nameOfOffice = $_POST['nameofoffice'];
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
@@ -424,11 +427,11 @@ require 'navbar.php';
                             </select>
 
                              <h4 class="col-3"><b>Status</b>&nbsp;
-                              <?php $disabled = $statusId == 7 ? 'disabled' : ''; ?>
-                            <select class="form-control form-control" name="status" id="status" <?php echo $disabled ?> >
+                            
+                            <select class="form-control form-control" name="status" id="status" disabled>
                                 <?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'For Approval' AND Name <> 'Approved' AND Name <> 'Denied'  ";
+                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'Approved' AND Name <> 'Denied'  ";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
@@ -770,7 +773,7 @@ require 'navbar.php';
             </div>
             <br>
 
-
+            <h1>submiting would change the status of this form to "for approval" this is for the director to approve"</h1>
             <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
                <?php 
             }
