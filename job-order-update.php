@@ -730,35 +730,35 @@ require 'navbar.php';
 
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo $ResponseTime == 5 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo $ResponseTime == 4 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo $ResponseTime == 3 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb1" <?php echo $ResponseTime == 2 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb1" <?php echo $ResponseTime == 1 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 5 ? 'checked' : 'disabled') : ($ResponseTime == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 4 ? 'checked' : 'disabled') : ($ResponseTime == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 3 ? 'checked' : 'disabled') : ($ResponseTime == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 2 ? 'checked' : 'disabled') : ($ResponseTime == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 1 ? 'checked' : 'disabled') : ($ResponseTime == 1 ? 'checked' : '')    ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 5 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 4 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 3 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 2 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb2" <?php echo $AccuracyOfWork == 1 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 5 ? 'checked' : 'disabled') : ($AccuracyOfWork == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 4 ? 'checked' : 'disabled') : ($AccuracyOfWork == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 3 ? 'checked' : 'disabled') : ($AccuracyOfWork == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 2 ? 'checked' : 'disabled') : ($AccuracyOfWork == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 1 ? 'checked' : 'disabled') : ($AccuracyOfWork == 1 ? 'checked' : '');    ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Courtesy and professionalis of the attending personel</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb3" <?php echo $Courtesy == 5 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb3" <?php echo $Courtesy == 4 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb3" <?php echo $Courtesy == 3 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb3" <?php echo $Courtesy == 2 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb3" <?php echo $Courtesy == 1 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 5 ? 'checked' : 'disabled') : ($Courtesy == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 4 ? 'checked' : 'disabled') : ($Courtesy == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 3 ? 'checked' : 'disabled') : ($Courtesy == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 2 ? 'checked' : 'disabled') : ($Courtesy == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 1 ? 'checked' : 'disabled') : ($Courtesy == 1 ? 'checked' : '');    ?> ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb4" <?php echo $QualityOfService == 5 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb4" <?php echo $QualityOfService == 4 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb4" <?php echo $QualityOfService == 3 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb4" <?php echo $QualityOfService == 2 ? 'checked' : '' ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb4" <?php echo $QualityOfService == 1 ? 'checked' : '' ?> ></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 5 ? 'checked' : 'disabled') : ($QualityOfService == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 4 ? 'checked' : 'disabled') : ($QualityOfService == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 3 ? 'checked' : 'disabled') : ($QualityOfService == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 2 ? 'checked' : 'disabled') : ($QualityOfService == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 1 ? 'checked' : 'disabled') : ($QualityOfService == 1 ? 'checked' : '');    ?> ></th>
                                 </tr>
 
 
