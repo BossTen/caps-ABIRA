@@ -1,4 +1,4 @@
-
+  
 <img src="logo.png" width="100%" height="20%">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="home.php">Home</a>
@@ -37,8 +37,7 @@
     </ul>
   </div>
       <form class="form-inline my-2 my-lg-0 w3-right">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-ligh tmy-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Hello User!" aria-label="Search" disabled>
     </form>
 </nav>
 

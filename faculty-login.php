@@ -16,7 +16,7 @@ if(isset($_POST['login'])){
   // }else{
   //   echo 'username or password is not correct please try';
 
-<<<<<< HEAD
+/*<<<<<< HEAD
   $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
   if(!empty($faculty[0]['usr_fullname'])){
   $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
@@ -30,7 +30,7 @@ if(isset($_POST['login'])){
   }
 =======
   // }
->>>>>>> b62a2d2978b5af9fc0c37813e691bc4811e121a3
+>>>>>>> b62a2d2978b5af9fc0c37813e691bc4811e121a3 */
 
 
 }

@@ -16,8 +16,6 @@
 require'navbar.php';
 
 ?>
-
-
 <!--body-->
 <br><br>
 <form action="" method="">
@@ -39,35 +37,39 @@ require'navbar.php';
 
 </form>
 
-
-
-
-
-<div class="container">      
+<div class="container">
+  <?php 
+      $query = mysqli_query($con,"SELECT * FROM preventive_maintenance ORDER BY ID ASC") or die(mysql_error()); 
+  
+  ?>      
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Dated Requested</th>
-        <th>Job Information</th>
-         <th>Date Approved</th>
-         <th>Status</th>
-         <th>Priority</th>
+        <th>Month</th>
+        <th>Campus</th>
+         <th>Department</th>
+         <th>Floor</th>
+         <th>Area</th>
+         <th>Date Started</th>
+         <th>Date Ended</th>
+         <th>Accomplish By:</th>
       </tr>
     </thead>
     <tbody>
-    <tr>
-          <td>October</td>
-          <td>CICS</td>
-          <td>Third</td>
-          <td>Room 103</td>
-          <td>10/10/18</td>
-          
-          </tr>
-                  </tbody>
-      </table>
-    </div>
+      <?php 
+          while($result = mysqli_fetch_array($query)) { 
 
-<div class="container ">
-       <div class="float-right"><a href="air-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
-      </div>   
-      </div>
+        ?>
+      <tr>
+          <td><?php echo $result['month']; ?></td>
+          <td><?php echo $result['campus']; ?></td>
+          <td><?php echo $result['college']; ?></td>
+          <td><?php echo $result['floor']; ?></td>
+          <td><?php echo $result['area']; ?></td>
+          <td><?php echo $result['dateStarted']; ?></td>
+          <td><?php echo $result['dateEnded']; ?></td>
+          <td><?php echo $result['accomplishBy']; ?></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
