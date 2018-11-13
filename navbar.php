@@ -1,4 +1,9 @@
-  
+<?php
+if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+    session_start();
+}
+?>  
 <img src="logo.png" width="100%" height="20%">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="home.php">Home</a>
