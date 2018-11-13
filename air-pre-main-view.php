@@ -18,7 +18,6 @@ require'navbar.php';
 ?>
 <!--body-->
 <br><br>
-<form action="" method="">
 <div class="container">
    <div class="form-row">
       <div class="col-5 w3-text-red"><h2>Air-conditioning<br> Preventive Maintenance View</h2></div>
@@ -26,22 +25,34 @@ require'navbar.php';
         <select name="services" style="width:80%;"></select>
       </div>
       <div class="col-2"><h4>Month</h4>
-        <select name="services" style="width:80%;"></select>
+<span><select name="month">
+        <?php for( $m=1; $m<=12; ++$m ) { 
+          $month_label = date('F', mktime(0, 0, 0, $m, 1));?>
+          <option value="<?php echo $month_label; ?>"><?php echo $month_label; ?></option>
+        <?php } ?>
+      </select> 
+    </span>
       </div>
       <div class="col-2"><h4>Year</h4>
-        <select name="services" style="width:80%;"></select>
-      </div>
+        <span>
+      <select name="year">
+        <?php 
+          $year = date('Y');
+          $min = $year - 10;
+          $max = $year;
+          for( $i=$max; $i>=$min; $i-- ) {
+            echo '<option value='.$i.'>'.$i.'</option>';
+          }
+        ?>
+      </select>
+    </span></div>
 
       <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
    </div>
 
 </form>
 
-<div class="container">
-  <?php 
-      $query = mysqli_query($con,"SELECT * FROM preventive_maintenance ORDER BY ID ASC") or die(mysql_error()); 
-  
-  ?>      
+<div class="container">  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -56,20 +67,59 @@ require'navbar.php';
       </tr>
     </thead>
     <tbody>
-      <?php 
-          while($result = mysqli_fetch_array($query)) { 
+      <?php
+// connect to database
+$con = mysqli_connect('localhost','root','');
+mysqli_select_db($con, 'abira');
 
-        ?>
-      <tr>
-          <td><?php echo $result['month']; ?></td>
-          <td><?php echo $result['campus']; ?></td>
-          <td><?php echo $result['college']; ?></td>
-          <td><?php echo $result['floor']; ?></td>
-          <td><?php echo $result['area']; ?></td>
-          <td><?php echo $result['dateStarted']; ?></td>
-          <td><?php echo $result['dateEnded']; ?></td>
-          <td><?php echo $result['accomplishBy']; ?></td>
-      </tr>
+
+// define how many results you want per page
+$results_per_page = 20;
+// find out the number of results stored in database
+$sql = "SELECT * FROM preventive_maintenance";
+$result = mysqli_query ($con,$sql);
+$number_of_results = mysqli_num_rows($result);
+// determine number of total pages available
+$number_of_pages = ceil($number_of_results/$results_per_page);
+// determine which page number visitor is currently on
+if (!isset($_GET['page'])) {
+  $page = 1;
+} else {
+  $page = $_GET['page'];
+}
+// determine the sql LIMIT starting number for the results on the displaying page
+$this_page_first_result = ($page-1)*$results_per_page;
+// retrieve selected results from database and display them on page
+$sql='SELECT * FROM preventive_maintenance LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+$result = mysqli_query($con, $sql);
+while($row = mysqli_fetch_array($result)) {
+  echo "<tr>";
+  echo "<td>" . $row['month'] . "</td>";
+  echo "<td>" . $row['campus'] . "</td>";
+  echo "<td>" . $row['college'] . "</td>";
+  echo "<td>" . $row['floor'] . "</td>";
+  echo "<td>" . $row['area'] . "</td>";
+  echo "<td>" . $row['dateStarted'] . "</td>";
+  echo "<td>" . $row['dateEnded'] . "</td>";
+  echo "<td>" . $row['accomplishBy'] . "</td>";
+}
+// display the links to the pages
+?>
+
+
+<div class="container">
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+<?php
+for ($page=1;$page<=$number_of_pages;$page++) {
+    echo '<li class="page-item"><a class="page-link" href="pagination.php?page=' . $page . '">' . $page . '</a> ';
+
+}
+?>
     </tbody>
   </table>
 </div>
+<div class="container ">
+       <div class="float-right"><a href="bwdw-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+      </div>   
+      </div>
