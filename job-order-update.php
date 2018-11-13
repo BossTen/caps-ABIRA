@@ -57,7 +57,7 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                Courtesy=?,
                                                QualityOfService=?,
                                                priorityId=?,
-                                               Campus=?,
+                                               
                                                JobRecommendation=?,
                                                InspectionReport=?,
                                                materialsNeeded1=?,
@@ -75,7 +75,7 @@ $stmt = $conn->prepare("UPDATE joborder SET NameOfOffice=?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $nameOfOffice,
                               $date,
                               $airConditioning,
@@ -118,7 +118,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $courtesy,
                               $qualityOfService,
                               $priority,
-                              $campus,
+                              //$campus,
                               $jobRecommendation,
                               $inspectionReport,
                               $m1get,
@@ -178,7 +178,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
  $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
  $priority = $_POST['priority'];
- $campus = $_POST['campus'];
+ //$campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
  $m1get = isset($_POST['m2']) ? $_POST['m2'] : '';
@@ -424,7 +424,8 @@ require 'navbar.php';
                             </select>
 
                              <h4 class="col-3"><b>Status</b>&nbsp;
-                            <select class="form-control form-control" name="status" id="status">
+                              <?php $disabled = $statusId == 7 ? 'disabled' : ''; ?>
+                            <select class="form-control form-control" name="status" id="status" <?php echo $disabled ?> >
                                 <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM status WHERE Name <> 'For Approval' AND Name <> 'Approved' AND Name <> 'Denied'  ";
@@ -447,7 +448,7 @@ require 'navbar.php';
                             <input type="date" class="form-control col-7" name="date1" value="<?php echo $DateRequestCreated ?>"/>
                         </h4>
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus" readonly>
+                            <select class="form-control form-control" name="campus" id="campus" disabled>
                                 <?php
                                 require_once '../api/apiOnly.php';
                                 $campuses = json_decode($api->fetch_campuses(),true);
