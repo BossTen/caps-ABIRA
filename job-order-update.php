@@ -331,10 +331,8 @@ require '../api/dbcon.php';
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
-      header('location: not-allowed.php');
-      exit();
-
-
+          header('location: not-allowed.php');
+          exit();
       }
       //code for checking if user is with the same campus as the requester
 

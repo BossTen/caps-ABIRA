@@ -16,7 +16,7 @@ if(isset($_POST['login'])){
   if($stmt->fetch()){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = 'admin';
-  
+  $_SESSION['usr_campus'] = $campus;
    
    header('location: home.php');
    exit();
