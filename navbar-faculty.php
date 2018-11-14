@@ -37,7 +37,7 @@ if(session_id() == '' || !isset($_SESSION)) {
   	</ul>
   </div>
   <form class="form-inline my-2 my-lg-0 w3-right">
-      <input class="form-control mr-sm-2" type="text" value=<?php require_once '../api/apiOnly.php'; echo 'Good Day! '. $_SESSION['usr_fullname']; ?>aria-label="Search" readonly>
+      <input class="form-control mr-sm-2" type="text" value="<?php require_once '../api/apiOnly.php'; echo 'Good Day! '. (isset($_SESSION['usr_fullname'])? $_SESSION['usr_fullname'] : '') ; ?>"aria-label="Search" readonly>
 
     </form>
 </nav>
