@@ -199,7 +199,7 @@ require 'navbar-faculty.php';
         </div>
         <br />
         <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
+            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description" required=""></textarea></div>
             <h4 class="col-3"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
                     <option value="Low" id="Low" name="Low" class="w3-text-blue">Low</option>
