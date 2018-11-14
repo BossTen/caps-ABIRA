@@ -185,7 +185,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  //$campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
- $m1get = isset($_POST['m2']) ? $_POST['m2'] : '';
+ $m1get = isset($_POST['m1']) ? $_POST['m1'] : '';
  $m2get = isset($_POST['m2']) ? $_POST['m2'] : '';
  $m3get = isset($_POST['m3']) ? $_POST['m3'] : '';
  $m4get = isset($_POST['m4']) ? $_POST['m4'] : '';
