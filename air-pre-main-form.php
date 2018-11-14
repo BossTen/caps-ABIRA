@@ -13,7 +13,7 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               dateEnded,
                                               accomplishedBy)
                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ');
-/* $stmt->bind_param('sssssssss',
+ $stmt->bind_param('sssssssss',
                               $work,
                               $campus,
                               $month,
@@ -36,7 +36,7 @@ $accomplishedBy = isset($_POST['accomplished-by']) ? $_POST['accomplished-by'] :
 $stmt->execute();
 $stmt->close();
 $conn->close();
-*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

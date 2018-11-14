@@ -11,9 +11,9 @@ if(session_id() == '' || !isset($_SESSION)) {
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" >
       <li class="nav-item">
-        <a href="" class="nav-link" data-toggle="modal" data-target="#joborder">Job Order</a>
+        <a href="" class="nav-link" data-toggle="modal" data-target="#joborder" >Job Order</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,16 +36,20 @@ if(session_id() == '' || !isset($_SESSION)) {
       <li class="nav-item">
         <a class="nav-link" href="">Notification</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>
     </ul>
   </div>
-      <form class="form-inline my-2 my-lg-0 w3-right">
-      <input class="form-control mr-sm-2" type="text" value="<?php require_once '../api/apiOnly.php'; echo 'Good Day! '. (isset($_SESSION['usr_fullname'])? $_SESSION['usr_fullname'] : '') ; ?>"aria-label="Search" readonly>
-    </form>
-</nav>
+  <div class="pull-right">
+    <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php require_once '../api/apiOnly.php'; echo 'Good Day! '. (isset($_SESSION['usr_fullname'])? $_SESSION['usr_fullname'] : '') ; ?>
+  </a>
 
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="logout.php"><i class="fi-dial"></i>Log Out</a>
+  </div>
+</div>
+
+
+</nav>
 
 <!--joborder-->
 <div class="modal fade" id="joborder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

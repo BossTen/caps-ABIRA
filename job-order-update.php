@@ -410,7 +410,7 @@ require '../api/dbcon.php';
 <html lang="en">
 
 <head>
-    <title>Job Order Form</title>
+    <title>Job Order Form View</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -438,8 +438,8 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
-                        <h4 class="col-3"><b>Priority</b>&nbsp;
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
+                        <h4 class="col-6"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
                                 require '../api/dbcon.php';
@@ -455,8 +455,10 @@ require 'navbar.php';
                                 }
                               ?>
                             </select>
+                          </div>
+                          <div class="row">
 
-                             <h4 class="col-3"><b>Status</b>&nbsp;
+                             <h4 class="col-6"><b>Status</b>&nbsp;
                             
                             <select class="form-control form-control" name="status" id="status" disabled>
                                 <?php
@@ -473,14 +475,11 @@ require 'navbar.php';
                                 }
                               ?>
                             </select>
-                    </div>
-
-                    <div class="row ">
                         
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-7" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/>
+                            <input type="date" class="form-control col-12" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/>
                         </h4>
-                        <h4 class="col-3"><b>Campus:</b>&nbsp;
+                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus" disabled>
                                 <?php
                                 require_once '../api/apiOnly.php';
@@ -493,14 +492,7 @@ require 'navbar.php';
 
                               ?>
                             </select>
-
-
-
-                    </div>
-
-                    
-            <div class="row">
-                <h4 class="col-10"><b>Name of Office:</b>&nbsp;
+                <h4 class="col-6"><b>Name of Office:</b>&nbsp;
                     <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"disabled>
             </div>
     </div>
@@ -596,7 +588,10 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                     </table>
+                    <h4><b>Report Description:</b>&nbsp;
+            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
                     <br>
+
 
                     <table class="table table-bordered w3-card w3-round">
                         <tr>
