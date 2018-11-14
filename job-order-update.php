@@ -14,8 +14,8 @@ if ($conn->connect_error) {
 
 // prepare and binds
 $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                      NameOfOffice=?,
-                                               DateRequestCreated=?,
+                                      
+                                               
                                                AirCondition=?,
                                                CarpentryMasonry=?,
                                                ElectricalWorks=?,
@@ -77,10 +77,10 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
-                              $nameOfOffice,
-                              $date,
+                              
+                              
                               $airConditioning,
                               $masonryCarpentry,
                               $electrical,
@@ -140,13 +140,13 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 // Approved = $directorSignature
 // set parameters and execute
   $sIdu = 1;
- $nameOfOffice = $_POST['nameofoffice'];
+// $nameOfOffice = $_POST['nameofoffice'];
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
  $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
  $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
  $welding = isset($_POST['Welding']) ? "checked" : 'off';
- $date = $_POST['date1'];
+ // $date = $_POST['date1'];
  $requesterSignature = $_POST['requester-signature']; 
  $inspecterSignature = $_POST['inspecter-signature'];
  $directorSignature = $_POST['director-signature'];
@@ -458,7 +458,7 @@ require 'navbar.php';
                     <div class="row ">
                         
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-7" name="date1" value="<?php echo $DateRequestCreated ?>"/>
+                            <input type="date" class="form-control col-7" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/>
                         </h4>
                         <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus" disabled>
@@ -481,7 +481,7 @@ require 'navbar.php';
                     
             <div class="row">
                 <h4 class="col-10"><b>Name of Office:</b>&nbsp;
-                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"required>
+                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"disabled>
             </div>
     </div>
     </div>
