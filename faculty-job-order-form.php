@@ -72,8 +72,9 @@ require '../api/dbcon.php';
                                                UserJobDescription,
                                                SerialCode,
                                                statusId,
-                                               DateRequestCreated
-                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                               DateRequestCreated,
+                                               NameOfOffice
+                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
 
     if($stmt){
     echo "<script type='text/javascript'>
@@ -85,7 +86,7 @@ require '../api/dbcon.php';
                 window.location.href='faculty-job-order-form.php';</script>";
     }
                                                     
-$stmt->bind_param('ssssssssssss',
+$stmt->bind_param('sssssssssssss',
                     $airConditioning,
                     $masonryCarpentry,
                     $electrical,
@@ -97,7 +98,8 @@ $stmt->bind_param('ssssssssssss',
                     $userJobDescription,
                     $serialCode,
                     $statusId,
-                    $DateRequestCreated);
+                    $DateRequestCreated,
+                    $NameOfOffice);
 
 $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
 $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
@@ -112,7 +114,7 @@ $userJobDescription = $_POST['user-job-description'];
 $serialCode= $todaysSerialCode;
 $statusId = '7';
 $DateRequestCreated = date('y-m-d');
-
+$NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
 $stmt->execute();
 $stmt->close();
 $conn->close();
@@ -164,6 +166,24 @@ require 'navbar-faculty.php';
 
                               ?>
                             </select> 
+
+
+
+                            <!--COLLEGES-->
+                             <h4 class="col-3"><b>Name of Office:</b>&nbsp;
+                             <select class="form-control form-control" name="college" id="college">
+                                <?php
+                                require_once '../api/apiOnly.php';
+                                  $colleges = json_decode($api->fetch_colleges(),true);
+                                  foreach ($colleges as $college) {
+                                   echo "<option value='".$college['description']."'>".$college['description']."</option>";
+                                  }
+                              ?>
+                            </select> 
+                            <!--COLLEGES-->
+
+
+
 
             </div>
             <h4><b>Services</b></h4>
