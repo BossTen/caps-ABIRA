@@ -1,6 +1,15 @@
 <?php
 require '../api/dbcon.php';
+/*
+  This form should only be accessible by usr_type admin and faculty\][
 
+
+
+
+
+
+  ]
+*/
 
 
 if(isset($_POST['jos'])){
@@ -329,7 +338,7 @@ require '../api/dbcon.php';
     while($stmt->fetch()){
      
       //code for checking if user is with the same campus as the requester
-      if (!isset($_SESSION)) session_start();
+      if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
           header('location: not-allowed.php');
           exit();
@@ -382,8 +391,19 @@ require '../api/dbcon.php';
 //        echo $JobRecommendation;
 //        echo $InspectionReport;
 
-
-
+      //adding logic for setting if a field is editable
+      $isEditable = '';
+      //first checking if there is a $_SESSION['usr_type'] else do nothing
+      if(isset($_SESSION['usr_type'])){
+        //there is a usr_type so we shall proceed
+        if($statusId ==7 && ($_SESSION['usr_type']=='admin' || $_SESSION['usr_type']=='faculty')){
+          // if statusId equals to 7 which is 'For GSO Additional info' and usr_type is either admin or faculty then the field is editable
+          $isEditable = '';
+        }else{
+          $isEditable = 'disabled';
+        }
+      }
+      //adding logic for setting if a field is editable
 
 ?>
 <!DOCTYPE html>
@@ -510,7 +530,7 @@ require 'navbar.php';
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
                                     <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
@@ -782,7 +802,8 @@ require 'navbar.php';
                 </div>
             </div>
             <br>
-
+              <!-- ADD -->
+              <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
             <h1>submiting would change the status of this form to "for approval" this is for the director to approve"</h1>
             <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
                <?php 
