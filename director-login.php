@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = 'director';
    $_SESSION['usr_campus'] = $campus;
-   header('location: job-order-view.php');
+   header('location: director-index.php');
   }else{
    
     //ERROR MESSAGE HERE

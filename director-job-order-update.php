@@ -1,7 +1,6 @@
 <?php
-require '../api/dbconNAPI.php';
-require 'testadmin.php';
-echo $_SESSION['usr_type'];
+require '../api/dbcon.php';
+
 if(isset($_POST['jos'])){
   //nameofoffice
   //serial
@@ -199,34 +198,56 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Job Order Form</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="w3.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Director Job Order Approval</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="/js/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="w3.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
-<?php
-require 'navbar.php';
+<img src="logo.png" width="100%" height="20%">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="director-view.php">Home</a>
 
-?>
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+  <a href="" class="nav-link" data-toggle="modal" data-target="#joborder">Job Order</a>
+    </li>
+
+
+  </ul>
+</nav>
+
+
+<!--joborder-->
+<div class="modal fade" id="joborder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <center>  
+      <a href="job-order-form.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Form</a><br><br>
+      <a href="job-order-view.php "class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <br><br>
-
-    <center>
+<center>
         <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
     </center>
     <div class="container" style="margin-top: ;">
@@ -237,8 +258,8 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" disabled="" /></h4>
-                        <h4 class="col-6"><b>Priority</b>&nbsp;
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-7" placeholder="YearMonthDate ex.20180924" required /></h4>
+                        <h4 class="col-3"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
                                 $sql = "SELECT Id, Name FROM priority";
@@ -255,30 +276,11 @@ require 'navbar.php';
                     </div>
 
                     <div class="row ">
-                      <h4 class="col-6"><b>Status</b>&nbsp;
-                            
-                            <select class="form-control form-control" name="status" id="status" disabled>
-                                <?php
-                                require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'Approved' AND Name <> 'Denied'  ";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
-                                  while ($row =  $result->fetch_assoc()) {
-                                  $selected = $row['Id']==$statusId ? 'selected' : '';
-
-            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
-
-                                  }
-                                }
-                              ?>
-                            </select>
 
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-12" name="date1" />
+                            <input type="date" class="form-control col-7" name="date1" />
                         </h4>
-                      </div>
-                        <div class="row">
-                        <h4 class="col-6"><b>Campus:</b>&nbsp;
+                        <h4 class="col-3"><b>Campus:</b>&nbsp;
                             <select class="form-control form-control" name="campus" id="campus">
                                 <?php
                                 
@@ -291,8 +293,11 @@ require 'navbar.php';
                               ?>
                             </select>
 
-                <h4 class="col-6"><b>Name of Office:</b>&nbsp;
-                    <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
+
+            </div>
+            <div class="row">
+                <h4 class="col-10"><b>Name of Office:</b>&nbsp;
+                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" required>
             </div>
     </div>
     </div>
@@ -387,8 +392,6 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m10"></th>
                             </tr>
                     </table>
-                    <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
                     <br>
 
                     <table class="table table-bordered w3-card w3-round">
@@ -514,80 +517,6 @@ require 'navbar.php';
                 </div>
             </div>
             <br>
-            <div class="container" style="margin-top: ;">
-                <!-- UPDATE form -->
-                <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
-                <!-- UPDATE card -->
-                <div class="card">
-                    <div class="card-body" style="margin-left:2%;">
-
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
-                                </tr>
-                                <tr>
-                                    <th rowspan="2" colspan="4">
-                                        <center>EVALUATION STATEMENTS
-                                    </th>
-                                    <th>Outstanding</th>
-                                    <th>Very Satisfactory</th>
-                                    <th>Satisfactory</th>
-                                    <th>Unsatisfactory</th>
-                                    <th>Poor</th>
-                                </tr>
-                                <tr>
-                                    <center>
-                                        <th>
-                                            <center>5</center>
-                                        </th>
-                                        <th>
-                                            <center>4</center>
-                                        </th>
-                                        <th>
-                                            <center>3</center>
-                                        </th>
-                                        <th>
-                                            <center>2</center>
-                                        </th>
-                                        <th>
-                                            <center>1</center>
-                                        </th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb1"></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb2"></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="4">Courtesy and professionalis of the attending personel</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb3"></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb4"></th>
-                                </tr>
-
 
                             </tbody>
                         </table>
@@ -596,8 +525,14 @@ require 'navbar.php';
             </div>
             <br>
 
+<center>
+            <input name="jos" style="padding:20px;" class="btn btn-success w3-xlarge" type="submit" value="APPROVED">
+            <input name="jos" style="padding:20px;" class="btn btn-danger w3-xlarge" type="submit" value="REJECT">
+        </center>
 
-            <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+
+
+
             <script src="js/jquery-3.3.1.js"></script>
             <script>    
                 $("#inspectionReport").keyup(function() {

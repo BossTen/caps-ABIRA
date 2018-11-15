@@ -803,7 +803,7 @@ require 'navbar.php';
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
             <input name="jos" style="padding:20px;" class="btn btn-success" type="submit" value="Update">
-            <input name="" style="padding:20px;" class="btn btn-warning" type="submit" value="Print">
+            <input name="" style="padding:20px;" class="btn btn-info" type="submit" value="Approved">
 
 
                <?php 

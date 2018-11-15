@@ -6,7 +6,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 ?>  
 <img src="logo.png" width="100%" height="20%">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="home.php">Home</a>
+  <a class="navbar-brand" href="director-index.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -60,7 +60,7 @@ if(session_id() == '' || !isset($_SESSION)) {
       <div class="modal-body">
       <center>  
       <a href="job-order-form.php" class="btn btn-danger w3-xxlarge" role="button">Job Order Form</a><br><br>
-      <a href="job-order-view.php "class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
+      <a href="director-job-order-view.php "class="btn btn-danger w3-xxlarge" role="button">Job Order Records</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
