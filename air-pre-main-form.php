@@ -2,6 +2,7 @@
 require '../api/dbcon.php';
 require 'test-director-admin.php';
 
+if(isset($_POST['submit'])){
 $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               work,
                                               campus,
@@ -34,8 +35,23 @@ $dateStarted = isset($_POST['date-started']) ? $_POST['date-started'] : '';
 $dateEnded = isset($_POST['date-ended']) ? $_POST['date-ended'] : '';
 $accomplishedBy = isset($_POST['accomplished-by']) ? $_POST['accomplished-by'] : '';
 $stmt->execute();
-$stmt->close();
+
+if($stmt){
+  echo "<script type='text/javascript'>
+                alert ('Data has been inserted'); 
+                window.location.href='air-pre-main-view.php';</script>";
+}else{
+echo "<script type='text/javascript'>
+                alert ('There has been an error, please try again :)'); 
+                window.location.href='air-pre-main-form.php';</script>";
+                
+}
+  $stmt->close();
 $conn->close();
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
