@@ -66,8 +66,8 @@ if(isset($_POST['login'])){
           <div class="card-body">    <h1 class="w3-text-red w3-center">Administrator Login</h1>
     <center>
              <form action="" method="post">
-               <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username"></div>
-               <div class="form-group"><input type="password" class="form-control" name="password" placeholder="Password"></div>
+               <div class="form-group"><input type="text" class="form-control" name="username" placeholder="Enter Username" required></div>
+               <div class="form-group"><input type="password" class="form-control" name="password" placeholder="Password" required></div>
                <input type="submit" class="btn btn-success w3-xlarge" name="login" value="Login">
               </form>
              </form>
