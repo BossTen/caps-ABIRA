@@ -1,6 +1,6 @@
         <?php
         require  '../api/dbcon.php';
-        require  '../api/dbcon.php';
+
 
 
         require 'testfaculty.php';

@@ -2,7 +2,7 @@
 
 require '../api/dbconNApi.php';
   
-  session_start();
+
 //FACULTY - USER LOGIN
 
 
