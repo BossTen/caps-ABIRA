@@ -153,13 +153,13 @@ require 'navbar-faculty.php';
 
 <br><br>
 
-    <div class="container" style="margin-bottom: 5%;">
+    <div class="container" style="margin-bottom: 5%; width: 80%">
         <form action="" method="POST">
           <h1>Good Day! What's the problem?</h1>
             <div class="card">
-	<div class=" card-body">
-                            <div class="row ">
-                        <h4 class="col-4"><b>Campus:</b>&nbsp;
+	<div class=" card-body  style="margin-left: 5%;">
+        <div class="row ">
+                        <h4 class="col-12"><b>Campus:</b>&nbsp;
                              <select class="form-control form-control" name="campus" id="campus">
                                 <?php
                                 require '../api/apiOnly.php';
@@ -172,11 +172,9 @@ require 'navbar-faculty.php';
                               ?>
                             </select>
                           </div>
-                          <div class="row ">
-
-
-                            <!--COLLEGES-->
-                             <h4 class="col-8"><b>Name of Office:</b>&nbsp;
+        <div class="row ">
+        <!--COLLEGES-->
+                             <h4 class="col-12"><b>Name of Office:</b>&nbsp;
                              <select class="form-control form-control" name="college" id="college">
                                 <?php
                                 require_once '../api/apiOnly.php';
@@ -185,28 +183,11 @@ require 'navbar-faculty.php';
                                    echo "<option value='".$college['description']."'>".$college['description']."</option>";
                                   }
                               ?>
-                            </select> 
+                            </select>
+                          </div>
                             <!--COLLEGES-->
-
-
-
-
-            </div>
-            <h4><b>Services</b></h4>
-            <div class="card">
-            <div class="card-body">
-            <input class="w3-check" type="checkbox" name="Air-conditioning"><label>Air-conditioning Works</label><br>
-            <input class="w3-check" type="checkbox" name="Carpentry/Masonary"><label>Carpentry/Masonary Works</label><br>
-            <input class="w3-check" type="checkbox" name="Electrical"><label>Electrical Works</label><br>
-            <input class="w3-check" type="checkbox" name="Plumbing"><label>Plumbing Works</label><br>
-            <input class="w3-check" type="checkbox" name="Welding"><label>Welding Works</label><br>
-            <br>
-          </div>
-        </div>
-        <br />
-        <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description" required=""></textarea></div>
-            <h4 class="col-4"><b>Priority</b>&nbsp;
+         <div class="row">
+                            <h4 class="col-12"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
                     <option value="Low" id="Low" name="Low" class="w3-text-blue">Low</option>
                     <option value="Normal" name="Normal" id="Normal" class="w3-text-green">Normal</option>
@@ -216,6 +197,23 @@ require 'navbar-faculty.php';
             </h4>
         </div>
 
-        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="submit">
+            <h4><b>Services</b></h4>
+            <div class="card">
+          <div class="card-body">
+            <input class="w3-check" type="checkbox" name="Air-conditioning" id="Air-conditioning"><label>Air-conditioning Works</label><br>
+            <input class="w3-check" type="checkbox" name="Carpentry/Masonary" id="Carpentry/Masonary"><label>Carpentry/Masonary Works</label><br>
+            <input class="w3-check" type="checkbox" name="Electrical" id="Electrical"><label>Electrical Works</label><br>
+            <input class="w3-check" type="checkbox" name="Plumbing" id="Plumbing"><label>Plumbing Works</label><br>
+            <input class="w3-check" type="checkbox" name="Welding" id="Welding"><label>Welding Works</label><br>
+            <br>
+          </div>
+        </div>
+        <br />
+        <h4><b>Report Description:</b>&nbsp;
+            <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" required=""></textarea></div>
+            
+
+        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
+
     </form>
     </div>

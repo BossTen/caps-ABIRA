@@ -10,6 +10,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/navbar.css">
+   <script src="js/search.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <?php
@@ -53,7 +61,8 @@ require'navbar.php';
 </form>
 
 <div class="container">  
-  <table class="table table-striped">
+  <div class="table-responsive">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Month</th>
@@ -90,7 +99,7 @@ if (!isset($_GET['page'])) {
 // determine the sql LIMIT starting number for the results on the displaying page
 $this_page_first_result = ($page-1)*$results_per_page;
 // retrieve selected results from database and display them on page
-$sql="SELECT * FROM preventive_maintenance WHERE work LIKE 'Air%' AND campus LIKE 'Alangilan%'  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+$sql="SELECT * FROM preventive_maintenance WHERE work LIKE 'Air%' AND campus LIKE 'Alangilan%' Order by id DESC  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
 $result = mysqli_query($con, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";

@@ -60,12 +60,20 @@ $conn->close();
   <title>Preventive Maintenancev Airconditioning</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery-3.3.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/navbar.css">
+   <script src="js/search.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <?php
@@ -87,7 +95,13 @@ require'navbar.php';
 
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-                <input type="text" name="work" value="AIR-CONDITIONING" id="airconditioning" class="form-control col-12" readonly>
+                <select class="form-control form-control" name="work" id="month">
+                  <option value="Air-conditioning">Air-conditioning</option>
+                  <option value="Plumbing">Plumbing</option>
+                  <option value="Power Supply">Power Supply</option>
+                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
+                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
+                </select>
               </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                              <select class="form-control form-control" name="campus" id="campus" readonly>

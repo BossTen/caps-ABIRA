@@ -4,22 +4,8 @@ if(session_id() == '' || !isset($_SESSION)) {
     session_start();
 }
 ?>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="w3.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/navbar.css">
-<script src="js/search.js"></script>
-
 <body>
-<img src="logo.png" width="100%" height="20%">
+<img src="logo.png" class="img-fluid" alt="Responsive image" width="100%" height="20%">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="faculty-job-order-form.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +14,7 @@ if(session_id() == '' || !isset($_SESSION)) {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav" >
       <li class="nav-item">
-        <a href="" class="nav-link" data-toggle="modal" data-target="" >Send Report</a>
+        <a href="faculty-job-order-form.php" class="nav-link">Send Report</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="faculty-notif.php">Notification</a>

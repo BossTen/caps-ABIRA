@@ -38,35 +38,27 @@ require'navbar.php';
    </div>
 
 </form>
-<div class="container">      
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Month</th>
-        <th>Campus</th>
-         <th>Department</th>
-         <th>Floor</th>
-         <th>Type</th>
-         <th>Date Started</th>
-         <th>Date Ended</th>
-         <th>Accomplish by:</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-          <td>October</td>
-          <td>Main II</td>
-          <td>CICS</td>
-          <td>First Floor</td>
-          <td>LO - Lighting Outlet</td>
-          <td>10/10/18</td>
-          <td>10/10/18</td>
-          <td>Negrito</td>
-          
-          </tr>
-                        </tbody>
-      </table>
-    </div>
+<div class="container">
+  <div class="table-responsive">      
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Campus</th>
+          <th>Department</th>
+          <th>Floor</th>
+          <th>Type</th>
+          <th>Date Started</th>
+          <th>Date Ended</th>
+          <th>Accomplish by:</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="container ">
        <div class="float-right"><a href="ps-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
