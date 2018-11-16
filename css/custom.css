@@ -1,3 +1,11 @@
-.error-message{
-	color: red;
+.error-message {
+    color: red;
+}
+
+@media print {
+
+    .no-print,
+    .no-print * {
+        display: none !important;
+    }
 }

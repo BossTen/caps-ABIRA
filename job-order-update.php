@@ -588,8 +588,8 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                     </table>
-                    <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
+                    <h4 class="no-print"><b>Report Description:</b>&nbsp;
+            <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description"></textarea></div>
                     <br>
 
 
