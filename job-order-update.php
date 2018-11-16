@@ -802,7 +802,7 @@ require 'navbar.php';
               <center>
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
-            <input name="jos" style="padding:20px;" class="btn btn-success" type="submit" value="Update">
+            <input name="jos" style="padding:20px;" class="btn btn-success" type="submit" value="Update" id="update">
             <input name="" style="padding:20px;" class="btn btn-warning" type="submit" value="Print">
 
 
@@ -928,6 +928,49 @@ $conn->close();
                     return ms / 1000 / 60 / 60;
                 }
 
+                  var s_usr_type = "<?php echo $_SESSION['usr_type']; ?>";
+                  var status = document.getElementsByName("status")[0].value;
+                  var update_button = document.getElementById("update");
+                console.log(document.getElementsByName("status")[0].value);
+                console.log(s_usr_type);
+                /*
+                  1 - For Approval
+                  2 - Approved
+                  3 - Denied
+                  4 - Pending
+                  4 - On - Going
+                  6 - Done
+                  7 - For CSO Additional Info
+                  USER TYPE CONDITIONS
+                */
+
+                switch(s_usr_type){
+                  case "admin":
+                  console.log("admin - switch");
+                        if(status !=  7){
+                            update_button.disabled = true;
+                            console.log("disabled");
+
+                          }else{
+                            update_button.disabled = false;
+                            console.log("not disabled");
+                            }
+                        break;
+
+                  case "director":
+                  console.log("director");
+                          if(status == 7)
+                            update_button.disabled = true;
+                          else
+                            update_button.disabled = false;
+                        break;
+
+                  case "faculty":
+                  console.log("faculty");
+                            update_button.disabled = true;
+                        break;
+
+                }
             </script>
 </body>
 
