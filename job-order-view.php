@@ -143,7 +143,8 @@ require'navbar.php';
     </div>
 
     <div class="container ">
-        <div class="float-right"><a href="job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+      <?php echo $_SESSION['usr_type']; ?>
+        <div class="float-right"><a href="<?php echo (($_SESSION['usr_type']=='faculty')? 'faculty-job-order-form.php' : 'job-order-form.php') ?>"> <button type="button" class="btn btn-success">Add</button></a>
         </div>
     </div>
 

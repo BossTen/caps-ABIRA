@@ -1,7 +1,11 @@
 <?php
 require '../api/dbcon.php';
   
-  session_start();
+      if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+             session_start();
+          }  
+
 //FACULTY - USER LOGIN
 
  
