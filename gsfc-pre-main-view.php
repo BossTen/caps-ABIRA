@@ -39,29 +39,25 @@ require'navbar.php';
 
 </form>
 
-<div class="container">      
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Month</th>
-        <th>Campus</th>
-         <th>Maintenance Activiteis Performed</th>
-         <th>Date</th>
-         <th>Accomplish by:</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-          <td>October</td>
-          <td>Main II</td>
-          <td>Generator Set</td>
-          <td>10/10/18</td>
-          <td>Negrito</td>
-          
-          </tr>
-                        </tbody>
-      </table>
-    </div>
+<div class="container">
+  <div class="table-responsive">    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Campus</th>
+           <th>Maintenance Activiteis Performed</th>
+          <th>Date</th>
+           <th>Accomplish by:</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="container ">
        <div class="float-right"><a href="gsfc-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>

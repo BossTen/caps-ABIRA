@@ -38,35 +38,27 @@ require'navbar.php';
 
 </form>
 
-<div class="container">      
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Month</th>
-        <th>Department</th>
-         <th>Floor</th>
-         <th>Area</th>
-         <th>Type</th>
-         <th>Date Started</th>
-         <th>Date Ended</th>
-         <th>Accomplish by:</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-          <td>October</td>
-          <td>CICS</td>
-          <td>Third</td>
-          <td>Room 103</td>
-          <td>Door</td>
-          <td>10/10/18</td>
-          <td>10/10/18</td>
-          <td>Negrito</td>
-          
-          </tr>
-                  </tbody>
-      </table>
-    </div>
+<div class="container">
+  <div class="table-responsive">      
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Department</th>
+          <th>Floor</th>
+          <th>Area</th>
+          <th>Type</th>
+          <th>Date Started</th>
+          <th>Date Ended</th>
+          <th>Accomplish by:</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="container ">
        <div class="float-right"><a href="bwdw-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>

@@ -69,8 +69,9 @@ require 'navbar.php';
    <div class="form-row">
       <div class="col-12 w3-text-red"><h2>Preventive Maintenance View</h2></div>
 
-<div class="container">  
-  <table class="table table-striped">
+<div class="container">
+  <div class="table-reponsive">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Work</th>
@@ -89,7 +90,7 @@ mysqli_select_db($con, 'abira');
 // define how many results you want per page
 $results_per_page = 20;
 // find out the number of results stored in database
-$sql = "SELECT * FROM preventive_maintenance WHERE work LIKE 'Air%' AND campus LIKE 'Alangilan%'";
+$sql = "SELECT * FROM preventive_maintenance";
 $result = mysqli_query ($con,$sql);
 $number_of_results = mysqli_num_rows($result);
 // determine number of total pages available
@@ -103,7 +104,7 @@ if (!isset($_GET['page'])) {
 // determine the sql LIMIT starting number for the results on the displaying page
 $this_page_first_result = ($page-1)*$results_per_page;
 // retrieve selected results from database and display them on page
-$sql="SELECT * FROM preventive_maintenance WHERE work LIKE 'Air%' AND campus LIKE 'Alangilan%'  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+$sql="SELECT * FROM preventive_maintenance  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
 $result = mysqli_query($con, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";

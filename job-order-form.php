@@ -306,17 +306,18 @@ require 'navbar.php';
             <!-- UPDATE card -->
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
 
                     <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
-                                <th colspan="col-5">
+                                <th colspan="">
                                     <center>Kindly put a check mark before the work<br> service and/or assistance to be done
                                 </th>
-                                <th colspan="2.5">
+                                <th colspan="">
                                     <center>Inspection report
                                 </th>
-                                <th colspan="2.5">
+                                <th colspan="">
                                     <center>Material Needed
                                 </th>
                             </tr>
@@ -387,11 +388,34 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m10"></th>
                             </tr>
                     </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            <br><br>
+<!--report-->
+<div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
                     <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
+            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea>
+            </div>
+          </div>
+          </div>
+          </div>
                     <br>
+    <div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -435,6 +459,19 @@ require 'navbar.php';
                             </th>
                         </tr>
                     </table>
+</div>
+</div>
+</div>
+</div>
+
+<!--asdasdas--><br><br>
+    <div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
                     <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
@@ -457,7 +494,20 @@ require 'navbar.php';
                             <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
                         </tr>
                     </table>
-                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!---asdasd--><br><br>
+
+<div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
                     <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
@@ -513,14 +563,20 @@ require 'navbar.php';
                     </table>
                 </div>
             </div>
-            <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+            <br><br>
             <div class="container" style="margin-top: ;">
                 <!-- UPDATE form -->
                 <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
                 <!-- UPDATE card -->
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
-
+                        <div class="table-responsive">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>

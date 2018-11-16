@@ -4,7 +4,7 @@ if(session_id() == '' || !isset($_SESSION)) {
     session_start();
 }
 ?>  
-<img src="logo.png" width="100%" height="20%">
+<img src="logo.png" class="img-fluid" alt="Responsive image" width="100%" height="20%">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="director-index.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
