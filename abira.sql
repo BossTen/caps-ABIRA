@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2018 at 11:54 AM
+-- Generation Time: Nov 16, 2018 at 12:09 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -21,19 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `abira`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `accomplishedwork`
---
-
-CREATE TABLE `accomplishedwork` (
-  `Id` int(10) NOT NULL,
-  `JobOrderId` int(10) NOT NULL,
-  `AccomplishedWork` int(10) NOT NULL,
-  `WorkedBy` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -65,18 +52,6 @@ INSERT INTO `admin` (`id`, `username`, `password`, `campus`) VALUES
 (11, 'admin_rosario', '21232f297a57a5a743894a0e4a801fc3', 'rosario'),
 (12, 'admin_taysan', '21232f297a57a5a743894a0e4a801fc3', 'taysan'),
 (13, 'admin_sanjaun', '21232f297a57a5a743894a0e4a801fc3', 'sanjuan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `campusaccounts`
---
-
-CREATE TABLE `campusaccounts` (
-  `Id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -279,13 +254,6 @@ INSERT INTO `status` (`Id`, `Name`, `Color`) VALUES
 --
 
 --
--- Indexes for table `accomplishedwork`
---
-ALTER TABLE `accomplishedwork`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `JobOrderId` (`JobOrderId`);
-
---
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
@@ -328,12 +296,6 @@ ALTER TABLE `status`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `accomplishedwork`
---
-ALTER TABLE `accomplishedwork`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin`
