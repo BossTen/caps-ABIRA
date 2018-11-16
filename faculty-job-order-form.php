@@ -1,127 +1,129 @@
-<?php
-require  '../api/dbconNApi.php';
-
-require 'testfaculty.php';
-
-if(isset($_POST['submit'])){
-
-date_default_timezone_set('Asia/Hong_Kong');
-$todaysSerialCode='';
+        <?php
+        require  '../api/dbcon.php';
+        require  '../api/dbcon.php';
 
 
-    if($conn->connect_error){
-        die("Connection Failed: " . $conn->connect_error);
-    }
+        require 'testfaculty.php';
 
-    /*GETTING LATEST SERIAL CODE LAST VALUE
-        -query database
-        -if no result is given/null then the assumption is the there are no serialcode created for that date
-        -if there are no serial code then append int 01 else then add one to the latest value
-    */
-    $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
-    $stmt=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
-    $stmt->bind_param('s',$searchForLatestSerialCode);
-    $searchForLatestSerialCode= $todaysSerialCode . '__';
-    $stmt->execute();
-    $stmt->bind_result($latestSerialCode);
-    if($stmt->fetch()){
-    // getting the last 2 digits of the serial code and adding 1
-    $latestSerialNum = substr($latestSerialCode, 8,10)+1;
-     /*
-        in adding one for example
-        04 + 1 the result would be 4
-        so we need to append again a zero below
-        so if the length of the value is less than or equal to one 
-        we append a zero in front of it
-     */
+        if(isset($_POST['submit'])){
 
-     if(strlen($latestSerialNum)<=1)
-        $latestSerialNum = '0'.$latestSerialNum;
-        
-    //appending the latest number
-         $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
-    }else{
-        $todaysSerialCode = $todaysSerialCode . '01';
-    }
-    
-
-require '../api/dbcon.php';
-        $stmt=$conn->prepare("SELECT Id FROM priority where Name = ?");
-    $stmt->bind_param('s', $priority);
-    $priority = $_POST["priority"];
-    //echo $priority;
-    $stmt->execute();
-    $stmt->bind_result($priorityId);
-    $stmt->fetch();
-
-    
-    
-
-      $priorityId;
-    //now inserting data
-require '../api/dbcon.php';
-    
-    $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
-                                               CarpentryMasonry,
-                                               ElectricalWorks,
-                                               Plumbing,
-                                               Welding,
-                                               Campus,
-                                               priorityId, 
-                                               RequestorName,
-                                               UserJobDescription,
-                                               SerialCode,
-                                               statusId,
-                                               DateRequestCreated,
-                                               NameOfOffice
-                                               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
-
-    if($stmt){
-    echo "<script type='text/javascript'>
-                alert ('Successful insertion of data'); 
-                window.location.href='faculty-job-order-form.php';</script>";
-    }else{
-    echo "<script type='text/javascript'>
-                alert ('Not Successful insertion of data'); 
-                window.location.href='faculty-job-order-form.php';</script>";
-    }
-                                                    
-$stmt->bind_param('sssssssssssss',
-                    $airConditioning,
-                    $masonryCarpentry,
-                    $electrical,
-                    $plumbing,
-                    $welding,
-                    $campus,
-                    $priority,
-                    $requester,
-                    $userJobDescription,
-                    $serialCode,
-                    $statusId,
-                    $DateRequestCreated,
-                    $NameOfOffice);
-
-$airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
-$masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
-$electrical = isset($_POST['Electrical']) ? "checked" : '';
-$plumbing = isset($_POST['Plumbing']) ? "checked" : '';
-$welding = isset($_POST['Welding']) ? "checked" : '';
-$campus =  $_POST['campus'];
-$priority =  $priorityId;
-$requester = $_SESSION['usr_fullname'];
-$userJobDescription = $_POST['user-job-description'];
-//create serial code
-$serialCode= $todaysSerialCode;
-$statusId = '7';
-$DateRequestCreated = date('y-m-d');
-$NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
-$stmt->execute();
-$stmt->close();
-$conn->close();
-}
+        date_default_timezone_set('Asia/Hong_Kong');
+        $todaysSerialCode='';
 
 
-?>
+            if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+            }
+            /*GETTING LATEST SERIAL CODE LAST VALUE
+                -query database
+                -if no result is given/null then the assumption is the there are no serialcode created for that date
+                -if there are no serial code then append int 01 else then add one to the latest value
+            */
+            $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
+            $stmt1=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
+            $stmt1->bind_param('s',$searchForLatestSerialCode);
+            $searchForLatestSerialCode= $todaysSerialCode . '__';
+            $stmt1->execute();
+            $stmt1->bind_result($latestSerialCode);
+            if($stmt1->fetch()){
+            // getting the last 2 digits of the serial code and adding 1
+            $latestSerialNum = substr($latestSerialCode, 8,10)+1;
+             /*
+                in adding one for example
+                04 + 1 the result would be 4
+                so we need to append again a zero below
+                so if the length of the value is less than or equal to one 
+                we append a zero in front of it
+             */
+             if(strlen($latestSerialNum)<=1)
+                $latestSerialNum = '0'.$latestSerialNum;
+            //appending the latest number
+                 $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
+            }else{
+                $todaysSerialCode = $todaysSerialCode . '01';
+            }
+
+        $stmt1->close();
+        $conn->close();
+            
+
+        require '../api/dbcon.php';
+            $stmt2=$conn->prepare("SELECT Id FROM priority where Name = ?");
+            $stmt2->bind_param('s', $priority);
+            $priority = $_POST["priority"];
+            //echo $priority;
+            $stmt2->execute();
+            $stmt2->bind_result($priorityId);
+            $stmt2->fetch();
+
+        $stmt2->close();
+        $conn->close();
+            
+            
+
+              $priorityId;
+            //now inserting data
+        require '../api/dbcon.php';
+            
+            $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
+                                                       CarpentryMasonry,
+                                                       ElectricalWorks,
+                                                       Plumbing,
+                                                       Welding,
+                                                       Campus,
+                                                       priorityId, 
+                                                       RequestorName,
+                                                       UserJobDescription,
+                                                       SerialCode,
+                                                       statusId,
+                                                       DateRequestCreated,
+                                                       NameOfOffice
+                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+            // if($stmt){
+            // echo "<script type='text/javascript'>
+            //             alert ('Successful insertion of data'); 
+            //             window.location.href='faculty-job-order-form.php';</script>";
+            // }else{
+            // echo "<script type='text/javascript'>
+            //             alert ('Not Successful insertion of data'); 
+            //             window.location.href='faculty-job-order-form.php';</script>";
+            // }                                    
+        $stmt->bind_param('sssssssssssss',
+                            $airConditioning,
+                            $masonryCarpentry,
+                            $electrical,
+                            $plumbing,
+                            $welding,
+                            $campus,
+                            $priority,
+                            $requester,
+                            $userJobDescription,
+                            $serialCode,
+                            $statusId,
+                            $DateRequestCreated,
+                            $NameOfOffice);
+
+        echo $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
+        echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
+        echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
+        echo $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
+        echo $welding = isset($_POST['Welding']) ? "checked" : '';
+        echo $campus =  $_POST['campus'];
+        echo $priority =  $priorityId;
+        echo $requester = $_SESSION['usr_fullname'];
+        echo $userJobDescription = $_POST['user-job-description'];
+        //create serial code
+        echo $serialCode= $todaysSerialCode;
+        echo $statusId = 7 ;
+        echo $DateRequestCreated = date('y-m-d');
+        echo $NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        }
+
+
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -214,6 +216,6 @@ require 'navbar-faculty.php';
             </h4>
         </div>
 
-        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
+        <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="submit">
     </form>
     </div>
