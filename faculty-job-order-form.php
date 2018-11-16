@@ -103,20 +103,20 @@
                             $DateRequestCreated,
                             $NameOfOffice);
 
-        echo $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
-        echo $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
-        echo $electrical = isset($_POST['Electrical']) ? "checked" : '';
-        echo $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
-        echo $welding = isset($_POST['Welding']) ? "checked" : '';
-        echo $campus =  $_POST['campus'];
-        echo $priority =  $priorityId;
-        echo $requester = $_SESSION['usr_fullname'];
-        echo $userJobDescription = $_POST['user-job-description'];
+         $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
+         $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
+         $electrical = isset($_POST['Electrical']) ? "checked" : '';
+         $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
+         $welding = isset($_POST['Welding']) ? "checked" : '';
+         $campus =  $_POST['campus'];
+         $priority =  $priorityId;
+         $requester = $_SESSION['usr_fullname'];
+         $userJobDescription = $_POST['user-job-description'];
         //create serial code
-        echo $serialCode= $todaysSerialCode;
-        echo $statusId = 7 ;
-        echo $DateRequestCreated = date('y-m-d');
-        echo $NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
+         $serialCode= $todaysSerialCode;
+         $statusId = 7 ;
+         $DateRequestCreated = date('y-m-d');
+         $NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
         $stmt->execute();
         $stmt->close();
         $conn->close();
