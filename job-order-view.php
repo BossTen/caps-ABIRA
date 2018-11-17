@@ -1,5 +1,9 @@
 <?php
-    require 'test-director-admin.php';
+       if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+             session_start();
+          }  
+    //require 'test-director-admin.php';
     //echo $_SESSION['usr_campus'];
 ?>
 
@@ -10,10 +14,10 @@
     <title>Job Order View</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
@@ -74,7 +78,7 @@ require'navbar.php';
       require '../api/dbcon.php';
 
                     if($_SESSION['usr_type']=='director'){
-                                $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 1 OR j.statusId = 2 OR j.statusId = 3";
+                                $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 1";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
 
@@ -90,20 +94,48 @@ require'navbar.php';
                                   }
                                 }
                     }else if($_SESSION['usr_type']=='admin'){
-                                                        $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 4 OR j.statusId = 5 OR j.statusId = 6 OR j.statusId = 2";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
+                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ?");
+                                                        $stmt->bind_param('s',$campus);
+                                                        $campus = $_SESSION['usr_campus'];
+                                                        $stmt->execute();
+                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
 
-                                  while ($row =  $result->fetch_assoc()) {
-                                   $description =   empty($row['JobRecommendation']) ? $row['UserJobDescription'] : $row['JobRecommendation'];
+                                
+                                while($stmt->fetch()){
+                                   $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
+
                                     echo "<tr>";
-                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['Campus'] . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" .$description. "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['DateRequestCreated'] . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['statusName'] . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
                           echo "</tr>";
-                                  }
+                                  
+                                  
+                                }
+                    }else if($_SESSION['usr_type']=='faculty'){
+                                    //WE WILL ONLY GET DATA THAT ARE REGISTERED BY THE USER
+                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.RequestorName = ?");
+
+                                                        $stmt->bind_param('s',$usrname);
+                                                        $usrname = $_SESSION['usr_fullname'];
+                                                        $stmt->execute();
+                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
+
+                                
+                                while($stmt->fetch()){
+
+                                  
+                                   $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
+                                    echo "<tr>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
+                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
+                          echo "</tr>";
+                                  
                                 }
                     }
 
@@ -117,7 +149,8 @@ require'navbar.php';
     </div>
 
     <div class="container ">
-        <div class="float-right"><a href="job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+      
+        <div class="float-right"><a href="<?php echo (($_SESSION['usr_type']=='faculty')? 'faculty-job-order-form.php' : 'job-order-form.php') ?>"> <button type="button" class="btn btn-success">Add</button></a>
         </div>
     </div>
 

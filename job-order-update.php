@@ -271,7 +271,8 @@ require '../api/dbcon.php';
                                                materialsNeeded7,
                                                materialsNeeded8,
                                                materialsNeeded9,
-                                               materialsNeeded10 
+                                               materialsNeeded10,
+                                               UserJobDescription 
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -332,7 +333,8 @@ require '../api/dbcon.php';
                        $m7,
                        $m8,
                        $m9,
-                       $m10
+                       $m10,
+                       $userJobDescription
                      );
 
     while($stmt->fetch()){
@@ -391,26 +393,13 @@ require '../api/dbcon.php';
 //        echo $JobRecommendation;
 //        echo $InspectionReport;
 
-      //adding logic for setting if a field is editable
-      $isEditable = '';
-      //first checking if there is a $_SESSION['usr_type'] else do nothing
-      if(isset($_SESSION['usr_type'])){
-        //there is a usr_type so we shall proceed
-        if($statusId ==7 && ($_SESSION['usr_type']=='admin' || $_SESSION['usr_type']=='faculty')){
-          // if statusId equals to 7 which is 'For GSO Additional info' and usr_type is either admin or faculty then the field is editable
-          $isEditable = '';
-        }else{
-          $isEditable = 'disabled';
-        }
-      }
-      //adding logic for setting if a field is editable
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Job Order Form View</title>
+    <title class="no-print">Job Order Form</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -588,8 +577,10 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                     </table>
-                    <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
+                    <h4 class="no-print"><b>Report Description:</b>&nbsp;
+            <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
+              <?php echo $userJobDescription ?>
+            </textarea></div>
                     <br>
 
 
@@ -800,10 +791,10 @@ require 'navbar.php';
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
-            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
+            <h4 class="no-print w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
-            <input name="jos" style="padding:20px;" class="btn btn-success" type="submit" value="Update">
-            <input name="" style="padding:20px;" class="btn btn-warning" type="submit" value="Print">
+            <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
+            <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
 
 
                <?php 
@@ -928,6 +919,51 @@ $conn->close();
                     return ms / 1000 / 60 / 60;
                 }
 
+                  var s_usr_type = "<?php echo $_SESSION['usr_type']; ?>";
+                  var status = document.getElementsByName("status")[0].value;
+                  var update_button = document.getElementById("update");
+                  var select_priority = document.getElementById("priority");
+                console.log(document.getElementsByName("status")[0].value);
+                console.log(s_usr_type);
+                /*
+                  1 - For Approval
+                  2 - Approved
+                  3 - Denied
+                  4 - Pending
+                  4 - On - Going
+                  6 - Done
+                  7 - For CSO Additional Info
+                  USER TYPE CONDITIONS
+                */
+
+                switch(s_usr_type){
+                  case "admin":
+                  console.log("admin - switch");
+                        if(status !=  7){
+                            
+                            select_priority.disabled = true;
+
+                            console.log("disabled");
+                          }else{
+                            update_button.disabled = false;
+                            console.log("not disabled");
+                            }
+                        break;
+
+                  case "director":
+                  console.log("director");
+                          if(status == 7)
+                            update_button.disabled = true;
+                          else
+                            update_button.disabled = false;
+                        break;
+
+                  case "faculty":
+                  console.log("faculty");
+                            update_button.disabled = true;
+                        break;
+
+                }
             </script>
 </body>
 
