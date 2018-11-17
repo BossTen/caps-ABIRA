@@ -32,18 +32,19 @@ require'navbar.php';
 
 
 
-<div class="container">      
-  <table class="table table-bordered">
+<div class="container">
+  <div class="table-responsive">     
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Photo</th>
+        <th>Name</th>
         <th>Description</th>
         <th>Quantity</th>
       </tr>
     </thead>
     <tbody>
     <tr>  
-          <td><b><img src="screw.jfif" width="50" height="50"></b></td>
+          <td><b>Plywood</b></td>
           <td><b>Screw</b></td>
           <td><b>500 pcs</b></td>
           </tr>

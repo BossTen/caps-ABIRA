@@ -46,7 +46,7 @@ require'navbar.php';
         <tr>
           <th>Month</th>
           <th>Campus</th>
-           <th>Maintenance Activiteis Performed</th>
+           <th>Maintenance Activities Performed</th>
           <th>Date</th>
            <th>Accomplish by:</th>
         </tr>

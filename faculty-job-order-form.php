@@ -174,7 +174,7 @@ require 'navbar-faculty.php';
                           </div>
         <div class="row ">
         <!--COLLEGES-->
-                             <h4 class="col-12"><b>Name of Office:</b>&nbsp;
+                             <h4 class="col-12"><b>Department:</b>&nbsp;
                              <select class="form-control form-control" name="college" id="college">
                                 <?php
                                 require_once '../api/apiOnly.php';
@@ -200,9 +200,9 @@ require 'navbar-faculty.php';
             <h4><b>Services</b></h4>
             <div class="card">
           <div class="card-body">
-            <input class="w3-check" type="checkbox" name="Air-conditioning" id="Air-conditioning"><label>Air-conditioning Works</label><br>
-            <input class="w3-check" type="checkbox" name="Carpentry/Masonary" id="Carpentry/Masonary"><label>Carpentry/Masonary Works</label><br>
-            <input class="w3-check" type="checkbox" name="Electrical" id="Electrical"><label>Electrical Works</label><br>
+            <input class="w3-check" type="checkbox" name="AirCondition" id="AirCondition"><label>Air-conditioning Works</label><br>
+            <input class="w3-check" type="checkbox" name="CarpentryMasonary" id="CarpentryMasonary"><label>Carpentry/Masonary Works</label><br>
+            <input class="w3-check" type="checkbox" name="ElectricalWorks" id="ElectricalWorks"><label>Electrical Works</label><br>
             <input class="w3-check" type="checkbox" name="Plumbing" id="Plumbing"><label>Plumbing Works</label><br>
             <input class="w3-check" type="checkbox" name="Welding" id="Welding"><label>Welding Works</label><br>
             <br>
