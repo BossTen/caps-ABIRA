@@ -940,7 +940,7 @@ $conn->close();
                   case "admin":
                   console.log("admin - switch");
                         if(status !=  7){
-                            update_button.disabled = true;
+                            
                             select_priority.disabled = true;
 
                             console.log("disabled");
