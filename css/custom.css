@@ -2,10 +2,16 @@
     color: red;
 }
 
+
+/*resposible for print displays*/
 @media print {
 
     .no-print,
     .no-print * {
         display: none !important;
     }
+
+    /*resposible for print displays*/
+
+
 }

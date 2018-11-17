@@ -410,7 +410,7 @@ require '../api/dbcon.php';
 <html lang="en">
 
 <head>
-    <title>Job Order Form View</title>
+    <title class="no-print">Job Order Form</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -800,10 +800,10 @@ require 'navbar.php';
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
-            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
+            <h4 class="no-print w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
-            <input name="jos" style="padding:20px;" class="btn btn-success" type="submit" value="Update" id="update">
-            <input name="" style="padding:20px;" class="btn btn-warning" type="submit" value="Print">
+            <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
+            <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
 
 
                <?php 
