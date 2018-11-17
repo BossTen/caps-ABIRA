@@ -393,19 +393,6 @@ require '../api/dbcon.php';
 //        echo $JobRecommendation;
 //        echo $InspectionReport;
 
-      //adding logic for setting if a field is editable
-      $isEditable = '';
-      //first checking if there is a $_SESSION['usr_type'] else do nothing
-      if(isset($_SESSION['usr_type'])){
-        //there is a usr_type so we shall proceed
-        if($statusId ==7 && ($_SESSION['usr_type']=='admin' || $_SESSION['usr_type']=='faculty')){
-          // if statusId equals to 7 which is 'For GSO Additional info' and usr_type is either admin or faculty then the field is editable
-          $isEditable = '';
-        }else{
-          $isEditable = 'disabled';
-        }
-      }
-      //adding logic for setting if a field is editable
 
 ?>
 <!DOCTYPE html>
@@ -954,7 +941,6 @@ $conn->close();
                         if(status !=  7){
                             update_button.disabled = true;
                             console.log("disabled");
-
                           }else{
                             update_button.disabled = false;
                             console.log("not disabled");
