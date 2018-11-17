@@ -922,6 +922,7 @@ $conn->close();
                   var s_usr_type = "<?php echo $_SESSION['usr_type']; ?>";
                   var status = document.getElementsByName("status")[0].value;
                   var update_button = document.getElementById("update");
+                  var select_priority = document.getElementById("priority");
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
                 /*
@@ -940,6 +941,8 @@ $conn->close();
                   console.log("admin - switch");
                         if(status !=  7){
                             update_button.disabled = true;
+                            select_priority.disabled = true;
+
                             console.log("disabled");
                           }else{
                             update_button.disabled = false;
