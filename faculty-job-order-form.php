@@ -103,9 +103,9 @@
                             $DateRequestCreated,
                             $NameOfOffice);
 
-         $airConditioning = isset($_POST['air-conditioning']) ? "checked" : '';
-         $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
-         $electrical = isset($_POST['Electrical']) ? "checked" : '';
+         $airConditioning = isset($_POST['AirCondition']) ? "checked" : '';
+         $masonryCarpentry = isset($_POST['CarpentryMasonary']) ? "checked" : '';
+         $electrical = isset($_POST['ElectricalWorks']) ? "checked" : '';
          $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
          $welding = isset($_POST['Welding']) ? "checked" : '';
          $campus =  $_POST['campus'];
