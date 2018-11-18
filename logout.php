@@ -4,7 +4,7 @@ error_reporting(0);
 if(empty($_SESSION["user"])){
     echo "<script type='text/javascript'>
 alert ('Log Out Successfully!'); 
-window.location.href='admin-login.php';</script>";
+window.location.href='login.php';</script>";
 }else{
     // remove all session variables
 session_unset(); 
@@ -13,7 +13,7 @@ session_unset();
 session_destroy(); 
 echo "<script type='text/javascript'>
 alert ('Log Out Successfully!'); 
-window.location.href='admin-login.php';</script>";
+window.location.href='login.php';</script>";
 }
 
 ?>
