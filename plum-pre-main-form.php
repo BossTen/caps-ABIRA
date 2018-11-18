@@ -96,7 +96,15 @@ require'navbar.php';
 
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-                <input type="text" value="PLUMBING" id="plumbing" class="form-control col-12" disabled name="work"></h4>
+                <select class="form-control form-control" name="work" id="month">
+                  <option value="Plumbing">Plumbing</option>
+                  <option value="Air-conditioning">Air-conditioning</option>
+                  
+                  <option value="Power Supply">Power Supply</option>
+                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
+                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
+                </select>
+                </h4>
               <h4 class="col-6"><b>Campus:</b>&nbsp;
                   <select class="form-control form-control" name="campus" id="campus" readonly>
                     <?php
@@ -164,7 +172,7 @@ require'navbar.php';
                             </div>
                             <div class="row">
                              <h4 class="col-6"><b>Type:</b>&nbsp;
-                              <select class="form-control form-control" name="type" id="">
+                              <select class="form-control form-control" name="type" id="type">
                               <option value="Water Closet">Water Closet</option>
                               <option value="Faucet Bibb">Faucet Bibb</option>	
                               <option value="Lavatory">Lavatory</option>
