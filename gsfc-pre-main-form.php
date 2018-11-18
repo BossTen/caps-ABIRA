@@ -8,8 +8,8 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               campus,
                                               month,
                                               college,
-                                              floor,
-                                              area,
+                                              m_activity,
+                                            
                                               dateStarted,
                                               dateEnded,
                                               accomplishedBy,
@@ -20,8 +20,8 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                               $campus,
                               $month,
                               $college,
-                              $floor,
-                              $area,
+                             
+                              $m_activity,
                               $dateStarted,
                               $dateEnded,
                               $accomplishedBy,
@@ -31,10 +31,9 @@ $work = isset($_POST['work']) ? $_POST['work'] : '';
 $campus = isset($_POST['campus']) ? $_POST['campus'] : '';
 $month = isset($_POST['month']) ? $_POST['month'] : '';
 $college = isset($_POST['college']) ? $_POST['college'] : '';
-$floor = isset($_POST['floor']) ? $_POST['floor'] : '';
-$area = isset($_POST['area']) ? $_POST['area'] : '';
+$m_activity = isset($_POST['m_activity']) ? $_POST['m_activity'] : '';
 $dateStarted = isset($_POST['date-started']) ? $_POST['date-started'] : '';
-$dateEnded = isset($_POST['date-ended']) ? $_POST['date-ended'] : '';
+
 $accomplishedBy = isset($_POST['accomplished-by']) ? $_POST['accomplished-by'] : '';
 $m_activity = isset($_POST['m-activity']) ? $_POST['m-activity'] : '';
 $stmt->execute();
