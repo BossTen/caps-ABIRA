@@ -45,7 +45,7 @@ if($stmt){
 }else{
 echo "<script type='text/javascript'>
                 alert ('There has been an error, please try again :)'); 
-                window.location.href='gsfc-pre-main-view.php';</script>";
+                window.location.href='gsfc-pre-main-form.php';</script>";
                 
 }
   $stmt->close();
