@@ -30,7 +30,7 @@ $campus = isset($_POST['campus']) ? $_POST['campus'] : '';
 $month = isset($_POST['month']) ? $_POST['month'] : '';
 $college = isset($_POST['college']) ? $_POST['college'] : '';
 $floor = isset($_POST['floor']) ? $_POST['floor'] : '';
-$area = isset($_POST['type']) ? $_POST['type'] : '';
+$type = isset($_POST['type']) ? $_POST['type'] : '';
 $dateStarted = isset($_POST['date-started']) ? $_POST['date-started'] : '';
 $dateEnded = isset($_POST['date-ended']) ? $_POST['date-ended'] : '';
 $accomplishedBy = isset($_POST['accomplished-by']) ? $_POST['accomplished-by'] : '';
@@ -60,10 +60,10 @@ $conn->close();
   <title>Preventive Maintenance Plumbing</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
@@ -96,7 +96,7 @@ require'navbar.php';
 
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-                <select class="form-control form-control" name="work" id="month">
+                <select class="form-control form-control" name="work" id="work">
                   <option value="Plumbing">Plumbing</option>
                   <option value="Air-conditioning">Air-conditioning</option>
                   
@@ -142,7 +142,7 @@ require'navbar.php';
         </div>
         <div class="row">
                              <h4 class="col-6"><b>Department:</b>&nbsp;
-                             <select class="form-control form-control" name="college" id="campus">
+                             <select class="form-control form-control" name="college" id="college">
                               <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.
 </option>
                               <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS (College of Informatics & Computing Sciences) Bldg.
@@ -159,7 +159,7 @@ require'navbar.php';
                        
                             </select></h4>
                              <h4 class="col-6"><b>Floor:</b>&nbsp;
-                             <select class="form-control form-control" name="floor" id="campus">
+                             <select class="form-control form-control" name="floor" id="floor">
                              <option value="Basement Floor">Basement Floor</option>
                               <option value="Ground Floor">Ground Floor</option>
                               <option value="Second Floor">Second Floor</option>
