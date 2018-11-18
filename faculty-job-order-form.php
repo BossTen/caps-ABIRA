@@ -79,15 +79,15 @@
                                                        DateRequestCreated,
                                                        NameOfOffice
                                                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
-            // if($stmt){
-            // echo "<script type='text/javascript'>
-            //             alert ('Successful insertion of data'); 
-            //             window.location.href='faculty-job-order-form.php';</script>";
-            // }else{
-            // echo "<script type='text/javascript'>
-            //             alert ('Not Successful insertion of data'); 
-            //             window.location.href='faculty-job-order-form.php';</script>";
-            // }                                    
+            if($stmt){
+            echo "<script type='text/javascript'>
+                        alert ('Successful insertion of data'); 
+                        window.location.href='faculty-job-order-form.php';</script>";
+            }else{
+            echo "<script type='text/javascript'>
+                        alert ('Not Successful insertion of data'); 
+                        window.location.href='faculty-job-order-form.php';</script>";
+            }                                    
         $stmt->bind_param('sssssssssssss',
                             $airConditioning,
                             $masonryCarpentry,
