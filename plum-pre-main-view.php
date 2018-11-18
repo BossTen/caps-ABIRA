@@ -88,7 +88,7 @@ mysqli_select_db($con, 'abira');
 // define how many results you want per page
 $results_per_page = 20;
 // find out the number of results stored in database
-$sql = "SELECT * FROM preventive_maintenance WHERE work LIKE 'Air%' AND campus LIKE 'Alangilan%'";
+$sql = "SELECT * FROM preventive_maintenance WHERE work LIKE 'Plumbing%' AND campus LIKE 'Alangilan%'";
 $result = mysqli_query ($con,$sql);
 $number_of_results = mysqli_num_rows($result);
 // determine number of total pages available
@@ -116,6 +116,20 @@ while($row = mysqli_fetch_array($result)) {
   echo "<td>" . $row['accomplishedBy'] . "</td>";
 }
 // display the links to the pages
+?>
+
+
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+<?php
+for ($page=1;$page<=$number_of_pages;$page++) {
+    echo '<li class="page-item"><a class="page-link" href="plum-pre-main-view.php?page=' . $page . '">' . $page . '</a> ';
+
+}
 ?>
 
 

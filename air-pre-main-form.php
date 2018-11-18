@@ -140,17 +140,19 @@ require'navbar.php';
         </div>
         <div class="row">
                              <h4 class="col-6"><b>College:</b>&nbsp;
-                             <select class="form-control form-control" name="college" id="college">
-                                <?php
-                                require '../api/apiOnly.php';
-                                  $colleges = json_decode($api->fetch_colleges(),true);
-                                  foreach ($colleges as $college) {
-                                   echo "<option value='".$college['description']."'>".$college['description']."</option>";
-
-                                  }
-
-                              ?>
-                            
+                             <select class="form-control form-control" name="college" id="campus">
+                              <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.
+</option>
+                              <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS (College of Informatics & Computing Sciences) Bldg.
+</option>
+                              <option value="CIT (College of Industrial Technology) Bldg.">CIT (College of Industrial Technology) Bldg.</option>
+                              <option value="RG RECTO Bldg. (RGR)">RG RECTO Bldg. (RGR)</option>
+                              <option value="STUDENT Center Bldg. (SSC)">STUDENT Center Bldg. (SSC)</option>
+                              <option value="FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office">FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office
+</option>
+                              <option value="RSFIHM (School of Food & International Hotel Management) Bldg.">RSFIHM (School of Food & International Hotel Management) Bldg.</option>
+                              <option value="Gymnasium Area">Gymnasium Area</option>
+                              <option value="Food Innovation Center Building">Food Innovation Center Building </option>
                      
                        
                             </select></h4>
