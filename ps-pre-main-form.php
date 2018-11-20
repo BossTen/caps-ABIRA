@@ -86,9 +86,16 @@ require'navbar.php';
             <h2>POWER SUPPLY (Main II)</h2>
             </div>
 
-             <div class="row "><h4 class="col-6"><b>Work:</b>&nbsp;
-              <input type="text" value="POWER SUPPLY" name="work" id="work" class="form-control col-12" readonly>
-             </h4>
+             <div class="row ">
+              <h4 class="col-6"><b>Work:</b>&nbsp;
+                <select class="form-control form-control" name="work" id="work">
+                  <option value="Power Supply">Power Supply</option>
+                  <option value="Plumbing">Plumbing</option>
+                  <option value="Air-conditioning">Air-conditioning</option>
+                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
+                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
+                </select>
+                </h4>
                               <h4 class="col-6"><b>Campus:</b>&nbsp;
                   <select class="form-control form-control" name="campus" id="campus" readonly>
                     <?php

@@ -9,23 +9,19 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               month,
                                               college,
                                               m_activity,
-                                            
                                               dateStarted,
-                                              dateEnded,
-                                              accomplishedBy,
-                                              maintainance_activity)
+                                              accomplishedBy
+                                              )
                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ');
  $stmt->bind_param('ssssssssss',
                               $work,
                               $campus,
                               $month,
                               $college,
-                             
                               $m_activity,
                               $dateStarted,
-                              $dateEnded,
-                              $accomplishedBy,
-                              $m_activity
+                              $accomplishedBy
+                              
                   );
 $work = isset($_POST['work']) ? $_POST['work'] : '';
 $campus = isset($_POST['campus']) ? $_POST['campus'] : '';
@@ -33,9 +29,8 @@ $month = isset($_POST['month']) ? $_POST['month'] : '';
 $college = isset($_POST['college']) ? $_POST['college'] : '';
 $m_activity = isset($_POST['m_activity']) ? $_POST['m_activity'] : '';
 $dateStarted = isset($_POST['date-started']) ? $_POST['date-started'] : '';
-
 $accomplishedBy = isset($_POST['accomplished-by']) ? $_POST['accomplished-by'] : '';
-$m_activity = isset($_POST['m-activity']) ? $_POST['m-activity'] : '';
+
 $stmt->execute();
 
 if($stmt){
@@ -48,7 +43,7 @@ echo "<script type='text/javascript'>
                 window.location.href='gsfc-pre-main-form.php';</script>";
                 
 }
-  $stmt->close();
+$stmt->close();
 $conn->close();
 }
 
@@ -89,7 +84,15 @@ require'navbar.php';
             </div>
 
              <div class="row "><h4 class="col-6"><b>Work:</b>&nbsp;
-             <input type="text" value="Generator Set/Fuel Container" name="work" id="Generator Set/Fuel Container" class="form-control col-12" readonly></h4>
+             <select class="form-control form-control" name="work" id="work">
+                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
+                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
+                  <option value="Power Supply">Power Supply</option>
+                  <option value="Plumbing">Plumbing</option>
+                  <option value="Air-conditioning">Air-conditioning</option>
+                  
+                  
+                </select></h4>
                               <h4 class="col-6"><b>Campus:</b>&nbsp;
                                                           <select class="form-control form-control" name="campus" id="campus" readonly>
                                 <?php
