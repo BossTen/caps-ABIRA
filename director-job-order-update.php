@@ -361,7 +361,6 @@ require '../api/dbcon.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -769,7 +768,7 @@ require 'navbar.php';
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
-            <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
+            <input name="" style="padding:20px;" onClick="print();" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
 
 
                <?php 
@@ -780,6 +779,12 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
+              $('#print-button').on('click', function() {  
+                window.print();  
+                return false; // why false?
+              });
+
+
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
                 });
@@ -954,7 +959,7 @@ $conn->close();
                 //         break;
 
                 // }
-                }
+                
             </script>
 </body>
 
