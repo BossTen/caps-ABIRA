@@ -1,5 +1,9 @@
 <?php
-	session_start();
+ if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+             session_start();
+    }  
+
 	//if not admin redirect to no permission page
 if(isset($_SESSION['usr_type'])){
     //echo $_SESSION['usr_type'];

@@ -593,7 +593,7 @@ require 'navbar.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
+                                <th colspan=2><input classa="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
                             </tr>
                             <tr>
 
