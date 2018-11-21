@@ -560,20 +560,32 @@ require 'navbar-director.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?>>
                                     <label>
-                                        <center>Plumbing Works:
+                                        <center>Painting Works:
                                     </label></th>
-                                <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450" ><?php echo $JobRecommendation; ?></textarea>
+                                <th rowspan="6">
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
                                 <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
                             </tr>
                             <tr>
+                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
+                            </tr>
+                            <tr>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                    <label>
+                                        <center>Plumbing Works:
+                                    </label></th>
+                            
+                                </th>
+                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
+                            </tr>
+                            <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
@@ -581,11 +593,11 @@ require 'navbar-director.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m11 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m12 ?>"></th>
                             </tr>
                     </table>
                     <h4><b>Report Description:</b>&nbsp;
