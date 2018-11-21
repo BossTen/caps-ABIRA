@@ -1,15 +1,12 @@
 <?php
 require '../api/dbcon.php';
-/*
-  This form should only be accessible by usr_type admin and faculty\][
+require 'testadmin.php';
 
+ if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+             session_start();
+    }  
 
-
-
-
-
-  ]
-*/
 
 
 if(isset($_POST['jos'])){
@@ -23,16 +20,12 @@ if ($conn->connect_error) {
 
 // prepare and binds
 $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                      
-                                               
                                                AirCondition=?,
                                                CarpentryMasonry=?,
                                                ElectricalWorks=?,
-                                               
+                                               Painting=?,
                                                Plumbing=?,
                                                Welding=?,
-
-
                                                RequestorSignature=?,
                                                RequestorName=?,
                                                RequestorDesignation=?,
@@ -68,7 +61,6 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                Courtesy=?,
                                                QualityOfService=?,
                                                priorityId=?,
-                                                
                                                JobRecommendation=?,
                                                InspectionReport=?,
                                                materialsNeeded1=?,
@@ -80,19 +72,20 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                materialsNeeded7=?,
                                                materialsNeeded8=?,
                                                materialsNeeded9=?,
-                                               materialsNeeded10=? 
+                                               materialsNeeded10=?, 
+                                               materialsNeeded11=?,
+                                               materialsNeeded12=? 
                                                -- ApprovedBy,
                                       
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
-                              
-                              
                               $airConditioning,
                               $masonryCarpentry,
                               $electrical,
+                              $painting,
                               $plumbing,
                               $welding,
                               $requesterSignature,
@@ -143,6 +136,8 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $m8get,
                               $m9get,
                               $m10get,
+                              $m11get,
+                              $m12get,
                               $serialCode
 
                         );  
@@ -150,6 +145,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 // set parameters and execute
   $sIdu = 1;
 // $nameOfOffice = $_POST['nameofoffice'];
+ $painting = isset($_POST['Painting']) ? "checked" : 'off';
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
  $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
@@ -204,6 +200,9 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $m8get = isset($_POST['m8']) ? $_POST['m8'] : '';
  $m9get = isset($_POST['m9']) ? $_POST['m9'] : '';
  $m10get =isset($_POST['m10']) ? $_POST['m10'] : '';
+ $m11get =isset($_POST['m11']) ? $_POST['m11'] : '';
+ $m12get =isset($_POST['m12']) ? $_POST['m12'] : '';
+
  $serialCode = $_POST['serial'];
 
  $stmt->execute();
@@ -221,6 +220,7 @@ require '../api/dbcon.php';
                            AirCondition,
                            CarpentryMasonry,
                            ElectricalWorks,
+                           Painting,
                            Plumbing,
                            Welding,
                            RequestorSignature,
@@ -262,17 +262,19 @@ require '../api/dbcon.php';
                            JobRecommendation,
                            InspectionReport,
                            statusId,
-                                               materialsNeeded1,
-                                               materialsNeeded2,
-                                               materialsNeeded3,
-                                               materialsNeeded4,
-                                               materialsNeeded5,
-                                               materialsNeeded6,
-                                               materialsNeeded7,
-                                               materialsNeeded8,
-                                               materialsNeeded9,
-                                               materialsNeeded10,
-                                               UserJobDescription 
+                           materialsNeeded1,
+                           materialsNeeded2,
+                           materialsNeeded3,
+                           materialsNeeded4,
+                           materialsNeeded5,
+                           materialsNeeded6,
+                           materialsNeeded7,
+                           materialsNeeded8,
+                           materialsNeeded9,
+                           materialsNeeded10,
+                           materialsNeeded11,
+                           materialsNeeded12,
+                           UserJobDescription 
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -283,6 +285,7 @@ require '../api/dbcon.php';
                        $AirCondition,
                        $CarpentryMasonry,
                        $ElectricalWorks,
+                       $Painting,
                        $Plumbing,
                        $Welding,
                        $RequestorSignature,
@@ -334,6 +337,8 @@ require '../api/dbcon.php';
                        $m8,
                        $m9,
                        $m10,
+                       $m11,
+                       $m12,
                        $userJobDescription
                      );
 
@@ -342,8 +347,9 @@ require '../api/dbcon.php';
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
-          header('location: not-allowed.php');
-          exit();
+         // header('location: not-allowed.php');
+         // exit();
+        echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
       //code for checking if user is with the same campus as the requester
 
@@ -402,10 +408,10 @@ require '../api/dbcon.php';
     <title class="no-print">Job Order Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
@@ -638,7 +644,7 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequested;?>"></th>
+                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>"></th>
                             <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"></th>
                             <th>
                                 <center>GSO - GPB Main II</center>

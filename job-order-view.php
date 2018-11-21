@@ -3,7 +3,7 @@
     // session isn't started
              session_start();
           }  
-    //require 'test-director-admin.php';
+    require 'testadmin.php';
     //echo $_SESSION['usr_campus'];
 ?>
 
