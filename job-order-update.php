@@ -617,11 +617,11 @@ require 'navbar.php';
                             <th>Signature:</th>
                             <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
                             <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" id="director-signature" name="director-signature" placeholder="director signature" disabled></th>
+                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" disabled></th>
+                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
                             <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
@@ -807,7 +807,7 @@ require 'navbar.php';
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
-            <h4 class="no-print w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
+            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
             <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
