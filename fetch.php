@@ -7,19 +7,16 @@ require '../api/dbconNApi.php';
 
 
 if(isset($_POST['login'])){
-
+  //$faculty = json_decode($api->authenticate_faculty($_POST['username'],$_POST['password']));
+  //echo $api->faculty_profile($faculty[0]['instructor_id']);
+    //echo $faculty;
    $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
-   //echo $faculty;
-   
    if(!empty($faculty[0]['usr_fullname'])){
-   //$_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
-   //$_SESSION['usr_type'] = 'faculty';
-  echo  $api->fetch_faculty_profile('c59ae46c679c8e8e8dfdc07336b93d55');
-    //header('location: faculty-index.php');
-
+   $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
+    $_SESSION['usr_type'] = 'faculty';
+    header('location: faculty-index.php');
    }else{
-    echo 'wrong user name and password please try again.';
-     //echo 'username or password is not correct please try';
+     echo 'username or password is not correct please try';
 }}
 
 ?>

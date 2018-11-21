@@ -605,11 +605,11 @@ require 'navbar.php';
                             <th>Signature:</th>
                             <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
                             <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
+                            <th><input class="w3-input" type="text" id="director-signature" name="director-signature" placeholder="director signature" disabled></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
+                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" disabled></th>
                             <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
@@ -927,6 +927,10 @@ $conn->close();
                   var status = document.getElementsByName("status")[0].value;
                   var update_button = document.getElementById("update");
                   var select_priority = document.getElementById("priority");
+
+                  // input fields
+                  var director_signature = document.getElementById("director-signature");
+
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
                 /*
@@ -939,34 +943,46 @@ $conn->close();
                   7 - For CSO Additional Info
                   USER TYPE CONDITIONS
                 */
+                
 
-                switch(s_usr_type){
-                  case "admin":
-                  console.log("admin - switch");
-                        if(status !=  7){
+                //fields and buttons logic
+                if(status==7){
+                  console.log("status is 7");
+                  select_priority.disabled = true;
+                }
+
+                  
+
+
+
+                // switch(s_usr_type){
+                //   case "admin":
+                //   console.log("admin - switch");
+                //         if(status !=  7){
                             
-                            select_priority.disabled = true;
+                //             select_priority.disabled = true;
 
-                            console.log("disabled");
-                          }else{
-                            update_button.disabled = false;
-                            console.log("not disabled");
-                            }
-                        break;
+                //             console.log("disabled");
+                //           }else{
+                //             update_button.disabled = false;
+                //             console.log("not disabled");
+                //             }
+                //         break;
 
-                  case "director":
-                  console.log("director");
-                          if(status == 7)
-                            update_button.disabled = true;
-                          else
-                            update_button.disabled = false;
-                        break;
+                //   case "director":
+                //   console.log("director");
+                //           if(status == 7)
+                //             update_button.disabled = true;
+                //           else
+                //             update_button.disabled = false;
+                //         break;
 
-                  case "faculty":
-                  console.log("faculty");
-                            update_button.disabled = true;
-                        break;
+                //   case "faculty":
+                //   console.log("faculty");
+                //             update_button.disabled = true;
+                //         break;
 
+                // }
                 }
             </script>
 </body>
