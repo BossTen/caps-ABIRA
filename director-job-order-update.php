@@ -767,8 +767,9 @@ require 'navbar.php';
               <center>
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
-            <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
-            <input name="" style="padding:20px;" onClick="print();" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
+            <input name="btn-decide" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Approve" id="update">
+            <input name="btn-decide" style="padding:20px;" onClick="print();" class="no-print btn btn-danger" id="print-button" type="button" value="Decline">
+            <input name="btn-print" style="padding:20px;" onClick="print();" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
 
 
                <?php 
@@ -779,6 +780,17 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
+
+              //disable all fields except btn approve and deny
+              $(document).ready(function () {
+                  $(":input").not("[name=btn-decide],[name=btn-print]")
+                      .prop("disabled", true);
+              });
+              //disable all fields except btn approve and deny
+
+
+
+              //print
               $('#print-button').on('click', function() {  
                 window.print();  
                 return false; // why false?
