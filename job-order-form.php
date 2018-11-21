@@ -360,16 +360,16 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m6"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="">
                                     <label>
-                                        <center>Plumbing Works:
+                                        <center>Painting Works:
                                     </label></th>
-                                <th rowspan="5">
+                                <th rowspan="6">
                                     <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7"></th>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
                             </tr>
                             <tr>
 
@@ -378,7 +378,7 @@ require 'navbar.php';
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
                                     <label>
-                                        <center>Welding Works:
+                                        <center>Plumbing Works:
                                     </label></th>
 
                                 <th colspan=2><input class="w3-input" type="text" name="m9"></th>
@@ -386,6 +386,18 @@ require 'navbar.php';
                             <tr>
 
                                 <th colspan=2><input class="w3-input" type="text" name="m10"></th>
+                            </tr>
+                            <tr>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+                                    <label>
+                                        <center>Welding Works:
+                                    </label></th>
+
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
+                            </tr>
+                            <tr>
+
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
                             </tr>
                     </table>
             </div>

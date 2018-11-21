@@ -65,7 +65,7 @@ require 'navbar-director.php';
 
 <div class="container">
    <div class="form-row">
-      <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
+      <div class="col-5 w3-text-red"><h1>Job Order Approval</h1></div>
    </div>
 
 <div class="container">

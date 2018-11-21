@@ -28,13 +28,13 @@ if(session_id() == '' || !isset($_SESSION)) {
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="scheduling.php">Schedule</a>
+        <a class="nav-link" href="">Schedule</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inventory.php">Inventory</a>
+        <a class="nav-link" href="">Inventory</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="admin-notif.php">Notification</a>
+        <a class="nav-link" href="">Notification</a>
       </li>
     </ul>
   </div>

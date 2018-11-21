@@ -160,7 +160,7 @@ require 'navbar-faculty.php';
 	<div class=" card-body  style="margin-left: 5%;">
         <div class="row ">
                         <h4 class="col-12"><b>Campus:</b>&nbsp;
-                             <select class="form-control form-control" name="campus" id="campus">
+                             <select class="form-control form-control" name="campus" id="campus" required>
                                 <?php
                                 require '../api/apiOnly.php';
                                   $campuses = json_decode($api->fetch_campuses(),true);
@@ -175,20 +175,7 @@ require 'navbar-faculty.php';
         <div class="row ">
         <!--COLLEGES-->
                              <h4 class="col-12"><b>Department:</b>&nbsp;
-                             <select class="form-control form-control" name="college" id="college">
-                                <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.
-</option>
-                              <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS (College of Informatics & Computing Sciences) Bldg.
-</option>
-                              <option value="CIT (College of Industrial Technology) Bldg.">CIT (College of Industrial Technology) Bldg.</option>
-                              <option value="RG RECTO Bldg. (RGR)">RG RECTO Bldg. (RGR)</option>
-                              <option value="STUDENT Center Bldg. (SSC)">STUDENT Center Bldg. (SSC)</option>
-                              <option value="FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office">FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office
-</option>
-                              <option value="RSFIHM (School of Food & International Hotel Management) Bldg.">RSFIHM (School of Food & International Hotel Management) Bldg.</option>
-                              <option value="Gymnasium Area">Gymnasium Area</option>
-                              <option value="Food Innovation Center Building">Food Innovation Center Building </option>
-                            </select>
+                             <input type="text" name="" class="form-control col-12" id="" placeholder="" required>
                           </div>
                             <!--COLLEGES-->
          <div class="row">
@@ -208,6 +195,7 @@ require 'navbar-faculty.php';
             <input class="w3-check" type="checkbox" name="AirCondition" id="AirCondition"><label>Air-conditioning Works</label><br>
             <input class="w3-check" type="checkbox" name="CarpentryMasonary" id="CarpentryMasonary"><label>Carpentry/Masonary Works</label><br>
             <input class="w3-check" type="checkbox" name="ElectricalWorks" id="ElectricalWorks"><label>Electrical Works</label><br>
+            <input class="w3-check" type="checkbox" name="" id=""><label>Painting Works</label><br>
             <input class="w3-check" type="checkbox" name="Plumbing" id="Plumbing"><label>Plumbing Works</label><br>
             <input class="w3-check" type="checkbox" name="Welding" id="Welding"><label>Welding Works</label><br>
             <br>
@@ -215,7 +203,7 @@ require 'navbar-faculty.php';
         </div>
         <br />
         <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" required=""></textarea></div>
+            <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" required></textarea></div>
             
 
         <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
