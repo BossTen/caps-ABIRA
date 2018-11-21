@@ -315,13 +315,13 @@ $conn->close();
                     <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
-                                <th colspan="col-5">
+                                <th colspan="">
                                     <center>Kindly put a check mark before the work<br> service and/or assistance to be done
                                 </th>
-                                <th colspan="2.5">
+                                <th colspan="">
                                     <center>Inspection report
                                 </th>
-                                <th colspan="2.5">
+                                <th colspan="">
                                     <center>Material Needed
                                 </th>
                             </tr>
@@ -364,16 +364,16 @@ $conn->close();
                                 <th colspan=2><input class="w3-input" type="text" name="m6"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing">
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="">
                                     <label>
-                                        <center>Plumbing Works:
+                                        <center>Painting Works:
                                     </label></th>
-                                <th rowspan="5">
+                                <th rowspan="6">
                                     <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7"></th>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
                             </tr>
                             <tr>
 
@@ -382,7 +382,7 @@ $conn->close();
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
                                     <label>
-                                        <center>Welding Works:
+                                        <center>Plumbing Works:
                                     </label></th>
 
                                 <th colspan=2><input class="w3-input" type="text" name="m9"></th>
@@ -391,135 +391,19 @@ $conn->close();
 
                                 <th colspan=2><input class="w3-input" type="text" name="m10"></th>
                             </tr>
-                    </table>
-                    <br>
+                            <tr>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+                                    <label>
+                                        <center>Welding Works:
+                                    </label></th>
 
-                    <table class="table table-bordered w3-card w3-round">
-                        <tr>
-                            <th></th>
-                            <th>
-                                <center>Requested by:
-                            </th>
-                            <th>
-                                <center>Inspected by:
-                            </th>
-                            <th>
-                                <center>Approved by:
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
-                        </tr>
-                        <tr>
-                            <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester"></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter"></th>
-                            <th>
-                                <center>Engr. VICTOR A. SEMIRA
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Designation:</th>
-                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester"></th>
-                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter"></th>
-                            <th>
-                                <center>Assistant Director of FMSO
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested"></th>
-                            <th><input type="date" class="form-control" name="date-inspected"></th>
-                            <th>
-                                <center>GSO - GPB Main II
-                            </th>
-                        </tr>
-                    </table>
-                    <table class="table table-bordered w3-card w3-round">
-                        <tr>
-                            <th>Start of Service</th>
-                            <th>End of Service</th>
-                            <th>No. of hrs</th>
-                            <th>Assessment</th>
-                        </tr>
-                        <br>
-                        <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService"></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" disabled>
-                                <p class="error-message" id="assessmentErrorMessage"></p>
-                            </th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
-                        </tr>
-                        <tr>
-                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime"></th>
-                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime"></th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
-                        </tr>
-                    </table>
-                    <br>
-                    <table class="table table-bordered w3-card w3-round">
-                        <tr>
-                            <th colspan=2>
-                                <center>Accomplished Works
-                            </th>
-                            <th>
-                                <center>Work done by:
-                            </th>
-                            <th>
-                                <center>Signature
-                            </th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1"></th>
-                            <th><input class="w3-input" type="text" name="signature1"></th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2"></th>
-                            <th><input class="w3-input" type="text" name="signature2"></th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3"></th>
-                            <th><input class="w3-input" type="text" name="signature3"></th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4"></th>
-                            <th><input class="w3-input" type="text" name="signature4"></th>
-                        </tr>
-                        <tr>
-                            <th rowspan=2>
-                                <center>Conforme:
-                            </th>
-                            <th><input class="w3-input" type="text" name="conforme-name"></th>
-                            <th><input class="w3-input" type="text" name="conforme-signature"></th>
-                            <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed">
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <center>Name
-                            </th>
-                            <th>
-                                <center>Signature
-                            </th>
-                            <th>
-                                <center>Date signed
-                            </th>
-                    </table>
-                </div>
-            </div>
-            <br>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
+                            </tr>
+                            <tr>
 
-                            </tbody>
-                        </table>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
+                            </tr>
+                    </table>
                     </div>
                 </div>
             </div>

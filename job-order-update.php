@@ -504,81 +504,93 @@ require 'navbar.php';
                     <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
-                                <th colspan="col-5">
+                                <th colspan="">
                                     <center>Kindly put a check mark before the work<br> service and/or assistance to be done
                                 </th>
-                                <th colspan="2.5">
+                                <th colspan="">
                                     <center>Inspection report
                                 </th>
-                                <th colspan="2.5">
+                                <th colspan="">
                                     <center>Material Needed
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value="true">
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450"></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m1"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m2"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry">
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m3"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m4"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical">
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m5"></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m6"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="">
                                     <label>
-                                        <center>Plumbing Works:
+                                        <center>Painting Works:
                                     </label></th>
-                                <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450" ><?php echo $JobRecommendation; ?></textarea>
+                                <th rowspan="6">
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m8"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+                                    <label>
+                                        <center>Plumbing Works:
+                                    </label></th>
+
+                                <th colspan=2><input class="w3-input" type="text" name="m9"></th>
+                            </tr>
+                            <tr>
+
+                                <th colspan=2><input class="w3-input" type="text" name="m10"></th>
+                            </tr>
+                            <tr>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
                                     <label>
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name=""></th>
                             </tr>
                     </table>
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
