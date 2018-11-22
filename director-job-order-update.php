@@ -638,12 +638,21 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
-
-              //disable all fields except btn approve and deny
-              $(document).ready(function () {
-                  $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+              if(<?php echo $statusId ?> != 1){
+                console.log('not for approval');
+                $(":input").not("[name=btn-print]")
                       .prop("disabled", true);
-              });
+              }else{
+                console.log('for approval');
+                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+                      .prop("disabled", true);
+
+              }
+              //disable all fields except btn approve and deny
+              // $(document).ready(function () {
+              //     $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+              //         .prop("disabled", true);
+              // });
               //disable all fields except btn approve and deny
 
 
