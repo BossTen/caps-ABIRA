@@ -36,7 +36,7 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> Job Orders: </i>
+                <a href="director-job-order-view.php" style='color:#1d1d1d !important;'>  <i class="fa fa-file" style="font-size:20px;"> Job Orders: </i></a>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> Approved Job Orders: </i>
+                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Approved Job Orders: </i></a>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: </i>
+                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: </i></a>
             </div>
           </div>
         </div>
@@ -64,53 +64,63 @@ require 'navbar-director.php';
 
 
 <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <!--PRE-->
    <div class="form-row">
-      <div class="col-5 w3-text-red"><h1>Job Order Approval</h1></div>
-   </div>
+      <div class="col-12 w3-text-red"><h2>Preventive Maintenance View</h2></div>
 
 <div class="container">
-<div class="table-reponsive">    
-  <table class="table table-striped">
+  <div class="table-reponsive">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Serial</th>
-        <th>Subject</th>
-        <th>Description</th>
-        <th>Date</th>
-         <th>Status</th>
+        <th>Work</th>
+         <th>Department</th>
+         <th>Date Requested</th>
+         <th>Accomplish By:</th>
       </tr>
     </thead>
     <tbody>
       <?php
-
-      require '../api/dbcon.php';
-
-                    if($_SESSION['usr_type']=='director'){
-                                $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 1 OR j.statusId = 2 OR j.statusId = 3";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
-
-                                  while ($row =  $result->fetch_assoc()) {
-                                   $description =   empty($row['JobRecommendation']) ? $row['UserJobDescription'] : $row['JobRecommendation'];
-                                    echo "<tr>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['Campus'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" .$description. "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['DateRequestCreated'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['statusName'] . "</td>";
-                          echo "</tr>";
-                                  }
-                                }
-                    }
+// connect to database
+$con = mysqli_connect('localhost','root','');
+mysqli_select_db($con, 'abira');
 
 
-                              ?>
+// define how many results you want per page
+$results_per_page = 20;
+// find out the number of results stored in database
+$sql = "SELECT * FROM preventive_maintenance";
+$result = mysqli_query ($con,$sql);
+$number_of_results = mysqli_num_rows($result);
+// determine number of total pages available
+$number_of_pages = ceil($number_of_results/$results_per_page);
+// determine which page number visitor is currently on
+if (!isset($_GET['page'])) {
+  $page = 1;
+} else {
+  $page = $_GET['page'];
+}
+// determine the sql LIMIT starting number for the results on the displaying page
+$this_page_first_result = ($page-1)*$results_per_page;
+// retrieve selected results from database and display them on page
+$sql="SELECT * FROM preventive_maintenance  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+$result = mysqli_query($con, $sql);
+while($row = mysqli_fetch_array($result)) {
+  echo "<tr>";
+  echo "<td>" . $row['work'] . "</td>";
+  echo "<td>" . $row['college'] . "</td>";
+  echo "<td>" . $row['dateStarted'] . "</td>";
+  echo "<td>" . $row['accomplishedBy'] . "</td>";
+}
+// display the links to the pages
+?>
 
 
-            </tbody>
-        </table>
-      </div>
-    </div>
+    </tbody>
+  </table>
+</div>
 
 
 </body>

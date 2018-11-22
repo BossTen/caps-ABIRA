@@ -862,10 +862,13 @@ require 'navbar.php';
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
+
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
+            <div class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
             <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
+          </div>
 
 
                <?php 
