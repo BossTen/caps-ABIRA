@@ -315,7 +315,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-responsive table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -638,16 +638,18 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
+              //disabling of fields
               if(<?php echo $statusId ?> != 1){
                 console.log('not for approval');
                 $(":input").not("[name=btn-print]")
                       .prop("disabled", true);
-              }else{
+              }else if(<?php echo $statusId ?> == 1){
                 console.log('for approval');
                 $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
                       .prop("disabled", true);
-
               }
+              //disabling of fields
+
               //disable all fields except btn approve and deny
               // $(document).ready(function () {
               //     $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")

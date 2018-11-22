@@ -430,10 +430,13 @@ require 'navbar.php';
     <center>
         <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
     </center>
-    <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
+            <!-- UPDATE form -->
         <form action="" method="POST">
             <!-- UPDATE card -->
+    <div class="container" style="margin-top: ;">
+
+
+
             <div class="card">
                 <div class="card-body" style="margin-left: 2%;">
 
@@ -502,9 +505,8 @@ require 'navbar.php';
         <h1 class="w3-text-red">Job Order Request</h1>
     </center>
     <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
+
+
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
@@ -607,9 +609,8 @@ require 'navbar.php';
             <br><br>
 <!--report-->
 <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
+
+
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
@@ -622,9 +623,7 @@ require 'navbar.php';
 
                <br>
     <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
+
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
@@ -680,9 +679,7 @@ require 'navbar.php';
             </div>
              <br>
     <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
+
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
@@ -714,9 +711,8 @@ require 'navbar.php';
             </div>
  <br>
     <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
+
+
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
@@ -779,9 +775,7 @@ require 'navbar.php';
         </div>
             <br>
             <div class="container" style="margin-top: ;">
-                <!-- UPDATE form -->
-                <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
-                <!-- UPDATE card -->
+
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
 
@@ -869,6 +863,7 @@ require 'navbar.php';
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
             <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
           </div>
+</form>
 
 
                <?php 
@@ -879,6 +874,20 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
+              //disabling of fields
+              if(<?php echo $statusId ?> != 1){
+                console.log('not for approval');
+                $(":input").not("[name=btn-print]")
+                      .prop("disabled", true);
+              }else{
+                console.log('for approval');
+                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+                      .prop("disabled", true);
+              }
+              //disabling of fields
+
+
+              // add script that is status is approved then remove disable in fields
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
                 });
@@ -1053,7 +1062,7 @@ $conn->close();
                 //         break;
 
                 // }
-                }
+
             </script>
 </body>
 
