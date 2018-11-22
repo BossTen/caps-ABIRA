@@ -62,7 +62,7 @@ require'navbar.php';
 
 <div class="container">
 <div class="table-reponsive">    
-  <table class="table table-striped">
+  <table class="table table-striped table-responsive">
     <thead>
       <tr>
         <th>Serial</th>

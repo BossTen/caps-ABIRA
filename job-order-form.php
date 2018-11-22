@@ -308,96 +308,96 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tbody>
                             <tr>
-                                <th colspan="">
+                                <th colspan="4">
                                     <center>Kindly put a check mark before the work<br> service and/or assistance to be done
                                 </th>
-                                <th colspan="">
+                                <th colspan="4" >
                                     <center>Inspection report
                                 </th>
-                                <th colspan="">
+                                <th colspan="4">
                                     <center>Material Needed
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" value="true">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="air-conditioning" value="true">
                                     <label>Air-conditioning Works:</label></th>
-                                <th rowspan="5">
+                                <th rowspan="5" colspan="4">
                                     <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450"></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m1"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m2"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="masonary-carpentry">
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m3"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m4"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="Electrical">
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m5"></th>
                             </tr>
                             <tr>
-                                <th>
+                                <th colspan="4">
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m6"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="">
                                     <label>
                                         <center>Painting Works:
                                     </label></th>
-                                <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                <th rowspan="6" colspan="4">
+                                    <div class="form-group" ><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name=""></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name=""></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m8"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m8"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="Welding">
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m9"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m9"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10"></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m10"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="Welding">
                                     <label>
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name=""></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name=""></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name=""></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name=""></th>
                             </tr>
                     </table>
             </div>
@@ -427,7 +427,7 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
 
-                    <table class="table table-bordered w3-round">
+                    <table class="table table-bordered w3-round table-responsive">
                         <tr>
                             <th></th>
                             <th>
@@ -484,7 +484,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -520,7 +520,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works
@@ -589,7 +589,7 @@ require 'navbar.php';
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
                         <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-responsive">
                             <tbody>
                                 <tr>
                                     <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
@@ -624,7 +624,7 @@ require 'navbar.php';
                                 </tr>
 
                                 <tr>
-                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
+                                    <th colspan="4">Response time for the initial call for service</th>
                                     <th><input type="radio" value="5" class="form-control" name="cb1"></th>
                                     <th><input type="radio" value="4" class="form-control" name="cb1"></th>
                                     <th><input type="radio" value="3" class="form-control" name="cb1"></th>
