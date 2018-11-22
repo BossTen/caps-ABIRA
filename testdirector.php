@@ -1,9 +1,13 @@
 <?php
-	session_start();
+ if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+             session_start();
+    }  
+
 	//if not admin redirect to no permission page
 if(isset($_SESSION['usr_type'])){
     //echo $_SESSION['usr_type'];
-    if($_SESSION['usr_type']!='head'){
+    if($_SESSION['usr_type']!='director'){
     header('location: not-allowed.php');
     exit;
     }
