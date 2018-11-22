@@ -418,7 +418,7 @@ require 'navbar.php';
           </div>
           </div>
           </div>
-                    <br>
+  <br>
     <div class="container" style="margin-top: ;">
         <!-- UPDATE form -->
         <form action="" method="POST">
