@@ -644,13 +644,13 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
+                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" readonly></th>
                             <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
+                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
+                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" readonly></th>
                             <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
@@ -658,7 +658,7 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Designation:</th>
-                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>"></th>
+                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>" readonly></th>
                             <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
                             <th>
                                 <center>Assistant Director of FMSO</center>
@@ -666,8 +666,8 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>"></th>
-                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"></th>
+                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>" readonly></th>
+                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"readonly ></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
@@ -692,17 +692,17 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>"></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
+                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService" readonly></th>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?>>Work completed upon agreed duration</th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> readonly>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>"></th>
-                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>"></th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>>Work not completed upon agreed duration</th>
+                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
+                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
@@ -729,33 +729,33 @@ require 'navbar.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"readonly></th>
+                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>"readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"readonly></th>
+                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>"readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"readonly></th>
+                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>"readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"readonly></th>
+                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>"readonly></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
-                            <th><input class="w3-input" type="text" name="conforme-signature"></th>
+                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>"readonly></th>
+                            <th><input class="w3-input" type="text" name="conforme-signature"readonly></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">
+                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
                             </th>
                         </tr>
                         <tr>
@@ -857,7 +857,7 @@ require 'navbar.php';
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
 
-            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
+            <h4 id="message-bottom" class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
             <div class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
@@ -877,14 +877,17 @@ $conn->close();
               //disabling of fields
               if(<?php echo $statusId ?> != 1){
                 console.log('not for approval');
-                $(":input").not("[name=btn-print]")
-                      .prop("disabled", true);
+                
+                
               }else{
                 console.log('for approval');
+                $('#message-bottom').remove();
                 $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
                       .prop("disabled", true);
               }
               //disabling of fields
+
+
 
 
               // add script that is status is approved then remove disable in fields
