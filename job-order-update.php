@@ -508,7 +508,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -630,7 +630,7 @@ require 'navbar.php';
                   <div class="table-responsive">
 
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tr>
                             <th></th>
                             <th>
@@ -686,7 +686,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -720,7 +720,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round table-responsive">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works
@@ -785,7 +785,7 @@ require 'navbar.php';
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
 
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-responsive">
                             <tbody>
                                 <tr>
                                     <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
@@ -820,7 +820,7 @@ require 'navbar.php';
                                 </tr>
 
                                 <tr>
-                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
+                                    <th colspan="4">Response time for the initial call for service</th>
                                     <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 5 ? 'checked' : 'disabled') : ($ResponseTime == 5 ? 'checked' : '');    ?> ></th>
                                     <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 4 ? 'checked' : 'disabled') : ($ResponseTime == 4 ? 'checked' : '');    ?> ></th>
                                     <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 3 ? 'checked' : 'disabled') : ($ResponseTime == 3 ? 'checked' : '');    ?> ></th>
