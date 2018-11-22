@@ -510,7 +510,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -629,7 +629,7 @@ require 'navbar.php';
                   <div class="table-responsive">
 
 
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -647,8 +647,8 @@ require 'navbar.php';
                             <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" readonly></th>
                             <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
                             <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Printed Name:</th>
                             <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" readonly></th>
                             <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
@@ -683,7 +683,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -716,7 +716,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works
@@ -779,7 +779,7 @@ require 'navbar.php';
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
 
-                        <table class="table table-bordered table-responsive">
+                        <table class="table table-bordered">
                             <tbody>
                                 <tr>
                                     <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
@@ -814,7 +814,7 @@ require 'navbar.php';
                                 </tr>
 
                                 <tr>
-                                    <th colspan="4">Response time for the initial call for service</th>
+                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
                                     <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 5 ? 'checked' : 'disabled') : ($ResponseTime == 5 ? 'checked' : '');    ?> ></th>
                                     <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 4 ? 'checked' : 'disabled') : ($ResponseTime == 4 ? 'checked' : '');    ?> ></th>
                                     <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 3 ? 'checked' : 'disabled') : ($ResponseTime == 3 ? 'checked' : '');    ?> ></th>
