@@ -8,7 +8,11 @@ require 'testadmin.php';
     }  
 
 
+if(isset($_POST['ongoing'])){
 
+  echo 'ongoing';
+  die();
+}
 if(isset($_POST['jos'])){
   //nameofoffice
   //serial
@@ -466,7 +470,7 @@ require 'navbar.php';
                             <select class="form-control form-control" name="status" id="status" disabled>
                                 <?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'Approved' AND Name <> 'Denied'  ";
+                                $sql = "SELECT Id, Name FROM status";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
@@ -510,7 +514,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-responsive table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -629,7 +633,7 @@ require 'navbar.php';
                   <div class="table-responsive">
 
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-responsive table-bordered w3-card w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -683,7 +687,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered table-responsive w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -716,7 +720,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table-responsive table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works
@@ -779,7 +783,7 @@ require 'navbar.php';
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
 
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-responsive">
                             <tbody>
                                 <tr>
                                     <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
@@ -857,10 +861,10 @@ require 'navbar.php';
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
 
-            <h4 id="message-bottom" class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
+            <h4 id="message-bottom" class="w3-text-green"></h4>
 
             <div class="container" style="margin-bottom: 5%">
-            <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
+            <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="custom-button">
             <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
           </div>
 </form>
@@ -874,18 +878,50 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
+
+                /*
+                  1 - For Approval
+                  2 - Approved
+                  3 - Denied
+                  4 - Pending
+                  4 - On - Going
+                  6 - Done
+                  7 - For Inspection
+                  USER TYPE CONDITIONS
+                */
               //disabling of fields
-              if(<?php echo $statusId ?> != 1){
-                console.log('not for approval');
-                
-                
-              }else{
+                console.log('statusId '+<?php echo $statusId ?>);
+
+              if(<?php echo $statusId ?> == 1){
                 console.log('for approval');
-                $('#message-bottom').remove();
+                //$('#message-bottom').remove();
                 $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
                       .prop("disabled", true);
+                
+              }else if(<?php echo $statusId ?> == 2){
+                //fields are now set for this status so we aint going to readonly any fields here
+                //but we need to add a text
+                //change button name for server side script
+                $("#custom-button").attr('name', 'ongoing');
+                $('#message-bottom').text('Submitting would set this as for On-going');
+
+              }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
+                //fields are now set for this status so we aint going to readonly any fields here
+                //but we need to add a text
+                $('#message-bottom').text('Uneditable');
+
+              }else if(<?php echo $statusId ?> == 7){
+                //fields are now set for this status so we aint going to readonly any fields here
+                //but we need to add a text
+                $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
+
               }
               //disabling of fields
+
+              //approve logic
+              /*readonly all fields except the fields given by bi*/
+              //approve logic
+
 
 
 
