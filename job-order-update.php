@@ -593,18 +593,41 @@ require 'navbar.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input classa="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
                             </tr>
                             <tr>
 
                                 <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
                             </tr>
                     </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            <br><br>
+<!--report-->
+<div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
             <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
               <?php echo $userJobDescription ?>
             </textarea></div>
-                    <br>
+                  </div>
+                </div>
+              </div>
+
+               <br>
+    <div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
 
 
                     <table class="table table-bordered w3-card w3-round">
@@ -651,6 +674,18 @@ require 'navbar.php';
                             </th>
                         </tr>
                     </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <br>
+    <div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
                     <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
@@ -673,7 +708,18 @@ require 'navbar.php';
                             <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
-                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+ <br>
+    <div class="container" style="margin-top: ;">
+        <!-- UPDATE form -->
+        <form action="" method="POST">
+            <!-- UPDATE card -->
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                  <div class="table-responsive">
                     <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
@@ -729,6 +775,8 @@ require 'navbar.php';
                     </table>
                 </div>
             </div>
+          </div>
+        </div>
             <br>
             <div class="container" style="margin-top: ;">
                 <!-- UPDATE form -->
@@ -814,10 +862,13 @@ require 'navbar.php';
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
+
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
+            <div class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="update">
             <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
+          </div>
 
 
                <?php 

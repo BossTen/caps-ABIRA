@@ -767,9 +767,12 @@ require 'navbar.php';
               <center>
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
 
+            <div class="container" style="margin-bottom: 5%">
+
             <input name="btn-decide" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Approve" id="update">
             <input name="btn-decide" style="padding:20px;" onClick="print();" class="no-print btn btn-danger" id="print-button" type="button" value="Decline">
             <input name="btn-print" style="padding:20px;" onClick="print();" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
+          </div>
 
 
                <?php 

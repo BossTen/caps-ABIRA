@@ -418,7 +418,7 @@ require 'navbar.php';
           </div>
           </div>
           </div>
-                    <br>
+  <br>
     <div class="container" style="margin-top: ;">
         <!-- UPDATE form -->
         <form action="" method="POST">
@@ -664,8 +664,11 @@ require 'navbar.php';
             </div>
             <br>
 
-
+<div class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Create">
+          </div>
+            
+
             <script src="js/jquery-3.3.1.js"></script>
             <script>    
                 $("#inspectionReport").keyup(function() {
