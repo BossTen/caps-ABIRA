@@ -9,208 +9,64 @@ require '../api/dbcon.php';
 
 
 
-if(isset($_POST['jos'])){
-  //nameofoffice
-  //serial
-
-  //Check connection
+if(isset($_POST['accept'])){
+    //Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 // prepare and binds
-$stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                               AirCondition=?,
-                                               CarpentryMasonry=?,
-                                               ElectricalWorks=?,
-                                               Painting=?,
-                                               Plumbing=?,
-                                               Welding=?,
-                                               RequestorSignature=?,
-                                               RequestorName=?,
-                                               RequestorDesignation=?,
-                                               DateRequested=?,
-                                               signatureOfInspector=?,
-                                               InspectorName=?,
-                                               InspectorDesignation=?,
-                                               DateInspected=?,
-                                               Approved=?,
-                                               StartOfService=?,
-                                               EndOfService=?,
-                                               NoOfHours=?,
-                                               Assessment=?,
-                                               StartOfServiceTime=?,
-                                               EndOfServiceTime=?,
-                                               AccomplishedWork1=?,
-                                               WorkDoneBy1=?,
-                                               Signature1=?,
-                                               AccomplishedWork2=?,
-                                               WorkDoneBy2=?,
-                                               Signature2=?,
-                                               AccomplishedWork3=?,
-                                               WorkDoneBy3=?,
-                                               Signature3=?,
-                                               AccomplishedWork4=?,
-                                               WorkDoneBy4=?,
-                                               Signature4=?,
-                                               ConformeName=?,
-                                               ConformeApproved=?,
-                                               ConformeDateApproved=?,
-                                               ResponseTime=?,
-                                               AccuracyOfWork=?,
-                                               Courtesy=?,
-                                               QualityOfService=?,
-                                               priorityId=?,
-                                               JobRecommendation=?,
-                                               InspectionReport=?,
-                                               materialsNeeded1=?,
-                                               materialsNeeded2=?,
-                                               materialsNeeded3=?,
-                                               materialsNeeded4=?,
-                                               materialsNeeded5=?,
-                                               materialsNeeded6=?,
-                                               materialsNeeded7=?,
-                                               materialsNeeded8=?,
-                                               materialsNeeded9=?,
-                                               materialsNeeded10=?, 
-                                               materialsNeeded11=?,
-                                               materialsNeeded12=? 
-                                               -- ApprovedBy,
+$stmt = $conn->prepare("UPDATE joborder SET statusId = ?
+
                                       
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
-                              $sIdu,
-                              $airConditioning,
-                              $masonryCarpentry,
-                              $electrical,
-                              $painting,
-                              $plumbing,
-                              $welding,
-                              $requesterSignature,
-                              $nameOfRequester,
-                              $designationOfRequester,
-                              $dateRequested,
-                              $inspecterSignature,
-                              $nameOfInspector,
-                              $designationOfInspecter,
-                              $dateInspected,
-                              $directorSignature,
-                              $startOfService,
-                              $endOfService,
-                              $noOfHours,
-                              $assessment,
-                              $startOfServiceTime,
-                              $endOfServiceTime,
-                              $accomplishedWork1,
-                              $workDoneBy1,
-                              $signature1,
-                              $accomplishedWork2,
-                              $workDoneBy2,
-                              $signature2,
-                              $accomplishedWork3,
-                              $workDoneBy3,
-                              $signature3,
-                              $accomplishedWork4,
-                              $workDoneBy4,
-                              $signature4,
-                              $conformeName,
-                              $conformeSignature,
-                              $conformeDateSigned,
-                              $responseTime,
-                              $accuracyOfWork,
-                              $courtesy,
-                              $qualityOfService,
-                              $priority,
-                              //$campus,
-                              $jobRecommendation,
-                              $inspectionReport,
-                              $m1get,
-                              $m2get,
-                              $m3get,
-                              $m4get,
-                              $m5get,
-                              $m6get,
-                              $m7get,
-                              $m8get,
-                              $m9get,
-                              $m10get,
-                              $m11get,
-                              $m12get,
-                              $serialCode
+$stmt->bind_param("ss",
+                              $statusId1,
+                              $serialCode1
 
                         );  
-// Approved = $directorSignature
-// set parameters and execute
-  $sIdu = 1;
-// $nameOfOffice = $_POST['nameofoffice'];
- $painting = isset($_POST['Painting']) ? "checked" : 'off';
- $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
- $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
- $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
- $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
- $welding = isset($_POST['Welding']) ? "checked" : 'off';
- // $date = $_POST['date1'];
- $requesterSignature = $_POST['requester-signature']; 
- $inspecterSignature = $_POST['inspecter-signature'];
- $directorSignature = $_POST['director-signature'];
- $nameOfRequester = $_POST['name-of-requester'];
- $nameOfInspector = $_POST['name-of-inspector'];
- $designationOfRequester = $_POST['designation-of-requester'];
- $designationOfInspecter = $_POST['designation-of-inspecter'];
- $dateRequested = $_POST['date-requested'];
- $dateInspected = $_POST['date-inspected'];
- $startOfService = $_POST['start-of-service'];
- $endOfService = $_POST['end-of-service'];
- $noOfHours = $_POST['no-of-hours'];
- $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
- $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
- $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
- $accomplishedWork1 = $_POST['accomplished-work1'];
- $workDoneBy1 = $_POST['work-done-by1'];
- $signature1 = $_POST['signature1'];
- $accomplishedWork2 = $_POST['accomplished-work2'];
- $workDoneBy2 = $_POST['work-done-by2'];
- $signature2 = $_POST['signature2'];
- $accomplishedWork3 = $_POST['accomplished-work3'];
- $workDoneBy3 = $_POST['work-done-by3'];
- $signature3 = $_POST['signature3'];
- $accomplishedWork4 = $_POST['accomplished-work4'];
- $workDoneBy4 = $_POST['work-done-by4'];
- $signature4 = $_POST['signature4'];
- $conformeName = $_POST['conforme-name'];
- $conformeSignature = $_POST['conforme-signature'];
- $conformeDateSigned = $_POST['conforme-date-signed'];
- $responseTime = isset($_POST['cb1'])? $_POST['cb1'] : "0" ;
- $accuracyOfWork = isset($_POST['cb2'])? $_POST['cb2'] : "0" ;
- $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
- $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
- $priority = $_POST['priority'];
- //$campus = $_POST['campus'];
- $jobRecommendation = $_POST['job-recommendation'];
- $inspectionReport = $_POST['inspect-report'];
- $m1get = isset($_POST['m1']) ? $_POST['m1'] : '';
- $m2get = isset($_POST['m2']) ? $_POST['m2'] : '';
- $m3get = isset($_POST['m3']) ? $_POST['m3'] : '';
- $m4get = isset($_POST['m4']) ? $_POST['m4'] : '';
- $m5get = isset($_POST['m5']) ? $_POST['m5'] : '';
- $m6get = isset($_POST['m6']) ? $_POST['m6'] : '';
- $m7get = isset($_POST['m7']) ? $_POST['m7'] : '';
- $m8get = isset($_POST['m8']) ? $_POST['m8'] : '';
- $m9get = isset($_POST['m9']) ? $_POST['m9'] : '';
- $m10get =isset($_POST['m10']) ? $_POST['m10'] : '';
- $m11get =isset($_POST['m11']) ? $_POST['m11'] : '';
- $m12get =isset($_POST['m12']) ? $_POST['m12'] : '';
 
- $serialCode = $_POST['serial'];
+
+
+ $serialCode1 = $_POST['serial'];
+//2 approve 3 denied
+ $statusId1 =  2;
 
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
 
+}else if (isset($_POST['denied'])){
+    //Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+// prepare and binds
+$stmt = $conn->prepare("UPDATE joborder SET statusId = ?
+
+                                      
+                                                WHERE SerialCode = ?
+                                               ");
+
+$stmt->bind_param("ss",
+                              $statusId1,
+                              $serialCode1
+
+                        );  
+
+
+
+ $serialCode1 = $_POST['serial'];
+//2 approve 3 denied
+ $statusId1 =  3 ;
+
+ $stmt->execute();
+ $stmt->close();
+ $conn->close(); 
+}
 require '../api/dbcon.php';
     //echo $sId;
     $stmt = $conn->prepare("select
@@ -389,7 +245,7 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly></h4>
                         <h4 class="col-6"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
                                 <?php
@@ -414,7 +270,7 @@ require 'navbar.php';
                             <select class="form-control form-control" name="status" id="status" disabled>
                                 <?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'Approved' AND Name <> 'Denied'  ";
+                                $sql = "SELECT Id, Name FROM status";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
@@ -454,12 +310,16 @@ require 'navbar.php';
     </center>
     <div class="container" style="margin-top: ;">
         <!-- UPDATE form -->
-        <form action="" method="POST">
+
             <!-- UPDATE card -->
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
+<<<<<<< HEAD
                     <table class="table table-bordered w3-card w3-round table-responsive">
+=======
+                    <table class="table table-responsive table-bordered w3-card w3-round">
+>>>>>>> 657492a4506a91d3b1a3825109d2c39bb44809a9
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -762,16 +622,15 @@ require 'navbar.php';
                 </div>
             </div>
             <br>
-              <!-- ADD -->
-              <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
+             
               <center>
-            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
-
+            
             <div class="container" style="margin-bottom: 5%">
 
-            <input name="btn-decide" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Approve" id="update">
-            <input name="btn-decide" style="padding:20px;" onClick="print();" class="no-print btn btn-danger" id="print-button" type="button" value="Decline">
+            <input name="accept" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Approve">
+            <input name="denied" style="padding:20px;" class="no-print btn btn-danger"  type="submit" value="Deny">
             <input name="btn-print" style="padding:20px;" onClick="print();" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
+          </form>
           </div>
 
 
@@ -783,12 +642,23 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
+              //disabling of fields
+              if(<?php echo $statusId ?> != 1){
+                console.log('not for approval');
+                $(":input").not("[name=btn-print]")
+                      .prop("disabled", true);
+              }else if(<?php echo $statusId ?> == 1){
+                console.log('for approval');
+                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+                      .prop("disabled", true);
+              }
+              //disabling of fields
 
               //disable all fields except btn approve and deny
-              $(document).ready(function () {
-                  $(":input").not("[name=btn-decide],[name=btn-print]")
-                      .prop("disabled", true);
-              });
+              // $(document).ready(function () {
+              //     $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+              //         .prop("disabled", true);
+              // });
               //disable all fields except btn approve and deny
 
 
