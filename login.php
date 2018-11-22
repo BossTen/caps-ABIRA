@@ -39,7 +39,7 @@ header('location: home.php');
    }else{
         echo "<script type='text/javascript'>
                 alert ('Username and Password unmatched!'); 
-                window.location.href='admin-login.php';</script>";
+                window.location.href='login.php';</script>";
 }
 
 
