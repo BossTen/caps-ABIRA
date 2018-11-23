@@ -13,6 +13,9 @@ if(isset($_POST['ongoing'])){
   echo 'ongoing';
   die();
 }
+if(isset($_POST['draft'])){
+
+}
 if(isset($_POST['jos'])){
   //nameofoffice
   //serial
@@ -897,19 +900,27 @@ $conn->close();
                 $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
                       .prop("disabled", true);
                 
-              }else if(<?php echo $statusId ?> == 2){
+              }else if(<?php echo $statusId ?> == 2 ){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
                 //change button name for server side script
                 $("#custom-button").attr('name', 'ongoing');
                 $('#message-bottom').text('Submitting would set this as for On-going');
 
+              }else if(<?php echo $statusId ?> == 3){
+                //denied
+                //but we need to add a text
+                $('#message-bottom').text('This Request is denied');
+                //add button draft to only save as draft and not change status
+                $(":input").not("")
+                      .prop("disabled", true);
+
               }else if(<?php echo $statusId ?> == 5){
                 //on going
                 //but we need to add a text
                 $('#message-bottom').text('Submitting would change the status to Done!, click draft if you only want to save');
                 //add button draft to only save as draft and not change status
-                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Draft" id="">');
+                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn btn-success" type="submit" value="draft" id="">');
                 $input.appendTo($("#btn-container"));
 
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
