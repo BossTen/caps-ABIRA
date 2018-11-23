@@ -863,7 +863,7 @@ require 'navbar.php';
 
             <h4 id="message-bottom" class="w3-text-green"></h4>
 
-            <div class="container" style="margin-bottom: 5%">
+            <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="custom-button">
             <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
           </div>
@@ -883,8 +883,7 @@ $conn->close();
                   1 - For Approval
                   2 - Approved
                   3 - Denied
-                  4 - Pending
-                  4 - On - Going
+                  5 - On - Going
                   6 - Done
                   7 - For Inspection
                   USER TYPE CONDITIONS
@@ -904,6 +903,14 @@ $conn->close();
                 //change button name for server side script
                 $("#custom-button").attr('name', 'ongoing');
                 $('#message-bottom').text('Submitting would set this as for On-going');
+
+              }else if(<?php echo $statusId ?> == 5){
+                //on going
+                //but we need to add a text
+                $('#message-bottom').text('Submitting would change the status to Done!, click draft if you only want to save');
+                //add button draft to only save as draft and not change status
+                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Draft" id="">');
+                $input.appendTo($("#btn-container"));
 
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
                 //fields are now set for this status so we aint going to readonly any fields here
