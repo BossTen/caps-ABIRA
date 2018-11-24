@@ -308,7 +308,7 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
 
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
                                 <th colspan="4">
@@ -427,7 +427,7 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
 
-                    <table class="table table-bordered w3-round table-responsive">
+                    <table class="table table-bordered w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -520,7 +520,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works

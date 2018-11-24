@@ -316,9 +316,9 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left:2%;">
 
 <<<<<<< HEAD
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round ">
 =======
-                    <table class="table table-responsive table-bordered w3-card w3-round">
+                    <table class="table  table-bordered w3-card w3-round">
 >>>>>>> 657492a4506a91d3b1a3825109d2c39bb44809a9
                         <tbody>
                             <tr>
@@ -418,7 +418,7 @@ require 'navbar.php';
                     <br>
 
 
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <table class="table table-bordered w3-card w3-round ">
                         <tr>
                             <th></th>
                             <th>

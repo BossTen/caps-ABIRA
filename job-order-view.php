@@ -40,6 +40,39 @@ require'navbar.php';
 <br><br>
 
 <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
+        <div class="card card-signin my-3">
+          <div class="card-body">
+            <div class="stat-icon dib">
+                <a href="" style='color:#1d1d1d !important;'>  <i class="fa fa-file" style="font-size:20px;"> Pending: </i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
+        <div class="card card-signin my-3">
+          <div class="card-body">
+            <div class="stat-icon dib">
+                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> For Inspection: </i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md- col-lg- mx-auto">
+        <div class="card card-signin my-3">
+          <div class="card-body">
+            <div class="stat-icon dib">
+                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pendingfor approval: </i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container">
    <div class="form-row">
       <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
       <div class="col-2"><h4>Campus</h4>
@@ -62,7 +95,7 @@ require'navbar.php';
 
 <div class="container">
 <div class="table-reponsive">    
-  <table class="table table-striped table-responsive">
+  <table class="table table-striped ">
     <thead>
       <tr>
         <th>Serial</th>
@@ -105,11 +138,11 @@ require'navbar.php';
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
 
                                     echo "<tr>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
                           echo "</tr>";
                                   
                                   
@@ -129,11 +162,11 @@ require'navbar.php';
                                   
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                                     echo "<tr>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
-                        echo "<td><a href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
+                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
                           echo "</tr>";
                                   
                                 }
