@@ -465,57 +465,57 @@ require 'navbar.php';
 
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
-
-                    <table class="table table-responsive table-bordered w3-card w3-round">
+                  <div class="table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
-                                <th colspan="col-5">
+                                <th >
                                     <center>Kindly put a check mark before the work<br> service and/or assistance to be done
                                 </th>
-                                <th colspan="2.5">
+                                <th >
                                     <center>Inspection report
                                 </th>
-                                <th colspan="2.5">
+                                <th >
                                     <center>Material Needed
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> readonly>
+                                <th  rowspan="2"><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> readonly>
                                     <label>Air-conditioning Works:</label></th>
-                                <th rowspan="5">
+                                <th  rowspan="5">
                                     <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" readonly><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>" readonly/></th>
+                                <th ><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>" readonly/></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>" readonly></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?> readonly>
+                                <th  rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?> readonly>
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>" readonly></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>" readonly></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?> readonly>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>" readonly></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>" readonly></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?> readonly>
@@ -527,10 +527,10 @@ require 'navbar.php';
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>" readonly></th>
                             </tr>
                             <tr>
-                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>" readonly></th>
+                              <th ><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>" readonly></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?> readonly>
@@ -539,11 +539,11 @@ require 'navbar.php';
                                     </label></th>
                             
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>" readonly></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?> readonly>
@@ -551,13 +551,14 @@ require 'navbar.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>" readonly></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>" readonly></th>
+                                <th ><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>" readonly></th>
                             </tr>
                     </table>
+                  </div>
             </div>
             </div>
             </div>
@@ -584,8 +585,9 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
 
+                  <div class="table-responsive">
 
-                    <table class="table table-responsive table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -630,6 +632,7 @@ require 'navbar.php';
                         </tr>
                     </table>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -639,7 +642,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered table-responsive w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -672,7 +675,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table-responsive table table-bordered w3-card w3-round">
+                    <table class=" table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works
@@ -734,8 +737,8 @@ require 'navbar.php';
 
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
-
-                        <table class="table table-bordered table-responsive">
+                      <div class ="table-responsive">
+                        <table class="table table-bordered">
                             <tbody>
                                 <tr>
                                     <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
@@ -805,6 +808,7 @@ require 'navbar.php';
 
                             </tbody>
                         </table>
+                      </div>
                     </div>
                 </div>
             </div>
