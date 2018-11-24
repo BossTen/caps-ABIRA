@@ -12,7 +12,7 @@ require '../api/dbconNApi.php';
 			$facultyId = '03210';
 			
 			//$auth_student = $api->authenticate_student($user,$password);
-			$data =$api->fetch_campuses();
+			$data =$api->fetch_schoolyear();
 			//fac_profile = $api->authenticate_faculty('','');
 			//$fac_c_listing = $api->fetch_faculty_class_listing('','','');
 			//echo $auth_student;

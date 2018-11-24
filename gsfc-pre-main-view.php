@@ -81,7 +81,6 @@ while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['month'] . "</td>";
   echo "<td>" . $row['campus'] . "</td>";
-  echo "<td>" . $row['college'] . "</td>";
   echo "<td>" . $row['m_activity'] . "</td>";
   echo "<td>" . $row['dateStarted'] . "</td>";
   echo "<td>" . $row['dateEnded'] . "</td>";

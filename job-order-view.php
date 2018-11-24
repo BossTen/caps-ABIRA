@@ -40,39 +40,6 @@ require'navbar.php';
 <br><br>
 
 <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
-        <div class="card card-signin my-3">
-          <div class="card-body">
-            <div class="stat-icon dib">
-                <a href="" style='color:#1d1d1d !important;'>  <i class="fa fa-file" style="font-size:20px;"> Pending: </i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
-        <div class="card card-signin my-3">
-          <div class="card-body">
-            <div class="stat-icon dib">
-                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> For Inspection: </i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md- col-lg- mx-auto">
-        <div class="card card-signin my-3">
-          <div class="card-body">
-            <div class="stat-icon dib">
-                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pendingfor approval: </i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-<div class="container">
    <div class="form-row">
       <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
       <div class="col-2"><h4>Campus</h4>
@@ -94,13 +61,8 @@ require'navbar.php';
 
 
 <div class="container">
-<<<<<<< HEAD
-<div class="table-reponsive">    
-  <table class="table table-striped ">
-=======
 <div class="table-responsive">    
   <table class="table table-striped">
->>>>>>> 55736d8c686d3c68c6b79154cfc30e6233c322fb
     <thead>
       <tr>
         <th>Serial</th>
@@ -127,49 +89,15 @@ require'navbar.php';
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
 
                                     echo "<tr>";
-<<<<<<< HEAD
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
-=======
                         echo redirectTo($serialCode, $statusId, $serialCode);
                         echo redirectTo($serialCode, $statusId, $campus);
                         echo redirectTo($serialCode, $statusId, $userJobDescription);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
->>>>>>> 55736d8c686d3c68c6b79154cfc30e6233c322fb
                           echo "</tr>";
                                   
                                   
                                 }
-<<<<<<< HEAD
-                    }else if($_SESSION['usr_type']=='faculty'){
-                                    //WE WILL ONLY GET DATA THAT ARE REGISTERED BY THE USER
-                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.RequestorName = ?");
-
-                                                        $stmt->bind_param('s',$usrname);
-                                                        $usrname = $_SESSION['usr_fullname'];
-                                                        $stmt->execute();
-                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
-
-                                
-                                while($stmt->fetch()){
-
-                                  
-                                   $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
-                                    echo "<tr>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
-                          echo "</tr>";
-                                  
-                                }
-=======
->>>>>>> 55736d8c686d3c68c6b79154cfc30e6233c322fb
                     }
                               function redirectTo($sCode, $sId, $desc){
 
