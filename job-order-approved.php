@@ -1,15 +1,13 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+require '../api/dbcon.php';
 require 'testadmin.php';
-require_once '../api/dbcon.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
              session_start();
     }  
-
-
 
 
 
@@ -144,7 +142,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                         );  
 // Approved = $directorSignature
 // set parameters and execute
-  $sIdu = 1;
+  $sIdu = 5;
 // $nameOfOffice = $_POST['nameofoffice'];
  $painting = isset($_POST['Painting']) ? "checked" : 'off';
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
@@ -211,14 +209,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
 }
 
-//--------------------------ON GOING -----------------------------------//
-
-//--------------------------ON GOING -----------------------------------//
-
-
-
 require '../api/dbcon.php';
-    //echo $sId;
     $stmt = $conn->prepare("select
                            NameOfOffice,
                            SerialCode,
@@ -358,7 +349,8 @@ require '../api/dbcon.php';
         echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId!=7){
+      if($statusId!=2){
+        //if status is not equals to approved
         header('location: job-order-view.php');
       }
 
@@ -632,7 +624,7 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>" readonly></th>
+                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>" ></th>
                             <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"readonly ></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
@@ -658,17 +650,17 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" readonly></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" ></th>
+                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" ></th>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" >
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> readonly>Work completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> >Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
-                            <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Work not completed upon agreed duration</th>
+                            <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" ></th>
+                            <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" ></th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> >Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
@@ -695,33 +687,33 @@ require 'navbar.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature1" value="<?php echo $Signature1?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" ></th>
+                            <th><input class="w3-input onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
+                            <th><input class="w3-input onNapprove" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature2" value="<?php echo $Signature2?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" ></th>
+                            <th><input class="w3-input onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
+                            <th><input class="w3-input onNapprove" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature3" value="<?php echo $Signature3?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" ></th>
+                            <th><input class="w3-input onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
+                            <th><input class="w3-input onNapprove" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature4" value="<?php echo $Signature4; ?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" ></th>
+                            <th><input class="w3-input onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
+                            <th><input class="w3-input onNapprove" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo $ConformeName?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-signature"readonly></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-signature"></th>
                             <th>
-                                <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
+                                <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" >
                             </th>
                         </tr>
                         <tr>
@@ -838,7 +830,7 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
                 ?>
-            <script src="js/jquery-3.3.1.js"></script>
+
             <script>
 
                 /*
@@ -853,53 +845,14 @@ $conn->close();
               //disabling of fields
                 console.log('statusId '+<?php echo $statusId ?>);
 
-              if(<?php echo $statusId ?> == 1){
-                console.log('for approval');
-                //$('#message-bottom').remove();
-                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
-                      .prop("disabled", true);
-                
-              }else if(<?php echo $statusId ?> == 2 ){
+              if(<?php echo $statusId ?> == 2 ){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
                 //change button name for server side script
-                $("#custom-button").attr('name', 'ongoing');
                 $('#message-bottom').text('Submitting would set this as for On-going');
-                                $(":input").not("[class=onNapprove]")
-                      .prop("disabled", true);
-                      $(".onNapprove").removeAttr("disabled");
-                      $(".onNapprove").removeAttr("readonly");
-
-              }else if(<?php echo $statusId ?> == 3){
-                //denied
-                //but we need to add a text
-                $('#message-bottom').text('This Request is denied');
-                //add button draft to only save as draft and not change status
-                $(":input").not("")
-                      .prop("disabled", true);
-
-              }else if(<?php echo $statusId ?> == 5){
-                //on going
-                //but we need to add a text
-                $("#custom-button").attr('name', 'ongoing');
-                $('#message-bottom').text('Submitting would change the status to Done!, click draft if you only want to save');
-                //add button draft to only save as draft and not change status
-                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
-                $input.appendTo($("#btn-container"));
-                                $(":input").not("[class=onNapprove]")
-                      .prop("disabled", true);
-                      $(".onNapprove").removeAttr("disabled");
-                      $(".onNapprove").removeAttr("readonly");
-
-              }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
-                $('#message-bottom').text('Uneditable');
-
-              }else if(<?php echo $statusId ?> == 7){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
-                $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
+                      //           $(":input").not("[class=onNapprove]")
+                      // .prop("disabled", true);
+                      
 
               }
               //disabling of fields
@@ -907,10 +860,6 @@ $conn->close();
               //approve logic
               /*readonly all fields except the fields given by bi*/
               //approve logic
-
-
-
-
 
               // add script that is status is approved then remove disable in fields
                 $("#inspectionReport").keyup(function() {
@@ -1037,56 +986,8 @@ $conn->close();
 
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
-                /*
-                  1 - For Approval
-                  2 - Approved
-                  3 - Denied
-                  4 - Pending
-                  4 - On - Going
-                  6 - Done
-                  7 - For CSO Additional Info
-                  USER TYPE CONDITIONS
-                */
+
                 
-
-                //fields and buttons logic
-                if(status==7){
-                  console.log("status is 7");
-                  select_priority.disabled = true;
-                }
-
-                  
-
-
-
-                // switch(s_usr_type){
-                //   case "admin":
-                //   console.log("admin - switch");
-                //         if(status !=  7){
-                            
-                //             select_priority.disabled = true;
-
-                //             console.log("disabled");
-                //           }else{
-                //             update_button.disabled = false;
-                //             console.log("not disabled");
-                //             }
-                //         break;
-
-                //   case "director":
-                //   console.log("director");
-                //           if(status == 7)
-                //             update_button.disabled = true;
-                //           else
-                //             update_button.disabled = false;
-                //         break;
-
-                //   case "faculty":
-                //   console.log("faculty");
-                //             update_button.disabled = true;
-                //         break;
-
-                // }
 
             </script>
 </body>

@@ -2,7 +2,6 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require 'testadmin.php';
-require_once '../api/dbcon.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
@@ -211,12 +210,6 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
 }
 
-//--------------------------ON GOING -----------------------------------//
-
-//--------------------------ON GOING -----------------------------------//
-
-
-
 require '../api/dbcon.php';
     //echo $sId;
     $stmt = $conn->prepare("select
@@ -358,7 +351,8 @@ require '../api/dbcon.php';
         echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId!=7){
+      if($statusId==2||$statusId==5||$statusId==7){
+        //if status is equals to approved, ongoing, for inspection
         header('location: job-order-view.php');
       }
 
@@ -908,10 +902,6 @@ $conn->close();
               /*readonly all fields except the fields given by bi*/
               //approve logic
 
-
-
-
-
               // add script that is status is approved then remove disable in fields
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
@@ -1037,56 +1027,8 @@ $conn->close();
 
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
-                /*
-                  1 - For Approval
-                  2 - Approved
-                  3 - Denied
-                  4 - Pending
-                  4 - On - Going
-                  6 - Done
-                  7 - For CSO Additional Info
-                  USER TYPE CONDITIONS
-                */
+
                 
-
-                //fields and buttons logic
-                if(status==7){
-                  console.log("status is 7");
-                  select_priority.disabled = true;
-                }
-
-                  
-
-
-
-                // switch(s_usr_type){
-                //   case "admin":
-                //   console.log("admin - switch");
-                //         if(status !=  7){
-                            
-                //             select_priority.disabled = true;
-
-                //             console.log("disabled");
-                //           }else{
-                //             update_button.disabled = false;
-                //             console.log("not disabled");
-                //             }
-                //         break;
-
-                //   case "director":
-                //   console.log("director");
-                //           if(status == 7)
-                //             update_button.disabled = true;
-                //           else
-                //             update_button.disabled = false;
-                //         break;
-
-                //   case "faculty":
-                //   console.log("faculty");
-                //             update_button.disabled = true;
-                //         break;
-
-                // }
 
             </script>
 </body>

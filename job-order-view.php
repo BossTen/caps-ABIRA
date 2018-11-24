@@ -112,7 +112,7 @@ require'navbar.php';
                                         return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   default:
-                                        return "<td><a href='job-order-form.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
 
 
