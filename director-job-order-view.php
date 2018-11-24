@@ -36,7 +36,17 @@ require'navbar-director.php';
    <div class="form-row">
       <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
       <div class="col-2"><h4>Campus</h4>
-        <select name="services" style="width:80%;"></select>
+        <select name="campus" id="campus" style="width:80%;" onchange="filterTable()">
+          <?php
+                                require '../api/apiOnly.php';
+                                  $campuses = json_decode($api->fetch_campuses(),true);
+                                  foreach ($campuses as $campus) {
+                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
+
+                                  }
+
+                              ?>
+        </select>
       </div>
       <div class="col-2"><h4>Month</h4>
         <select name="services" style="width:80%;"></select>
@@ -55,11 +65,11 @@ require'navbar-director.php';
 
 <div class="container">
 <div class="table-reponsive">    
-  <table class="table table-striped">
+  <table class="table table-striped" id="director-table">
     <thead>
       <tr>
         <th>Serial</th>
-        <th>Subject</th>
+        <th>Campus</th>
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>
@@ -86,23 +96,16 @@ require'navbar-director.php';
                           echo "</tr>";
                                   }
                                 }
-                    }
-
-
+                              }
                               ?>
-
-
             </tbody>
         </table>
       </div>
     </div>
-
-    <div class="container ">
+    <!-- <div class="container ">
         <div class="float-right"><a href="job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>
         </div>
-    </div>
-
-
+    </div> -->
     <script>
         function sortTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -161,12 +164,15 @@ require'navbar-director.php';
 
         function filterTable() {
             var input, filter, table, tr, td, i;
-            input = document.getElementById("myInput");
+            input = document.getElementById("campus");
             filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
+            table = document.getElementById("director-table");
             tr = table.getElementsByTagName("tr");
+
+              // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
+                td = tr[i].getElementsByTagName("td")[1]; //campus
+                
                 if (td) {
                     if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
