@@ -1,5 +1,6 @@
 <?php
-require '../api/dbcon.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 require 'testadmin.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
@@ -8,19 +9,11 @@ require 'testadmin.php';
     }  
 
 
-if(isset($_POST['ongoing'])){
 
-  echo 'ongoing';
-  die();
-}
-if(isset($_POST['draft'])){
 
-}
+
 if(isset($_POST['jos'])){
-  //nameofoffice
-  //serial
 
-  //Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -194,7 +187,6 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
  $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
  $priority = $_POST['priority'];
- //$campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
  $m1get = isset($_POST['m1']) ? $_POST['m1'] : '';
@@ -217,6 +209,12 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $conn->close(); 
 
 }
+
+//--------------------------ON GOING -----------------------------------//
+
+//--------------------------ON GOING -----------------------------------//
+
+
 
 require '../api/dbcon.php';
     //echo $sId;
@@ -358,54 +356,14 @@ require '../api/dbcon.php';
          // exit();
         echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
+
+      if($statusId!=7){
+        header('location: job-order-view.php');
+      }
+
+
       //code for checking if user is with the same campus as the requester
-
-//        echo $NameOfOffice;
-//        echo $DateRequestCreated;
-//        echo $AirCondition;
-//        echo $CarpentryMasonry;
-//        echo $ElectricalWorks;
-//        echo $Plumbing;
-//        echo $Welding;
-//        echo $RequestorSignature;
-//        echo $RequestorName;
-//        echo $RequestorDesignation;
-//        echo $DateRequested;
-//        echo $signatureOfInspector;
-//        echo $InspectorName;
-//        echo $InspectorDesignation;
-//        echo $DateInspected;
-//        echo $Approved;
-//        echo $StartOfService;
-//        echo $EndOfService;
-//        echo $NoOfHours;
-//        echo $Assessment;
-//        echo $StartOfServiceTime;
-//        echo $EndOfServiceTime;
-//        echo $AccomplishedWork1;
-//        echo $WorkDoneBy1;
-//        echo $Signature1;
-//        echo $AccomplishedWork2;
-//        echo $WorkDoneBy2;
-//        echo $Signature2;
-//        echo $AccomplishedWork3;
-//        echo $WorkDoneBy3;
-//        echo $Signature3;
-//        echo $AccomplishedWork4;
-//        echo $WorkDoneBy4;
-//        echo $Signature4;
-//        echo $ConformeName;
-//        echo $ConformeApproved;
-//        echo $ConformeDateApproved;
-//        echo $ResponseTime;
-//        echo $AccuracyOfWork;
-//        echo $Courtesy;
-//        echo $QualityOfService;
-//        echo $priorityId;
-//        echo $CampusId;
-//        echo $JobRecommendation;
-//        echo $InspectionReport;
-
+      
 
 ?>
 <!DOCTYPE html>
@@ -867,8 +825,8 @@ require 'navbar.php';
             <h4 id="message-bottom" class="w3-text-green"></h4>
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
-            <input name="jos" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="" style="padding:20px;" class="no-print btn btn-warning" type="submit" value="Print">
+            <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
+            <input name="" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="submit" value="Print">
           </div>
 </form>
 
@@ -908,6 +866,8 @@ $conn->close();
                 $('#message-bottom').text('Submitting would set this as for On-going');
                                 $(":input").not("[class=onNapprove]")
                       .prop("disabled", true);
+                      $(".onNapprove").removeAttr("disabled");
+                      $(".onNapprove").removeAttr("readonly");
 
               }else if(<?php echo $statusId ?> == 3){
                 //denied
@@ -920,9 +880,10 @@ $conn->close();
               }else if(<?php echo $statusId ?> == 5){
                 //on going
                 //but we need to add a text
+                $("#custom-button").attr('name', 'ongoing');
                 $('#message-bottom').text('Submitting would change the status to Done!, click draft if you only want to save');
                 //add button draft to only save as draft and not change status
-                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn btn-success" type="submit" value="draft" id="">');
+                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
                 $input.appendTo($("#btn-container"));
                                 $(":input").not("[class=onNapprove]")
                       .prop("disabled", true);
