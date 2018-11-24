@@ -7,7 +7,10 @@ if(isset($_POST['jos'])){
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+/*
+  After create it will be set its status as "for approval"
 
+*/
 // prepare and binds
 $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                SerialCode,
@@ -55,6 +58,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                CampusId,
                                                JobRecommendation,
                                                InspectionReport,
+                                               statusId,
                                                m1,
                                                m2,
                                                m3,
@@ -119,6 +123,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
                               $campus,
                               $jobRecommendation,
                               $inspectionReport,
+                              $statusId,
                               $m1,
                               $m2,
                               $m3,
@@ -179,6 +184,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
  $campus = $_POST['campus'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
+ $statusId = 1;
  $m1 = $_POST['m1'];
  $m2 = $_POST['m2'];
  $m3 = $_POST['m3'];
@@ -195,6 +201,47 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
 }
+require '../api/dbcon.php';
+
+        date_default_timezone_set('Asia/Hong_Kong');
+        $todaysSerialCode='';
+
+
+            if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+            }
+            /*GETTING LATEST SERIAL CODE LAST VALUE
+                -query database
+                -if no result is given/null then the assumption is the there are no serialcode created for that date
+                -if there are no serial code then append int 01 else then add one to the latest value
+            */
+            $todaysSerialCode = substr($_SESSION['usr_campus'], 0, 2) . date('y') . date('m') . date('d');
+            $stmt1=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
+            $stmt1->bind_param('s',$searchForLatestSerialCode);
+            $searchForLatestSerialCode= $todaysSerialCode . '__';
+            $stmt1->execute();
+            $stmt1->bind_result($latestSerialCode);
+            if($stmt1->fetch()){
+            // getting the last 2 digits of the serial code and adding 1
+            $latestSerialNum = substr($latestSerialCode, 8,10)+1;
+             /*
+                in adding one for example
+                04 + 1 the result would be 4
+                so we need to append again a zero below
+                so if the length of the value is less than or equal to one 
+                we append a zero in front of it
+             */
+             if(strlen($latestSerialNum)<=1)
+                $latestSerialNum = '0'.$latestSerialNum;
+            //appending the latest number
+                 $todaysSerialCode = $todaysSerialCode . $latestSerialNum;
+            }else{
+                $todaysSerialCode = $todaysSerialCode . '01';
+            }
+           
+
+        $stmt1->close();
+        $conn->close();
 
 ?>
 <!DOCTYPE html>
@@ -237,16 +284,18 @@ require 'navbar.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" disabled="" /></h4>
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" value="<?php echo $todaysSerialCode; ?>" readonly/></h4>
                         <h4 class="col-6"><b>Priority</b>&nbsp;
                             <select class="form-control form-control" name="priority" id="priority">
-                                <?php
+                                 <?php
+                                require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
-
                                   while ($row =  $result->fetch_assoc()) {
-            echo "<option value='".$row['Id']."'>".$row['Name']."</option>";
+                                  //$selected = $row['Id']==$statusId ? 'selected' : '';
+
+                              echo "<option value='".$row['Id']."' ". 'selected' .">".$row['Name']."</option>";
 
                                   }
                                 }
@@ -260,13 +309,13 @@ require 'navbar.php';
                             <select class="form-control form-control" name="status" id="status" disabled>
                                 <?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status WHERE Name <> 'Approved' AND Name <> 'Denied'  ";
+                                $sql = "SELECT Id, Name FROM status WHERE Name = 'Pending For Approval'  ";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
-                                  $selected = $row['Id']==$statusId ? 'selected' : '';
+                                  //$selected = $row['Id']==$statusId ? 'selected' : '';
 
-            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            echo "<option value='".$row['Id']."' ". 'selected' .">".$row['Name']."</option>";
 
                                   }
                                 }
@@ -431,7 +480,7 @@ require 'navbar.php';
                             <th>Signature:</th>
                             <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
                             <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
+                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
@@ -480,17 +529,17 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService"></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" disabled>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" readonly></th>
+                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService" readonly></th>
+                            <th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="completed">Work completed upon agreed duration</th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="completed" readonly>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime"></th>
-                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime"></th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted">Work not completed upon agreed duration</th>
+                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" readonly></th>
+                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" readonly></th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" readonly>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
@@ -520,33 +569,33 @@ require 'navbar.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1"></th>
-                            <th><input class="w3-input" type="text" name="signature1"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by1" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature1" readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2"></th>
-                            <th><input class="w3-input" type="text" name="signature2"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by2" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature2" readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3"></th>
-                            <th><input class="w3-input" type="text" name="signature3"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by3" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature3" readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4"></th>
-                            <th><input class="w3-input" type="text" name="signature4"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by4" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature4" readonly></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input" type="text" name="conforme-name"></th>
-                            <th><input class="w3-input" type="text" name="conforme-signature"></th>
+                            <th><input class="w3-input" type="text" name="conforme-name" readonly></th>
+                            <th><input class="w3-input" type="text" name="conforme-signature" readonly></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed">
+                                <center><input type="date" class="form-control" name="conforme-date-signed" readonly>
                             </th>
                         </tr>
                         <tr>
@@ -612,35 +661,35 @@ require 'navbar.php';
 
                                 <tr>
                                     <th colspan="4">Response time for the initial call for service</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb1"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb1"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb1" disabled></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb1" disabled></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb1" disabled></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb1" disabled></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb1" disabled></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb2"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb2"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb2" disabled></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb2" disabled></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb2" disabled></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb2" disabled></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb2" disabled></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Courtesy and professionalis of the attending personel</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb3"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb3"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb3" disabled></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb3" disabled></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb3" disabled></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb3" disabled></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb3" disabled></th>
                                 </tr>
                                 <tr>
                                     <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb4"></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb4"></th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb4" disabled></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb4" disabled></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb4" disabled></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb4" disabled></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb4" disabled></th>
                                 </tr>
 
 

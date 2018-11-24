@@ -205,10 +205,19 @@ require 'navbar-faculty.php';
          <div class="row">
                             <h4 class="col-12"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
-                    <option value="Low" id="Low" name="Low" class="w3-text-blue">Low</option>
-                    <option value="Normal" name="Normal" id="Normal" class="w3-text-green">Normal</option>
-                    <option value="Medium" name="Medium" id="Medium" class="w3-text-orange">Medium</option>
-                    <option value="High" name="High" id="High" class="w3-text-red">High</option>
+                    <?php
+                                require '../api/dbcon.php';
+                                $sql = "SELECT Id, Name FROM priority";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+                                  while ($row =  $result->fetch_assoc()) {
+                                  //$selected = $row['Id']==$statusId ? 'selected' : '';
+                                      
+                              echo "<option value='".$row['Id']."' ". 'selected' .">".$row['Name']."</option>";
+
+                                  }
+                                }
+                              ?>
                 </select>
             </h4>
         </div>
