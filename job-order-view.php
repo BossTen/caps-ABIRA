@@ -94,8 +94,13 @@ require'navbar.php';
 
 
 <div class="container">
+<<<<<<< HEAD
 <div class="table-reponsive">    
   <table class="table table-striped ">
+=======
+<div class="table-responsive">    
+  <table class="table table-striped">
+>>>>>>> 55736d8c686d3c68c6b79154cfc30e6233c322fb
     <thead>
       <tr>
         <th>Serial</th>
@@ -110,23 +115,7 @@ require'navbar.php';
 
       require '../api/dbcon.php';
 
-                    if($_SESSION['usr_type']=='director'){
-                                $sql = "SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.statusId = 1";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0){
-
-                                  while ($row =  $result->fetch_assoc()) {
-                                   $description =   empty($row['JobRecommendation']) ? $row['UserJobDescription'] : $row['JobRecommendation'];
-                                    echo "<tr>";
-                        echo "<td><a href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['Campus'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $row['SerialCode']. "'>" .$description. "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['DateRequestCreated'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['statusName'] . "</td>";
-                          echo "</tr>";
-                                  }
-                                }
-                    }else if($_SESSION['usr_type']=='admin'){
+                   if($_SESSION['usr_type']=='admin'){
                                                         $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ?");
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
@@ -138,15 +127,24 @@ require'navbar.php';
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
 
                                     echo "<tr>";
+<<<<<<< HEAD
                         echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $serialCode . "</td>";
                         echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $campus . "</td>";
                         echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" .$userJobDescription. "</td>";
                         echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $dCreated . "</td>";
                         echo "<td><a style='color:#1d1d1d !important;' href='job-order-update.php?serial=". $serialCode. "'>" . $statusName . "</td>";
+=======
+                        echo redirectTo($serialCode, $statusId, $serialCode);
+                        echo redirectTo($serialCode, $statusId, $campus);
+                        echo redirectTo($serialCode, $statusId, $userJobDescription);
+                        echo redirectTo($serialCode, $statusId, $dCreated);
+                        echo redirectTo($serialCode, $statusId, $statusName);
+>>>>>>> 55736d8c686d3c68c6b79154cfc30e6233c322fb
                           echo "</tr>";
                                   
                                   
                                 }
+<<<<<<< HEAD
                     }else if($_SESSION['usr_type']=='faculty'){
                                     //WE WILL ONLY GET DATA THAT ARE REGISTERED BY THE USER
                                                         $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.RequestorName = ?");
@@ -170,9 +168,29 @@ require'navbar.php';
                           echo "</tr>";
                                   
                                 }
+=======
+>>>>>>> 55736d8c686d3c68c6b79154cfc30e6233c322fb
                     }
+                              function redirectTo($sCode, $sId, $desc){
+
+                                switch($sId){
+                                  case 2: 
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  case 5:
+                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  case 7:
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  default:
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
 
 
+                                }
+                                
+                              }
                               ?>
 
 
@@ -263,7 +281,7 @@ require'navbar.php';
         }
 
     </script>
-
+</div>
 </body>
 
 </html>

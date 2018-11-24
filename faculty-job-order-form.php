@@ -69,6 +69,7 @@
                                                        CarpentryMasonry,
                                                        ElectricalWorks,
                                                        Plumbing,
+                                                       Painting,
                                                        Welding,
                                                        Campus,
                                                        priorityId, 
@@ -78,7 +79,7 @@
                                                        statusId,
                                                        DateRequestCreated,
                                                        NameOfOffice
-                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
             if($stmt){
             echo "<script type='text/javascript'>
                         alert ('Successful insertion of data'); 
@@ -88,13 +89,14 @@
                         alert ('Not Successful insertion of data'); 
                         window.location.href='faculty-job-order-form.php';</script>";
             }                                    
-        $stmt->bind_param('sssssssssssss',
+        $stmt->bind_param('ssssssssssssss',
                             $airConditioning,
                             $masonryCarpentry,
                             $electrical,
                             $plumbing,
                             $welding,
                             $campus,
+                            $painting,
                             $priority,
                             $requester,
                             $userJobDescription,
@@ -108,7 +110,9 @@
          $electrical = isset($_POST['ElectricalWorks']) ? "checked" : '';
          $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
          $welding = isset($_POST['Welding']) ? "checked" : '';
+         $painting =  isset($_POST['Painting']) ? "checked" : '';
          $campus =  $_POST['campus'];
+        
          $priority =  $priorityId;
          $requester = $_SESSION['usr_fullname'];
          $userJobDescription = $_POST['user-job-description'];
@@ -131,10 +135,10 @@
     <title>Faculty Job Order Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
@@ -201,10 +205,19 @@ require 'navbar-faculty.php';
          <div class="row">
                             <h4 class="col-12"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority">
-                    <option value="Low" id="Low" name="Low" class="w3-text-blue">Low</option>
-                    <option value="Normal" name="Normal" id="Normal" class="w3-text-green">Normal</option>
-                    <option value="Medium" name="Medium" id="Medium" class="w3-text-orange">Medium</option>
-                    <option value="High" name="High" id="High" class="w3-text-red">High</option>
+                    <?php
+                                require '../api/dbcon.php';
+                                $sql = "SELECT Id, Name FROM priority";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0){
+                                  while ($row =  $result->fetch_assoc()) {
+                                  //$selected = $row['Id']==$statusId ? 'selected' : '';
+                                      
+                              echo "<option value='".$row['Id']."' ". 'selected' .">".$row['Name']."</option>";
+
+                                  }
+                                }
+                              ?>
                 </select>
             </h4>
         </div>
@@ -215,7 +228,7 @@ require 'navbar-faculty.php';
             <input class="w3-check" type="checkbox" name="AirCondition" id="AirCondition"><label>Air-conditioning Works</label><br>
             <input class="w3-check" type="checkbox" name="CarpentryMasonary" id="CarpentryMasonary"><label>Carpentry/Masonary Works</label><br>
             <input class="w3-check" type="checkbox" name="ElectricalWorks" id="ElectricalWorks"><label>Electrical Works</label><br>
-            <input class="w3-check" type="checkbox" name="" id=""><label>Painting Works</label><br>
+            <input class="w3-check" type="checkbox" name="Painting" id=""><label>Painting Works</label><br>
             <input class="w3-check" type="checkbox" name="Plumbing" id="Plumbing"><label>Plumbing Works</label><br>
             <input class="w3-check" type="checkbox" name="Welding" id="Welding"><label>Welding Works</label><br>
             <br>
