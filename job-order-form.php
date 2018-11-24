@@ -20,6 +20,7 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                ElectricalWorks,
                                                Plumbing,
                                                Welding,
+                                               Painting,
                                                RequestorSignature,
                                                RequestorName,
                                                RequestorDesignation,
@@ -28,52 +29,29 @@ $stmt = $conn->prepare("INSERT INTO joborder (NameOfOffice,
                                                InspectorName,
                                                InspectorDesignation,
                                                DateInspected,
-                                               Approved,
-                                               StartOfService,
-                                               EndOfService,
-                                               NoOfHours,
-                                               Assessment,
-                                               StartOfServiceTime,
-                                               EndOfServiceTime,
-                                               AccomplishedWork1,
-                                               WorkDoneBy1,
-                                               Signature1,
-                                               AccomplishedWork2,
-                                               WorkDoneBy2,
-                                               Signature2,
-                                               AccomplishedWork3,
-                                               WorkDoneBy3,
-                                               Signature3,
-                                               AccomplishedWork4,
-                                               WorkDoneBy4,
-                                               Signature4,
-                                               ConformeName,
-                                               ConformeApproved,
-                                               ConformeDateApproved,
-                                               ResponseTime,
-                                               AccuracyOfWork,
-                                               Courtesy,
-                                               QualityOfService,
                                                priorityId,
-                                               CampusId,
+                                               Campus,
                                                JobRecommendation,
                                                InspectionReport,
                                                statusId,
-                                               m1,
-                                               m2,
-                                               m3,
-                                               m4,
-                                               m5,
-                                               m6,
-                                               m7,
-                                               m8,
-                                               m9,
-                                               m10
-
+                                               materialsNeeded1,
+                                               materialsNeeded2,
+                                               materialsNeeded3,
+                                               materialsNeeded4,
+                                               materialsNeeded5,
+                                               materialsNeeded6,
+                                               materialsNeeded7,
+                                               materialsNeeded8,
+                                               materialsNeeded9,
+                                               materialsNeeded10,
+                                               materialsNeeded11,
+                                               materialsNeeded12
+                                              -- 32
                                                ) 
-                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?,?,?,?,?,?,?,?,?,?,?)");
+                                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $nameOfOffice,
+$stmt->bind_param("ssssssssssssssssssssssssssssssssss",
+                              $nameOfOffice,
                               $serialCode,
                               $date,
                               $airConditioning,
@@ -81,44 +59,15 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
                               $electrical,
                               $plumbing,
                               $welding,
-
+                              $painting,
                               $requesterSignature,
                               $nameOfRequester,
                               $designationOfRequester,
                               $dateRequested,
-
                               $inspecterSignature,
                               $nameOfInspector,
                               $designationOfInspecter,
                               $dateInspected,
-
-                              $directorSignature,
-
-                              $startOfService,
-                              $endOfService,
-                              $noOfHours,
-                              $assessment,
-                              $startOfServiceTime,
-                              $endOfServiceTime,
-                              $accomplishedWork1,
-                              $workDoneBy1,
-                              $signature1,
-                              $accomplishedWork2,
-                              $workDoneBy2,
-                              $signature2,
-                              $accomplishedWork3,
-                              $workDoneBy3,
-                              $signature3,
-                              $accomplishedWork4,
-                              $workDoneBy4,
-                              $signature4,
-                              $conformeName,
-                              $conformeSignature,
-                              $conformeDateSigned,
-                              $responseTime,
-                              $accuracyOfWork,
-                              $courtesy,
-                              $qualityOfService,
                               $priority,
                               $campus,
                               $jobRecommendation,
@@ -133,6 +82,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
                               $m7,
                               $m8,
                               $m9,
+                              $m10,
                               $m11,
                               $m12
                         );  
@@ -144,6 +94,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssissssssssssss", $n
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : '';
  $electrical = isset($_POST['Electrical']) ? "checked" : '';
  $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
+ $painting = isset($_POST['Painting']) ? "checked" : '';
  $welding = isset($_POST['Welding']) ? "checked" : '';
  $date = $_POST['date1'];
  $requesterSignature = $_POST['requester-signature']; 
@@ -409,7 +360,7 @@ require 'navbar.php';
                                 <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m6"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="">
+                                <th rowspan=2 colspan="4"><input class="w3-check" type="checkbox" name="Painting">
                                     <label>
                                         <center>Painting Works:
                                     </label></th>
@@ -418,7 +369,7 @@ require 'navbar.php';
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name=""></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m7"></th>
                             </tr>
                             <tr>
 
@@ -442,11 +393,11 @@ require 'navbar.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name=""></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m11"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name=""></th>
+                                <th colspan=2 colspan="4"><input class="w3-input" type="text" name="m12"></th>
                             </tr>
                     </table>
             </div>
