@@ -404,19 +404,6 @@ require 'navbar.php';
             </div>
             </div>
             </div>
-            <br><br>
-<!--report-->
-<div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                    <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea>
-            </div>
-          </div>
-          </div>
           </div>
   <br>
     <div class="container" style="margin-top: ;">
