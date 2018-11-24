@@ -205,7 +205,7 @@ require '../api/dbcon.php';
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
          // header('location: not-allowed.php');
          // exit();
-        echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
+         strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
 ?>
@@ -315,11 +315,9 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-<<<<<<< HEAD
-                    <table class="table table-bordered w3-card w3-round table-responsive">
-=======
-                    <table class="table table-responsive table-bordered w3-card w3-round">
->>>>>>> 657492a4506a91d3b1a3825109d2c39bb44809a9
+                  <div class="table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
+
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -411,14 +409,16 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
                             </tr>
                     </table>
+                  </div>
+
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
             <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
               <?php echo $userJobDescription ?>
             </textarea></div>
                     <br>
 
-
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                    <div class="table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -462,7 +462,9 @@ require 'navbar.php';
                             </th>
                         </tr>
                     </table>
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                  </div>
+                    <div class="table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -485,7 +487,9 @@ require 'navbar.php';
                         </tr>
                     </table>
                     <br>
-                    <table class="table table-bordered w3-card w3-round table-responsive">
+                  </div>
+                    <div class="table-responsive">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th colspan=2>
                                 <center>Accomplished Works
@@ -538,6 +542,8 @@ require 'navbar.php';
                                 <center>Date signed
                             </th>
                     </table>
+                  </div>
+
                 </div>
             </div>
             <br>
