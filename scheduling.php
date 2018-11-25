@@ -131,7 +131,7 @@ require 'test-director-admin.php';
                                    
 ?>
             </tbody>
-    <button>Sort by date</button>
+
         </table>
 
 <script>

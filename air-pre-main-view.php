@@ -119,17 +119,8 @@ while($row = mysqli_fetch_array($result)) {
     </tbody>
   </table>
 </div>
-<div class="container">
-  <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-<?php
-for ($page=1;$page<=$number_of_pages;$page++) {
-    echo '<li class="page-item"><a class="page-link" href="air-pre-main-view.php?page=' . $page . '">' . $page . '</a> ';
 
-}
-?>
-</div>
 <div class="container ">
-       <div class="float-right"><a href="bwdw-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+       <div class="float-right"><a href="air-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
       </div>   
       </div>
