@@ -98,21 +98,8 @@ require'navbar.php';
                 <input class="form-control" name="work" value="Air-conditioning" readonly>
                                 </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
-                             <select class="form-control form-control" name="campus" id="campus" readonly>
-                                <?php
-                                require '../api/apiOnly.php';
-                                  $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                    //$_SESSION['usr_campus'] = 'SAN JUAN';
-
-                                  $selected = strtolower($campus['code']) == strtolower($_SESSION['usr_campus']) ? 'selected' : '';
-
-                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select></h4>
+                             <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>
+                                
         </div>              
         <div class="row">
                              <h4 class="col-6"><b>Month:</b>&nbsp;
