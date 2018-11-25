@@ -309,7 +309,7 @@ require '../api/dbcon.php';
                        $QualityOfService,
                        $priorityId,
                        $Campus,
-                       $JobRecommendation,
+                       $r_JobRecommendation,
                        $InspectionReport,
                        $statusId,
                        $m1,
@@ -334,7 +334,7 @@ require '../api/dbcon.php';
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
          // header('location: not-allowed.php');
          // exit();
-        echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
+       strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
       if($statusId!=2){
@@ -513,8 +513,8 @@ require 'navbar.php';
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
-                                        <p id="mlJobRecommendation"></p>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"readonly> <?php echo $r_JobRecommendation ?></textarea>
+                                        <p id="mlJobRecommendation" ></p>
                                     </div>
                                 </th>
                                 <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>" readonly></th>

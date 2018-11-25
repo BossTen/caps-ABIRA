@@ -315,17 +315,11 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <table class="table table-bordered w3-card w3-round ">
-=======
-                    <table class="table  table-bordered w3-card w3-round">
->>>>>>> 657492a4506a91d3b1a3825109d2c39bb44809a9
-=======
+
+
                   <div class="table-responsive">
                     <table class="table table-bordered w3-card w3-round">
 
->>>>>>> c5d0fec4c3006c6fa5329a66ef00769a252f9bce
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -425,13 +419,9 @@ require 'navbar.php';
             </textarea></div>
                     <br>
 
-<<<<<<< HEAD
-
-                    <table class="table table-bordered w3-card w3-round ">
-=======
                     <div class="table-responsive">
                     <table class="table table-bordered w3-card w3-round">
->>>>>>> c5d0fec4c3006c6fa5329a66ef00769a252f9bce
+
                         <tr>
                             <th></th>
                             <th>
