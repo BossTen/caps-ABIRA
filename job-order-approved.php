@@ -639,7 +639,7 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" ></th>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></th>
                             <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" ></th>
                             <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" >
                                 <p class="error-message" id="assessmentErrorMessage"></p>
