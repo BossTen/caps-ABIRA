@@ -54,7 +54,7 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: </i></a>
+                <a href="director-job-order-view.php" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: </i></a>
             </div>
           </div>
         </div>

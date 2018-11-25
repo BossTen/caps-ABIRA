@@ -65,7 +65,7 @@ require'navbar.php';
 </form>
 <div class="container">
 <div class="table-responsive">   
-  <table class="table table-striped table-responsive">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Month</th>
