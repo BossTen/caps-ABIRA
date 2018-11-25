@@ -1,11 +1,12 @@
 <?php
-require '../api/dbcon.php';
-require '../api/apiOnly.php';
-  
       if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
              session_start();
           }  
+require '../api/dbcon.php';
+require '../api/apiOnly.php';
+  
+
 
 //FACULTY - USER LOGIN
 

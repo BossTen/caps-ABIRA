@@ -100,6 +100,7 @@ require 'test-director-admin.php';
                         echo redirectAdmin($serialCode, $statusId, $serialCode);
                         echo redirectAdmin($serialCode, $statusId, $nameOfOffice);
                         //echo redirectAdmin($serialCode, $statusId, $startOfService);
+                        echo "<td>" . $startOfService . "</td>";
                         echo redirectAdmin($serialCode, $statusId, $endOfService);
                         echo redirectAdmin($serialCode, $statusId, $statusName);
                         echo "</tr>";
@@ -151,6 +152,4 @@ function convertDate(d) {
     tbody.appendChild(v); // note that .appendChild() *moves* elements
   });
 
-
-// document.querySelector("button").addEventListener("click", sortByDate);
 </script>
