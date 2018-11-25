@@ -95,14 +95,8 @@ require'navbar.php';
 
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-                <select class="form-control form-control" name="work" id="month">
-                  <option value="Air-conditioning">Air-conditioning</option>
-                  <option value="Plumbing">Plumbing</option>
-                  <option value="Power Supply">Power Supply</option>
-                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
-                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
-                </select>
-              </h4>
+                <input class="form-control" name="work" value="Air-conditioning" readonly>
+                                </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                              <select class="form-control form-control" name="campus" id="campus" readonly>
                                 <?php
