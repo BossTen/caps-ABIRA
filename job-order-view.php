@@ -98,7 +98,7 @@ require'navbar.php';
                                   
                                   
                                 }
-                    }
+                      }
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
@@ -114,14 +114,9 @@ require'navbar.php';
                                   default:
                                         return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
-
-
-                                }
-                                
+                                }  
                               }
                               ?>
-
-
             </tbody>
         </table>
       </div>

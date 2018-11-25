@@ -36,9 +36,9 @@ require'navbar-director.php';
    <div class="form-row">
       <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
       <div class="col-2"><h4>Campus</h4>
-        <select name="campus" id="campus" style="width:80%;" onchange="filterTable()">
+        <select name="campus" id="campus" style="width:80%;" onchange="filterCampus()">
           <?php
-                                require '../api/apiOnly.php';
+                                require_once '../api/apiOnly.php';
                                   $campuses = json_decode($api->fetch_campuses(),true);
                                   foreach ($campuses as $campus) {
                                    echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
@@ -49,10 +49,34 @@ require'navbar-director.php';
         </select>
       </div>
       <div class="col-2"><h4>Month</h4>
-        <select name="services" style="width:80%;"></select>
+        <select name="month" id="month" style="width:80%;" onchange="filterMonth()">
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
       </div>
       <div class="col-2"><h4>Year</h4>
-        <select name="services" style="width:80%;"></select>
+        <select name="year" id="year" style="width:80%;" onchange="filterYear()">
+                    <?php
+                                require_once '../api/apiOnly.php';
+                                  $years = json_decode($api->fetch_schoolyear(),true);
+                                  foreach ($years as $year) {
+                                    $year = substr($year,5);
+                                   echo "<option value='".$year."'>".$year."</option>";
+
+                                  }
+
+                              ?>
+        </select>
       </div>
 
       <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
@@ -64,7 +88,7 @@ require'navbar-director.php';
 
 
 <div class="container">
-<div class="table-reponsive">    
+<div class="table-responsive">    
   <table class="table table-striped" id="director-table">
     <thead>
       <tr>
@@ -162,7 +186,7 @@ require'navbar-director.php';
             }
         }
 
-        function filterTable() {
+        function filterCampus() {
             var input, filter, table, tr, td, i;
             input = document.getElementById("campus");
             filter = input.value.toUpperCase();
@@ -174,6 +198,8 @@ require'navbar-director.php';
                 td = tr[i].getElementsByTagName("td")[1]; //campus
                 
                 if (td) {
+                  console.log(td.innerHTML.toUpperCase().indexOf(filter));
+
                     if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
@@ -183,7 +209,53 @@ require'navbar-director.php';
             }
         }
 
+            function filterMonth() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("month");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("director-table");
+            tr = table.getElementsByTagName("tr");
+
+              // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[3]; 
+                
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function filterYear() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("year");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("director-table");
+            tr = table.getElementsByTagName("tr");
+
+              // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[3]; 
+                
+                if (td) {
+                  console.log(td.innerHTML.toUpperCase().substring(0,4));
+                    if (td.innerHTML.toUpperCase().indexOf(filter)> -1) {
+                      //console.log(td.innerHTML.toUpperCase());
+
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
+</div>
 
 </body>
 

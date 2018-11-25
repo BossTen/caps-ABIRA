@@ -279,17 +279,8 @@ require 'navbar.php';
                       </div>
                         <div class="row">
                         <h4 class="col-6"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus">
-                                <?php
-                                
-                                  $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select>
+                            <input type="text" class="form-control col-12" name="campus" value="<?php echo $_SESSION['usr_campus'] ?> "readonly/>
+                            
 
                 <h4 class="col-6"><b>Name of Office:</b>&nbsp;
                     <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
@@ -485,12 +476,12 @@ require 'navbar.php';
                             <th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="completed" readonly>Work completed upon agreed duration</th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="completed" disabled>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
                             <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" readonly></th>
                             <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" readonly></th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" readonly>Work not completed upon agreed duration</th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" disabled>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
