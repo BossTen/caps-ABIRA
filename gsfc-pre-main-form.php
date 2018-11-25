@@ -90,10 +90,8 @@ require'navbar.php';
                 <input class="form-control" name="work" value="Generator Set/Fuel Container" readonly>
                                 </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
-                             <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>
-                              
-        </div> 
-                              
+                             <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>          
+        </div>              
         </div>              
         <div class="row">
                              <h4 class="col-6"><b>Month:</b>&nbsp;
