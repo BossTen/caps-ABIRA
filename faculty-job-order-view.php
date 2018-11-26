@@ -41,7 +41,6 @@ require 'navbar-faculty.php';
         <th>Serial</th>
         <th>Campus</th>
         <th>Department</th>
-        <th>Services</th>
         <th>Date Requested</th>
         <th>Report Description</th>
         <th>Status</th>
@@ -70,7 +69,6 @@ require 'navbar-faculty.php';
                         echo "<td>" . $serialCode . "</td>";
                         echo "<td>" . $campus . "</td>";
                         echo "<td>" . $NameOfOffice . "</td>";
-                        echo "<td>" . $serialCode . "</td>";
                         echo "<td>" . $dCreated . "</td>";
                         echo "<td>" . $userJobDescription . "</td>";
                         echo "<td>" . $statusName . "</td>";
