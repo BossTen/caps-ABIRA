@@ -78,8 +78,9 @@
                                                        SerialCode,
                                                        statusId,
                                                        DateRequestCreated,
-                                                       NameOfOffice
-                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                                       NameOfOffice,
+                                                       requestorDesignation
+                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
             if($stmt){
             echo "<script type='text/javascript'>
                         alert ('Successful insertion of data'); 
@@ -89,7 +90,7 @@
                         alert ('Not Successful insertion of data'); 
                         window.location.href='faculty-job-order-form.php';</script>";
             }                                    
-        $stmt->bind_param('ssssssssssssss',
+        $stmt->bind_param('sssssssssssssss',
                             $airConditioning,
                             $masonryCarpentry,
                             $electrical,
@@ -103,7 +104,8 @@
                             $serialCode,
                             $statusId,
                             $DateRequestCreated,
-                            $NameOfOffice);
+                            $NameOfOffice,
+                            $requestorDesignation);
 
          $airConditioning = isset($_POST['AirCondition']) ? "checked" : '';
          $masonryCarpentry = isset($_POST['CarpentryMasonary']) ? "checked" : '';
@@ -116,11 +118,13 @@
          $priority =  $priorityId;
          $requester = $_SESSION['usr_fullname'];
          $userJobDescription = $_POST['user-job-description'];
+         $requestorDesignation = $_POST['requestorDesignation'];
         //create serial code
          $serialCode= $todaysSerialCode;
          $statusId = 7 ;
          $DateRequestCreated = date('y-m-d');
          $NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
+         
         $stmt->execute();
         $stmt->close();
         $conn->close();
@@ -200,6 +204,11 @@ require 'navbar-faculty.php';
                             <div class="row">
                               <h4 class="col-12"><b>Name Of Office: </b>&nbsp;
                                 <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office">
+                              </h4>
+                            </div>
+                            <div class="row">
+                              <h4 class="col-12"><b>Your Designation: </b>&nbsp;
+                                <input type="text" name="requestorDesignation" class="form-control col-12" id="requestorDesignation" placeholder="Designation">
                               </h4>
                             </div>
          <div class="row">
