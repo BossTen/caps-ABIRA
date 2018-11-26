@@ -1,3 +1,4 @@
+<?php require_once 'testfaculty.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,65 +48,45 @@ require 'navbar-faculty.php';
       </tr>
     </thead>
     <tbody>
+
       <?php
-// connect to database
-$con = mysqli_connect('localhost','root','');
-mysqli_select_db($con, 'abira');
+ if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+             session_start();
+    }  
+      require '../api/dbcon.php';
+            $stmt = $conn->prepare("SELECT j.Campus, j.NameOfOffice, j.StartOfService, j.EndOfService, j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName , p.name as priorityName FROM ((joborder as j INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id)
+                                WHERE j.RequestorName = ? && s.Name = 'On-Going'");
+            $stmt->bind_param('s',$usr_fullname);
+            $usr_fullname = $_SESSION['usr_fullname'];
+            $stmt->execute();
+            $stmt->bind_result($campus, $NameOfOffice, $startOfService, $endOfService, $serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName, $priorityName);
 
+                                
+                                while($stmt->fetch()){
+                                   $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
+                        echo "<tr>";
+                        echo "<td>" . $priorityName . "</td>";
+                        echo "<td>" . $serialCode . "</td>";
+                        echo "<td>" . $campus . "</td>";
+                        echo "<td>" . $NameOfOffice . "</td>";
+                        echo "<td>" . $serialCode . "</td>";
+                        echo "<td>" . $dCreated . "</td>";
+                        echo "<td>" . $userJobDescription . "</td>";
+                        echo "<td>" . $statusName . "</td>";
+                        echo "</tr>";
 
-// define how many results you want per page
-$results_per_page = 20;
-// find out the number of results stored in database
-$sql = "SELECT * FROM joborder";
-$result = mysqli_query ($con,$sql);
-$number_of_results = mysqli_num_rows($result);
-// determine number of total pages available
-$number_of_pages = ceil($number_of_results/$results_per_page);
-// determine which page number visitor is currently on
-if (!isset($_GET['page'])) {
-  $page = 1;
-} else {
-  $page = $_GET['page'];
-}
-// determine the sql LIMIT starting number for the results on the displaying page
-$this_page_first_result = ($page-1)*$results_per_page;
-// retrieve selected results from database and display them on page
-$sql="SELECT * FROM joborder Order by id DESC  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
-$result = mysqli_query($con, $sql);
-while($row = mysqli_fetch_array($result)) {
-  echo "<tr>";
-  echo "<td>" . $row['priorityId'] . "</td>";
-  echo "<td>" . $row['SerialCode'] . "</td>";
-  echo "<td>" . $row['Campus'] . "</td>";
-  echo "<td>" . $row['NameOfOffice'] . "</td>";
-  echo "<td></td>";
-  echo "<td>" . $row['DateRequestCreated'] . "</td>";
-  echo "<td>" . $row['UserJobDescription'] . "</td>";
-  echo "<td>" . $row['statusId'] . "</td>";
-}
-// display the links to the pages
-?>
+                                }
 
+                              ?>  
 
     </tbody>
   </table>
 </div>
 
 
-<div class="container">
-  <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-<?php
-for ($page=1;$page<=$number_of_pages;$page++) {
-    echo '<li class="page-item"><a class="page-link" href="faculty-job-order-view.php?page=' . $page . '">' . $page . '</a> ';
 
-}
-?>
 
-</tbody>
-</table>
-</div>
-</div>
 
 <div class="container ">
        <div class="float-right"><a href="faculty-job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>

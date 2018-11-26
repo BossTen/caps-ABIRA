@@ -1,4 +1,4 @@
-
+<?php require_once 'testdirector.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
