@@ -280,7 +280,7 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription 
+                           UserJobDescription
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -633,7 +633,7 @@ require 'navbar.php';
                         <tr>
                             <th>Date:</th>
                             <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>" readonly></th>
-                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"readonly ></th>
+                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>" ></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
@@ -663,12 +663,12 @@ require 'navbar.php';
                             <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> readonly>Work completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> disabled>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
                             <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
                             <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Work not completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> disabled>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
