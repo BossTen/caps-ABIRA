@@ -420,9 +420,9 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
+                            <th><input class="w3-input" type="text" name="requester-signature" readonly></th>
+                            <th><input class="w3-input" type="text" name="inspecter-signature" readonly></th>
+                            <th><input class="w3-input" type="text" name="director-signature" readonly></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
