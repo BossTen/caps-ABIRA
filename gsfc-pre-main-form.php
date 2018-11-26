@@ -84,7 +84,7 @@ require'navbar.php';
             </div>
 
              <div class="row "><h4 class="col-6"><b>Work:</b>&nbsp;
-             <select class="form-control form-control" name="work" id="work">
+             <select class="form-control form-control" name="work" id="work" readonly>
                   <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
                   <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
                   <option value="Power Supply">Power Supply</option>

@@ -27,12 +27,35 @@ require'navbar.php';
         <select name="services" style="width:80%;"></select>
       </div>
       <div class="col-2"><h4>Month</h4>
-        <select name="services" style="width:80%;"></select>
+        <select name="month" id="month" style="width:80%;" onchange="filterMonth()">
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
       </div>
       <div class="col-2"><h4>Year</h4>
-        <select name="services" style="width:80%;"></select>
-      </div>
+        <select name="year" id="year" style="width:80%;" onchange="filterYear()">
+                    <?php
+                                require_once '../api/apiOnly.php';
+                                  $years = json_decode($api->fetch_schoolyear(),true);
+                                  foreach ($years as $year) {
+                                    $year = substr($year,5);
+                                   echo "<option value='".$year."'>".$year."</option>";
 
+                                  }
+
+                              ?>
+        </select>
+      </div>
       <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
    </div>
 
@@ -104,7 +127,7 @@ while($row = mysqli_fetch_array($result)) {
   <ul class="pagination justify-content-center">
 <?php
 for ($page=1;$page<=$number_of_pages;$page++) {
-    echo '<li class="page-item"><a class="page-link" href="ps-pre-main-view.php?page=' . $page . '">' . $page . '</a> ';
+    echo '<li class="page-item"><a class="page-link" href="bwdw-pre-main-view.php?page=' . $page . '">' . $page . '</a> ';
 
 }
 ?>
