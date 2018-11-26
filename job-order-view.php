@@ -100,45 +100,28 @@ require'navbar.php';
 
       require '../api/dbcon.php';
 
-                   if($_SESSION['usr_type']=='admin'){
-                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ?");
-                                                        $stmt->bind_param('s',$campus);
-                                                        $campus = $_SESSION['usr_campus'];
-                                                        $stmt->execute();
-                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
+            $stmt = $conn->prepare("SELECT j.StartOfService, j.EndOfService, j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName , p.name as priorityName FROM ((joborder as j INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id)
+                                WHERE j.Campus = ? && s.Name = 'On-Going'");
+            $stmt->bind_param('s',$campus);
+            $campus = $_SESSION['usr_campus'];
+            $stmt->execute();
+            $stmt->bind_result($startOfService, $endOfService, $serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName, $priorityName);
 
                                 
                                 while($stmt->fetch()){
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
+                        echo "<tr>";
+                        // echo redirectDirector($serialCode, $statusId, $priorityName);
+                        echo redirectDirector($serialCode, $statusId, $serialCode);
+                        echo redirectDirector($serialCode, $statusId, $userJobDescription);
+                        // echo redirectDirector($serialCode, $statusId, $startOfService);
+                        echo "<td>" . $startOfService . "</td>";
 
-                                    echo "<tr>";
-                        echo redirectTo($serialCode, $statusId, $serialCode);
-                        echo redirectTo($serialCode, $statusId, $campus);
-                        echo redirectTo($serialCode, $statusId, $userJobDescription);
-                        echo redirectTo($serialCode, $statusId, $dCreated);
-                        echo redirectTo($serialCode, $statusId, $statusName);
-                          echo "</tr>";
-                                  
-                                  
+                        echo redirectAdmin($serialCode, $statusId, $endOfService);
+                        echo redirectDirector($serialCode, $statusId, $statusName);
+                        echo "</tr>";
+
                                 }
-                      }
-                              function redirectTo($sCode, $sId, $desc){
-
-                                switch($sId){
-                                  case 2: 
-                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                  case 5:
-                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                  case 7:
-                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                  default:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                }  
-                              }
                               ?>
             </tbody>
         </table>

@@ -37,6 +37,8 @@ $stmt->bind_param("ss",
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
+     header('location: director-job-order-view.php');
+    exit();
 
 }else if (isset($_POST['denied'])){
     //Check connection
@@ -66,6 +68,8 @@ $stmt->bind_param("ss",
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
+     header('location: director-job-order-view.php');
+    exit();
 }
 require '../api/dbcon.php';
     //echo $sId;

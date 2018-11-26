@@ -83,6 +83,7 @@ require'navbar.php';
             <h2>Generator Set/Fuel Container</h2>
             </div>
 
+<<<<<<< HEAD
              <div class="row "><h4 class="col-6"><b>Work:</b>&nbsp;
              <select class="form-control form-control" name="work" id="work" readonly>
                   <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
@@ -100,16 +101,17 @@ require'navbar.php';
                                   $campuses = json_decode($api->fetch_campuses(),true);
                                   foreach ($campuses as $campus) {
                                     //$_SESSION['usr_campus'] = 'SAN JUAN';
+=======
+>>>>>>> 2b8913ba771bb6afd4feddfe9a34b6b5a7f3c3c5
 
-                                  $selected = strtolower($campus['code']) == strtolower($_SESSION['usr_campus']) ? 'selected' : '';
 
-                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select></h4>
-                              
+             <div class="row">
+                                <h4 class="col-6"><b>Work:</b>&nbsp;
+                <input class="form-control" name="work" value="Generator Set/Fuel Container" readonly>
+                                </h4>
+                       <h4 class="col-6"><b>Campus:</b>&nbsp;
+                             <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>          
+        </div>              
         </div>              
         <div class="row">
                              <h4 class="col-6"><b>Month:</b>&nbsp;

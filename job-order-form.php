@@ -274,7 +274,7 @@ require 'navbar.php';
                             </select>
 
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-12" name="date1" />
+                            <input type="date" onkeydown="return false" class="form-control col-12" name="date1" />
                         </h4>
                       </div>
                         <div class="row">
@@ -442,8 +442,8 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested"></th>
-                            <th><input type="date" class="form-control" name="date-inspected"></th>
+                            <th><input type="date" onkeydown="return false" class="form-control" name="date-requested"></th>
+                            <th><input type="date" onkeydown="return false" class="form-control" name="date-inspected"></th>
                             <th>
                                 <center>GSO - GPB Main II
                             </th>
@@ -471,8 +471,8 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" readonly></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService" readonly></th>
+                            <th id="con-startDate">Date: <input type="date" onkeydown="return false" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" readonly></th>
+                            <th><input type="date" onkeydown="return false" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService" readonly></th>
                             <th id="con-numhours" rowspan=2><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
@@ -537,7 +537,7 @@ require 'navbar.php';
                             <th><input class="w3-input" type="text" name="conforme-name" readonly></th>
                             <th><input class="w3-input" type="text" name="conforme-signature" readonly></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed" readonly>
+                                <center><input type="date" onkeydown="return false" class="form-control" name="conforme-date-signed" readonly>
                             </th>
                         </tr>
                         <tr>
