@@ -222,7 +222,7 @@ require '../api/dbcon.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
@@ -235,7 +235,7 @@ require '../api/dbcon.php';
 
 <body>
     <?php
-require 'navbar.php';
+require 'navbar-director.php';
 ?>
 
     <center>
@@ -642,7 +642,8 @@ require 'navbar.php';
 
             <input name="accept" style="padding:20px;" class="no-print btn btn-success" type="submit" value="Approve">
             <input name="denied" style="padding:20px;" class="no-print btn btn-danger"  type="submit" value="Deny">
-            <input name="btn-print" style="padding:20px;" onClick="print();" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
+            <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
+          
           </form>
           </div>
 
@@ -653,7 +654,7 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
                 ?>
-            <script src="js/jquery-3.3.1.js"></script>
+
             <script>
               //disabling of fields
               if(<?php echo $statusId ?> != 1){
@@ -677,10 +678,10 @@ $conn->close();
 
 
               //print
-              $('#print-button').on('click', function() {  
-                window.print();  
-                return false; // why false?
-              });
+                // $('#print-button').on('click', function() {  
+                //   window.print();  
+                //   return false; // why false?
+                // });
 
 
                 $("#inspectionReport").keyup(function() {

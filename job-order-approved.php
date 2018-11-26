@@ -808,7 +808,7 @@ require 'navbar.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="submit" value="Print">
+            <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="button" value="Print">
           </div>
 </form>
 
@@ -821,7 +821,10 @@ $conn->close();
                 ?>
 
             <script>
-
+  $('#print-button').on('click', function() {  
+                window.print();  
+                return false; // why false?
+              });
                 /*
                   1 - For Approval
                   2 - Approved
