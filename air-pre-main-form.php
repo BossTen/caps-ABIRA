@@ -96,7 +96,11 @@ require'navbar.php';
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <select class="form-control form-control" name="work" id="month" readonly>
+=======
+                <select class="form-control form-control" name="work" id="month">
+>>>>>>> parent of 41671ae... filter add. department filter missin. d ko alam ang filter
                   <option value="Air-conditioning">Air-conditioning</option>
                   <option value="Plumbing">Plumbing</option>
                   <option value="Power Supply">Power Supply</option>

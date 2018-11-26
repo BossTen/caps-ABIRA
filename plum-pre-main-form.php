@@ -97,7 +97,7 @@ require'navbar.php';
 <<<<<<< HEAD
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-                <select class="form-control form-control" name="work" id="work" readonly>
+                <select class="form-control form-control" name="work" id="work">
                   <option value="Plumbing">Plumbing</option>
                   <option value="Air-conditioning">Air-conditioning</option>
                   
