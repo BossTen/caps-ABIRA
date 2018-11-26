@@ -74,7 +74,7 @@ require'navbar.php';
         </select>
       </div>
 
-      <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
+      <!-- <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div> -->
    </div>
 
 
@@ -85,7 +85,7 @@ require'navbar.php';
 
 <div class="container">
 <div class="table-responsive">    
-  <table class="table table-striped">
+  <table id='table' class="table table-striped">
     <thead>
       <tr>
         <th>Serial</th>
@@ -100,28 +100,45 @@ require'navbar.php';
 
       require '../api/dbcon.php';
 
-            $stmt = $conn->prepare("SELECT j.StartOfService, j.EndOfService, j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName , p.name as priorityName FROM ((joborder as j INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id)
-                                WHERE j.Campus = ? && s.Name = 'On-Going'");
-            $stmt->bind_param('s',$campus);
-            $campus = $_SESSION['usr_campus'];
-            $stmt->execute();
-            $stmt->bind_result($startOfService, $endOfService, $serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName, $priorityName);
+
+                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ?");
+                                                        $stmt->bind_param('s',$campus);
+                                                        $campus = $_SESSION['usr_campus'];
+                                                        $stmt->execute();
+                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
+
 
                                 
                                 while($stmt->fetch()){
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
-                        echo "<tr>";
-                        // echo redirectDirector($serialCode, $statusId, $priorityName);
-                        echo redirectDirector($serialCode, $statusId, $serialCode);
-                        echo redirectDirector($serialCode, $statusId, $userJobDescription);
-                        // echo redirectDirector($serialCode, $statusId, $startOfService);
-                        echo "<td>" . $startOfService . "</td>";
+                                    echo "<tr>";
+                        echo redirectTo($serialCode, $statusId, $serialCode);
+                        echo redirectTo($serialCode, $statusId, $campus);
+                        echo redirectTo($serialCode, $statusId, $userJobDescription);
+                        echo redirectTo($serialCode, $statusId, $dCreated);
+                        echo redirectTo($serialCode, $statusId, $statusName);
+                          echo "</tr>";
+                                  
+                                  
+                                 }
+                      
+                              function redirectTo($sCode, $sId, $desc){
 
-                        echo redirectAdmin($serialCode, $statusId, $endOfService);
-                        echo redirectDirector($serialCode, $statusId, $statusName);
-                        echo "</tr>";
-
-                                }
+                                switch($sId){
+                                  case 2: 
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  case 5:
+                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  case 7:
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  default:
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                }  
+                              }
                               ?>
             </tbody>
         </table>
@@ -140,7 +157,7 @@ require'navbar.php';
             var input, filter, table, tr, td, i;
             input = document.getElementById("month");
             filter = input.value.toUpperCase();
-            table = document.getElementById("director-table");
+            table = document.getElementById("table");
             tr = table.getElementsByTagName("tr");
 
               // Loop through all table rows, and hide those who don't match the search query
@@ -162,7 +179,7 @@ require'navbar.php';
             var input, filter, table, tr, td, i;
             input = document.getElementById("year");
             filter = input.value.toUpperCase();
-            table = document.getElementById("director-table");
+            table = document.getElementById("table");
             tr = table.getElementsByTagName("tr");
 
               // Loop through all table rows, and hide those who don't match the search query
