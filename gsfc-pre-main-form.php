@@ -89,8 +89,7 @@ require'navbar.php';
                                 </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                              <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>          
-        </div>              
-        </div>              
+        </div>                          
         <div class="row">
                              <h4 class="col-6"><b>Month:</b>&nbsp;
                              <select class="form-control form-control" name="month" id="month">
