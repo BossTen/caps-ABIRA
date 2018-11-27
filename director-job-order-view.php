@@ -35,19 +35,7 @@ require'navbar-director.php';
 <div class="container">
    <div class="form-row">
       <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
-      <div class="col-2"><h4>Campus</h4>
-        <select name="campus" id="campus" style="width:80%;" onchange="filterCampus()">
-          <?php
-                                require_once '../api/apiOnly.php';
-                                  $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
 
-                                  }
-
-                              ?>
-        </select>
-      </div>
       <div class="col-2"><h4>Month</h4>
         <select name="month" id="month" style="width:80%;" onchange="filterMonth()">
           <option value="01">January</option>
@@ -79,7 +67,6 @@ require'navbar-director.php';
         </select>
       </div>
 
-      <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
    </div>
 
 

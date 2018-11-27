@@ -1,5 +1,6 @@
 <?php
-  require 'checklogin.php';
+  require 'test-director-admin.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
