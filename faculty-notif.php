@@ -68,16 +68,15 @@ require 'navbar-faculty.php';
 
                                 switch($sId){
                                   case 2: 
-                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                    //NO REDIRECT
+                                        return "<td>" . $desc . "</td>";
                                         break;
-                                  case 5:
-                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                  case 7:
-                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                  case 8:
+                                  //REDIRECT TO EVALUATION
+                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   default:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                 }  
                               }

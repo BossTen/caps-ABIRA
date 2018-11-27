@@ -8,11 +8,11 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               campus,
                                               month,
                                               college,
-                                              m_activity,
+                                              maintainance_activity,
                                               dateStarted,
                                               accomplishedBy
                                               )
-                                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ');
+                                              VALUES (?, ?, ?, ?, ?, ?, ?) ');
  $stmt->bind_param('ssssssssss',
                               $work,
                               $campus,
