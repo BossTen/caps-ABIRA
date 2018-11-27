@@ -29,9 +29,7 @@ require'navbar.php';
 <div class="container">
    <div class="form-row">
       <div class="col-5 w3-text-red"><h2>Air-conditioning<br> Preventive Maintenance View</h2></div>
-      <div class="col-2"><h4>Department</h4>
-        <select name="services" style="width:80%;"></select>
-      </div>
+
       <div class="col-2"><h4>Month</h4>
 <span><select name="month">
         <?php for( $m=1; $m<=12; ++$m ) { 
@@ -55,7 +53,6 @@ require'navbar.php';
       </select>
     </span></div>
 
-      <div class="col-1" style="margin-top:3%; margin-left:0%;"><button type="submit" class="btn btn-success ">Show</button></div>
    </div>
 
 </form>
@@ -66,7 +63,7 @@ require'navbar.php';
     <thead>
       <tr>
         <th>Month</th>
-        <th>Campus</th>
+
          <th>Department</th>
          <th>Floor</th>
          <th>Area</th>
@@ -104,7 +101,7 @@ $result = mysqli_query($con, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['month'] . "</td>";
-  echo "<td>" . $row['campus'] . "</td>";
+
   echo "<td>" . $row['college'] . "</td>";
   echo "<td>" . $row['floor'] . "</td>";
   echo "<td>" . $row['area'] . "</td>";
