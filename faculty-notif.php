@@ -43,11 +43,11 @@ require 'navbar-faculty.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.RequestorName = ?");
-                                                        $stmt->bind_param('s',$campus);
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 8) && j.RequestorName = ?");
+                                                        $stmt->bind_param('s',$fullname);
                                                         $fullname = $_SESSION['usr_fullname'];
                                                         $stmt->execute();
-                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
+                                                        $stmt->bind_result($name,$serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
 
 
                                 
