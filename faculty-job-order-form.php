@@ -244,8 +244,8 @@ require 'navbar-faculty.php';
           </div>
         </div>
         <br />
-        <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" required></textarea></div>
+        <h4><b>Description of Concern:</b>&nbsp;
+            <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" placeholder="please make a detailed description of your concern based on your understanding of the situation" required></textarea></div>
             
 
         <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
