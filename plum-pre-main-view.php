@@ -80,7 +80,7 @@ require'navbar.php';
          <th>Type</th>
          <th>Date Started</th>
          <th>Date Ended</th>
-         <th>Accomplish by:</th>
+         <th>Accomplished by:</th>
       </tr>
     </thead>
     <tbody>
@@ -140,6 +140,6 @@ while($row = mysqli_fetch_array($result)) {
 //?> 
 </div> -->
 <div class="container ">
-       <div class="float-right"><a href="job-order-form.php"> <button type="button" class="btn btn-success">Add</button></a>
+       <div class="float-right"><a href="plum-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
       </div>   
       </div>

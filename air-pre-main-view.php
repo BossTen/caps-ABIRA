@@ -78,7 +78,7 @@ require'navbar.php';
          <th>Area</th>
          <th>Date Started</th>
          <th>Date Ended</th>
-         <th>Accomplish By:</th>
+         <th>Accomplished By:</th>
       </tr>
     </thead>
     <tbody>
