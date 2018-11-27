@@ -31,7 +31,7 @@ require 'navbar-faculty.php';
     <thead>
       <tr>
         <th>Serial</th>
-        <th>Subject</th>
+        
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>
@@ -43,9 +43,9 @@ require 'navbar-faculty.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ?");
+                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.RequestorName = ?");
                                                         $stmt->bind_param('s',$campus);
-                                                        $campus = $_SESSION['usr_campus'];
+                                                        $fullname = $_SESSION['usr_fullname'];
                                                         $stmt->execute();
                                                         $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
 
@@ -55,7 +55,7 @@ require 'navbar-faculty.php';
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                                     echo "<tr>";
                         echo redirectTo($serialCode, $statusId, $serialCode);
-                        echo redirectTo($serialCode, $statusId, $campus);
+                        //echo redirectTo($serialCode, $statusId, $campus);
                         echo redirectTo($serialCode, $statusId, $description);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
