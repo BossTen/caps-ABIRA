@@ -22,7 +22,7 @@
 </head>
 <body>
 <?php
-require 'navbar-faculty.php';
+require 'navbar.php';
 ?>
 
 <div class="container">

@@ -129,16 +129,16 @@ while($row = mysqli_fetch_array($result)) {
 </div>
 
 
-<!-- <div class="container">
+<div class="container">
   <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
 <?php
-// for ($page=1;$page<=$number_of_pages;$page++) {
-//     echo '<li class="page-item"><a class="page-link" href="plum-pre-main-view.php?page=' . $page . '">' . $page . '</a> ';
+for ($page=1;$page<=$number_of_pages;$page++) {
+     echo '<li class="page-item"><a class="page-link" href="plum-pre-main-view.php?page=' . $page . '">' . $page . '</a> ';
 
-//}
-//?> 
-</div> -->
+}
+?> 
+</div>
 <div class="container ">
        <div class="float-right"><a href="plum-pre-main-form.php"> <button type="button" class="btn btn-success">Add</button></a>
       </div>   
