@@ -95,23 +95,11 @@ require'navbar.php';
 
              <div class="row ">
               <h4 class="col-6"><b>Work:</b>&nbsp;
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <select class="form-control form-control" name="work" id="month" readonly>
-=======
-                <select class="form-control form-control" name="work" id="month">
->>>>>>> parent of 41671ae... filter add. department filter missin. d ko alam ang filter
-                  <option value="Air-conditioning">Air-conditioning</option>
-                  <option value="Plumbing">Plumbing</option>
-                  <option value="Power Supply">Power Supply</option>
-                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
-                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
-                </select>
-              </h4>
-=======
+
+
                 <input class="form-control" name="work" value="Air-conditioning" readonly>
                                 </h4>
->>>>>>> 2b8913ba771bb6afd4feddfe9a34b6b5a7f3c3c5
+
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                              <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>
                                 

@@ -86,42 +86,14 @@ require'navbar.php';
             <h2>POWER SUPPLY (Main II)</h2>
             </div>
 
-<<<<<<< HEAD
-             <div class="row ">
-              <h4 class="col-6"><b>Work:</b>&nbsp;
-                <select class="form-control form-control" name="work" id="work">
-                  <option value="Power Supply">Power Supply</option>
-                  <option value="Plumbing">Plumbing</option>
-                  <option value="Air-conditioning">Air-conditioning</option>
-                  <option value="Building, Walls, Doors Windows">Building, Walls, Doors Windows</option>
-                  <option value="Generator Set/Fuel Container">Generator Set/Fuel Container</option>
-                </select>
-                </h4>
-                              <h4 class="col-6"><b>Campus:</b>&nbsp;
-                  <select class="form-control form-control" name="campus" id="campus" readonly>
-                    <?php
-                    require '../api/apiOnly.php';
-                       $campuses = json_decode($api->fetch_campuses(),true);
-                      foreach ($campuses as $campus) {
-                        //$_SESSION['usr_campus'] = 'SAN JUAN';
 
-                      $selected = strtolower($campus['code']) == strtolower($_SESSION['usr_campus']) ? 'selected' : '';
-
-                        echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                      }
-
-                      ?>
-                   </select></h4>
-                              
-=======
              <div class="row">
                    <h4 class="col-6"><b>Work:</b>&nbsp;
                 <input class="form-control" name="work" value="Power Supply" readonly>
                                 </h4>
                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                              <input class="form-control" name="campus" id="campus" value="<?php echo $_SESSION['usr_campus'] ?>" readonly>
->>>>>>> 2b8913ba771bb6afd4feddfe9a34b6b5a7f3c3c5
+
         </div>              
         <div class="row">
                              <h4 class="col-6"><b>Month:</b>&nbsp;
