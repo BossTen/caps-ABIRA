@@ -114,7 +114,7 @@ require'navbar.php';
                                     echo "<tr>";
                         echo redirectTo($serialCode, $statusId, $serialCode);
                         echo redirectTo($serialCode, $statusId, $campus);
-                        echo redirectTo($serialCode, $statusId, $userJobDescription);
+                        echo redirectTo($serialCode, $statusId, $description);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
                           echo "</tr>";
