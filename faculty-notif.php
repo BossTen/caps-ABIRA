@@ -1,3 +1,4 @@
+<?php require 'testfaculty.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,25 +22,69 @@
 </head>
 <body>
 <?php
-
 require 'navbar-faculty.php';
-
 ?>
 
-<br><br>
+<div class="container">
+<div class="table-responsive">    
+  <table id='table' class="table table-striped">
+    <thead>
+      <tr>
+        <th>Serial</th>
+        
+        <th>Description</th>
+        <th>Date</th>
+         <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
 
-<!--    
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!--  Chart js 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
-    <!--Flot Chart    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
-    <!-- local
-    <script src="assets/js/widgets.js"></script> -->
+      require '../api/dbcon.php';
+
+
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 8) && j.RequestorName = ?");
+                                                        $stmt->bind_param('s',$fullname);
+                                                        $fullname = $_SESSION['usr_fullname'];
+                                                        $stmt->execute();
+                                                        $stmt->bind_result($name,$serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
+
+
+                                
+                                while($stmt->fetch()){
+                                   $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
+                                    echo "<tr>";
+                        echo redirectTo($serialCode, $statusId, $serialCode);
+                        //echo redirectTo($serialCode, $statusId, $campus);
+                        echo redirectTo($serialCode, $statusId, $description);
+                        echo redirectTo($serialCode, $statusId, $dCreated);
+                        echo redirectTo($serialCode, $statusId, $statusName);
+                          echo "</tr>";
+                                  
+                                  
+                                 }
+                      
+                              function redirectTo($sCode, $sId, $desc){
+
+                                switch($sId){
+                                  case 2: 
+                                    //NO REDIRECT
+                                        return "<td>" . $desc . "</td>";
+                                        break;
+                                  case 8:
+                                  //REDIRECT TO EVALUATION
+                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  default:
+                                        return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                }  
+                              }
+                              ?>
+            </tbody>
+        </table>
+      </div>
+    </div>
 
 </body>
 </html>

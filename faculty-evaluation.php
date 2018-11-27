@@ -1,7 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require 'testadmin.php';
+require 'testfaculty.php';
+require_once '../api/dbcon.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
@@ -20,195 +21,54 @@ if ($conn->connect_error) {
 
 // prepare and binds
 $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                               AirCondition=?,
-                                               CarpentryMasonry=?,
-                                               ElectricalWorks=?,
-                                               Painting=?,
-                                               Plumbing=?,
-                                               Welding=?,
-                                               RequestorSignature=?,
-                                               RequestorName=?,
-                                               RequestorDesignation=?,
-                                               DateRequested=?,
-                                               signatureOfInspector=?,
-                                               InspectorName=?,
-                                               InspectorDesignation=?,
-                                               DateInspected=?,
-                                               Approved=?,
-                                               StartOfService=?,
-                                               EndOfService=?,
-                                               NoOfHours=?,
-                                               Assessment=?,
-                                               StartOfServiceTime=?,
-                                               EndOfServiceTime=?,
-                                               AccomplishedWork1=?,
-                                               WorkDoneBy1=?,
-                                               Signature1=?,
-                                               AccomplishedWork2=?,
-                                               WorkDoneBy2=?,
-                                               Signature2=?,
-                                               AccomplishedWork3=?,
-                                               WorkDoneBy3=?,
-                                               Signature3=?,
-                                               AccomplishedWork4=?,
-                                               WorkDoneBy4=?,
-                                               Signature4=?,
-                                               ConformeName=?,
-                                               ConformeApproved=?,
-                                               ConformeDateApproved=?,
-                                               ResponseTime=?,
-                                               AccuracyOfWork=?,
-                                               Courtesy=?,
-                                               QualityOfService=?,
-                                               priorityId=?,
-                                               JobRecommendation=?,
-                                               InspectionReport=?,
-                                               materialsNeeded1=?,
-                                               materialsNeeded2=?,
-                                               materialsNeeded3=?,
-                                               materialsNeeded4=?,
-                                               materialsNeeded5=?,
-                                               materialsNeeded6=?,
-                                               materialsNeeded7=?,
-                                               materialsNeeded8=?,
-                                               materialsNeeded9=?,
-                                               materialsNeeded10=?, 
-                                               materialsNeeded11=?,
-                                               materialsNeeded12=? 
-                                               -- ApprovedBy,
-                                      
+                                            ResponseTime = ?,
+                                               AccuracyOfWork = ?,
+                                               Courtesy = ?,
+                                             QualityOfService = ?
+
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("ssssss",
+                              
                               $sIdu,
-                              $airConditioning,
-                              $masonryCarpentry,
-                              $electrical,
-                              $painting,
-                              $plumbing,
-                              $welding,
-                              $requesterSignature,
-                              $nameOfRequester,
-                              $designationOfRequester,
-                              $dateRequested,
-                              $inspecterSignature,
-                              $nameOfInspector,
-                              $designationOfInspecter,
-                              $dateInspected,
-                              $directorSignature,
-                              $startOfService,
-                              $endOfService,
-                              $noOfHours,
-                              $assessment,
-                              $startOfServiceTime,
-                              $endOfServiceTime,
-                              $accomplishedWork1,
-                              $workDoneBy1,
-                              $signature1,
-                              $accomplishedWork2,
-                              $workDoneBy2,
-                              $signature2,
-                              $accomplishedWork3,
-                              $workDoneBy3,
-                              $signature3,
-                              $accomplishedWork4,
-                              $workDoneBy4,
-                              $signature4,
-                              $conformeName,
-                              $conformeSignature,
-                              $conformeDateSigned,
-                              $responseTime,
-                              $accuracyOfWork,
-                              $courtesy,
-                              $qualityOfService,
-                              $priority,
-                              //$campus,
-                              $jobRecommendation,
-                              $inspectionReport,
-                              $m1get,
-                              $m2get,
-                              $m3get,
-                              $m4get,
-                              $m5get,
-                              $m6get,
-                              $m7get,
-                              $m8get,
-                              $m9get,
-                              $m10get,
-                              $m11get,
-                              $m12get,
+                               $responseTime,
+
+                               $accuracyOfWork,
+                               $courtesy,
+                               $qualityOfService,
                               $serialCode
 
                         );  
 // Approved = $directorSignature
 // set parameters and execute
-  $sIdu = 1;
-// $nameOfOffice = $_POST['nameofoffice'];
- $painting = isset($_POST['Painting']) ? "checked" : 'off';
- $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
- $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
- $electrical = isset($_POST['Electrical']) ? "checked" : 'off';
- $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
- $welding = isset($_POST['Welding']) ? "checked" : 'off';
- // $date = $_POST['date1'];
- $requesterSignature = $_POST['requester-signature']; 
- $inspecterSignature = $_POST['inspecter-signature'];
- $directorSignature = $_POST['director-signature'];
- $nameOfRequester = $_POST['name-of-requester'];
- $nameOfInspector = $_POST['name-of-inspector'];
- $designationOfRequester = $_POST['designation-of-requester'];
- $designationOfInspecter = $_POST['designation-of-inspecter'];
- $dateRequested = $_POST['date-requested'];
- $dateInspected = $_POST['date-inspected'];
- $startOfService = $_POST['start-of-service'];
- $endOfService = $_POST['end-of-service'];
- $noOfHours = $_POST['no-of-hours'];
- $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
- $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
- $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
- $accomplishedWork1 = $_POST['accomplished-work1'];
- $workDoneBy1 = $_POST['work-done-by1'];
- $signature1 = $_POST['signature1'];
- $accomplishedWork2 = $_POST['accomplished-work2'];
- $workDoneBy2 = $_POST['work-done-by2'];
- $signature2 = $_POST['signature2'];
- $accomplishedWork3 = $_POST['accomplished-work3'];
- $workDoneBy3 = $_POST['work-done-by3'];
- $signature3 = $_POST['signature3'];
- $accomplishedWork4 = $_POST['accomplished-work4'];
- $workDoneBy4 = $_POST['work-done-by4'];
- $signature4 = $_POST['signature4'];
- $conformeName = $_POST['conforme-name'];
- $conformeSignature = $_POST['conforme-signature'];
- $conformeDateSigned = $_POST['conforme-date-signed'];
+  $sIdu = 6; //completed
+
  $responseTime = isset($_POST['cb1'])? $_POST['cb1'] : "0" ;
  $accuracyOfWork = isset($_POST['cb2'])? $_POST['cb2'] : "0" ;
  $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
  $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
- $priority = $_POST['priority'];
- $jobRecommendation = $_POST['job-recommendation'];
- $inspectionReport = $_POST['inspect-report'];
- $m1get = isset($_POST['m1']) ? $_POST['m1'] : '';
- $m2get = isset($_POST['m2']) ? $_POST['m2'] : '';
- $m3get = isset($_POST['m3']) ? $_POST['m3'] : '';
- $m4get = isset($_POST['m4']) ? $_POST['m4'] : '';
- $m5get = isset($_POST['m5']) ? $_POST['m5'] : '';
- $m6get = isset($_POST['m6']) ? $_POST['m6'] : '';
- $m7get = isset($_POST['m7']) ? $_POST['m7'] : '';
- $m8get = isset($_POST['m8']) ? $_POST['m8'] : '';
- $m9get = isset($_POST['m9']) ? $_POST['m9'] : '';
- $m10get =isset($_POST['m10']) ? $_POST['m10'] : '';
- $m11get =isset($_POST['m11']) ? $_POST['m11'] : '';
- $m12get =isset($_POST['m12']) ? $_POST['m12'] : '';
+
+
 
  $serialCode = $_POST['serial'];
 
- $stmt->execute();
+ 
+
+ if($stmt->execute()){
+  header("location: faculty-index.php");
+  exit();
+ }
  $stmt->close();
  $conn->close(); 
 
 }
+
+//--------------------------ON GOING -----------------------------------//
+
+//--------------------------ON GOING -----------------------------------//
+
+
 
 require '../api/dbcon.php';
     //echo $sId;
@@ -273,7 +133,7 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription 
+                           UserJobDescription
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -351,8 +211,7 @@ require '../api/dbcon.php';
         echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId==1||$statusId==4||$statusId==5||$statusId==6||$statusId==7||$statusId==8){
-        //if status is equals to approved, ongoing, for inspection
+      if($statusId!=8){
         header('location: job-order-view.php');
       }
 
@@ -369,7 +228,7 @@ require '../api/dbcon.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery-3.3.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -470,7 +329,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
 
-                    <table class="table  table-bordered w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round">
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
@@ -484,7 +343,7 @@ require 'navbar.php';
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> readonly>
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
                                     <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
@@ -498,7 +357,7 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?> readonly>
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
@@ -510,7 +369,7 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?> readonly>
                                     <label>Electrical Works:</label></th>
 
                                 <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
@@ -522,7 +381,7 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?> readonly>
                                     <label>
                                         <center>Painting Works:
                                     </label></th>
@@ -537,7 +396,7 @@ require 'navbar.php';
                               <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?> readonly>
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
@@ -550,7 +409,7 @@ require 'navbar.php';
                                 <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?> readonly>
                                     <label>
                                         <center>Welding Works:
                                     </label></th>
@@ -589,7 +448,7 @@ require 'navbar.php';
                   <div class="table-responsive">
 
 
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table  table-bordered w3-card w3-round">
                         <tr>
                             <th></th>
                             <th>
@@ -604,9 +463,9 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" readonly></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
+                            <th><input class="w3-input" type="text" name="requester-signature"  readonly></th>
+                            <th><input class="w3-input" type="text" name="inspecter-signature" readonly></th>
+                            <th><input class="w3-input" type="text" name="director-signature" readonly></th>
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
@@ -627,7 +486,7 @@ require 'navbar.php';
                         <tr>
                             <th>Date:</th>
                             <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>" readonly></th>
-                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"readonly ></th>
+                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>" ></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
@@ -643,7 +502,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
+                    <table class="table table-bordered table-responsive w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -657,12 +516,12 @@ require 'navbar.php';
                             <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> readonly>Work completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> disabled>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
                             <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
                             <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Work not completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> disabled>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
@@ -820,9 +679,9 @@ require 'navbar.php';
             <h4 id="message-bottom" class="w3-text-green"></h4>
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
-            <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="submit" value="Print">
-          </div>
+            <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Completed" id="custom-button">
+            <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
+           
 </form>
 
 
@@ -845,6 +704,7 @@ $conn->close();
                   USER TYPE CONDITIONS
                 */
               //disabling of fields
+
                 console.log('statusId '+<?php echo $statusId ?>);
 
               if(<?php echo $statusId ?> == 1){
@@ -901,6 +761,10 @@ $conn->close();
               //approve logic
               /*readonly all fields except the fields given by bi*/
               //approve logic
+
+
+
+
 
               // add script that is status is approved then remove disable in fields
                 $("#inspectionReport").keyup(function() {
@@ -1027,8 +891,56 @@ $conn->close();
 
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
-
+                /*
+                  1 - For Approval
+                  2 - Approved
+                  3 - Denied
+                  4 - Pending
+                  4 - On - Going
+                  6 - Done
+                  7 - For CSO Additional Info
+                  USER TYPE CONDITIONS
+                */
                 
+
+                //fields and buttons logic
+                if(status==7){
+                  console.log("status is 7");
+                  select_priority.disabled = true;
+                }
+
+                  
+
+
+
+                // switch(s_usr_type){
+                //   case "admin":
+                //   console.log("admin - switch");
+                //         if(status !=  7){
+                            
+                //             select_priority.disabled = true;
+
+                //             console.log("disabled");
+                //           }else{
+                //             update_button.disabled = false;
+                //             console.log("not disabled");
+                //             }
+                //         break;
+
+                //   case "director":
+                //   console.log("director");
+                //           if(status == 7)
+                //             update_button.disabled = true;
+                //           else
+                //             update_button.disabled = false;
+                //         break;
+
+                //   case "faculty":
+                //   console.log("faculty");
+                //             update_button.disabled = true;
+                //         break;
+
+                // }
 
             </script>
 </body>

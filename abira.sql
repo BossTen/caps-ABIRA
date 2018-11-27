@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2018 at 12:12 PM
+-- Generation Time: Nov 27, 2018 at 05:05 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -179,6 +179,27 @@ CREATE TABLE `joborder` (
   `materialsNeeded12` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `joborder`
+--
+
+INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `Campus`, `NameOfOffice`, `AirCondition`, `CarpentryMasonry`, `ElectricalWorks`, `Painting`, `Plumbing`, `Welding`, `InspectionReport`, `JobRecommendation`, `MaterialsNeededId`, `RequestorSignature`, `RequestorName`, `RequestorDesignation`, `DateRequested`, `signatureOfInspector`, `InspectorName`, `InspectorDesignation`, `DateInspected`, `Approved`, `ApprovedBy`, `StartOfService`, `StartOfServiceTime`, `EndOfService`, `EndOfServiceTime`, `NoOfHours`, `Assessment`, `AccomplishedWork1`, `WorkDoneBy1`, `Signature1`, `AccomplishedWork2`, `WorkDoneBy2`, `Signature2`, `AccomplishedWork3`, `WorkDoneBy3`, `Signature3`, `AccomplishedWork4`, `WorkDoneBy4`, `Signature4`, `ConformeName`, `ConformeApproved`, `ConformeDateApproved`, `ResponseTime`, `AccuracyOfWork`, `Courtesy`, `QualityOfService`, `statusId`, `priorityId`, `UserJobDescription`, `materialsNeeded1`, `materialsNeeded2`, `materialsNeeded3`, `materialsNeeded4`, `materialsNeeded5`, `materialsNeeded6`, `materialsNeeded7`, `materialsNeeded8`, `materialsNeeded9`, `materialsNeeded10`, `materialsNeeded11`, `materialsNeeded12`) VALUES
+(18, 'RO18111601', '2018-11-16', 'ALANGILAN', 'College of Accountancy, Business, Economics and International Hospitality Management  ', '', '', '', NULL, '', 'checked', NULL, NULL, NULL, NULL, 'MAGNAYE, CHRISTINA ANCHETA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 5, 5, 5, 6, 2, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(19, 'AL18111601', '2018-11-16', 'ALANGILAN', 'College of Accountancy, Business, Economics and International Hospitality Management  ', '', '', 'checked', NULL, '', '', NULL, NULL, NULL, NULL, 'MAGNAYE, CHRISTINA ANCHETA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 2, 'There has been an issue with room 204 electricity, please check', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(20, 'AL18111602', '2018-11-16', 'ALANGILAN', 'College of Accountancy, Business, Economics and International Hospitality Management  ', 'off', 'off', 'checked', 'off', 'off', 'off', '', '', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', '', '2018-11-16', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', '    ', '', '', '    ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 1, 2, 'There has been an issue with room 204 electricity, please check', '', '', '', '', '', '', '', '', '', '', '', ''),
+(21, 'NA18111801', '2018-11-18', 'ALANGILAN', 'College of Accountancy, Business, Economics and International Hospitality Management  ', 'off', 'off', 'off', NULL, 'checked', 'off', '', '', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', '', '2018-11-18', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 3, 4, 'try', '', '', '', '', '', '', '', '', '', '', '', ''),
+(22, 'NA18111802', '2018-11-18', 'ALANGILAN', 'College of Accountancy, Business, Economics and International Hospitality Management  ', '', '', '', NULL, 'checked', 'checked', NULL, NULL, NULL, NULL, 'MAGNAYE, CHRISTINA ANCHETA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 4, 'try01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(23, 'NA18111803', '2018-11-18', 'ALANGILAN', 'College of Accountancy, Business, Economics and International Hospitality Management  ', 'checked', 'checked', 'checked', 'checked', 'checked', 'checked', '', '', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', '', '2018-11-18', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', '   ', '', '', '   ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 2, 4, 'capstone test', '', '', '', '', '', '', '', '', '', 'm1012', '', ''),
+(24, 'AL18112501', '2018-11-25', '', 'CICS (College of Informatics & Computing Sciences) Bldg.', 'checked', '', '', '', '', 'ALANGILAN', NULL, NULL, NULL, NULL, 'MAGNAYE, CHRISTINA ANCHETA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL, 'We request air conditioning cleaning.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(25, 'AL18112502', '2018-11-25', 'ALANGILAN', 'CICS (College of Informatics & Computing Sciences) Bldg.', 'off', 'checked', 'off', 'off', 'off', 'off', '2 broken glass panel windows', 'installation of new glass panel windows', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', '', '2018-11-25', '', '', '', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'completed', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 3, NULL, 'There has been a broken glass panel and now in critical condition. Require immediate attention', 'glass panel', 'screws', 'glue', '', '', '', '', '', '', '', '', ''),
+(26, 'AL18112503', '2018-11-25', 'ALANGILAN ', 'Dean\'s Office', '', 'checked', '', '', '', '', 'broken glass panel', 'installation of new glass panel', NULL, 'bebe ', 'bebe Alyana', 'deans\'s office staff', '2018-11-25', 'cardo', 'cardo dalisay', 'carpentry and masonry', '2018-11-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 1, NULL, 'glass panel', 'screws', 'glue', '', '', '', '', '', '', '', '', ''),
+(27, 'AL18112503', '2018-11-25', 'ALANGILAN ', 'Dean\'s Office', '', 'checked', '', '', '', '', 'broken glass panel', 'installation of new glass panel', NULL, 'bebe ', 'bebe Alyana', 'deans\'s office staff', '2018-11-25', 'cardo', 'cardo dalisay', 'carpentry and masonry', '2018-11-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 1, NULL, 'glass panel', 'screws', 'glue', '', '', '', '', '', '', '', '', ''),
+(28, 'AL18112504', '2018-11-25', 'ALANGILAN', 'CICS (College of Informatics & Computing Sciences) Bldg.', 'off', 'checked', 'off', 'off', 'checked', 'off', 'rusty and leaky pipes', ' replacement of old pipes', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', '', '2018-11-25', '', 'cardo dalisay', 'plumbing', '0000-00-00', 0, NULL, '2018-11-27', '01:00 AM', '2018-11-28', '01:00 AM', 0, 'completed', '  ', '', '', '  ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 5, 3, 'Requesting for installation of new water pipes for the drinking fountains. The tested water from the drinking fountain showed large traces of bacteria.', 'pipes', 'pipe tape', '', '', '', '', '', '', '', '', '', ''),
+(29, 'AL18112601', '2018-11-26', 'ALANGILAN', 'CICS (College of Informatics & Computing Sciences) Bldg.', 'off', 'off', 'checked', 'off', 'off', 'off', 'needs 20 yards of plastic tubes', 'can be done by one personnel', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', '', '2018-11-26', 'cardo', 'cardo dalisay', 'electrician', '0000-00-00', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'completed', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 1, NULL, 'requesting installment of electrical cable covers for all the computer laboratories of the building.', 'plastic tubes', '', '', '', '', '', '', '', '', '', '', ''),
+(30, 'AL18112602', '2018-11-26', 'ALANGILAN ', 'GSO', '', '', '', 'checked', '', '', 'old painting works', 'repainting', NULL, 'GSO', 'GSO', 'GSO admin aide', '2018-11-26', 'cardo', 'cardo dalisay', 'painting', '2018-11-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 4, NULL, 'paints', 'brushes', '', '', '', '', '', '', '', '', '', ''),
+(31, 'AL18112701', '2018-11-27', 'ALANGILAN', 'CICS (College of Informatics & Computing Sciences) Bldg.', 'off', 'off', 'checked', 'off', 'off', 'off', 'cut wires', 'replace wire\r\nrewire', NULL, '', 'MAGNAYE, CHRISTINA ANCHETA', 'Staff', '2018-11-27', '', 'cardo dalisay', 'electrician', '2018-11-27', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 3, NULL, 'hanging cables', 'cables', '', '', '', '', '', '', '', '', '', '', ''),
+(32, 'AL18112702', '2018-11-27', 'ALANGILAN ', 'GSO', 'checked', 'off', 'off', 'off', 'off', 'off', 'old models of aircon', '', NULL, '', 'GSO', 'GSO admin aide', '2018-11-27', '', 'cardo dalisay', 'electrician', '2018-11-28', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 5, 5, 5, 5, 1, 2, NULL, 'latest aircon', '', '', '', '', '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -258,7 +279,8 @@ INSERT INTO `status` (`Id`, `Name`, `Color`) VALUES
 (3, 'Denied', NULL),
 (5, 'On-Going', NULL),
 (6, 'Completed', NULL),
-(7, 'For Inspection', NULL);
+(7, 'For Inspection', NULL),
+(8, 'For Evaluation', NULL);
 
 --
 -- Indexes for dumped tables
@@ -336,7 +358,7 @@ ALTER TABLE `director`
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `preventive_maintenance`
@@ -354,7 +376,7 @@ ALTER TABLE `priority`
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `Id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

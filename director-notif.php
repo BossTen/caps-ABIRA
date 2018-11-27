@@ -1,4 +1,4 @@
-<?php require 'testadmin.php'; ?>
+<?php require 'testdirector.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@ require 'navbar-faculty.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 7 || j.statusId = 2 || j.statusId = 3) && j.RequestorName = ?");
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 8) && j.RequestorName = ?");
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
                                                         $stmt->execute();

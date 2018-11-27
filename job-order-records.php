@@ -96,7 +96,7 @@ require'navbar.php';
       </tr>
     </thead>
     <tbody>
-           <?php
+      <?php
 
       require '../api/dbcon.php';
 
@@ -126,10 +126,10 @@ require'navbar.php';
 
                                 switch($sId){
                                   case 2: 
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   case 3:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-denied.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                  
                                   default:
