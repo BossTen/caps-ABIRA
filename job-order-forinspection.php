@@ -474,8 +474,8 @@ require 'navbar.php';
 <div class="container" style="margin-top: ;">
 
 
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
+            <div class="no-print card">
+                <div class="no-print card-body" style="margin-left:2%;">
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
             <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
               <?php echo $userJobDescription ?>

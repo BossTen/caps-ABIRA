@@ -73,7 +73,7 @@ require 'navbar.php';
                                         break;
                                   case 7:
                                   //REDIRECT TO inspection
-                                        return "<td><a href='job-order-forinsepection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   case 3:
                                   //REDIRECT TO Edenied
