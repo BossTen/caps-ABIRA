@@ -470,6 +470,21 @@ require 'navbar.php';
     <center>
         <h1 class="w3-text-red">Job Order Request</h1>
     </center>
+    <!--report-->
+<div class="container" style="margin-top: ;">
+
+
+            <div class="card">
+                <div class="card-body" style="margin-left:2%;">
+                    <h4 class="no-print"><b>Report Description:</b>&nbsp;
+            <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
+              <?php echo $userJobDescription ?>
+            </textarea></div>
+                  </div>
+                </div>
+              </div>
+
+               <br>
     <div class="container" style="margin-top: ;">
 
 
@@ -573,21 +588,7 @@ require 'navbar.php';
             </div>
             </div>
             <br><br>
-<!--report-->
-<div class="container" style="margin-top: ;">
 
-
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                    <h4 class="no-print"><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
-              <?php echo $userJobDescription ?>
-            </textarea></div>
-                  </div>
-                </div>
-              </div>
-
-               <br>
     <div class="container" style="margin-top: ;">
 
             <div class="card">
