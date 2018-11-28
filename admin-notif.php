@@ -71,9 +71,13 @@ require 'navbar.php';
                                     //NO REDIRECT
                                         return "<td>" . $desc . "</td>";
                                         break;
-                                  case 8:
-                                  //REDIRECT TO EVALUATION
-                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                  case 7:
+                                  //REDIRECT TO inspection
+                                        return "<td><a href='job-order-forinsepection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  case 3:
+                                  //REDIRECT TO Edenied
+                                        return "<td><a href='job-order-denied.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   default:
                                         return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";
