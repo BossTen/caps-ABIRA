@@ -46,6 +46,7 @@ require 'test-director-admin.php';
                     <th onclick="sortTable(3)">Start Date</th>
                     <th onclick="sortTable(3)">End Date</th>
                     <th onclick="sortTable(4)">Status</th>
+                    <th onclick="sortTable(4)">Priority</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +104,7 @@ require 'test-director-admin.php';
                         echo "<td>" . $startOfService . "</td>";
                         echo redirectAdmin($serialCode, $statusId, $endOfService);
                         echo redirectAdmin($serialCode, $statusId, $statusName);
+                        echo redirectAdmin($serialCode, $statusId, $priorityName);
                         echo "</tr>";
 
                                 }

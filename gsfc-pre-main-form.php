@@ -7,17 +7,17 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
                                               work,
                                               campus,
                                               month,
-                                              college,
+                                             
                                               maintainance_activity,
                                               dateStarted,
                                               accomplishedBy
                                               )
-                                              VALUES (?, ?, ?, ?, ?, ?, ?) ');
- $stmt->bind_param('ssssssssss',
+                                              VALUES (?, ?, ?, ?, ?, ?) ');
+ $stmt->bind_param('ssssss',
                               $work,
                               $campus,
                               $month,
-                              $college,
+                              //$college,
                               $m_activity,
                               $dateStarted,
                               $accomplishedBy
@@ -26,8 +26,8 @@ $stmt = $conn->prepare('INSERT INTO preventive_maintenance (
 $work = isset($_POST['work']) ? $_POST['work'] : '';
 $campus = isset($_POST['campus']) ? $_POST['campus'] : '';
 $month = isset($_POST['month']) ? $_POST['month'] : '';
-$college = isset($_POST['college']) ? $_POST['college'] : '';
-$m_activity = isset($_POST['m_activity']) ? $_POST['m_activity'] : '';
+//$college = isset($_POST['college']) ? $_POST['college'] : '';
+$m_activity = isset($_POST['m-activity']) ? $_POST['m-activity'] : '';
 $dateStarted = isset($_POST['date-started']) ? $_POST['date-started'] : '';
 $accomplishedBy = isset($_POST['accomplished-by']) ? $_POST['accomplished-by'] : '';
 
@@ -109,13 +109,9 @@ require'navbar.php';
         </div>
         
                             <div class="row">
-                             <h4 class="col-6"><b>Maintenance Activiteis Performed:</b>&nbsp;<select class="form-control form-control" name="m-activity" id="m-activity">
+                             <h4 class="col-6"><b>Maintenance Activities Performed:</b>&nbsp;<select class="form-control form-control" name="m-activity" id="m-activity">
                               <option value="Generator Set (Test run; Check fuel consumption; Cleaning)">Generator Set (Test run; Check fuel consumption; Cleaning)</option>
                               <option value="Fuel Container (Refilling; Check fuel amount)">Fuel Container (Refilling; Check fuel amount)</option>
-                              
-                           
-                     
-                       
                             </select></h4>
         </div>
         <div class="row">

@@ -86,15 +86,14 @@ require'navbar.php';
     <tbody>
 <?php
 // connect to database
-$con = mysqli_connect('localhost','root','');
-mysqli_select_db($con, 'abira');
+require '../api/dbcon.php';
 
 
 // define how many results you want per page
 $results_per_page = 20;
 // find out the number of results stored in database
 $sql = "SELECT * FROM preventive_maintenance WHERE work LIKE 'Plumbing%' AND campus LIKE 'Alangilan%'";
-$result = mysqli_query ($con,$sql);
+$result = mysqli_query ($conn,$sql);
 $number_of_results = mysqli_num_rows($result);
 // determine number of total pages available
 $number_of_pages = ceil($number_of_results/$results_per_page);
@@ -108,7 +107,7 @@ if (!isset($_GET['page'])) {
 $this_page_first_result = ($page-1)*$results_per_page;
 // retrieve selected results from database and display them on page
 $sql="SELECT * FROM preventive_maintenance WHERE work LIKE 'Plumbing%' AND campus LIKE 'Alangilan%' Order by id DESC  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
-$result = mysqli_query($con, $sql);
+$result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['month'] . "</td>";

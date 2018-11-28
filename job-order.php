@@ -351,7 +351,7 @@ require '../api/dbcon.php';
         echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId==1||$statusId==4||$statusId==5||$statusId==6||$statusId==7||$statusId==8){
+      if($statusId==1||$statusId==4||$statusId==5||$statusId==2||$statusId==7||$statusId==8){
         //if status is equals to approved, ongoing, for inspection
         header('location: job-order-view.php');
       }
