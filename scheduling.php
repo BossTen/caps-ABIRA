@@ -20,8 +20,13 @@
 
 <body>
     <?php
-require 'navbar.php';
+
 require 'test-director-admin.php';
+if($_SESSION['usr_type']=='admin')
+require 'navbar.php';
+else
+require 'navbar-director.php';
+
 
 ?>
     <!--body-->
