@@ -124,7 +124,7 @@ require 'navbar.php';
         <th>Work</th>
          <th>Department</th>
          <th>Date Requested</th>
-         <th>Accomplish By:</th>
+         <th>Accomplished By:</th>
       </tr>
     </thead>
     <tbody>

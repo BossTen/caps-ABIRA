@@ -34,7 +34,7 @@ if(session_id() == '' || !isset($_SESSION)) {
         <a class="nav-link" href="">Inventory</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Notification</a>
+        <a class="nav-link" href="director-notif.php">Notification</a>
       </li>
     </ul>
   </div>
