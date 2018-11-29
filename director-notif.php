@@ -44,7 +44,7 @@ require 'navbar-director.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 8) && j.RequestorName = ?");
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 1) && j.Campus = ?");
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
                                                         $stmt->execute();
@@ -68,13 +68,10 @@ require 'navbar-director.php';
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
-                                  case 2: 
-                                    //NO REDIRECT
-                                        return "<td>" . $desc . "</td>";
-                                        break;
-                                  case 8:
+
+                                  case 1:
                                   //REDIRECT TO EVALUATION
-                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='director-job-order-approval.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   default:
                                         return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";

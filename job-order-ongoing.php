@@ -11,6 +11,57 @@ require 'testadmin.php';
 
 
 
+
+
+    if(isset($_POST['complete'])){
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        
+        // prepare and binds
+        $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
+
+                                              
+                                                        WHERE SerialCode = ?
+                                                       ");
+        
+        $stmt->bind_param("ss",
+                                      $sIdu,
+
+                                      $serialCode
+        
+                                );  
+
+        //print_r($_POST);
+          $sIdu = 6;
+
+        
+         $serialCode = $_POST['serial'];
+        
+         $stmt->execute();
+         $stmt->close();
+         $conn->close(); 
+        
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if(isset($_POST['jos'])){
 
 if ($conn->connect_error) {
@@ -822,6 +873,7 @@ require 'navbar.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
+            <input name="complete" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Complete" id="custom-button">
             <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
            
           </div>

@@ -43,7 +43,7 @@ require 'navbar.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 7 || j.statusId = 2 || j.statusId = 3) && j.RequestorName = ?");
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 7 || j.statusId = 2 || j.statusId = 3) && j.Campus = ?");
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
                                                         $stmt->execute();
@@ -69,11 +69,15 @@ require 'navbar.php';
                                 switch($sId){
                                   case 2: 
                                     //NO REDIRECT
-                                        return "<td>" . $desc . "</td>";
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
-                                  case 8:
-                                  //REDIRECT TO EVALUATION
-                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                  case 7:
+                                  //REDIRECT TO inspection
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                  case 3:
+                                  //REDIRECT TO Edenied
+                                        return "<td><a href='job-order-denied.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   default:
                                         return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";

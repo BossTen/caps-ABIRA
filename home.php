@@ -27,7 +27,11 @@
 
 <body>
 <?php
+if($_SESSION['usr_type']=='admin')
 require 'navbar.php';
+else
+require 'navbar-director.php';
+
 
 
 
@@ -151,7 +155,8 @@ if (!isset($_GET['page'])) {
 // determine the sql LIMIT starting number for the results on the displaying page
 $this_page_first_result = ($page-1)*$results_per_page;
 // retrieve selected results from database and display them on page
-$sql="SELECT * FROM preventive_maintenance  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+$sql="SELECT * FROM preventive_maintenance" ;
+ //LIMIT  . $this_page_first_result . ',' .  $results_per_page;
 $result = mysqli_query($con, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";

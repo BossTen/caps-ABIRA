@@ -55,7 +55,7 @@ require 'navbar-faculty.php';
     }  
       require '../api/dbcon.php';
             $stmt = $conn->prepare("SELECT j.Campus, j.NameOfOffice, j.StartOfService, j.EndOfService, j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName , p.name as priorityName FROM ((joborder as j INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id)
-                                WHERE j.RequestorName = ? && s.Name = 'On-Going'");
+                                WHERE j.RequestorName = ? && (j.statusId = 5 || j.statusId = 7)");
             $stmt->bind_param('s',$usr_fullname);
             $usr_fullname = $_SESSION['usr_fullname'];
             $stmt->execute();
