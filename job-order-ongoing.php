@@ -20,7 +20,7 @@ require 'testadmin.php';
         }
         
         // prepare and binds
-        $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
+        $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
 
                                               
                                                         WHERE SerialCode = ?
