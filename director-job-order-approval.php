@@ -423,7 +423,7 @@ require 'navbar-director.php';
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"><?php echo $JobRecommendation; ?></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
