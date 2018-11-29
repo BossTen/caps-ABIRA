@@ -152,7 +152,7 @@ function convertDate(d) {
   var rows = [].slice.call(tbody.querySelectorAll("tr"));
   
   rows.sort(function(a,b) {
-    return convertDate(b.cells[2].innerHTML) - convertDate(a.cells[2].innerHTML);
+    return convertDate(a.cells[2].innerHTML) - convertDate(b.cells[2].innerHTML);
   });
   
   rows.forEach(function(v) {
