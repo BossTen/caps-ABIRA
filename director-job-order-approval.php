@@ -13,19 +13,12 @@ require '../api/dbcon.php';
 
 
 if(isset($_POST['approve'])){
-  //nameofoffice
-  //serial
-
-  //Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 // prepare and binds
-$stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                      
-                                               
-                                               
+$stmt = $conn->prepare("UPDATE joborder SET statusId = ?
                                                 WHERE SerialCode = ?
                                                ");
 
@@ -56,10 +49,7 @@ if(isset($_POST['denied'])){
   }
   
   // prepare and binds
-  $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                        
-                                                 
-                                                 
+  $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
                                                   WHERE SerialCode = ?
                                                  ");
   
