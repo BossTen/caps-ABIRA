@@ -73,7 +73,7 @@ require 'navbar-director.php';
                                         break;
                                   case 8:
                                   //REDIRECT TO EVALUATION
-                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='director-job-order-approval.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   default:
                                         return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";
