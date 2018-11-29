@@ -12,21 +12,7 @@ if(session_id() == '' || !isset($_SESSION)) {
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav" >
-      <li class="nav-item">
-        <a href="" class="nav-link" data-toggle="modal" data-target="#joborder">Job Order</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Services
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#air">Air-conditioning</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#plum">Plumbing</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#ps">Power Supply</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#bwdw">Building, Walls, Doors, Windows</a>
-        <a href="" class="dropdown-item" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
-        </div>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="scheduling.php">Schedule</a>
       </li>

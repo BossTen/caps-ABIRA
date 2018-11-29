@@ -24,6 +24,7 @@
 <?php
 require 'navbar-director.php';
 ?>
+<br><br>
 
 <div class="container">
 <div class="table-responsive">    
