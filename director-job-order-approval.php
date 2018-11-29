@@ -684,10 +684,7 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
-               $(document).ready(function () {
-            $(":input").not("[name=approve], [name=denied]")
-                .prop("disabled", true);
-                         });
+               
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
                 });
