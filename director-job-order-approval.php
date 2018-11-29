@@ -36,6 +36,8 @@ $stmt->bind_param("ss",
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
+           header('location: director-notif.php');
+          exit();
 
 }
 
@@ -67,7 +69,8 @@ if(isset($_POST['denied'])){
    $stmt->execute();
    $stmt->close();
    $conn->close(); 
-  
+            header('location: director-notif.php');
+          exit();
   }
 
 require '../api/dbcon.php';
