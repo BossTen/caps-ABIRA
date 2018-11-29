@@ -67,11 +67,8 @@ require 'navbar-director.php';
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
-                                  case 2: 
-                                    //NO REDIRECT
-                                        return "<td>" . $desc . "</td>";
-                                        break;
-                                  case 8:
+
+                                  case 1:
                                   //REDIRECT TO EVALUATION
                                         return "<td><a href='director-job-order-approval.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
