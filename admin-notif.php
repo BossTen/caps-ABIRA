@@ -69,7 +69,7 @@ require 'navbar.php';
                                 switch($sId){
                                   case 2: 
                                     //NO REDIRECT
-                                        return "<td>" . $desc . "</td>";
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   case 7:
                                   //REDIRECT TO inspection
