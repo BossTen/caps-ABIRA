@@ -148,7 +148,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                         );  
 // Approved = $directorSignature
 // set parameters and execute
-  $sIdu = 1;
+  $sIdu = 2;
 // $nameOfOffice = $_POST['nameofoffice'];
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
  $masonryCarpentry = isset($_POST['masonary-carpentry']) ? "checked" : 'off';
