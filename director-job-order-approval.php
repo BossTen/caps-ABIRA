@@ -454,11 +454,11 @@ require 'navbar-director.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m11 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m12 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
                             </tr>
                     </table>
                     <h4><b>Report Description:</b>&nbsp;

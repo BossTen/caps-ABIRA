@@ -67,11 +67,8 @@ require'navbar.php';
       <thead>
         <tr>
           <th>Month</th>
-          <th>Department</th>
-          <th>Floor</th>
-          <th>Type</th>
+          <th>Maintenance Activities Performed:</th>
           <th>Date Started</th>
-          <th>Date Ended</th>
           <th>Accomplished by:</th>
         </tr>
       </thead>
@@ -103,11 +100,8 @@ $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['month'] . "</td>";
-  echo "<td>" . $row['college'] . "</td>";
-  echo "<td>" . $row['floor'] . "</td>";
-  echo "<td>" . $row['type'] . "</td>";
+  echo "<td>" . $row['m-activity'] . "</td>";
   echo "<td>" . $row['dateStarted'] . "</td>";
-  echo "<td>" . $row['dateEnded'] . "</td>";
   echo "<td>" . $row['accomplishedBy'] . "</td>";
 }
 // display the links to the pages

@@ -27,7 +27,7 @@ if(isset($_POST['login'])){
 header('location: home.php');
    exit();
    }else if($_SESSION['usr_type']=='director'){
-   header('location: home.php');
+   header('location: director-index.php');
    exit(); 
    }
    

@@ -155,7 +155,7 @@ if (!isset($_GET['page'])) {
 // determine the sql LIMIT starting number for the results on the displaying page
 $this_page_first_result = ($page-1)*$results_per_page;
 // retrieve selected results from database and display them on page
-$sql="SELECT * FROM preventive_maintenance" ;
+$sql="SELECT * FROM preventive_maintenance Order by id DESC" ;
  //LIMIT  . $this_page_first_result . ',' .  $results_per_page;
 $result = mysqli_query($con, $sql);
 while($row = mysqli_fetch_array($result)) {

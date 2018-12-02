@@ -25,6 +25,9 @@
 require 'navbar-director.php';
 ?>
 <br><br>
+        <center>
+  <h1 style="color: red;">Pending for Approval</h1>
+</center>
 
 <div class="container">
 <div class="table-responsive">    
