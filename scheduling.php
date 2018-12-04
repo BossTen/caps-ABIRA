@@ -79,6 +79,7 @@ require 'navbar-director.php';
 
                         echo redirectAdmin($serialCode, $statusId, $endOfService);
                         echo redirectDirector($serialCode, $statusId, $statusName);
+                        echo redirectDirector($serialCode, $statusId, $priorityName);
                         echo "</tr>";
 
                                 }
