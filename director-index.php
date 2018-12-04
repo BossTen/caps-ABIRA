@@ -36,7 +36,19 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="director-job-order-view.php" style='color:#1d1d1d !important;'>  <i class="fa fa-file" style="font-size:20px;"> Job Orders: </i></a>
+              <?php
+                  require '../api/dbcon.php';
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ?');
+                  $stmt->bind_param('s',$campus);
+                  $campus = $_SESSION['usr_campus'];
+                  $stmt->execute();
+                  $stmt->bind_result($totalJobOrderForCampus);
+                  $stmt->fetch();
+                  $stmt->close();
+                  $conn->close();
+
+              ?>
+                <i class="fa fa-file" style="font-size:20px;"> Job Orders: <?php echo $totalJobOrderForCampus;?></i>
             </div>
           </div>
         </div>
@@ -45,7 +57,21 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Approved Job Orders: </i></a>
+              <?php
+                  require '../api/dbcon.php';
+
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
+                  $stmt->bind_param('ss',$campus,$statusId);
+                  $campus = $_SESSION['usr_campus'];
+                  $statusId = 2;
+                  $stmt->execute();
+                  $stmt->bind_result($totalJobOrderForCampusAndApproved);
+                  $stmt->fetch();
+                  $stmt->close();
+                  $conn->close();
+
+              ?>
+                <i class="fa fa-file" style="font-size:20px;"> Approved Job Orders: <?php echo $totalJobOrderForCampusAndApproved; ?> </i>
             </div>
           </div>
         </div>
@@ -54,7 +80,23 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="director-job-order-view.php" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: </i></a>
+              <?php
+               require '../api/dbcon.php';
+              
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
+                  $stmt->bind_param('ss',$campus,$statusId);
+                  $campus = $_SESSION['usr_campus'];
+                  $statusId = 4;
+                  $stmt->execute();
+                  $stmt->bind_result($totalJobOrderForCampusAndPending);
+                  $stmt->fetch();
+                  $stmt->close();
+                  $conn->close();
+
+
+
+              ?>
+                <i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: <?php echo $totalJobOrderForCampusAndPending ?> </i>
             </div>
           </div>
         </div>
