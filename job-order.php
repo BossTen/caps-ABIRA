@@ -886,10 +886,10 @@ $conn->close();
                       $(".onNapprove").removeAttr("readonly");
 
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
+               
                 $('#message-bottom').text('Uneditable');
-
+$(":input").not("")
+                      .prop("disabled", true);
               }else if(<?php echo $statusId ?> == 7){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
