@@ -141,8 +141,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="w3.css">
+    <script src="js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="css/w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
