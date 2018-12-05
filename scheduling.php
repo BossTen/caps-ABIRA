@@ -98,11 +98,12 @@ require 'navbar-director.php';
 
                                 
                                 while($stmt->fetch()){
+                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                                    //$description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                         echo "<tr>";
                         // echo redirectAdmin($serialCode, $statusId, $priorityName);
                         echo redirectAdmin($serialCode, $statusId, $serialCode);
-                        echo redirectAdmin($serialCode, $statusId, $nameOfOffice);
+                        echo redirectAdmin($serialCode, $statusId, $description);
                         //echo redirectAdmin($serialCode, $statusId, $startOfService);
                         echo "<td>" . $startOfService . "</td>";
                         echo redirectAdmin($serialCode, $statusId, $endOfService);
