@@ -42,7 +42,7 @@ require 'navbar-faculty.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 8) && j.RequestorName = ?");
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 5) && j.RequestorName = ?");
                                                         $stmt->bind_param('s',$fullname);
                                                         $fullname = $_SESSION['usr_fullname'];
                                                         $stmt->execute();
@@ -67,6 +67,7 @@ require 'navbar-faculty.php';
 
                                 switch($sId){
                                   case 2: 
+                                  case 5:
                                     //NO REDIRECT
                                         return "<td>" . $desc . "</td>";
                                         break;
