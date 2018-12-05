@@ -1051,10 +1051,7 @@ $conn->close();
                 
 
                 //fields and buttons logic
-                if(status==7){
-                  console.log("status is 7");
-                  select_priority.disabled = true;
-                }
+               
 
                   
 

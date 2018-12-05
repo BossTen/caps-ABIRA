@@ -100,7 +100,7 @@ $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['month'] . "</td>";
-  echo "<td>" . $row['m-activity'] . "</td>";
+  echo "<td>" . $row['maintainance_activity'] . "</td>";
   echo "<td>" . $row['dateStarted'] . "</td>";
   echo "<td>" . $row['accomplishedBy'] . "</td>";
 }
