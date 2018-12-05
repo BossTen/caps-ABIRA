@@ -115,7 +115,7 @@
          $painting =  isset($_POST['Painting']) ? "checked" : '';
          $campus =  $_POST['campus'];
         
-         $priority =  $priorityId;
+         $priority =  $_POST['priority'];
          $requester = $_SESSION['usr_fullname'];
          $userJobDescription = $_POST['user-job-description'];
          $requestorDesignation = $_POST['requestorDesignation'];
