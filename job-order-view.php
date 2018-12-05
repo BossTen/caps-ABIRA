@@ -65,7 +65,8 @@ require'navbar.php';
                                 require_once '../api/apiOnly.php';
                                   $years = json_decode($api->fetch_schoolyear(),true);
                                   foreach ($years as $year) {
-                                    $year = substr($year,5);
+                                    $year = substr($year,0,4);
+
                                    echo "<option value='".$year."'>".$year."</option>";
 
                                   }

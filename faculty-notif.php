@@ -42,7 +42,7 @@ require 'navbar-faculty.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 2 || j.statusId = 5) && j.RequestorName = ?");
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.RequestorName = ?");
                                                         $stmt->bind_param('s',$fullname);
                                                         $fullname = $_SESSION['usr_fullname'];
                                                         $stmt->execute();
@@ -65,20 +65,9 @@ require 'navbar-faculty.php';
                       
                               function redirectTo($sCode, $sId, $desc){
 
-                                switch($sId){
-                                  case 2: 
-                                  case 5:
-                                    //NO REDIRECT
                                         return "<td>" . $desc . "</td>";
-                                        break;
-                                  case 8:
-                                  //REDIRECT TO EVALUATION
-                                        return "<td><a href='faculty-evaluation.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                  default:
-                                        return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";
-                                        break;
-                                }  
+
+                                  
                               }
                               ?>
             </tbody>
