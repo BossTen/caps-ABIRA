@@ -31,9 +31,6 @@ if(session_id() == '' || !isset($_SESSION)) {
         <a class="nav-link" href="scheduling.php">Schedule</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inventory.php">Inventory</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="admin-notif.php">Notification</a>
       </li>
     </ul>

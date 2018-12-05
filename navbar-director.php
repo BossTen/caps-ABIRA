@@ -17,7 +17,7 @@ if(session_id() == '' || !isset($_SESSION)) {
         <a class="nav-link" href="scheduling.php">Schedule</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Inventory</a>
+        <a class="nav-link" href="director-job-order-view.php">Job Order Records</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="director-notif.php">Notification</a>
