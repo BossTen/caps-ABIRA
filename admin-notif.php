@@ -34,6 +34,7 @@ require 'navbar.php';
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>
+         <th>Priority</th>
       </tr>
     </thead>
     <tbody>
@@ -42,11 +43,11 @@ require 'navbar.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE (j.statusId = 7 || j.statusId = 2) && j.Campus = ?");
+                                                        $stmt = $conn->prepare("SELECT j.RequestorName,j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName, p.Name as priorityName FROM ((joborder as j  INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id) WHERE (j.statusId = 7 || j.statusId = 2) && j.Campus = ?");
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
                                                         $stmt->execute();
-                                                        $stmt->bind_result($name,$serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
+                                                        $stmt->bind_result($name,$serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName, $priorityName);
 
 
                                 
@@ -58,6 +59,7 @@ require 'navbar.php';
                         echo redirectTo($serialCode, $statusId, $description);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
+                        echo redirectTo($serialCode, $statusId, $priorityName);
                           echo "</tr>";
                                   
                                   
