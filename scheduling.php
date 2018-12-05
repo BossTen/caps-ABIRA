@@ -44,7 +44,7 @@ require 'navbar-director.php';
                 <tr>
                     <!-- <th onclick="sortTable(0)">Priority</th> -->
                     <th onclick="sortTable(1)">Serial</th>
-                    <th onclick="sortTable(2)">Description</th>
+                    <th onclick="sortTable(2)">Work Description</th>
                     <th onclick="sortTable(3)">Start Date</th>
                     <th onclick="sortTable(3)">End Date</th>
                     <th onclick="sortTable(4)">Status</th>
