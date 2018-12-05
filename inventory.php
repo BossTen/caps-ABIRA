@@ -39,13 +39,16 @@ require'navbar.php';
         <th>Name</th>
         <th>Description</th>
         <th>Quantity</th>
+        <th></th>
+
       </tr>
     </thead>
     <tbody>
     <tr>  
           <td><b>Plywood</b></td>
           <td><b>Screw</b></td>
-          <td><b>500 pcs</b></td>
+          <td><input type="number" value="<?php echo "10"; ?>"" placeholder=""></td>
+          <td><input type="submit" class="btn btn-success" name="" value="Update"></td>
           </tr>
         </tbody>
       </table>
