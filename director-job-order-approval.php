@@ -83,6 +83,7 @@ require '../api/dbcon.php';
                            CarpentryMasonry,
                            ElectricalWorks,
                            Plumbing,
+                           Painting,
                            Welding,
                            RequestorSignature,
                            RequestorName,
@@ -132,7 +133,9 @@ require '../api/dbcon.php';
                                                materialsNeeded7,
                                                materialsNeeded8,
                                                materialsNeeded9,
-                                               materialsNeeded10 
+                                               materialsNeeded10, 
+                                               materialsNeeded11, 
+                                               materialsNeeded12 
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -144,6 +147,7 @@ require '../api/dbcon.php';
                        $CarpentryMasonry,
                        $ElectricalWorks,
                        $Plumbing,
+                       $Painting,
                        $Welding,
                        $RequestorSignature,
                        $RequestorName,
@@ -193,7 +197,9 @@ require '../api/dbcon.php';
                        $m7,
                        $m8,
                        $m9,
-                       $m10
+                       $m10,
+                       $m11,
+                       $m12
                      );
 
     while($stmt->fetch()){
@@ -301,7 +307,7 @@ require 'navbar-director.php';
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
                         <h4 class="col-6"><b>Priority</b>&nbsp;
-                            <select class="form-control form-control" name="priority" id="priority">
+                            <select class="form-control form-control" name="priority" id="priority" disabled>
                                 <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority";
@@ -383,87 +389,85 @@ require 'navbar-director.php';
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?>  disabled>
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" readonly="" ><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>" readonly/></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>" readonly></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?> disabled>
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>" readonly></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>" readonly></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?> disabled>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>" readonly></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>" readonly></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?> disabled>
                                     <label>
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"><?php echo $JobRecommendation; ?></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450" readonly><?php echo $JobRecommendation; ?></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>" readonly></th>
                             </tr>
                             <tr>
-                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
+                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>" readonly></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?> disabled>
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
                             
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>" readonly></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
+                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?> disabled>
                                     <label>
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>" readonly></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
+                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>" readonly></th>
                             </tr>
                     </table>
-                    <h4><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="form-control" rows="15" name="user-job-description"></textarea></div>
-                    <br>
+
 
 
                     <table class="table table-bordered w3-card w3-round">
@@ -481,30 +485,30 @@ require 'navbar-director.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
+                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" readonly></th>
+                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature" readonly></th>
+                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
+                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" readonly></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Designation:</th>
-                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>"></th>
-                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
+                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>" readonly></th>
                             <th>
                                 <center>Assistant Director of FMSO</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequested;?>"></th>
-                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"></th>
+                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequested;?>" readonly></th>
+                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>" readonly></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
@@ -519,17 +523,17 @@ require 'navbar-director.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>"></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
+                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService" readonly></th>
                             <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?>>Work completed upon agreed duration</th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : 'disabled' ?> readonly>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>"></th>
-                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>"></th>
-                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>>Work not completed upon agreed duration</th>
+                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
+                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
+                            <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : 'disabled' ?>>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                     <br>
@@ -546,33 +550,33 @@ require 'navbar-director.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>" readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>" readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>" readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
+                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>" readonly></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
-                            <th><input class="w3-input" type="text" name="conforme-signature"></th>
+                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>" readonly></th>
+                            <th><input class="w3-input" type="text" name="conforme-signature" readonly></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">
+                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
                             </th>
                         </tr>
                         <tr>
