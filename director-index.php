@@ -85,7 +85,7 @@ require 'navbar-director.php';
                   $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
                   $stmt->bind_param('ss',$campus,$statusId);
                   $campus = $_SESSION['usr_campus'];
-                  $statusId = 4;
+                  $statusId = 1;
                   $stmt->execute();
                   $stmt->bind_result($totalJobOrderForCampusAndPending);
                   $stmt->fetch();
