@@ -47,7 +47,7 @@ require'navbar.php';
     <tr>  
           <td><b>Plywood</b></td>
           <td><b>Screw</b></td>
-          <td><input type="number" value="<?php echo "10"; ?>"" placeholder=""></td>
+          <td><input type="number" value="<?php echo "10"; ?>"" placeholder="">meters</td>
           <td><input type="submit" class="btn btn-success" name="" value="Update"></td>
           </tr>
         </tbody>
