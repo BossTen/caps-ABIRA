@@ -23,7 +23,7 @@
 <?php
 require 'navbar.php';
 ?>
-
+<br><br>
 <div class="container">
 <div class="table-responsive">    
   <table id='table' class="table table-striped">

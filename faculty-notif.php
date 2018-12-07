@@ -23,14 +23,13 @@
 <?php
 require 'navbar-faculty.php';
 ?>
-
-<div class="container">
+<br><br>
+<div class="container" style="margin-bottom: 5%">
 <div class="table-responsive">    
   <table id='table' class="table table-striped">
     <thead>
       <tr>
         <th>Serial</th>
-        
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>

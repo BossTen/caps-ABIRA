@@ -31,7 +31,7 @@ require 'navbar-faculty.php';
    <div class="form-row">
       <div class="col-5 w3-text-red"><h1>User Reports</h1></div>
 
-<div class="container">  
+<div class="container" style="margin-bottom: 5%">  
   <div class="table-responsive">
   <table class="table table-striped table-hover table-responsive">
     <thead>
