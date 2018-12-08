@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Faculty Notification</title>
+  <title>Director Notification</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -28,7 +28,7 @@ require 'navbar-director.php';
   <h1 style="color: red;">Pending for Approval</h1>
 </center>
 
-<div class="container">
+<div class="container" style="margin-bottom: 5%;">
 <div class="table-responsive">    
   <table id='table' class="table table-striped">
     <thead>

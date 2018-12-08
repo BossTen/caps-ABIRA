@@ -507,7 +507,7 @@ require 'navbar.php';
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" required><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
@@ -547,7 +547,7 @@ require 'navbar.php';
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450" required></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
@@ -617,7 +617,7 @@ require 'navbar.php';
                           <tr>
                             <th>Printed Name:</th>
                             <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" readonly></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
+                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" required></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
@@ -625,7 +625,7 @@ require 'navbar.php';
                         <tr>
                             <th>Designation:</th>
                             <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>" readonly></th>
-                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
+                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>" required></th>
                             <th>
                                 <center>Assistant Director of FMSO</center>
                             </th>

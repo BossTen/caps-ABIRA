@@ -297,7 +297,7 @@ require 'navbar-director.php';
     <center>
         <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
     </center>
-    <div class="container" style="margin-top: ;">
+    <div class="container" style="margin-bottom: 5%;">
         <!-- UPDATE form -->
         <form action="" method="POST">
             <!-- UPDATE card -->
