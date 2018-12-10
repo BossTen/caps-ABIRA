@@ -46,6 +46,9 @@ if(session_id() == '' || !isset($_SESSION)) {
       <li class="nav-item">
         <a class="nav-link" href="admin-notif.php">Notification</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="chart.php">Chart</a>
+      </li>
     </ul>
   </div>
   <div class="pull-right">
