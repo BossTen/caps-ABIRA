@@ -703,17 +703,17 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" ></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" value="<?php echo $r_EndOfService; ?>" ></th>
-                            <th id="con-numhours" rowspan=2 value="" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" >
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></th>
+                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" value="<?php echo $r_EndOfService; ?>"  required></th>
+                            <th id="con-numhours" rowspan=2 value="" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>"  required>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> >Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php $date = date("H:i", strtotime($r_StartOfServiceTime)); echo "$date"; ?>" ></th>
-                            <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php $date = date("H:i", strtotime($r_EndOfServiceTime)); echo "$date"; ?>" ></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> >Work not completed upon agreed duration</th>
+                            <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php $date = date("H:i", strtotime($r_StartOfServiceTime)); echo "$date"; ?>"  required></th>
+                            <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php $date = date("H:i", strtotime($r_EndOfServiceTime)); echo "$date"; ?>"  required></th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>  required>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
@@ -763,10 +763,10 @@ require 'navbar.php';
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-signature" value=<?php echo ($ConformeApproved == 1 ? 'Approved' : 'Not Approved'); ?>></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo $ConformeName?>" required></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-signature" value="<?php echo ($ConformeApproved == 1 ? 'Approved' : 'Not Approved'); ?>" required></th>
                             <th>
-                                <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" >
+                                <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>"  required>
                             </th>
                         </tr>
                         <tr>
