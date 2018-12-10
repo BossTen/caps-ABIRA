@@ -680,7 +680,7 @@ require 'navbar-director.php';
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
             
             <input name="approve" style="padding:20px;" class="btn btn-success" type="submit" value="Approve">
-            <input name="denied" style="padding:20px;" class="btn btn-danger" type="submit" value="Deny">
+            
 
 
                <?php 
