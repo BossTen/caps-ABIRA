@@ -34,7 +34,7 @@ require 'testadmin.php';
                                 );  
 
         //print_r($_POST);
-          $sIdu = 6;
+          $sIdu = 8;
 
         
          $serialCode = $_POST['serial'];
@@ -872,7 +872,7 @@ require 'navbar.php';
             <h4 id="message-bottom" class="w3-text-green"></h4>
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
-            <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
+            <!-- <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button"> -->
             <input name="complete" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Complete" id="custom-button">
             <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
            
