@@ -1,3 +1,40 @@
+<?php
+
+  
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE assessment='completed'");
+    //$stmt->bind_param('s',$sId);
+    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
+    $stmt->execute();
+    $stmt->bind_result($completed
+                     );
+    $stmt->fetch();
+    //echo 'completed '. $completed;
+
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE assessment='notcompleted'");
+    //$stmt->bind_param('s',$sId);
+    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
+    $stmt->execute();
+    $stmt->bind_result($notCompleted
+                     );
+
+    $stmt->fetch();
+   // echo 'notcompleted '. $notCompleted;
+
+        $stmt->close();
+    $conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,11 +198,11 @@ require 'navbar.php';
   var myPieChart = new Chart(ctxP, {
     type: 'pie',
     data: {
-      labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+      labels: ["Red", "Green"],
       datasets: [{
-        data: [0, 0, 0, 0, 0],
-        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+        data: [<?php echo $notCompleted;?>, <?php echo $completed;?>],
+        backgroundColor: ["#F7464A", "#46BFBD"],
+        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
       }]
     },
     options: {
