@@ -639,8 +639,8 @@ require 'navbar.php';
                         <br>
                         <tr>
                             <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" ></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" >
+                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" required></th>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> >Work completed upon agreed duration</th>

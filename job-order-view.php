@@ -102,7 +102,7 @@ require'navbar.php';
       require '../api/dbcon.php';
 
 
-                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ? && (statusId = 3 || statusId = 6 || statusId = 1)");
+                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ? && (statusId = 3 || statusId = 6 || statusId = 1 || statusId = 8)");
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
                                                         $stmt->execute();
@@ -137,7 +137,7 @@ require'navbar.php';
                                         break;
                                  
                                   default:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>". $desc . "</td>";
                                         break;
                                 }  
                               }
