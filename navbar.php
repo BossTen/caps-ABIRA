@@ -34,7 +34,7 @@ if(session_id() == '' || !isset($_SESSION)) {
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a href="admin-pen-for-app.php" class="dropdown-item">Pending for Approval</a>
         <a href="admin-for-ins.php" class="dropdown-item">For Inspection</a>
-        <a href="admin-pending.php" class="dropdown-item">Pending</a>
+        <a href="admin-pen.php" class="dropdown-item">Pending</a>
         <a href="admin-on-going.php" class="dropdown-item">On-Going</a>
         <a href="admin-approved.php" class="dropdown-item">Approved</a>
         <a href="admin-completed.php" class="dropdown-item">Completed</a>

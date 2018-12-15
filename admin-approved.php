@@ -32,7 +32,7 @@ require'navbar.php';
 
 <div class="container">
    <div class="form-row">
-      <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
+      <div class="col-5 w3-text-red"><h1>Job Order Approved Records</h1></div>
       
       <div class="col-2"><h4>Month</h4>
         <select name="month" id="month" style="width:80%;" onchange="filterMonth()">
