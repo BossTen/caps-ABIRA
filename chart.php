@@ -104,7 +104,7 @@ require '../api/dbcon.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Chart</title>
+  <title>GSO Performance View</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -127,7 +127,7 @@ require '../api/dbcon.php';
 require 'navbar.php';
 ?>
 <br><br>
-        <div class="container">
+        <div class="container" style="margin-bottom: 5%;">
             <div class="">
 
 
@@ -135,7 +135,7 @@ require 'navbar.php';
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Bar Chart</strong>
+                                <strong>Evaluation/ Performance Chart</strong>
                             </div>
                             <div class="card-body">
                                     <canvas id="myChart"></canvas>
@@ -144,24 +144,12 @@ require 'navbar.php';
                         </div>
                     </div>
                     <br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Line Chart</strong>
-                            </div>
-                            <div class="card-body">
-                                    <canvas id="lineChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
+                
                     <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Pie Chart</strong>
+                                <strong>Compliance to scheduled project duration</strong>
                             </div>
                             <div class="card-body">
                                     <canvas id="pieChart"></canvas>
@@ -187,7 +175,7 @@ require 'navbar.php';
     data: {
       labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
       datasets: [{
-        label: 'Faculty Feedback',
+        label: 'Users Feedback',
         // data: [0, 0, 0, 0, 0, 0],
           data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
           backgroundColor: [
@@ -266,11 +254,11 @@ require 'navbar.php';
   var myPieChart = new Chart(ctxP, {
     type: 'pie',
     data: {
-      labels: ["Red", "Green"],
+      labels: ["Work completed upon agreed duration", "Work not completed upon agreed duration"],
       datasets: [{
-        data: [<?php echo $notCompleted;?>, <?php echo $completed;?>],
-        backgroundColor: ["#F7464A", "#46BFBD"],
-        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
+        data: [<?php echo $completed;?>, <?php echo $notCompleted;?> ],
+        backgroundColor: ["#46BFBD", "#F7464A"],
+        hoverBackgroundColor: ["#5AD3D1", "#FF5A5E"]
       }]
     },
     options: {
@@ -279,3 +267,4 @@ require 'navbar.php';
   });
 
 </script>
+
