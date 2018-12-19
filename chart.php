@@ -175,7 +175,7 @@ require 'navbar.php';
     data: {
       labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
       datasets: [{
-        label: 'Users Feedback',
+        label: 'Users Feedback' , 
         // data: [0, 0, 0, 0, 0, 0],
           data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
           backgroundColor: [
