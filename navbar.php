@@ -27,6 +27,18 @@ if(session_id() == '' || !isset($_SESSION)) {
         <a href="" class="dropdown-item" data-toggle="modal" data-target="#gsfc">Generator Set/Fuel Container</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Job Order Status
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a href="admin-for-ins.php" class="dropdown-item">For Inspection</a>
+        <a href="admin-pen-for-app.php" class="dropdown-item">Pending for Approval</a> 
+        <a href="admin-approved.php" class="dropdown-item">Approved</a>
+        <a href="admin-on-going.php" class="dropdown-item">On-Going</a>
+        <a href="admin-completed.php" class="dropdown-item">Completed</a>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="scheduling.php">Schedule</a>
       </li>
