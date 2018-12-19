@@ -87,56 +87,51 @@ require'navbar.php';
          <th>Status</th>
       </tr>
     </thead>
-    <tbody>
+       <tbody>
            <?php
-// connect to database
-require '../api/dbcon.php';
+
+      require '../api/dbcon.php';
 
 
-// define how many results you want per page
-$results_per_page = 20;
-// find out the number of results stored in database
-$sql = "SELECT * FROM joborder WHERE statusID LIKE 'Pending'";
-$result = mysqli_query ($conn,$sql);
-$number_of_results = mysqli_num_rows($result);
-// determine number of total pages available
-$number_of_pages = ceil($number_of_results/$results_per_page);
-// determine which page number visitor is currently on
-if (!isset($_GET['page'])) {
-  $page = 1;
-} else {
-  $page = $_GET['page'];
-}
-// determine the sql LIMIT starting number for the results on the displaying page
-$this_page_first_result = ($page-1)*$results_per_page;
-// retrieve selected results from database and display them on page
-$sql="SELECT * FROM joborder WHERE statusID LIKE 'Pending' Order by id DESC  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
-$result = mysqli_query($conn, $sql);
-while($row = mysqli_fetch_array($result)) {
-  echo "<tr>";
-  echo "<td>" . $row['SerialCode'] . "</td>";
-  echo "<td>" . $row['Campus'] . "</td>";
-  echo "<td>" . $row['JobRecommendation'] . "</td>";
-  echo "<td>" . $row['DateRequestCreated'] . "</td>";
-  echo "<td>" . $row['statusID'] . "</td>";
-}
-// display the links to the pages
-?>
+                                                        $stmt = $conn->prepare("SELECT j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName FROM joborder as j  INNER JOIN status as s ON j.statusId = s.Id WHERE j.Campus = ? && (statusId = 1)");
+                                                        $stmt->bind_param('s',$campus);
+                                                        $campus = $_SESSION['usr_campus'];
+                                                        $stmt->execute();
+                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
 
 
-    </tbody>
-  </table>
-</div>
-<div class="container">
-  <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-<?php
-for ($page=1;$page<=$number_of_pages;$page++) {
-    echo '<li class="page-item"><a class="page-link" href="admin-pen-for-app.php?page=' . $page . '">' . $page . '</a> ';
+                                
+                                while($stmt->fetch()){
+                                   $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
+                                    echo "<tr>";
+                        echo redirectTo($serialCode, $statusId, $serialCode);
+                        echo redirectTo($serialCode, $statusId, $campus);
+                        echo redirectTo($serialCode, $statusId, $description);
+                        echo redirectTo($serialCode, $statusId, $dCreated);
+                        echo redirectTo($serialCode, $statusId, $statusName);
+                          echo "</tr>";
+                                  
+                                  
+                                 }
+                      
+                              function redirectTo($sCode, $sId, $desc){
 
-}
-?>
-</div>
+                                switch($sId){
+
+                                 case 1:
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        break;
+                                 
+                                  default:
+                                        return "<td>". $desc . "</td>";
+                                        break;
+                                }  
+                              }
+                              ?>
+            </tbody>
+        </table>
+      </div>
+    </div>
 
 </body>
 </html>
