@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -13,8 +13,7 @@
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
+
 </head>
 <body>
 <?php
@@ -40,13 +39,16 @@ require'navbar.php';
         <th>Name</th>
         <th>Description</th>
         <th>Quantity</th>
+        <th></th>
+
       </tr>
     </thead>
     <tbody>
     <tr>  
           <td><b>Plywood</b></td>
           <td><b>Screw</b></td>
-          <td><b>500 pcs</b></td>
+          <td><input type="number" value="<?php echo "10"; ?>"" placeholder="">meters</td>
+          <td><input type="submit" class="btn btn-success" name="" value="Update"></td>
           </tr>
         </tbody>
       </table>

@@ -217,20 +217,18 @@ require '../api/dbcon.php';
 <html lang="en">
 
 <head>
-    <title class="no-print">Job Order Form</title>
+    <title class="no-print">Director Job Order View</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="w3.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/w3.css">
+
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
+
 </head>
 
 <body>

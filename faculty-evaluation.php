@@ -38,7 +38,6 @@ $stmt->bind_param("ssssss",
                                $courtesy,
                                $qualityOfService,
                               $serialCode
-
                         );  
 // Approved = $directorSignature
 // set parameters and execute
@@ -205,10 +204,10 @@ require '../api/dbcon.php';
      
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
-      if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
+      if(strtolower($_SESSION['usr_fullname'])!=strtolower($RequestorName)){
          // header('location: not-allowed.php');
          // exit();
-        echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
+        echo strtolower($_SESSION['usr_campus']);
       }
 
       if($statusId!=8){
@@ -228,7 +227,7 @@ require '../api/dbcon.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -236,14 +235,13 @@ require '../api/dbcon.php';
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/custom.css">
-   <link rel="stylesheet" href="css/navbar.css">
+
    <script src="js/search.js"></script>
 </head>
 
 <body>
     <?php
-require 'navbar.php';
+require 'navbar-faculty.php';
 ?>
 
     <center>
@@ -705,57 +703,12 @@ $conn->close();
                 */
               //disabling of fields
 
-                console.log('statusId '+<?php echo $statusId ?>);
-
-              if(<?php echo $statusId ?> == 1){
-                console.log('for approval');
+          
                 //$('#message-bottom').remove();
-                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+                $(":input").not("[name=accept],[name=jos],[name=btn-print],[name=cb1],[name=cb2],[name=cb3],[name=cb4],[name=serial]")
                       .prop("disabled", true);
                 
-              }else if(<?php echo $statusId ?> == 2 ){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
-                //change button name for server side script
-                $("#custom-button").attr('name', 'ongoing');
-                $('#message-bottom').text('Submitting would set this as for On-going');
-                                $(":input").not("[class=onNapprove]")
-                      .prop("disabled", true);
-                      $(".onNapprove").removeAttr("disabled");
-                      $(".onNapprove").removeAttr("readonly");
-
-              }else if(<?php echo $statusId ?> == 3){
-                //denied
-                //but we need to add a text
-                $('#message-bottom').text('This Request is denied');
-                //add button draft to only save as draft and not change status
-                $(":input").not("")
-                      .prop("disabled", true);
-
-              }else if(<?php echo $statusId ?> == 5){
-                //on going
-                //but we need to add a text
-                $("#custom-button").attr('name', 'ongoing');
-                $('#message-bottom').text('Submitting would change the status to Done!, click draft if you only want to save');
-                //add button draft to only save as draft and not change status
-                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
-                $input.appendTo($("#btn-container"));
-                                $(":input").not("[class=onNapprove]")
-                      .prop("disabled", true);
-                      $(".onNapprove").removeAttr("disabled");
-                      $(".onNapprove").removeAttr("readonly");
-
-              }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
-                $('#message-bottom').text('Uneditable');
-
-              }else if(<?php echo $statusId ?> == 7){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
-                $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
-
-              }
+              
               //disabling of fields
 
               //approve logic

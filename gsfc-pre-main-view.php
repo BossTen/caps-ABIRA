@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -47,7 +47,7 @@ require'navbar.php';
                                 require_once '../api/apiOnly.php';
                                   $years = json_decode($api->fetch_schoolyear(),true);
                                   foreach ($years as $year) {
-                                    $year = substr($year,5);
+                                    $year = substr($year,0,4);
                                    echo "<option value='".$year."'>".$year."</option>";
 
                                   }
@@ -67,11 +67,8 @@ require'navbar.php';
       <thead>
         <tr>
           <th>Month</th>
-          <th>Department</th>
-          <th>Floor</th>
-          <th>Type</th>
+          <th>Maintenance Activities Performed:</th>
           <th>Date Started</th>
-          <th>Date Ended</th>
           <th>Accomplished by:</th>
         </tr>
       </thead>
@@ -103,11 +100,8 @@ $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['month'] . "</td>";
-  echo "<td>" . $row['college'] . "</td>";
-  echo "<td>" . $row['floor'] . "</td>";
-  echo "<td>" . $row['type'] . "</td>";
+  echo "<td>" . $row['maintainance_activity'] . "</td>";
   echo "<td>" . $row['dateStarted'] . "</td>";
-  echo "<td>" . $row['dateEnded'] . "</td>";
   echo "<td>" . $row['accomplishedBy'] . "</td>";
 }
 // display the links to the pages

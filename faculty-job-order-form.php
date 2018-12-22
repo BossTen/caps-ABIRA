@@ -84,7 +84,7 @@
             if($stmt){
             echo "<script type='text/javascript'>
                         alert ('Successful insertion of data'); 
-                        window.location.href='faculty-job-order-form.php';</script>";
+                        window.location.href='faculty-job-order-view.php';</script>";
             }else{
             echo "<script type='text/javascript'>
                         alert ('Not Successful insertion of data'); 
@@ -115,7 +115,7 @@
          $painting =  isset($_POST['Painting']) ? "checked" : '';
          $campus =  $_POST['campus'];
         
-         $priority =  $priorityId;
+         $priority =  $_POST['priority'];
          $requester = $_SESSION['usr_fullname'];
          $userJobDescription = $_POST['user-job-description'];
          $requestorDesignation = $_POST['requestorDesignation'];
@@ -139,17 +139,16 @@
     <title>Faculty Job Order Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="w3.css">
+    <script src="js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="css/w3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
+
 </head>
 
 <body>
@@ -183,7 +182,7 @@ require 'navbar-faculty.php';
         <div class="row ">
         <!--COLLEGES-->
                              <h4 class="col-12"><b>Department:</b>&nbsp;
-                             <select class="form-control form-control" name="college" id="campus">
+                             <select class="form-control form-control" name="college" id="campus" required>
                               <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.
 </option>
                               <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS (College of Informatics & Computing Sciences) Bldg.
@@ -203,17 +202,17 @@ require 'navbar-faculty.php';
                             <!--COLLEGES-->
                             <div class="row">
                               <h4 class="col-12"><b>Name Of Office: </b>&nbsp;
-                                <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office">
+                                <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
                               </h4>
                             </div>
                             <div class="row">
                               <h4 class="col-12"><b>Your Designation: </b>&nbsp;
-                                <input type="text" name="requestorDesignation" class="form-control col-12" id="requestorDesignation" placeholder="Designation">
+                                <input type="text" name="requestorDesignation" class="form-control col-12" id="requestorDesignation" placeholder="Designation" required>
                               </h4>
                             </div>
          <div class="row">
                             <h4 class="col-12"><b>Priority</b>&nbsp;
-                <select class="form-control" name="priority" id="priority">
+                <select class="form-control" name="priority" id="priority" required>
                     <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority";

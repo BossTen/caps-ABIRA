@@ -351,7 +351,7 @@ require '../api/dbcon.php';
         echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId==1||$statusId==4||$statusId==5||$statusId==2||$statusId==7||$statusId==8){
+      if($statusId==4||$statusId==5||$statusId==2||$statusId==7||$statusId==8){
         //if status is equals to approved, ongoing, for inspection
         header('location: job-order-view.php');
       }
@@ -774,7 +774,7 @@ require 'navbar.php';
                                 </tr>
 
                                 <tr>
-                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
+                                    <th colspan="4">Response time for the initial call for service</th>
                                     <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 5 ? 'checked' : 'disabled') : ($ResponseTime == 5 ? 'checked' : '');    ?> ></th>
                                     <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 4 ? 'checked' : 'disabled') : ($ResponseTime == 4 ? 'checked' : '');    ?> ></th>
                                     <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 3 ? 'checked' : 'disabled') : ($ResponseTime == 3 ? 'checked' : '');    ?> ></th>
@@ -886,10 +886,10 @@ $conn->close();
                       $(".onNapprove").removeAttr("readonly");
 
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
-                //fields are now set for this status so we aint going to readonly any fields here
-                //but we need to add a text
+               
                 $('#message-bottom').text('Uneditable');
-
+$(":input").not("")
+                      .prop("disabled", true);
               }else if(<?php echo $statusId ?> == 7){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text

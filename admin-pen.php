@@ -1,17 +1,8 @@
-<?php
-       if(session_id() == '' || !isset($_SESSION)) {
-    // session isn't started
-             session_start();
-          }  
-    require 'testadmin.php';
-    //echo $_SESSION['usr_campus'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-    <title>Job Order View</title>
+    <title>Job Order Pending View</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -41,7 +32,7 @@ require'navbar.php';
 
 <div class="container">
    <div class="form-row">
-      <div class="col-5 w3-text-red"><h1>Job Order Records</h1></div>
+      <div class="col-5 w3-text-red"><h1>Job Order<br> Pending Records</h1></div>
       
       <div class="col-2"><h4>Month</h4>
         <select name="month" id="month" style="width:80%;" onchange="filterMonth()">
@@ -84,7 +75,7 @@ require'navbar.php';
 
 
 
-<div class="container">
+<div class="container" style="margin-bottom: 5%">
 <div class="table-responsive">    
   <table id='table' class="table table-striped">
     <thead>
@@ -96,7 +87,7 @@ require'navbar.php';
          <th>Status</th>
       </tr>
     </thead>
-    <tbody>
+       <tbody>
            <?php
 
       require '../api/dbcon.php';
@@ -147,61 +138,5 @@ require'navbar.php';
       </div>
     </div>
 
-    <div class="container ">
-      
-        <div class="float-right"><a href="<?php echo (($_SESSION['usr_type']=='faculty')? 'faculty-job-order-form.php' : 'job-order-form.php') ?>"> <button type="button" class="btn btn-success">Add</button></a>
-        </div>
-    </div>
-
-    <script>
-
-            function filterMonth() {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("month");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("table");
-            tr = table.getElementsByTagName("tr");
-
-              // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[3]; 
-                
-                if (td) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-
-        function filterYear() {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("year");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("table");
-            tr = table.getElementsByTagName("tr");
-
-              // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[3]; 
-                
-                if (td) {
-                  console.log(td.innerHTML.toUpperCase().substring(0,4));
-                    if (td.innerHTML.toUpperCase().indexOf(filter)> -1) {
-                      //console.log(td.innerHTML.toUpperCase());
-
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-</div>
 </body>
-
 </html>

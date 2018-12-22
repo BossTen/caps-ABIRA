@@ -16,8 +16,7 @@
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -58,7 +57,8 @@ require'navbar-director.php';
                                 require_once '../api/apiOnly.php';
                                   $years = json_decode($api->fetch_schoolyear(),true);
                                   foreach ($years as $year) {
-                                    $year = substr($year,5);
+                                    $year = substr($year,0,4);
+
                                    echo "<option value='".$year."'>".$year."</option>";
 
                                   }

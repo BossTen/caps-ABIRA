@@ -16,8 +16,7 @@
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,7 +35,19 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="director-job-order-view.php" style='color:#1d1d1d !important;'>  <i class="fa fa-file" style="font-size:20px;"> Job Orders: </i></a>
+              <?php
+                  require '../api/dbcon.php';
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ?');
+                  $stmt->bind_param('s',$campus);
+                  $campus = $_SESSION['usr_campus'];
+                  $stmt->execute();
+                  $stmt->bind_result($totalJobOrderForCampus);
+                  $stmt->fetch();
+                  $stmt->close();
+                  $conn->close();
+
+              ?>
+                <i class="fa fa-file" style="font-size:20px;"> Job Orders: <?php echo $totalJobOrderForCampus;?></i>
             </div>
           </div>
         </div>
@@ -45,7 +56,21 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Approved Job Orders: </i></a>
+              <?php
+                  require '../api/dbcon.php';
+
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
+                  $stmt->bind_param('ss',$campus,$statusId);
+                  $campus = $_SESSION['usr_campus'];
+                  $statusId = 2;
+                  $stmt->execute();
+                  $stmt->bind_result($totalJobOrderForCampusAndApproved);
+                  $stmt->fetch();
+                  $stmt->close();
+                  $conn->close();
+
+              ?>
+                <i class="fa fa-file" style="font-size:20px;"> Approved Job Orders: <?php echo $totalJobOrderForCampusAndApproved; ?> </i>
             </div>
           </div>
         </div>
@@ -54,7 +79,23 @@ require 'navbar-director.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <a href="director-job-order-view.php" style='color:#1d1d1d !important;'><i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: </i></a>
+              <?php
+               require '../api/dbcon.php';
+              
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
+                  $stmt->bind_param('ss',$campus,$statusId);
+                  $campus = $_SESSION['usr_campus'];
+                  $statusId = 1;
+                  $stmt->execute();
+                  $stmt->bind_result($totalJobOrderForCampusAndPending);
+                  $stmt->fetch();
+                  $stmt->close();
+                  $conn->close();
+
+
+
+              ?>
+                <i class="fa fa-file" style="font-size:20px;"> Pending Job Orders: <?php echo $totalJobOrderForCampusAndPending ?> </i>
             </div>
           </div>
         </div>
@@ -84,15 +125,14 @@ require 'navbar-director.php';
     <tbody>
       <?php
 // connect to database
-$con = mysqli_connect('localhost','root','');
-mysqli_select_db($con, 'abira');
+require '../api/dbcon.php';
 
 
 // define how many results you want per page
 $results_per_page = 20;
 // find out the number of results stored in database
 $sql = "SELECT * FROM preventive_maintenance";
-$result = mysqli_query ($con,$sql);
+$result = mysqli_query ($conn,$sql);
 $number_of_results = mysqli_num_rows($result);
 // determine number of total pages available
 $number_of_pages = ceil($number_of_results/$results_per_page);
@@ -105,8 +145,8 @@ if (!isset($_GET['page'])) {
 // determine the sql LIMIT starting number for the results on the displaying page
 $this_page_first_result = ($page-1)*$results_per_page;
 // retrieve selected results from database and display them on page
-$sql="SELECT * FROM preventive_maintenance  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
-$result = mysqli_query($con, $sql);
+$sql="SELECT * FROM preventive_maintenance Order by id DESC  LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+$result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
   echo "<td>" . $row['work'] . "</td>";

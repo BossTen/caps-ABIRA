@@ -17,11 +17,9 @@ if(session_id() == '' || !isset($_SESSION)) {
         <a href="faculty-job-order-form.php" class="nav-link">Send Report</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="faculty-notif.php">Notification</a>
+        <a class="nav-link" href="faculty-notif.php">Reports</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="faculty-job-order-view.php">Reports</a>
-      </li>
+
     </ul>
   </div>
     <div class="pull-right">
