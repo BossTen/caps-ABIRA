@@ -101,7 +101,7 @@ require'navbar.php';
                                                         $stmt->bind_param('s',$campus);
                                                         $campus = $_SESSION['usr_campus'];
                                                         $stmt->execute();
-                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId,$priorityName $statusName);
+                                                        $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId,$priorityName, $statusName);
 
 
                                 
