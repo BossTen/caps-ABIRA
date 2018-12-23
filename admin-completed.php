@@ -120,7 +120,7 @@ require'navbar.php';
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
-                                  case 2: 
+                                  case 6: 
                                         return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   
