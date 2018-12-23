@@ -123,7 +123,7 @@ require'navbar.php';
 
                                 switch($sId){
                                   case 2: 
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                  
                                   default:

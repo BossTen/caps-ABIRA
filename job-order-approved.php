@@ -191,7 +191,10 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
 
  $serialCode = $_POST['serial'];
 
- $stmt->execute();
+ if($stmt->execute()){
+  header('location: scheduling.php');
+  exit();
+ }
  $stmt->close();
  $conn->close(); 
 

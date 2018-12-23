@@ -205,7 +205,11 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
  $serialCode = $_POST['serial'];
 
- $stmt->execute();
+ 
+ if($stmt->execute()){
+   header('location: admin-pen-for-app.php');
+   exit();
+ }
  $stmt->close();
  $conn->close(); 
 
