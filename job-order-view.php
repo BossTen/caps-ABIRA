@@ -133,8 +133,10 @@ require'navbar.php';
                                         return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                  case 1:
+                                 case 6:
                                         return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
+
                                  
                                   default:
                                         return "<td>". $desc . "</td>";

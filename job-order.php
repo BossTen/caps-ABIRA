@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require 'testadmin.php';
+//require 'testadmin.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
@@ -348,7 +348,7 @@ require '../api/dbcon.php';
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
          // header('location: not-allowed.php');
          // exit();
-        echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
+       // echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
       if($statusId==4||$statusId==5||$statusId==2||$statusId==7||$statusId==8){
