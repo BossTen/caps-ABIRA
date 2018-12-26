@@ -766,7 +766,7 @@ require 'navbar.php';
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo $ConformeName?>" required></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo  $RequestorName; ?> " required></th>
                             <th><input class="w3-input onNapprove" type="text" name="conforme-signature" value="<?php echo ($ConformeApproved == 1 ? 'Approved' : 'Not Approved'); ?>" required></th>
                             <th>
                                 <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>"  required>

@@ -530,7 +530,7 @@ require 'navbar-director.php';
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input" type="text" name="conforme-name" value="<?php echo $ConformeName?>"></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo  $RequestorName; ?> "></th>
                             <th><input class="w3-input" type="text" name="conforme-signature"></th>
                             <th>
                                 <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">

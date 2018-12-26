@@ -722,7 +722,7 @@ require 'navbar.php';
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo $ConformeName?>"readonly></th>
+                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo  $RequestorName; ?> " readonly></th>
                             <th><input class="w3-input onNapprove" type="text" name="conforme-signature"readonly></th>
                             <th>
                                 <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
