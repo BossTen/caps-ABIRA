@@ -36,7 +36,13 @@ header('location: home.php');
    if(!empty($faculty[0]['usr_fullname'])){
    $_SESSION['usr_fullname'] = $faculty[0]['usr_fullname'];
     $_SESSION['usr_type'] = 'faculty';
+
+    // echo $api->fetch_semester();
+    // echo $api->fetch_schoolyear();
+    // print_r($api->fetch_student_grades('2018-2019','First',$_POST['username'],$faculty[0]['token']));
+    //   die();
     header('location: faculty-index.php');
+    exit();
    }else{
         echo "<script type='text/javascript'>
                 alert ('Username and Password unmatched!'); 
