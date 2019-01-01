@@ -204,7 +204,11 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
  $serialCode = $_POST['serial'];
 
- $stmt->execute();
+if($stmt->execute()){
+  echo "<script type='text/javascript'>
+                alert ('Update Successful!'); 
+                window.location.href='login.php';</script>";
+}
  $stmt->close();
  $conn->close(); 
 
