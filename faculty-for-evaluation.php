@@ -24,7 +24,6 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
 
 $stmt->bind_param("ss",
                               $sIdu,
-                              
                               $serialCode
 
                         );  
@@ -207,8 +206,7 @@ require '../api/dbcon.php';
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=trim(strtolower($Campus))){
-          header('location: not-allowed.php');
-          exit();
+          
       }
       //code for checking if user is with the same campus as the requester
 

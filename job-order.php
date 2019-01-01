@@ -351,9 +351,10 @@ require '../api/dbcon.php';
        // echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId==4||$statusId==5||$statusId==2||$statusId==7||$statusId==8){
+      if($statusId==4||$statusId==5||$statusId==2||$statusId==8){
         //if status is equals to approved, ongoing, for inspection
         header('location: job-order-view.php');
+        exit();
       }
 
 
@@ -384,7 +385,7 @@ require '../api/dbcon.php';
 
 <body>
     <?php
-require 'navbar.php';
+ require 'navbar.php';
 ?>
 
     <center>
@@ -652,7 +653,7 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
+                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class=form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
                             <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" readonly></th>
                             <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
@@ -662,7 +663,7 @@ require 'navbar.php';
                         <tr>
                             <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
                             <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Work not completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Workcompleted upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
