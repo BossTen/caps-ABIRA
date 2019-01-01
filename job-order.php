@@ -351,11 +351,11 @@ require '../api/dbcon.php';
        // echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId==4||$statusId==5||$statusId==2||$statusId==8){
-        //if status is equals to approved, ongoing, for inspection
-        header('location: job-order-view.php');
-        exit();
-      }
+      // if($statusId==4||$statusId==5||$statusId==2||$statusId==8){
+      //   //if status is equals to approved, ongoing, for inspection
+      //   header('location: job-order-view.php');
+      //   exit();
+      // }
 
 
       //code for checking if user is with the same campus as the requester
