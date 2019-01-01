@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 
 
 
-
+require '../api/dbcon.php';
 
 if(isset($_POST['jos'])){
 
