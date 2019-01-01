@@ -900,6 +900,8 @@ $(":input").not("")
                 //but we need to add a text
                 $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
 
+              }else if(<?php echo $statusId ?> == 8){
+                document.getElementById("custom-button").value = "Submit Evaluation";
               }
               //disabling of fields
 
