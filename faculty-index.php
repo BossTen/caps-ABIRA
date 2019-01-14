@@ -26,6 +26,40 @@ require 'navbar-faculty.php';
 ?>
 
 <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
+        <div class="card card-signin my-3">
+          <div class="card-body">
+            <div class="stat-icon dib">
+                <i class="fa fa-file" style="font-size:20px;"> Pending for Approval: </i>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
+        <div class="card card-signin my-3">
+          <div class="card-body">
+            <div class="stat-icon dib">
+                <i class="fa fa-file" style="font-size:20px;"> On-going: </i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md- col-lg- mx-auto">
+        <div class="card card-signin my-3">
+          <div class="card-body">
+            <div class="stat-icon dib">
+                <i class="fa fa-file" style="font-size:20px;"> Completed:</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<br><br>
 <div class="container" style="margin-bottom: 5%">
   <div class="card">
     <div class="card-body">

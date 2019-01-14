@@ -48,6 +48,9 @@ if(session_id() == '' || !isset($_SESSION)) {
       <li class="nav-item">
         <a class="nav-link" href="chart.php">GSO Performance View</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="register.php">Register</a>
+      </li>
     </ul>
   </div>
   <div class="pull-right">

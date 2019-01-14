@@ -165,51 +165,7 @@ require 'navbar-faculty.php';
           <h1>Good Day! What's the problem?</h1>
             <div class="card">
 	<div class=" card-body  style="margin-left: 5%;">
-        <div class="row ">
-                        <h4 class="col-12"><b>Campus:</b>&nbsp;
-                             <select class="form-control form-control" name="campus" id="campus" required>
-                                <?php
-                                require '../api/apiOnly.php';
-                                  $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                   echo "<option value='".$campus['code']."'>".$campus['code']."</option>";
 
-                                  }
-
-                              ?>
-                            </select>
-                          </div>
-        <div class="row ">
-        <!--COLLEGES-->
-                             <h4 class="col-12"><b>Department:</b>&nbsp;
-                             <select class="form-control form-control" name="college" id="campus" required>
-                              <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.
-</option>
-                              <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS (College of Informatics & Computing Sciences) Bldg.
-</option>
-                              <option value="CIT (College of Industrial Technology) Bldg.">CIT (College of Industrial Technology) Bldg.</option>
-                              <option value="RG RECTO Bldg. (RGR)">RG RECTO Bldg. (RGR)</option>
-                              <option value="STUDENT Center Bldg. (SSC)">STUDENT Center Bldg. (SSC)</option>
-                              <option value="FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office">FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office
-</option>
-                              <option value="RSFIHM (School of Food & International Hotel Management) Bldg.">RSFIHM (School of Food & International Hotel Management) Bldg.</option>
-                              <option value="Gymnasium Area">Gymnasium Area</option>
-                              <option value="Food Innovation Center Building">Food Innovation Center Building </option>
-                     
-                       
-                            </select>
-                          </div>
-                            <!--COLLEGES-->
-                            <div class="row">
-                              <h4 class="col-12"><b>Name Of Office: </b>&nbsp;
-                                <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
-                              </h4>
-                            </div>
-                            <div class="row">
-                              <h4 class="col-12"><b>Your Designation: </b>&nbsp;
-                                <input type="text" name="requestorDesignation" class="form-control col-12" id="requestorDesignation" placeholder="Designation" required>
-                              </h4>
-                            </div>
          <div class="row">
                             <h4 class="col-12"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority" required>
