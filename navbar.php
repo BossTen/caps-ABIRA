@@ -49,7 +49,10 @@ if(session_id() == '' || !isset($_SESSION)) {
         <a class="nav-link" href="chart.php">GSO Performance View</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="register.php">Register</a>
+        <a class="nav-link" href="admin-register.php">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="admin-notices.php">Notices</a>
       </li>
     </ul>
   </div>
