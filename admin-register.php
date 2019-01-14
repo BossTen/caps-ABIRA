@@ -23,6 +23,7 @@
 
 <body>
 <?php
+require 'testadmin.php';
 require 'navbar.php';
 
 
@@ -37,13 +38,14 @@ require 'navbar.php';
         <div class="card card-signin my-7">
           <div class="card-body">
             <center>
+              <form id="form-register">
             <h1 class="w3-text-red">Account Information</h1>
             <h5 class="col-12"><b>Username:</b>
-              <input type="text" name="" class="form-control col-12" id="" placeholder="" required>
+              <input type="text" name="username" class="form-control col-12" id="" placeholder="" required>
             <h5 class="col-12"><b>Password:</b>
-              <input type="text" name="" class="form-control col-12" id="" placeholder="" required>
+              <input type="text" name="password" class="form-control col-12" id="" placeholder="" required>
             <h5 class="col-12"><b>Confirm Password:</b>
-              <input type="text" name="" class="form-control col-12" id="" placeholder="" required>
+              <input type="text" name="confirm-password" class="form-control col-12" id="" placeholder="" required>
             <h5 class="col-12"><b>Campus:</b>
               <select class="form-control form-control col-12" name="campus" id="campus" required>
                                 <?php
@@ -57,7 +59,7 @@ require 'navbar.php';
                               ?>
                             </select>
             <h5 class="col-12"><b>Department:</b>&nbsp;
-              <select class="form-control form-control col-12" name="college" id="campus" required>
+              <select class="form-control form-control col-12" name="department" id="department" required>
                   <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAof Engineering, Architecture  & Fine Arts) Bldg.
                   </option>
                   <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS Informatics & Computing Sciences) Bldg.
@@ -76,9 +78,25 @@ require 'navbar.php';
             <h5 class="col-12"><b>Name Of Office: </b>&nbsp;
                   <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
             <h4 class="col-12"><b>Designation: </b>&nbsp;
-                  <input type="text" name="requestorDesignation" class="form-control col-12" id="requestorDesignation" placeholder="Designation" required>
+                  <input type="text" name="designation" class="form-control col-12" id="designation" placeholder="Designation" required>
 
             <br>
             <center>
-            <input name="submit" style="padding:20px;" class="btn btn-success col-md-4" type="submit" value="Register">
+            <input name="submit" style="padding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register">
+          </form>
             </center>
+
+            <script>
+                $(document).on('click','#save',function(e) {
+  var data = $("#form-register").serialize();
+  $.ajax({
+    
+         data: data,
+         type: "post",
+         url: "backend/register.php",
+         success: function(data){
+              alert("Data Save: " + data);
+         }
+});
+ });
+            </script>
