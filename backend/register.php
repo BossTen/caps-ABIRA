@@ -15,7 +15,7 @@ if(isset($_REQUEST)){
 VALUES (?,?,?,?,?,?)");
 $stmt->bind_param("ssssss", $username, $password, $designation, $campus, $nameOfOffice, $Department);
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 $designation = $_POST['designation'];
 $campus = $_POST['campus'];
 $nameOfOffice = $_POST['nameofoffice'];

@@ -87,8 +87,16 @@ require 'navbar.php';
             </center>
 
             <script>
-                $(document).on('click','#save',function(e) {
-  var data = $("#form-register").serialize();
+
+
+                $("#save").click(function() {
+
+ 
+    // no more clicks until timer expires
+    $(this).attr("disabled", "disabled");
+
+    // do whatever you want on the click here
+                    var data = $("#form-register").serialize();
   $.ajax({
     
          data: data,
@@ -98,5 +106,9 @@ require 'navbar.php';
               alert("Data Save: " + data);
          }
 });
- });
+    // set timer to re-enable the button 
+    setTimeout(function() {
+        $("#save").removeAttr("disabled");
+    }, 5 *  1000);
+});
             </script>
