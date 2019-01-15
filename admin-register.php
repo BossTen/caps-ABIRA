@@ -108,7 +108,7 @@ require 'navbar.php';
          type: "post",
          url: "backend/register.php",
          success: function(data){
-              alert("Data Save: " + data);
+              alert("Account Created ");
          }
 });
     // set timer to re-enable the button 

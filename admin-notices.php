@@ -25,9 +25,6 @@
 <?php
 require 'navbar.php';
 
-
-
-
 ?>
 
 <br><br>
@@ -48,15 +45,35 @@ require 'navbar.php';
         <th>Campus</th>
         <th>Department</th>
         <th>Designation</th>
+        <th>Message</th>
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <th>Cics</th>
-      <th>alangilan</th>
-      <th>cics</th>
-      <th>cics faculty</th>
-      <th><a href="" class="nav-link" data-toggle="modal" data-target="#reply" ><button type="button" class="btn btn-success">Reply</button></a></th>
+    <tbody> 
+      <?php
+      require '../api/dbcon.php';
+
+      $stmt = $conn->prepare("SELECT m.id, m.serialCode, m.facultyId, m.adminId, m.message, a.NameOfOffice, a.campus, a.Department, a.designation FROM messages as m INNER JOIN accounts AS a ON m.facultyId = a.Id WHERE a.Campus = ?");
+      $stmt->bind_param('s', $sCampus);
+      $sCampus = $_SESSION['usr_campus'];
+      $stmt->execute();
+      $stmt->bind_result($mId, $mSCode, $mFId, $mAId, $mMessage, $aNameOfOffice, $aCampus, $aDepartment, $aDesignation);
+      while($stmt->fetch()){
+        echo "<tr>";
+        echo  "<td>" . $aNameOfOffice . "</td>";
+        echo  "<td>" . $aCampus . "</td>";
+        echo  "<td>" . $aDepartment . "</td>";
+        echo  "<td>" . $aDesignation . "</td>";
+        echo  "<td>" . $mMessage . "</td>";
+        echo '<td><a href="" class="nav-link" data-toggle="modal" data-target="#reply" ><button type="button" class="btn btn-success">Reply</button></a></th>';
+        echo "</tr>";
+      }
+
+      $stmt->close();
+      $conn->close();
+      ?>
+     
+      
     </tbody>
   </table>
 </div>
@@ -96,7 +113,7 @@ require 'navbar.php';
       <div class="modal-header">
       </div>
       <div class="modal-body">
-        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message"><br>
+        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message" value= "<?php echo $mId; ?>"><br>
         <button type="button" class="btn btn-success">Send</button>
 
       </div>
@@ -106,4 +123,44 @@ require 'navbar.php';
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+$('.delete_employee').click(function(e){
+e.preventDefault();
+var empid = $(this).attr('data-emp-id');
+var parent = $(this).parent("td").parent("tr");
+bootbox.dialog({
+message: "Are you sure you want to Delete ?",
+title: "<i class='glyphicon glyphicon-trash'></i> Delete !",
+buttons: {
+success: {
+label: "No",
+className: "btn-success",
+callback: function() {
+$('.bootbox').modal('hide');
+}
+},
+danger: {
+label: "Delete!",
+className: "btn-danger",
+callback: function() {
+$.ajax({
+type: 'POST',
+url: 'deleteRecords.php',
+data: 'empid='+empid
+})
+.done(function(response){
+bootbox.alert(response);
+parent.fadeOut('slow');
+})
+.fail(function(){
+bootbox.alert('Error....');
+})
+}
+}
+}
+});
+});
+});
+  </script>
 
