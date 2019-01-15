@@ -78,7 +78,12 @@ require 'navbar.php';
             <h5 class="col-12"><b>Name Of Office: </b>&nbsp;
                   <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
             <h4 class="col-12"><b>Designation: </b>&nbsp;
-                  <input type="text" name="designation" class="form-control col-12" id="designation" placeholder="Designation" required>
+                  <select class="form-control form-control col-12" name="department" id="department" required>
+                    <option></option>
+                  
+                     
+                       
+                  </select>
 
             <br>
             <center>
