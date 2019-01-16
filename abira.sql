@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2019 at 12:58 AM
+-- Generation Time: Jan 16, 2019 at 01:11 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -51,7 +51,7 @@ INSERT INTO `accounts` (`Id`, `username`, `password`, `designation`, `campus`, `
 (6, 'test2', 'test2', 'test2', 'NASUGBU', 'test2', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
 (7, 'test3', 'test3', 'test3', 'NASUGBU', 'test3', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
 (8, 'test4', 'test4', 'test4', 'NASUGBU', 'test4', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(9, 'test5', 'test5', 'test5', 'NASUGBU', 'test5', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(9, 'test5', 'test5', 'test5', 'ALANGILAN', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
 (10, 'admin_alangilan', '', '', 'NASUGBU', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.');
 
 -- --------------------------------------------------------
@@ -276,11 +276,21 @@ INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `Campus`, `Nam
 
 CREATE TABLE `messages` (
   `id` int(10) NOT NULL,
-  `senderId` int(5) DEFAULT NULL,
-  `receiverId` int(5) DEFAULT NULL,
+  `serialCode` varchar(10) DEFAULT NULL,
+  `facultyId` int(5) DEFAULT NULL,
+  `adminId` int(5) DEFAULT NULL,
   `message` varchar(300) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `dateCreated` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `serialCode`, `facultyId`, `adminId`, `message`, `dateCreated`) VALUES
+(1, 'aqq', 9, 1, 'qaasd', '2019-01-10'),
+(2, 'aqq', 9, 3, '123', '2019-01-02'),
+(3, '1', 9, 1, '1', '2019-01-02');
 
 -- --------------------------------------------------------
 
@@ -399,8 +409,8 @@ ALTER TABLE `joborder`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `senderId` (`senderId`),
-  ADD KEY `receiverId` (`receiverId`);
+  ADD KEY `senderId` (`facultyId`),
+  ADD KEY `receiverId` (`adminId`);
 
 --
 -- Indexes for table `preventive_maintenance`
@@ -452,7 +462,7 @@ ALTER TABLE `joborder`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `preventive_maintenance`
