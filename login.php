@@ -13,24 +13,26 @@ require '../api/apiOnly.php';
  
 if(isset($_POST['login'])){
   //do query here
-  $stmt = $conn->prepare('SELECT username, campus, designation FROM accounts where username = ? AND password = ? ');
+  $stmt = $conn->prepare('SELECT Id, username, campus, designation FROM accounts where username = ? AND password = ? ');
   $stmt->bind_param('ss', $u, $p);
   $u=$_POST['username'];
   $p=md5($_POST['password']);
   $stmt->execute();
-  $stmt->bind_result($username,$campus, $designation);
+  $stmt->bind_result($id, $username,$campus, $designation);
   if($stmt->fetch()>0){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = $designation;
   $_SESSION['usr_campus'] = $campus;
+  $_SESSION['usr_id'] = $id;
    if($_SESSION['usr_type']=='admin'){
 header('location: home.php');
    exit();
    }else if($_SESSION['usr_type']=='director'){
    header('location: director-index.php');
    exit(); 
-   }
-   
+   }else if($_SESSION['usr_type']=='faculty')
+   header('location: faculty-index.php');
+    exit();
   }else{
  $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
    if(!empty($faculty[0]['usr_fullname'])){

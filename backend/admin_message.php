@@ -16,7 +16,7 @@ VALUES (?,?,?,?,?,?)");
 $stmt->bind_param("ssssss", $sender, $serialCode, $facultyId, $adminId, $nameOfOffice, $dateCreated);
 $sender = "admin";
 $serialCode = " ";
-$facultyId = " ";
+$facultyId = $_POST['message'];
 $adminId = " ";
 $message = $_POST['message'];
 $dateCreated = " ";

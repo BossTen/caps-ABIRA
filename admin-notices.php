@@ -53,7 +53,7 @@ require 'navbar.php';
       <?php
       require '../api/dbcon.php';
 
-      $stmt = $conn->prepare("SELECT m.id, m.serialCode, m.facultyId, m.adminId, m.message, a.NameOfOffice, a.campus, a.Department, a.designation FROM messages as m INNER JOIN accounts AS a ON m.facultyId = a.Id WHERE a.Campus = ?");
+      $stmt = $conn->prepare("SELECT m.id, m.serialCode, m.facultyId, m.adminId, m.message, a.NameOfOffice, a.campus, a.Department, a.designation FROM messages as m INNER JOIN accounts AS a ON m.facultyId = a.Id WHERE a.Campus = ? AND m.sender='faculty'");
       $stmt->bind_param('s', $sCampus);
       $sCampus = $_SESSION['usr_campus'];
       $stmt->execute();
@@ -65,7 +65,8 @@ require 'navbar.php';
         echo  "<td>" . $aDepartment . "</td>";
         echo  "<td>" . $aDesignation . "</td>";
         echo  "<td>" . $mMessage . "</td>";
-        echo '<td><a href="" class="nav-link" data-toggle="modal" data-target="#reply" ><button type="button" class="btn btn-success">Reply</button></a></th>';
+        // echo '<td><a href="" class="nav-link" data-toggle="modal" data-target="#reply" ><button type="button" class="btn btn-success">Reply</button></a></th>';
+        echo '<td><a href="admin-message.php?id='. $mId. '"><button type="button" class="btn btn-success">Reply</button></a></th>';
         echo "</tr>";
       }
 

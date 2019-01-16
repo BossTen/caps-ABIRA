@@ -78,11 +78,10 @@ require 'navbar.php';
             <h5 class="col-12"><b>Name Of Office: </b>&nbsp;
                   <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
             <h4 class="col-12"><b>Designation: </b>&nbsp;
-                  <input type="text" name="" class="form-control col-12" id="" placeholder="Designation" required>
-
+                  <input type="text" name="designation" class="form-control col-12" id="designation" placeholder="Designation" required>
             <br>
             <center>
-            <input name="submit" style="padding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register">
+            <input name="submit" style="paddingding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register">
           </form>
             </center>
 
@@ -92,10 +91,10 @@ require 'navbar.php';
                 $("#save").click(function() {
 
  
-    // no more clicks until timer expires
+    //no more clicks until timer expires
     $(this).attr("disabled", "disabled");
 
-    // do whatever you want on the click here
+    //do whatever you want on the click here
                     var data = $("#form-register").serialize();
   $.ajax({
     
@@ -106,7 +105,7 @@ require 'navbar.php';
               alert("Account Created ");
          }
 });
-    // set timer to re-enable the button 
+    //set timer to re-enable the button 
     setTimeout(function() {
         $("#save").removeAttr("disabled");
     }, 5 *  1000);

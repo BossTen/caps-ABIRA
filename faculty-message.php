@@ -23,8 +23,8 @@
 
 <body>
 <?php
-require 'testadmin.php';
-require 'navbar.php';
+require 'testfaculty.php';
+require 'navbar-faculty.php';
 require '../api/dbcon.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
@@ -64,7 +64,7 @@ if(isset($_GET['id'])){
             <h5 class="col-12"><b>Faculty Message :</b>
   <textarea class="form-control" rows="5" id="f-message" readonly><?php echo $mMessage; ?></textarea>
               <input type="hidden" id="" name="mId" value="<?php echo $mId; ?>">
-              <input type="hidden" id="" name="mFId" value="<?php echo $mFId; ?>">
+              <input type="hidden" id="" name="mAId" value="<?php echo $mAId; ?>">
               <input type="hidden" id="" name="mSCode" value="<?php echo $mSCode; ?>">
 
             <h5 class="col-12"><b>Department:</b>&nbsp;
@@ -77,7 +77,7 @@ if(isset($_GET['id'])){
 
             <div class="form-group">
   <label for="comment">Message:</label>
-  <textarea class="form-control" rows="5" id="a-message" name="message"></textarea>
+  <textarea class="form-control" rows="5" id="a-message" name="message" required></textarea>
 </div>  
             <center>
             <input name="submit" style="padding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Send">

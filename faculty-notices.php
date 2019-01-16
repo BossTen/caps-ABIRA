@@ -45,9 +45,27 @@ require 'navbar-faculty.php';
       </tr>
     </thead>
     <tbody>
-      <th>Sorry for the inconvience</th>
-      <th>19-01-15</th>
-      <th><a href="" class="nav-link" data-toggle="modal" data-target="#reply" ><button type="button" class="btn btn-success">Reply</button></a></th>
+      <?php
+      require '../api/dbcon.php';
+
+      $stmt = $conn->prepare("SELECT m.id, m.serialCode, m.facultyId, m.adminId, m.dateCreated, m.message, a.NameOfOffice, a.campus, a.Department, a.designation FROM messages as m INNER JOIN accounts AS a ON m.facultyId = a.Id WHERE a.Campus = ? AND m.sender='admin'");
+      $stmt->bind_param('s', $sCampus);
+      $sCampus = $_SESSION['usr_campus'];
+      $stmt->execute();
+      $stmt->bind_result($mId, $mSCode, $mFId, $mAId, $dateCreated, $mMessage, $aNameOfOffice, $aCampus, $aDepartment, $aDesignation);
+      while($stmt->fetch()){
+        echo "<tr>";
+        echo  "<td>" . $mMessage . "</td>";
+        echo  "<td>" . $dateCreated . "</td>";
+    
+        // echo '<td><a href="" class="nav-link" data-toggle="modal" data-target="#reply" ><button type="button" class="btn btn-success">Reply</button></a></th>';
+        echo '<td><a href="faculty-message.php?id='. $mId. '"><button type="button" class="btn btn-success">Reply</button></a></th>';
+        echo "</tr>";
+      }
+
+      $stmt->close();
+      $conn->close();
+      ?>
     </tbody>
   </table>
 </div>
