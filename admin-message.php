@@ -56,26 +56,26 @@ if(isset($_GET['id'])){
       <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
         <div class="card card-signin my-7">
           <div class="card-body">
-              <form id="form-register">
+              <form id="form-register" action="admin_message.php" method="POST">
             <center>
 
             <h1 class="w3-text-red">Send Message</h1>
           </center>
             <h5 class="col-12"><b>Faculty Message :</b>
-  <textarea class="form-control" rows="5" id="f-message" disabled><?php echo $mMessage; ?></textarea>
+  <textarea class="form-control" rows="5" id="f-message" readonly><?php echo $mMessage; ?></textarea>
              
 
             <h5 class="col-12"><b>Department:</b>&nbsp;
-              <input type="text" name="username" class="form-control col-12" id="" placeholder="" value="<?php echo $aDepartment; ?>" disabled>
+              <input type="text" name="username" class="form-control col-12" id="" placeholder="" value="<?php echo $aDepartment; ?>" readonly>
                      
             <h5 class="col-12"><b>Name Of Office: </b>&nbsp;
-                  <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" value="<?php echo $aNameOfOffice; ?>" disabled>
+                  <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" value="<?php echo $aNameOfOffice; ?>" readonly>
             <h4 class="col-12"><b>Designation: </b>&nbsp;
-                   <input type="text" name="username" class="form-control col-12" id="" placeholder="" value="<?php echo $aDesignation; ?>" disabled>
+                   <input type="text" name="username" class="form-control col-12" id="" placeholder="" value="<?php echo $aDesignation; ?>" readonly> 
 
             <div class="form-group">
   <label for="comment">Message:</label>
-  <textarea class="form-control" rows="5" id="a-message"></textarea>
+  <textarea class="form-control" rows="5" id="a-message" name="message"></textarea>
 </div>  
             <center>
             <input name="submit" style="padding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Send">
@@ -84,27 +84,28 @@ if(isset($_GET['id'])){
             <script>
 
 
-                $("#save").click(function() {
+//                 $("#save").click(function() {
 
  
-    // no more clicks until timer expires
-    $(this).attr("disabled", "disabled");
+//     // no more clicks until timer expires
+//     $(this).attr("disabled", "disabled");
 
-    // do whatever you want on the click here
-                    var data = $("#form-register").serialize();
-  $.ajax({
+//     // do whatever you want on the click here
+//                     var data = $("#form-register").serialize();
+//   $.ajax({
     
-         data: data,
-         type: "post",
-         url: "backend/register.php",
-         success: function(data){
-              alert("Account Created
-                ");
-         }
-});
-    // set timer to re-enable the button 
-    setTimeout(function() {
-        $("#save").removeAttr("disabled");
-    }, 5 *  1000);
-});
+//          data: data,
+//          type: "post",
+//          url: "backend/admin_message.php",
+//          success: function(data){
+//               alert("Account Created
+//                 ");
+             
+//          }
+// });
+//     // set timer to re-enable the button 
+//     setTimeout(function() {
+//         $("#save").removeAttr("disabled");
+//     }, 5 *  1000);
+// });
             </script>

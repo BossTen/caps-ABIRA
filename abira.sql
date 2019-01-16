@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2019 at 01:11 AM
+-- Generation Time: Jan 16, 2019 at 01:30 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -276,6 +276,7 @@ INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `Campus`, `Nam
 
 CREATE TABLE `messages` (
   `id` int(10) NOT NULL,
+  `sender` varchar(10) DEFAULT NULL,
   `serialCode` varchar(10) DEFAULT NULL,
   `facultyId` int(5) DEFAULT NULL,
   `adminId` int(5) DEFAULT NULL,
@@ -287,10 +288,10 @@ CREATE TABLE `messages` (
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `serialCode`, `facultyId`, `adminId`, `message`, `dateCreated`) VALUES
-(1, 'aqq', 9, 1, 'qaasd', '2019-01-10'),
-(2, 'aqq', 9, 3, '123', '2019-01-02'),
-(3, '1', 9, 1, '1', '2019-01-02');
+INSERT INTO `messages` (`id`, `sender`, `serialCode`, `facultyId`, `adminId`, `message`, `dateCreated`) VALUES
+(1, '', 'aqq', 9, 1, 'qaasd', '2019-01-10'),
+(2, '', 'aqq', 9, 3, '123', '2019-01-02'),
+(3, '', '1', 9, 1, '1', '2019-01-02');
 
 -- --------------------------------------------------------
 
