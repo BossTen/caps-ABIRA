@@ -663,7 +663,7 @@ require 'navbar.php';
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" readonly></th>
+                            <th><?php echo  $RequestorName;?></th>
                             <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" readonly></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
@@ -791,7 +791,7 @@ require 'navbar.php';
             <div class="container" style="margin-top: ;">
 
                 <div class="card">
-                    <div class="card-body" style="margin-left:2%;">
+                    <div class="card-body" style="margin-left:2%; display: none;">
                       <div class ="table-responsive">
                         <table class="table table-bordered">
                             <tbody>
