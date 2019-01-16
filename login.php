@@ -13,17 +13,19 @@ require '../api/apiOnly.php';
  
 if(isset($_POST['login'])){
   //do query here
-  $stmt = $conn->prepare('SELECT Id, username, campus, designation FROM accounts where username = ? AND password = ? ');
+  $stmt = $conn->prepare('SELECT Id, username, campus, designation, Department, NameOfOffice FROM accounts where username = ? AND password = ? ');
   $stmt->bind_param('ss', $u, $p);
   $u=$_POST['username'];
   $p=md5($_POST['password']);
   $stmt->execute();
-  $stmt->bind_result($id, $username,$campus, $designation);
+  $stmt->bind_result($id, $username,$campus, $designation, $Department, $NameOfOffice);
   if($stmt->fetch()>0){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = $designation;
   $_SESSION['usr_campus'] = $campus;
   $_SESSION['usr_id'] = $id;
+  $_SESSION['usr_department'] = $Department;
+  $_SESSION['usr_nameOfOffice'] = $NameOfOffice;
    if($_SESSION['usr_type']=='admin'){
 header('location: home.php');
    exit();

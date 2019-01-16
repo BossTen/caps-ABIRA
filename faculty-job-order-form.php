@@ -1,4 +1,4 @@
-        <?php
+<?php
         require  '../api/dbcon.php';
 
 
@@ -19,7 +19,7 @@
                 -if no result is given/null then the assumption is the there are no serialcode created for that date
                 -if there are no serial code then append int 01 else then add one to the latest value
             */
-            $todaysSerialCode = substr($_POST['campus'], 0, 2) . date('y') . date('m') . date('d');
+            $todaysSerialCode = substr($_SESSION['usr_campus'], 0, 2) . date('y') . date('m') . date('d');
             $stmt1=$conn->prepare("SELECT MAX( SerialCode ) AS max FROM joborder where SerialCode LIKE ?");
             $stmt1->bind_param('s',$searchForLatestSerialCode);
             $searchForLatestSerialCode= $todaysSerialCode . '__';
@@ -81,15 +81,7 @@
                                                        NameOfOffice,
                                                        requestorDesignation
                                                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
-            if($stmt){
-            echo "<script type='text/javascript'>
-                        alert ('Successful insertion of data'); 
-                        window.location.href='faculty-job-order-view.php';</script>";
-            }else{
-            echo "<script type='text/javascript'>
-                        alert ('Not Successful insertion of data'); 
-                        window.location.href='faculty-job-order-form.php';</script>";
-            }                                    
+                                                
         $stmt->bind_param('sssssssssssssss',
                             $airConditioning,
                             $masonryCarpentry,
@@ -113,21 +105,31 @@
          $plumbing = isset($_POST['Plumbing']) ? "checked" : '';
          $welding = isset($_POST['Welding']) ? "checked" : '';
          $painting =  isset($_POST['Painting']) ? "checked" : '';
-         $campus =  $_POST['campus'];
+         echo $campus =   $_SESSION['usr_campus'];
         
          $priority =  $_POST['priority'];
          $requester = $_SESSION['usr_fullname'];
          $userJobDescription = $_POST['user-job-description'];
-         $requestorDesignation = $_POST['requestorDesignation'];
+         $requestorDesignation = $_SESSION['usr_type'] ;
         //create serial code
          $serialCode= $todaysSerialCode;
          $statusId = 7 ;
          $DateRequestCreated = date('y-m-d');
-         $NameOfOffice = isset($_POST['college']) ? $_POST['college'] : '';
+         $NameOfOffice = isset($_SESSION['usr_nameOfOffice']) ? $_SESSION['usr_nameOfOffice'] : '';
          
         $stmt->execute();
         $stmt->close();
         $conn->close();
+        if($stmt){
+            echo "<script type='text/javascript'>
+                        alert ('Successful insertion of data'); 
+                        window.location.href='faculty-job-order-view.php';</script>";
+            }else{
+            echo "<script type='text/javascript'>
+                        alert ('Not Successful insertion of data'); 
+                        window.location.href='faculty-job-order-form.php';</script>";
+            }
+            
         }
 
 
@@ -155,7 +157,7 @@
 <?php
 
 require 'navbar-faculty.php';
-
+echo $_SESSION['usr_campus'];
 ?>
 
 <br><br>
