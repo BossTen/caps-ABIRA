@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2019 at 01:30 AM
+-- Generation Time: Jan 17, 2019 at 12:43 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -52,7 +52,13 @@ INSERT INTO `accounts` (`Id`, `username`, `password`, `designation`, `campus`, `
 (7, 'test3', 'test3', 'test3', 'NASUGBU', 'test3', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
 (8, 'test4', 'test4', 'test4', 'NASUGBU', 'test4', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
 (9, 'test5', 'test5', 'test5', 'ALANGILAN', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(10, 'admin_alangilan', '', '', 'NASUGBU', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.');
+(10, 'admin_alangilan', '', '', 'NASUGBU', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(11, 'faculty', 'pass', 'designation', 'campus', 'name', 'dept'),
+(12, 'faculty', 'faculty', 'faculty', 'NASUGBU', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(13, 'faculty', 'faculty', 'faculty', 'ALANGILAN', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(14, 'faculty', 'd561c7c03c1f2831904823a95835ff5f', 'faculty', 'ALANGILAN', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(15, 'a', '0cc175b9c0f1b6a831c399e269772661', 'a', 'NASUGBU', 'a', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(16, 'open', '7cef8a734855777c2a9d0caf42666e69', 'a', 'NASUGBU', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.');
 
 -- --------------------------------------------------------
 
@@ -266,7 +272,14 @@ INSERT INTO `joborder` (`Id`, `SerialCode`, `DateRequestCreated`, `Campus`, `Nam
 (87, 'AL18120738', '2018-12-07', 'ALANGILAN', 'CIT (College of Industrial Technology) Bldg.', '', '', 'checked', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CIT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'Please check rooms in second floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
 (88, 'NA18120701', '2018-12-07', 'NASUGBU', 'CICS (College of Informatics & Computing Sciences) Bldg.', '', '', '', '', '', 'checked', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CICS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 2, 'Please check rooms in second floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
 (89, 'AL18120739', '2018-12-07', 'ALANGILAN', 'CICS (College of Informatics & Computing Sciences) Bldg.', '', '', 'checked', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CICS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 1, 'Please check rooms in second floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(90, 'AL18120740', '2018-12-07', 'ALANGILAN', 'CIT (College of Industrial Technology) Bldg.', '', '', 'checked', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CIT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 2, 'Please check rooms in second floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '');
+(90, 'AL18120740', '2018-12-07', 'ALANGILAN', 'CIT (College of Industrial Technology) Bldg.', '', '', 'checked', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CIT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 2, 'Please check rooms in second floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(91, '19011701', '2019-01-17', NULL, '', 'checked', 'checked', 'checked', 'checked', 'checked', 'checked', NULL, NULL, NULL, NULL, 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'ahhhhhhhhhh', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(92, 'AL19011701', '2019-01-17', NULL, '', 'checked', 'checked', '', '', '', '', NULL, NULL, NULL, NULL, 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 3, 'try', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(93, 'AL19011702', '2019-01-17', NULL, '', 'checked', 'checked', 'checked', 'checked', 'checked', 'checked', NULL, NULL, NULL, NULL, 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'hiiiiiiiiiiiiiiiia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(94, 'AL19011703', '2019-01-17', NULL, '', 'checked', '', '', '', '', '', NULL, NULL, NULL, NULL, 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'tre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(95, 'AL19011704', '2019-01-17', 'ALANGILAN', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, 'faculty', 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(96, 'AL19011705', '2019-01-17', 'ALANGILAN', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, 'faculty', 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'jkl', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(97, 'AL19011706', '2019-01-17', 'ALANGILAN', 'faculty', 'checked', '', '', '', '', '', NULL, NULL, NULL, NULL, 'faculty', 'faculty', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 4, 'please work', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '');
 
 -- --------------------------------------------------------
 
@@ -289,9 +302,27 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `sender`, `serialCode`, `facultyId`, `adminId`, `message`, `dateCreated`) VALUES
-(1, '', 'aqq', 9, 1, 'qaasd', '2019-01-10'),
-(2, '', 'aqq', 9, 3, '123', '2019-01-02'),
-(3, '', '1', 9, 1, '1', '2019-01-02');
+(1, 'faculty', '11111', 9, 1, 'qaasd', '2019-01-10'),
+(2, 'faculty', 'aqq', 9, 3, '123', '2019-01-02'),
+(3, 'faculty', '123123', 9, 1, '1', '2019-01-02'),
+(4, 'faculty', ' ', 0, 0, NULL, '0000-00-00'),
+(5, 'faculty', ' ', 0, 0, NULL, '0000-00-00'),
+(6, 'faculty', ' ', 0, 0, NULL, '0000-00-00'),
+(7, 'faculty', ' ', 0, 0, NULL, '0000-00-00'),
+(8, 'faculty', ' ', 0, 0, NULL, '0000-00-00'),
+(9, 'faculty', ' ', 0, 0, NULL, '0000-00-00'),
+(10, 'faculty', ' ', 0, 0, 'test123', '0000-00-00'),
+(11, 'admin', ' ', 0, 0, 'try', '0000-00-00'),
+(12, 'admin', ' ', 9, 0, 'trry', '0000-00-00'),
+(13, 'admin', ' ', 9, 1, 'ops', '0000-00-00'),
+(14, 'admin', 'aqq', 9, 1, 'tr', '0000-00-00'),
+(15, 'faculty', ' ', 14, 0, 'ya, when will it be then?\r\n', '0000-00-00'),
+(16, 'faculty', ' ', 14, 0, 'ya, when will it be then?\r\n', '2019-01-17'),
+(17, 'faculty', ' ', 14, 0, 'ya, when will it be then?\r\n', '2019-01-17'),
+(18, 'faculty', ' ', 14, 0, 'ya, when will it be then?dasd\r\n', '2019-01-17'),
+(19, 'faculty', ' ', 14, 0, 'ya, when will it be then?up\r\n', '2019-01-17'),
+(20, 'admin', ' ', 14, 1, 'maybe later', '2019-01-17'),
+(21, 'faculty', ' ', 14, 1, 'okay\r\n', '2019-01-17');
 
 -- --------------------------------------------------------
 
@@ -439,7 +470,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -457,13 +488,13 @@ ALTER TABLE `director`
 -- AUTO_INCREMENT for table `joborder`
 --
 ALTER TABLE `joborder`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `preventive_maintenance`
