@@ -43,9 +43,9 @@ require 'navbar.php';
             <h5 class="col-12"><b>Username:</b>
               <input type="text" name="username" class="form-control col-12" id="" placeholder="" required>
             <h5 class="col-12"><b>Password:</b>
-              <input type="text" name="password" class="form-control col-12" id="" placeholder="" required>
-            <h5 class="col-12"><b>Confirm Password:</b>
-              <input type="text" name="confirm-password" class="form-control col-12" id="" placeholder="" required>
+              <input type="password" name="password" class="form-control col-12" id="fpass" placeholder="" required>
+            <h5 class="col-12"><b>Confirm Password:</b><p id="message"></p>
+              <input type="password" name="confirm-password" class="form-control col-12" id="spass" placeholder="" required>
             <h5 class="col-12"><b>Campus:</b>
               <select class="form-control form-control col-12" name="campus" id="campus" required>
                                 <?php
@@ -81,13 +81,25 @@ require 'navbar.php';
                   <input type="text" name="designation" class="form-control col-12" id="designation" placeholder="Designation" required>
             <br>
             <center>
-            <input name="submit" style="paddingding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register">
+            <input name="submit" style="paddingding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register" disabled="">
           </form>
             </center>
 
             <script>
 
+$('#fpass, #spass').on('keyup', function () {
+  console.log("test")
+  if ($('#fpass').val() == $('#spass').val()) {
 
+    $('#message').html('Matching').css('color', 'green');
+    $("#save").removeAttr("disabled");
+
+  } else {
+    $('#message').html('Not Matching').css('color', 'red');
+    
+
+  }
+});
                 $("#save").click(function() {
 
  
