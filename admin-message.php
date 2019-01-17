@@ -61,7 +61,7 @@ if(isset($_GET['id'])){
 
             <h1 class="w3-text-red">Send Message</h1>
           </center>
-            <h5 class="col-12"><b>Faculty Message :</b>
+            <h5 class="col-12"><b>Message from sender :</b>
   <textarea class="form-control" rows="5" id="f-message" readonly><?php echo $mMessage; ?></textarea>
               <input type="hidden" id="" name="mId" value="<?php echo $mId; ?>">
               <input type="hidden" id="" name="mFId" value="<?php echo $mFId; ?>">
