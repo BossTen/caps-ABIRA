@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2019 at 06:58 AM
+-- Generation Time: Jan 17, 2019 at 03:11 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -33,6 +33,7 @@ CREATE TABLE `accounts` (
   `username` varchar(150) NOT NULL,
   `password` varchar(350) NOT NULL,
   `designation` varchar(150) NOT NULL,
+  `position` varchar(30) DEFAULT NULL,
   `campus` varchar(150) NOT NULL,
   `NameOfOffice` varchar(250) DEFAULT NULL,
   `Department` varchar(250) DEFAULT NULL
@@ -42,24 +43,24 @@ CREATE TABLE `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`Id`, `username`, `password`, `designation`, `campus`, `NameOfOffice`, `Department`) VALUES
-(1, 'admin_alangilan', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'ALANGILAN', NULL, NULL),
-(2, 'director_alangilan', '21232f297a57a5a743894a0e4a801fc3', 'director', 'ALANGILAN', NULL, NULL),
-(3, 'test', 'testpass', 'testdesignation', 'testcampus', 'testnameofoffice', 'testdepartment'),
-(4, 'test1', 'test1', 'test1', 'NASUGBU', NULL, 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(5, 'test1', 'test1', 'test1', 'NASUGBU', 'test1', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(6, 'test2', 'test2', 'test2', 'NASUGBU', 'test2', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(7, 'test3', 'test3', 'test3', 'NASUGBU', 'test3', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(8, 'test4', 'test4', 'test4', 'NASUGBU', 'test4', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(9, 'test5', 'test5', 'test5', 'ALANGILAN', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(10, 'admin_alangilan', '', '', 'NASUGBU', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(11, 'qww', 'pass', 'designation', 'campus', 'name', 'dept'),
-(12, 'ew', 'faculty', 'faculty', 'NASUGBU', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(13, 'as', 'faculty', 'faculty', 'ALANGILAN', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(14, 'faculty', 'd561c7c03c1f2831904823a95835ff5f', 'faculty', 'ALANGILAN', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(15, 'a', '0cc175b9c0f1b6a831c399e269772661', 'a', 'NASUGBU', 'a', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(16, 'open', '7cef8a734855777c2a9d0caf42666e69', 'a', 'NASUGBU', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
-(17, 'faculty1', '0bb1f8715f9d01b4c873bfabd5ed89d8', 'faculty', 'ALANGILAN', 'faculty1', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.');
+INSERT INTO `accounts` (`Id`, `username`, `password`, `designation`, `position`, `campus`, `NameOfOffice`, `Department`) VALUES
+(1, 'admin_alangilan', '21232f297a57a5a743894a0e4a801fc3', 'admin', NULL, 'ALANGILAN', NULL, NULL),
+(2, 'director_alangilan', '21232f297a57a5a743894a0e4a801fc3', 'director', NULL, 'ALANGILAN', NULL, NULL),
+(3, 'test', 'testpass', 'testdesignation', NULL, 'testcampus', 'testnameofoffice', 'testdepartment'),
+(4, 'test1', 'test1', 'test1', NULL, 'NASUGBU', NULL, 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(5, 'test1', 'test1', 'test1', NULL, 'NASUGBU', 'test1', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(6, 'test2', 'test2', 'test2', NULL, 'NASUGBU', 'test2', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(7, 'test3', 'test3', 'test3', NULL, 'NASUGBU', 'test3', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(8, 'test4', 'test4', 'test4', NULL, 'NASUGBU', 'test4', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(9, 'test5', 'test5', 'test5', NULL, 'ALANGILAN', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(10, 'admin_alangilan', '', '', NULL, 'NASUGBU', '', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(11, 'qww', 'pass', 'designation', NULL, 'campus', 'name', 'dept'),
+(12, 'ew', 'faculty', 'faculty', NULL, 'NASUGBU', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(13, 'as', 'faculty', 'faculty', NULL, 'ALANGILAN', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(14, 'faculty', 'd561c7c03c1f2831904823a95835ff5f', 'faculty', NULL, 'ALANGILAN', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(15, 'a', '0cc175b9c0f1b6a831c399e269772661', 'a', NULL, 'NASUGBU', 'a', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(16, 'open', '7cef8a734855777c2a9d0caf42666e69', 'a', NULL, 'NASUGBU', 'faculty', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.'),
+(17, 'faculty1', '0bb1f8715f9d01b4c873bfabd5ed89d8', 'faculty', NULL, 'ALANGILAN', 'faculty1', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.');
 
 -- --------------------------------------------------------
 
@@ -256,7 +257,7 @@ INSERT INTO `joborder` (`Id`, `userId`, `SerialCode`, `DateRequestCreated`, `Cam
 (69, NULL, 'AL18120720', '2018-12-07', 'ALANGILAN', 'Food Innovation Center Building', 'checked', 'off', 'off', 'off', 'off', 'off', 'need to clean the filter', 'need to clean the filter in room 102', NULL, '', 'TENORIO, CRISTOPER PIDLAOAN', 'Food Tech', '2018-12-07', '', 'Ria Du', 'CICS', '2018-12-08', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 2, 3, 'Please check first floor', '', '', '', '', '', '', '', '', '', '', '', ''),
 (70, NULL, 'AL18120721', '2018-12-07', 'ALANGILAN', 'CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.', 'checked', '', '', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CEAFA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 1, 'please check rooms in first floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
 (71, NULL, 'AL18120722', '2018-12-07', 'ALANGILAN', 'CICS (College of Informatics & Computing Sciences) Bldg.', 'checked', '', '', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'CICS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 2, 'please check rooms in first floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(72, NULL, 'AL18120723', '2018-12-07', 'ALANGILAN', 'CIT (College of Industrial Technology) Bldg.', 'checked', 'off', 'off', 'off', 'off', 'off', 'dusty aircon in Faculty room', ' need to add freon and clean the filter', NULL, '', 'ENCINAS, KIM ANGELO  RIEGO', 'CIT', '2018-12-07', '', 'Junie Boy', 'CongTV', '2018-12-08', 0, NULL, '2018-12-08', '10:00 AM', '2018-12-08', '12:00 PM', 2, 'completed', '  ', '', '', '  ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 5, 3, 'please check rooms in first floor', '', '', '', '', '', '', '', '', '', '', '', ''),
+(72, NULL, 'AL18120723', '2018-12-07', 'ALANGILAN', 'CIT (College of Industrial Technology) Bldg.', 'checked', 'off', 'off', 'off', 'off', 'off', 'dusty aircon in Faculty room', ' need to add freon and clean the filter', NULL, '', 'ENCINAS, KIM ANGELO  RIEGO', 'CIT', '2018-12-07', '', 'Junie Boy', 'CongTV', '2018-12-08', 0, NULL, '2018-12-08', '10:00 AM', '2018-12-08', '12:00 PM', 2, 'completed', '  ', '', '', '  ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 8, 3, 'please check rooms in first floor', '', '', '', '', '', '', '', '', '', '', '', ''),
 (73, NULL, 'AL18120724', '2018-12-07', 'ALANGILAN', 'RG RECTO Bldg. (RGR)', 'checked', '', '', '', '', '', NULL, NULL, NULL, NULL, 'ENCINAS, KIM ANGELO  RIEGO', 'RGR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 3, 'please check rooms in first floor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
 (74, NULL, 'AL18120725', '2018-12-07', 'ALANGILAN', 'STUDENT Center Bldg. (SSC)', 'checked', 'off', 'off', 'off', 'off', 'off', 'need to clean the aircon', 'need to clean the filter for better performance', NULL, '', 'ENCINAS, KIM ANGELO  RIEGO', 'SSC', '2018-12-07', '', 'Ria Du', 'CICS', '2018-12-08', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 1, 3, 'please check casher  office', '', '', '', '', '', '', '', '', '', '', '', ''),
 (75, NULL, 'AL18120726', '2018-12-07', 'ALANGILAN', 'FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office', 'checked', 'off', 'off', 'off', 'off', 'off', 'aircons not cold enough', 'need to add freon to all the aircon in first floor', NULL, '', 'ENCINAS, KIM ANGELO  RIEGO', 'OSAS', '2018-12-07', '', 'Ange Tenorio', 'Topengs <3', '2018-12-08', 0, NULL, '0000-00-00', '01:00 AM', '0000-00-00', '01:00 AM', 0, 'notcompleted', ' ', '', '', ' ', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', 0, 0, 0, 0, 1, 3, 'please check rooms in first floor', '', '', '', '', '', '', '', '', '', '', '', ''),

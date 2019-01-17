@@ -451,6 +451,7 @@ require 'navbar.php';
 
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                          <input type="hidden" name="serial" value="<?php echo $SerialCode;?>"/>
                         <h4 class="col-6"><b>Priority</b>
                           <small>
                             <!-- <select class="form-control form-control" name="priority" id="priority"> -->
