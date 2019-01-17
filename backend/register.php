@@ -12,7 +12,7 @@ require '../../api/dbcon.php';
 
 if(isset($_REQUEST)){
   $stmt = $conn->prepare("INSERT INTO accounts (username, password, designation, position, campus, NameOfOffice, Department)
-VALUES (?,?,?,?,?,?)");
+VALUES (?,?,?,?,?,?,?)");
 $stmt->bind_param("sssssss", $username, $password, $designation, $position, $campus, $nameOfOffice, $Department);
 $username = $_POST['username'];
 $password = md5($_POST['password']);
