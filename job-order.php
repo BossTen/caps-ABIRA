@@ -374,7 +374,7 @@ require '../api/dbcon.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery-3.3.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -383,17 +383,12 @@ require '../api/dbcon.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
-   <link rel="stylesheet" href="css/navbar.css">
-   <script src="js/search.js"></script>
+
 </head>
 
 <body>
     <?php
-    if($_SESSION['usr_type']=='admin')
-     require 'navbar.php';
-   else if($_SESSION['usr_type']=='faculty')
-     require 'navbar-faculty.php';
-
+require 'navbar.php';
 ?>
 
     <center>
@@ -410,62 +405,58 @@ require '../api/dbcon.php';
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly/></h4>
-                        <h4 class="col-6"><b>Priority</b>&nbsp;
-                            <select class="form-control form-control" name="priority" id="priority">
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                        <h4 class="col-6"><b>Priority</b>
+                          <small>
+                            <!-- <select class="form-control form-control" name="priority" id="priority"> -->
                                 <?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM priority";
+                                $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
                                   $selected = $row['Id']==$priorityId ? 'selected' : '';
 
-            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            echo $row['Name'];
+            // echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
 
                                   }
                                 }
                               ?>
-                            </select>
+                            <!-- </select> -->
+                          </small>
                           </div>
                           <div class="row">
 
                              <h4 class="col-6"><b>Status</b>&nbsp;
                             
-                            <select class="form-control form-control" name="status" id="status" disabled>
-                                <?php
+                            <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
+                                <small><?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status";
+                                $sql = "SELECT Id, Name FROM status where Id = $statusId";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
-                                  $selected = $row['Id']==$statusId ? 'selected' : '';
+                                  //$selected = $row['Id']==$statusId ? 'selected' : '';
 
-            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            //echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            echo $row['Name'];
 
                                   }
                                 }
-                              ?>
-                            </select>
+                              ?></small>
+                            <!-- </select> -->
                         
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-12" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/>
+                            <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
+                            <small><?php echo $DateRequestCreated ?><small/>
                         </h4>
                         <h4 class="col-6"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus" disabled>
-                                <?php
-                                require_once '../api/apiOnly.php';
-                                $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                    $selected = $campus['code'] == $Campus? 'selected' : '';
-                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select>
+                            <small><?php echo $Campus; ?></small>
                 <h4 class="col-6"><b>Name of Office:</b>&nbsp;
-                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"disabled>
+                    <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
+                    <small><?php echo $NameOfOffice; ?>"</small>
+
             </div>
     </div>
     </div>
@@ -583,9 +574,9 @@ require '../api/dbcon.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
+            <div class="form-group"><small>
               <?php echo $userJobDescription ?>
-            </textarea></div>
+            </small></div>
                   </div>
                 </div>
               </div>
@@ -613,30 +604,30 @@ require '../api/dbcon.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature" readonly></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director" readonly></th>
+                            <th><input class="w3-input" type="hidden" name="requester-signature" placeholder="requester signature" readonly></th>
+                            <th><input class="w3-input" type="hidden" name="inspecter-signature" placeholder="inspecter signature"></th>
+                            <th><input class="w3-input" type="hidden" name="director-signature" placeholder="signature of director" readonly></th>
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>" readonly></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
+                            <th><medium><?php echo  $RequestorName;?></medium></th>
+                            <th><medium><?php echo  $InspectorName;?></medium></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Designation:</th>
-                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>" readonly></th>
-                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
+                            <th><medium><?php echo  $RequestorDesignation;?></medium>
+                            <th><medium><?php echo  $InspectorDesignation;?></medium></th>
                             <th>
                                 <center>Assistant Director of FMSO</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>" readonly></th>
-                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"readonly ></th>
+                            <th><medium><?php echo  $DateRequestCreated;?></medium></th>
+                            <th><medium><?php echo  $DateInspected;?></medium></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
@@ -661,17 +652,17 @@ require '../api/dbcon.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class=form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" readonly></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
+                            <th id="con-startDate">Date: <input type="hidden" name="start-of-service" onchange="serviceCheckDate()" class=form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
+                            <th><input type="hidden" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" readonly></th>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="hidden" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> readonly>Work completed upon agreed duration</th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> disabled>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
-                            <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> readonly>Workcompleted upon agreed duration</th>
+                            <th>Time:<input type="hidden" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
+                            <th><input type="hidden" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
+                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> disabled>Workcompleted upon agreed duration</th>
                         </tr>
                     </table>
                   </div>
@@ -698,33 +689,34 @@ require '../api/dbcon.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature1" value="<?php echo $Signature1?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="signature1" value="<?php echo $Signature1?>"readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature2" value="<?php echo $Signature2?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="signature2" value="<?php echo $Signature2?>"readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature3" value="<?php echo $Signature3?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="signature3" value="<?php echo $Signature3?>"readonly></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature4" value="<?php echo $Signature4; ?>"readonly></th>
+                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"readonly></th>
+                            <th><input class="w3-input onNapprove" type="hidden" name="signature4" value="<?php echo $Signature4; ?>"readonly></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo  $RequestorName; ?> " readonly></th>
-                                                        <th><input class="w3-input onNapprove" type="text" name="conforme-signature"readonly></th>
+                            <!-- <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo  $RequestorName; ?> " readonly></th> -->
+                            <th><mediun><?php echo  $RequestorName; ?></medium></th>
+                                                        <th></th>
                             <th>
-                                <center><input type="date" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
+                                <center><input type="hidden" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
                             </th>
                         </tr>
                         <tr>
@@ -743,7 +735,7 @@ require '../api/dbcon.php';
           </div>
         </div>
             <br>
-            <div class="container" style="margin-top: ;">
+            <div class="container" style="margin-top: ; display: none;">
 
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
@@ -859,7 +851,7 @@ $conn->close();
               if(<?php echo $statusId ?> == 1){
                 console.log('for approval');
                 //$('#message-bottom').remove();
-                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
+                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial],[name=designation-of-requester],[name=designation-of-inspecter]")
                       .prop("disabled", true);
                 
               }else if(<?php echo $statusId ?> == 2 ){
