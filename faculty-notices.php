@@ -48,8 +48,9 @@ require 'navbar-faculty.php';
       <?php
       require '../api/dbcon.php';
 
-      $stmt = $conn->prepare("SELECT m.id, m.serialCode, m.facultyId, m.adminId, m.dateCreated, m.message, a.NameOfOffice, a.campus, a.Department, a.designation FROM messages as m INNER JOIN accounts AS a ON m.facultyId = a.Id WHERE a.Campus = ? AND m.sender='admin'");
-      $stmt->bind_param('s', $sCampus);
+      $stmt = $conn->prepare("SELECT m.id, m.serialCode, m.facultyId, m.adminId, m.dateCreated, m.message, a.NameOfOffice, a.campus, a.Department, a.designation FROM messages as m INNER JOIN accounts AS a ON m.facultyId = a.Id WHERE a.Campus = ? AND m.sender='admin' AND m.facultyId = ?");
+      $stmt->bind_param('ss', $sCampus,$sId);
+      $sId = $_SESSION['usr_id'];
       $sCampus = $_SESSION['usr_campus'];
       $stmt->execute();
       $stmt->bind_result($mId, $mSCode, $mFId, $mAId, $dateCreated, $mMessage, $aNameOfOffice, $aCampus, $aDepartment, $aDesignation);
