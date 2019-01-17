@@ -11,12 +11,13 @@ require '../../api/dbcon.php';
 
 
 if(isset($_REQUEST)){
-  $stmt = $conn->prepare("INSERT INTO accounts (username, password, designation, campus, NameOfOffice, Department)
+  $stmt = $conn->prepare("INSERT INTO accounts (username, password, designation, position, campus, NameOfOffice, Department)
 VALUES (?,?,?,?,?,?)");
-$stmt->bind_param("ssssss", $username, $password, $designation, $campus, $nameOfOffice, $Department);
+$stmt->bind_param("sssssss", $username, $password, $designation, $position, $campus, $nameOfOffice, $Department);
 $username = $_POST['username'];
 $password = md5($_POST['password']);
-$designation = $_POST['designation'];
+$designation = 'faculty';
+$position = $_POST['designation'];
 $campus = $_POST['campus'];
 $nameOfOffice = $_POST['nameofoffice'];
 $Department = $_POST['department'];
