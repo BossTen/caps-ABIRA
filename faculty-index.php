@@ -30,8 +30,9 @@ require 'navbar-faculty.php';
     <div class="row">
       <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
         <div class="card card-signin my-3">
-          <div class="card-body">
+          <div onclick="window.open('faculty-notif.php');" class="card-body">
             <div class="stat-icon dib">
+
               <?php
                   require '../api/dbcon.php';
                   $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ?');
@@ -45,13 +46,14 @@ require 'navbar-faculty.php';
 
               ?>
                 <i class="fa fa-file" style="font-size:20px;"> Job Orders: <?php echo $totalJobOrderForCampus;?></i>
+
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
         <div class="card card-signin my-3">
-          <div class="card-body">
+          <div onclick="window.open('faculty-notif.php');" class="card-body">
             <div class="stat-icon dib">
               <?php
                   require '../api/dbcon.php';
@@ -74,7 +76,7 @@ require 'navbar-faculty.php';
       </div>
       <div class="col-sm-4 col-md- col-lg- mx-auto">
         <div class="card card-signin my-3">
-          <div class="card-body">
+          <div onclick="window.open('faculty-notif.php');" class="card-body">
             <div class="stat-icon dib">
               <?php
                require '../api/dbcon.php';
