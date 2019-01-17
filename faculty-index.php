@@ -32,7 +32,10 @@ require 'navbar-faculty.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> Pending for Approval: </i>
+                <i class="fa fa-file" style="font-size:20px;"> Pending for Approval: numbers of penforapp</i>
+                  <p>broke cealing fans</p>
+                  <p>broke cealing fans</p>
+                  <p>broke cealing fans</p>
                 
             </div>
           </div>
@@ -42,7 +45,7 @@ require 'navbar-faculty.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> On-going: </i>
+                <i class="fa fa-file" style="font-size:20px;"> Approved: </i>
             </div>
           </div>
         </div>
@@ -51,7 +54,7 @@ require 'navbar-faculty.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> Completed:</i>
+                <i class="fa fa-file" style="font-size:20px;"> On-going:</i>
             </div>
           </div>
         </div>
