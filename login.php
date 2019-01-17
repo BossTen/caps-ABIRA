@@ -18,7 +18,7 @@ if(isset($_POST['login'])){
   $u=$_POST['username'];
   $p=md5($_POST['password']);
   $stmt->execute();
-  $stmt->bind_result($id, $username,$campus, $designation, $position, $Department, $NameOfOffice);
+  $stmt->bind_result($id, $username, $campus, $designation, $position, $Department, $NameOfOffice);
   if($stmt->fetch()>0){
    $_SESSION['usr_fullname'] = $username;
    $_SESSION['usr_type'] = $designation;
