@@ -35,9 +35,9 @@ require 'navbar-faculty.php';
 
               <?php
                   require '../api/dbcon.php';
-                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ?');
-                  $stmt->bind_param('s',$campus);
-                  $campus = $_SESSION['usr_campus'];
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE RequestorName = ?');
+                  $stmt->bind_param('s',$usr_fullname);
+                  $usr_fullname = $_SESSION['usr_fullname'];
                   $stmt->execute();
                   $stmt->bind_result($totalJobOrderForCampus);
                   $stmt->fetch();
@@ -58,9 +58,9 @@ require 'navbar-faculty.php';
               <?php
                   require '../api/dbcon.php';
 
-                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
-                  $stmt->bind_param('ss',$campus,$statusId);
-                  $campus = $_SESSION['usr_campus'];
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE RequestorName = ? AND statusId = ?');
+                  $stmt->bind_param('ss',$usr_fullname,$statusId);
+                  $usr_fullname = $_SESSION['usr_fullname'];
                   $statusId = 2;
                   $stmt->execute();
                   $stmt->bind_result($totalJobOrderForCampusAndApproved);
@@ -81,9 +81,9 @@ require 'navbar-faculty.php';
               <?php
                require '../api/dbcon.php';
               
-                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE campus = ? AND statusId = ?');
-                  $stmt->bind_param('ss',$campus,$statusId);
-                  $campus = $_SESSION['usr_campus'];
+                  $stmt = $conn->prepare('SELECT COUNT(*) FROM joborder WHERE RequestorName = ? AND statusId = ?');
+                  $stmt->bind_param('ss',$usr_fullname,$statusId);
+                  $usr_fullname = $_SESSION['usr_fullname'];
                   $statusId = 1;
                   $stmt->execute();
                   $stmt->bind_result($totalJobOrderForCampusAndPending);
