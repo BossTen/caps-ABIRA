@@ -32,10 +32,7 @@ require 'navbar-faculty.php';
         <div class="card card-signin my-3">
           <div class="card-body">
             <div class="stat-icon dib">
-                <i class="fa fa-file" style="font-size:20px;"> Pending for Approval: numbers of penforapp</i>
-                  <p>broke cealing fans</p>
-                  <p>broke cealing fans</p>
-                  <p>broke cealing fans</p>
+                <i class="fa fa-file" style="font-size:20px;"> Pending for Approval: **counts**</i>
                 
             </div>
           </div>

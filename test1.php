@@ -371,12 +371,11 @@ require '../api/dbcon.php';
       
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title class="no-print">Job Order For Inspection</title>
+    <title class="no-print">Job Order Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -390,7 +389,7 @@ require '../api/dbcon.php';
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
 
-   <style>
+    <style>
 p {
   text-indent: 50px;
 }
@@ -402,8 +401,6 @@ p {
     <?php
 require 'navbar.php';
 ?>
-
-<br><br>
 
 <div class="container" style="margin-bottom: 3%;">
   <div class="row">
@@ -515,7 +512,8 @@ require 'navbar.php';
   </div>
 </div>
 
- <?php 
+
+               <?php 
             }
 $stmt->execute();
 $stmt->close();
