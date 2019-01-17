@@ -110,7 +110,7 @@
          $priority =  $_POST['priority'];
          $requester = $_SESSION['usr_fullname'];
          $userJobDescription = $_POST['user-job-description'];
-         $requestorDesignation = $_SESSION['usr_type'] ;
+         $requestorDesignation = $_SESSION['usr_position'] ;
         //create serial code
          $serialCode= $todaysSerialCode;
          $statusId = 7 ;
