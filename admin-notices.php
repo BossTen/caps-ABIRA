@@ -93,12 +93,13 @@ require 'navbar.php';
       <div class="modal-header">
       </div>
       <div class="modal-body">
-        <select class="form-control form-control" name="" id="" required>
+        <form action="message.php" method="post">
+        <input class="form-control col-12" name="serialcode" id="" placeholder="Enter Serial Code" required>
                      
-        </select><br>
-        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message"><br>
-        <button type="button" class="btn btn-success">Send</button>
-
+        <br>
+        <input type="text" name="message" class="form-control col-12" id="" placeholder="Enter your message"><br>
+        <button type="submit" name="send" class="btn btn-success">Send</button>
+      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -114,7 +115,7 @@ require 'navbar.php';
       <div class="modal-header">
       </div>
       <div class="modal-body">
-        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message" value= "<?php echo $mId; ?>"><br>
+        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message" value= ""><br>
         <button type="button" class="btn btn-success">Send</button>
 
       </div>
