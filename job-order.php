@@ -652,16 +652,16 @@ require 'navbar.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="hidden" name="start-of-service" onchange="serviceCheckDate()" class=form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" readonly></th>
-                            <th><input type="hidden" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" readonly></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="hidden" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
+                            <th id="con-startDate">Date: <medium><?php echo $StartOfService; ?></medium></th>
+                            <th><input type="hidden" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" readonly><medium><?php echo $EndOfService; ?></medium></th>
+                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" readonly><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> disabled>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="hidden" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" readonly></th>
-                            <th><input type="hidden" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" readonly></th>
+                            <th>Time:<medium><?php echo $StartOfServiceTime;?></medium></th>
+                            <th><medium><?php echo $EndOfServiceTime; ?></medium></th>
                             <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> disabled>Workcompleted upon agreed duration</th>
                         </tr>
                     </table>
@@ -689,24 +689,24 @@ require 'navbar.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="signature1" value="<?php echo $Signature1?>"readonly></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork1; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy1; ?></medium></th>
+                            <th><medium><?php echo $Signature1?></medium></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="signature2" value="<?php echo $Signature2?>"readonly></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork2; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy2; ?></medium></th>
+                            <th><medium><?php echo $Signature2?></medium></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="signature3" value="<?php echo $Signature3?>"readonly></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork3; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy3; ?></medium></th>
+                            <th><medium><?php echo $Signature3?></medium></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="hidden" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"readonly></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="signature4" value="<?php echo $Signature4; ?>"readonly></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork4; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy4; ?></medium></th>
+                            <th><medium><?php echo $Signature4; ?></medium></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
