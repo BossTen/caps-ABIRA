@@ -23,7 +23,7 @@ $stmt->bind_result($requestorName);
 $stmt->fetch();
 $stmt->close();
 $conn->close();
-echo $requestorName;
+ $requestorName;
 
 require '../api/dbcon.php';
 //, desgination, campus, NameOfOffice, Department
@@ -44,7 +44,7 @@ $sender = $_SESSION['usr_type'];
 //$serialCode = $_POST['mSCode'];
 $facultyId = $uId;
 $adminId = $_SESSION['usr_id'];
-echo $message = $_POST['message'];
+ $message = $_POST['message'];
 $dateCreated = date("Y-m-d H:i:s");
   $stmt2->execute(); 
  $stmt2->close();
