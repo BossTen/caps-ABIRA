@@ -217,15 +217,17 @@ require '../api/dbcon.php';
 <html lang="en">
 
 <head>
-    <title class="no-print">Director Job Order View</title>
+    <title class="no-print">Job Order Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/w3.css">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
 
@@ -233,76 +235,75 @@ require '../api/dbcon.php';
 
 <body>
     <?php
-require 'navbar-director.php';
+require 'navbar.php';
 ?>
 
     <center>
         <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
     </center>
-    <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
+            <!-- UPDATE form -->
         <form action="" method="POST">
             <!-- UPDATE card -->
+    <div class="container" style="margin-top: ;">
+
+
+
             <div class="card">
                 <div class="card-body" style="margin-left: 2%;">
 
                     <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<input type="text" name="serial" class="form-control col-12" placeholder="YearMonthDate ex.20180924" value="<?php echo $SerialCode;?>" readonly></h4>
-                        <h4 class="col-6"><b>Priority</b>&nbsp;
-                            <select class="form-control form-control" name="priority" id="priority">
+                        <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                        <h4 class="col-6"><b>Priority</b>
+                          <small>
+                            <!-- <select class="form-control form-control" name="priority" id="priority"> -->
                                 <?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM priority";
+                                $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
                                   $selected = $row['Id']==$priorityId ? 'selected' : '';
 
-            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            echo $row['Name'];
+            // echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
 
                                   }
                                 }
                               ?>
-                            </select>
+                            <!-- </select> -->
+                          </small>
                           </div>
                           <div class="row">
 
                              <h4 class="col-6"><b>Status</b>&nbsp;
                             
-                            <select class="form-control form-control" name="status" id="status" disabled>
-                                <?php
+                            <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
+                                <small><?php
                                 require '../api/dbcon.php';
-                                $sql = "SELECT Id, Name FROM status";
+                                $sql = "SELECT Id, Name FROM status where Id = $statusId";
                                 $result = $conn->query($sql);
                                 if($result->num_rows > 0){
                                   while ($row =  $result->fetch_assoc()) {
-                                  $selected = $row['Id']==$statusId ? 'selected' : '';
+                                  //$selected = $row['Id']==$statusId ? 'selected' : '';
 
-            echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            //echo "<option value='".$row['Id']."' ". $selected .">".$row['Name']."</option>";
+            echo $row['Name'];
 
                                   }
                                 }
-                              ?>
-                            </select>
+                              ?></small>
+                            <!-- </select> -->
                         
                         <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <input type="date" class="form-control col-12" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/>
+                            <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
+                            <small><?php echo $DateRequestCreated ?><small/>
                         </h4>
                         <h4 class="col-6"><b>Campus:</b>&nbsp;
-                            <select class="form-control form-control" name="campus" id="campus" disabled>
-                                <?php
-                                require_once '../api/apiOnly.php';
-                                $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                    $selected = $campus['code'] == $Campus? 'selected' : '';
-                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select>
+                            <small><?php echo $Campus; ?></small>
                 <h4 class="col-6"><b>Name of Office:</b>&nbsp;
-                    <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"disabled>
+                    <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
+                    <small><?php echo $NameOfOffice; ?>"</small>
+
             </div>
     </div>
     </div>
@@ -338,15 +339,15 @@ require 'navbar-director.php';
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
+                                    <div class="form-group"><big><?php echo $InspectionReport; ?></big></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
+                                <th colspan=2><big><?php echo $m1 ?></big></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
+                                <th colspan=2><big><?php echo $m2 ?></big></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
@@ -354,23 +355,23 @@ require 'navbar-director.php';
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
+                                <th colspan=2><big><?php echo $m3 ?></big></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
+                                <th colspan=2><big><?php echo $m4 ?></big></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
+                                <th colspan=2><big><?php echo $m5 ?></big></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
+                                <th colspan=2><big><?php echo $m6 ?></big></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?>>
@@ -378,14 +379,14 @@ require 'navbar-director.php';
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                    <div class="form-group"><big><?php echo $JobRecommendation; ?></big>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
+                                <th colspan=2><big><?php echo $m7 ?></big></th>
                             </tr>
                             <tr>
-                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
+                              <th colspan=2><big><?php echo $m8 ?></big></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
@@ -394,11 +395,11 @@ require 'navbar-director.php';
                                     </label></th>
                             
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
+                                <th colspan=2><big><?php echo $m9 ?></big></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
+                                <th colspan=2><big><?php echo $m10 ?></big></th>
                             </tr>
                             <tr>
                                 <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
@@ -406,19 +407,19 @@ require 'navbar-director.php';
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input classa="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
+                                <th colspan=2><big><?php echo $m11 ?></big></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
+                                <th colspan=2><big><?php echo $m12 ?></big></th>
                             </tr>
                     </table>
                   </div>
 
                     <h4 class="no-print"><b>Report Description:</b>&nbsp;
-            <div class="form-group"><textarea class="no-print form-control" rows="15" name="user-job-description" disabled>
+            <div class="form-group"><big>
               <?php echo $userJobDescription ?>
-            </textarea></div>
+            </big></div>
                     <br>
 
                     <div class="table-responsive">
@@ -438,30 +439,30 @@ require 'navbar-director.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" placeholder="requester signature"></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" placeholder="inspecter signature"></th>
-                            <th><input class="w3-input" type="text" name="director-signature" placeholder="signature of director"></th>
+                            <th><input class="w3-input" type="hidden" name="requester-signature" placeholder="requester signature"></th>
+                            <th><input class="w3-input" type="hidden" name="inspecter-signature" placeholder="inspecter signature"></th>
+                            <th><input class="w3-input" type="hidden" name="director-signature" placeholder="signature of director"></th>
                         </tr>
                         <tr>
                             <th>Printed Name:</th>
-                            <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="<?php echo  $RequestorName;?>"></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>"></th>
+                            <th><medium><?php echo  $RequestorName;?></medium></th>
+                            <th><medium><?php echo  $InspectorName;?></medium></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Designation:</th>
-                            <th><input class="w3-input" type="text" name="designation-of-requester" placeholder="designation of requester" value="<?php echo  $RequestorDesignation;?>"></th>
-                            <th><input class="w3-input" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>"></th>
+                            <th><medium><?php echo  $RequestorDesignation;?></medium></th>
+                            <th><medium><?php echo  $InspectorDesignation;?></medium></th>
                             <th>
                                 <center>Assistant Director of FMSO</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><input type="date" class="form-control" name="date-requested" value="<?php echo  $DateRequestCreated;?>"></th>
-                            <th><input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>"></th>
+                            <th><medium><?php echo  $DateRequestCreated;?></medium></th>
+                            <th><medium><?php echo  $DateInspected;?></medium></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
@@ -478,16 +479,16 @@ require 'navbar-director.php';
                         </tr>
                         <br>
                         <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control" id="startOfService" value="<?php echo $StartOfService; ?>"></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control" id="endOfService"></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>"><input class="w3-input" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
+                            <th id="con-startDate">Date: <medium><?php echo $StartOfService; ?></medium></th>
+                            <th><medium><?php echo $EndOfService; ?></medium></th>
+                            <th id="con-numhours" rowspan=2 value=""><medium><?php echo $NoOfHours; ?></medium>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?>>Work completed upon agreed duration</th>
                         </tr>
                         <tr>
-                            <th>Time:<input type="time" class="form-control" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>"></th>
-                            <th><input type="time" class="form-control" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>"></th>
+                            <th>Time:<medium><?php echo $StartOfServiceTime;?></medium></th>
+                            <th><medium><?php echo $EndOfServiceTime; ?></medium></th>
                             <th><input class="w3-check" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>>Work not completed upon agreed duration</th>
                         </tr>
                     </table>
@@ -507,33 +508,33 @@ require 'navbar-director.php';
                             </th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork1; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy1; ?></medium></th>
+                            <th><medium><?php echo $Signature1?></medium></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork2; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy2; ?></medium></th>
+                            <th><medium><medium><?php echo $Signature2; ?></medium></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork3; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy3; ?></medium></th>
+                            <th><medium><?php echo $Signature3; ?></medium></th>
                         </tr>
                         <tr>
-                            <th colspan=2><input class="w3-input" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>"></th>
-                            <th><input class="w3-input" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
-                            <th><input class="w3-input" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
+                            <th colspan=2><medium><?php echo $AccomplishedWork4; ?></medium></th>
+                            <th><medium><?php echo $WorkDoneBy4; ?></medium></th>
+                            <th><medium><?php echo $Signature4; ?></medium></th>
                         </tr>
                         <tr>
                             <th rowspan=2>
                                 <center>Conforme:
                             </th>
-                            <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="<?php echo  $RequestorName; ?> "></th>
-                            <th><input class="w3-input" type="text" name="conforme-signature"></th>
+                            <th><medium><?php echo  $RequestorName; ?> </medium></th>
+                            <th><input class="w3-input" type="hidden" name="conforme-signature"></th>
                             <th>
-                                <center><input type="date" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">
+                                <center><input type="hidden" class="form-control" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>">
                             </th>
                         </tr>
                         <tr>
@@ -552,7 +553,7 @@ require 'navbar-director.php';
                 </div>
             </div>
             <br>
-            <div class="container" style="margin-top: ;">
+            <div class="container" style="margin-top: ; display:none;">
                 <!-- UPDATE form -->
                 <!-- WHAT IS THIS FOR ? <form action="" method="POST"> -->
                 <!-- UPDATE card -->
