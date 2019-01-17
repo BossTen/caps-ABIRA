@@ -54,7 +54,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                AccomplishedWork4=?,
                                                WorkDoneBy4=?,
                                                Signature4=?,
-                                               ConformeName=?,
+                                               -- ConformeName=?,
                                                ConformeApproved=?,
                                                ConformeDateApproved=?,
                                                ResponseTime=?,
@@ -81,7 +81,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
                               $airConditioning,
                               $masonryCarpentry,
@@ -116,7 +116,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $accomplishedWork4,
                               $workDoneBy4,
                               $signature4,
-                              $conformeName,
+                              //$conformeName,
                               $conformeSignature,
                               $conformeDateSigned,
                               $responseTime,
@@ -180,7 +180,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $accomplishedWork4 = $_POST['accomplished-work4'];
  $workDoneBy4 = $_POST['work-done-by4'];
  $signature4 = $_POST['signature4'];
- $conformeName = $_POST['conforme-name'];
+ // $conformeName = $_POST['conforme-name'];
  $conformeSignature = $_POST['conforme-signature'];
  $conformeDateSigned = $_POST['conforme-date-signed'];
  $responseTime = isset($_POST['cb1'])? $_POST['cb1'] : "0" ;
@@ -205,7 +205,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
  $serialCode = $_POST['serial'];
 
- 
+
  if($stmt->execute()){
    header('location: admin-pen-for-app.php');
    exit();
@@ -411,9 +411,11 @@ require 'navbar.php';
 
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                          <input type="hidden" name="serial" value="<?php echo $SerialCode?>"/>
                         <h4 class="col-6"><b>Priority</b>
                           <small>
                             <!-- <select class="form-control form-control" name="priority" id="priority"> -->
+                              <input type="hidden" name="priority" value="<?php echo $priorityId?>"/>
                                 <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
@@ -728,6 +730,7 @@ require 'navbar.php';
                             </th>
                             <!-- <th><input class="w3-input onNapprove" type="text" name="conforme-name" value="" readonly></th> -->
                             <th><medium><?php echo  $RequestorName; ?></medium></th>
+
                             <th><input class="w3-input onNapprove" type="hidden" name="conforme-signature"readonly></th>
                             <th>
                                 <center><input type="hidden" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" readonly>
