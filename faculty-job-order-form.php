@@ -204,7 +204,9 @@ echo $_SESSION['usr_campus'];
         <h4><b>Description of Concern:</b>&nbsp;
             <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" placeholder="please make a detailed description of your concern based on your understanding of the situation" required></textarea></div>
             
-
+            <center>
+                <h6 style="color: green;">I hereby to certify that the above information are true to my knowledge. </h6>
+            </center>
         <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
 
     </form>

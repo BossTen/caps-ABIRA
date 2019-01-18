@@ -488,23 +488,13 @@ require 'navbar.php';
             <p class="col-6">Date: <input type="date" class="form-control col-12" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/></p>
           </div>
           <div class="row">
-            <p class="col-6">Campus: <select class="form-control form-control" name="campus" id="campus" readonly>
-                                <?php
-                                require_once '../api/apiOnly.php';
-                                $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                    $selected = $campus['code'] == $Campus? 'selected' : '';
-                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select></p>
+            <p class="col-6">Campus: <input type="text" class="no-print form-control" name="user-job-description" value="<?php echo $Campus; ?>" readonly></p>
             <p class="col-6">Name of Office: <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"disabled></p>
           </div>
           <h6 class="w3-text-red">Job Order Request</h6>
           <div class="row">
-            <p class="col-12">Report Description: <input type="text" class="no-print form-control col-12" name="user-job-description" id="" value="" readonly>
+            <p class="col-12">Report Description: <input type="text" class="no-print form-control col-12" name="user-job-description" id="" value="<?php echo $userJobDescription ?>
+" readonly>
               <?php echo $userJobDescription ?>
             </p>
           </div>

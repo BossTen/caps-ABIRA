@@ -33,7 +33,7 @@ require 'navbar-faculty.php';
 
 <div class="container" style="margin-bottom: 5%">  
   <div class="table-responsive">
-  <table class="table table-striped table-hover table-responsive">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Priority</th>

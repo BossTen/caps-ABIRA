@@ -430,7 +430,7 @@ require 'navbar.php';
                             </select></p>
           </div>
           <div class="row">
-            <p class="col-6">Status: <select class="form-control form-control" name="status" id="status" disabled>
+            <p class="col-6">Status: <select class="form-control form-control" name="status" id="status" readonly>
                                 <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM status";
@@ -445,27 +445,17 @@ require 'navbar.php';
                                 }
                               ?>
                             </select></p>
-            <p class="col-6">Date: <input type="date" class="form-control col-12" name="date1" value="<?php echo $DateRequestCreated ?>" disabled/></p>
+            <p class="col-6">Date: <input type="date" class="form-control col-12" name="date1" value="<?php echo $DateRequestCreated ?>" readonly/></p>
           </div>
           <div class="row">
-            <p class="col-6">Campus: <select class="form-control form-control" name="campus" id="campus" disabled>
-                                <?php
-                                require_once '../api/apiOnly.php';
-                                $campuses = json_decode($api->fetch_campuses(),true);
-                                  foreach ($campuses as $campus) {
-                                    $selected = $campus['code'] == $Campus? 'selected' : '';
-                                   echo "<option value='".$campus['code']."'". $selected .">".$campus['code']."</option>";
-
-                                  }
-
-                              ?>
-                            </select></p>
-            <p class="col-6">Name of Office: <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"disabled></p>
+            <p class="col-6">Campus: <input type="text" class="no-print form-control" name="user-job-description" value="<?php echo $Campus; ?>" readonly>
+                                </p>
+            <p class="col-6">Name of Office: <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value="<?php echo $NameOfOffice; ?>"readonly></p>
           </div>
           <h6 class="w3-text-red">Job Order Request</h6>
           <div class="row">
-            <p class="col-12">Report Description: <input type="text" class="no-print form-control" name="user-job-description" disabled>
-              <?php echo $userJobDescription ?></p>
+            <p class="col-12">Report Description: <input type="text" class="no-print form-control" name="user-job-description" value="<?php echo $userJobDescription ?>" readonly>
+              </p>
           </div>
           <div class="row">
             <p class="col-12">Works: <input type="text" name="" class="form-control col-12" id="" value="" readonly></p>
@@ -541,7 +531,7 @@ $conn->close();
                 console.log('for approval');
                 //$('#message-bottom').remove();
                 $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial]")
-                      .prop("disabled", true);
+                      .prop("readonly", true);
                 
               }else if(<?php echo $statusId ?> == 2 ){
                 //fields are now set for this status so we aint going to readonly any fields here
@@ -550,8 +540,8 @@ $conn->close();
                 $("#custom-button").attr('name', 'ongoing');
                 $('#message-bottom').text('Submitting would set this as for On-going');
                                 $(":input").not("[class=onNapprove]")
-                      .prop("disabled", true);
-                      $(".onNapprove").removeAttr("disabled");
+                      .prop("readonly", true);
+                      $(".onNapprove").removeAttr("readonly");
                       $(".onNapprove").removeAttr("readonly");
 
               }else if(<?php echo $statusId ?> == 3){
@@ -560,7 +550,7 @@ $conn->close();
                 $('#message-bottom').text('This Request is denied');
                 //add button draft to only save as draft and not change status
                 $(":input").not("")
-                      .prop("disabled", true);
+                      .prop("readonly", true);
 
               }else if(<?php echo $statusId ?> == 5){
                 //on going
@@ -571,8 +561,8 @@ $conn->close();
                 var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
                 $input.appendTo($("#btn-container"));
                                 $(":input").not("[class=onNapprove]")
-                      .prop("disabled", true);
-                      $(".onNapprove").removeAttr("disabled");
+                      .prop("readonly", true);
+                      $(".onNapprove").removeAttr("readonly");
                       $(".onNapprove").removeAttr("readonly");
 
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
@@ -745,26 +735,26 @@ $conn->close();
                 //   console.log("admin - switch");
                 //         if(status !=  7){
                             
-                //             select_priority.disabled = true;
+                //             select_priority.readonly = true;
 
-                //             console.log("disabled");
+                //             console.log("readonly");
                 //           }else{
-                //             update_button.disabled = false;
-                //             console.log("not disabled");
+                //             update_button.readonly = false;
+                //             console.log("not readonly");
                 //             }
                 //         break;
 
                 //   case "director":
                 //   console.log("director");
                 //           if(status == 7)
-                //             update_button.disabled = true;
+                //             update_button.readonly = true;
                 //           else
-                //             update_button.disabled = false;
+                //             update_button.readonly = false;
                 //         break;
 
                 //   case "faculty":
                 //   console.log("faculty");
-                //             update_button.disabled = true;
+                //             update_button.readonly = true;
                 //         break;
 
                 // }
