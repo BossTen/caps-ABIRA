@@ -11,36 +11,37 @@ require '../api/dbcon.php';
 
 if(isset($_POST['accept'])){
     //Check connection
+  require '../api/dbcon.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// prepare and binds
-$stmt = $conn->prepare("UPDATE joborder SET statusId = ?
-
-                                      
+$stmt1 = $conn->prepare("UPDATE joborder SET statusId = ?
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ss",
+$stmt1->bind_param("ss",
                               $statusId1,
                               $serialCode1
-
                         );  
 
 
 
- $serialCode1 = $_POST['serial'];
+ echo $serialCode1 = $_POST['serial'];
 //2 approve 3 denied
  $statusId1 =  2;
 
- $stmt->execute();
- $stmt->close();
+ $stmt1->execute();
+ $stmt1->close();
  $conn->close(); 
+ echo 'approve';
+die();
      header('location: director-job-order-view.php');
     exit();
 
-}else if (isset($_POST['denied'])){
+}
+ if (isset($_POST['denied'])){
+  require '../api/dbcon.php';
     //Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -48,8 +49,6 @@ if ($conn->connect_error) {
 
 // prepare and binds
 $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
-
-                                      
                                                 WHERE SerialCode = ?
                                                ");
 
@@ -61,10 +60,11 @@ $stmt->bind_param("ss",
 
 
 
- $serialCode1 = $_POST['serial'];
+ $serialCode2 = $_POST['serial'];
 //2 approve 3 denied
- $statusId1 =  3 ;
-
+ $statusId2 =  3 ;
+echo 'denied';
+die();
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
@@ -242,7 +242,7 @@ require 'navbar-director.php';
         <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
     </center>
             <!-- UPDATE form -->
-        <form action="" method="POST">
+        <form action="" method="post">
             <!-- UPDATE card -->
     <div class="container" style="margin-top: ;">
 
@@ -253,6 +253,7 @@ require 'navbar-director.php';
 
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                          <input type="hidden" name="serial" value="<?php echo $SerialCode; ?>"></small>
                         <h4 class="col-6"><b>Priority</b>
                           <small>
                             <!-- <select class="form-control form-control" name="priority" id="priority"> -->
