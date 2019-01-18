@@ -354,11 +354,11 @@ require '../api/dbcon.php';
 <html lang="en">
 
 <head>
-    <title class="no-print">Job Order Form</title>
+  <title>Job Order Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="w3.css">
@@ -366,7 +366,11 @@ require '../api/dbcon.php';
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/custom.css">
+   <link rel="stylesheet" href="css/navbar.css">
+   <script src="js/search.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -807,6 +811,7 @@ require 'navbar.php';
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
             <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="button" value="Print">
+
           </div>
 </form>
 
@@ -817,7 +822,52 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
                 ?>
+<br>  
+<div class="container ">
+  <div class="float-right"><a href="">
+    <a href="" class="nav-link" data-toggle="modal" data-target="#write" ><button type="button" class="btn btn-success">Write a message</button></a>
+  </div>   
+</div>
 
+<!--modal write a message-->
+<div class="modal fade" id="write" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <form action="message.php" method="post">
+        <input class="form-control col-12" name="serialcode" id="" placeholder="Enter Serial Code" value="<?php echo $SerialCode;?>" readonly>
+                     
+        <br>
+        <input type="text" name="message" class="form-control col-12" id="" placeholder="Enter your message"><br>
+        <button type="submit" name="send" class="btn btn-success">Send</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal reply-->
+<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message" value= ""><br>
+        <button type="button" class="btn btn-success">Send</button>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
             <script>
   $('#print-button').on('click', function() {  
                 window.print();  
