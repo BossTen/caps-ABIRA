@@ -27,15 +27,14 @@ $stmt1->bind_param("ss",
 
 
 
- echo $serialCode1 = $_POST['serial'];
+ $serialCode1 = $_POST['serial'];
 //2 approve 3 denied
  $statusId1 =  2;
 
  $stmt1->execute();
  $stmt1->close();
  $conn->close(); 
- echo 'approve';
-die();
+
      header('location: director-job-order-view.php');
     exit();
 
@@ -63,8 +62,7 @@ $stmt->bind_param("ss",
  $serialCode2 = $_POST['serial'];
 //2 approve 3 denied
  $statusId2 =  3 ;
-echo 'denied';
-die();
+
  $stmt->execute();
  $stmt->close();
  $conn->close(); 
