@@ -200,6 +200,10 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
 
 }
 
+
+
+
+
 require '../api/dbcon.php';
     $stmt = $conn->prepare("select
                            NameOfOffice,
@@ -330,8 +334,12 @@ require '../api/dbcon.php';
                        $userJobDescription
                      );
 
-    while($stmt->fetch()){
+    $stmt->fetch();
      
+$stmt->execute();
+$stmt->close();
+$conn->close();
+                
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
@@ -439,12 +447,19 @@ require 'navbar.php';
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
                         </h4>
+                      <h4 class="col-6"><b>Designation:</b>&nbsp;
+                            <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
+                            <small><?php echo  $RequestorDesignation;?><small/>
+                        </h4>
+                        
                         <h4 class="col-6"><b>Campus:</b>&nbsp;
                             <small><?php echo $Campus; ?></small>
                 <h4 class="col-6"><b>Name of Office:</b>&nbsp;
                     <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
                     <small><?php echo $NameOfOffice; ?>"</small>
-
+                <h4 class="col-6"><b>Department:</b>&nbsp;
+                    <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
+                    <small><?php echo $NameOfOffice; ?>"</small>
             </div>
     </div>
     </div>
@@ -816,12 +831,7 @@ require 'navbar.php';
 </form>
 
 
-               <?php 
-            }
-$stmt->execute();
-$stmt->close();
-$conn->close();
-                ?>
+
 <br>  
 <div class="container ">
   <div class="float-right"><a href="">
