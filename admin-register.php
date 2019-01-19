@@ -114,7 +114,11 @@ $('#fpass, #spass').on('keyup', function () {
          type: "post",
          url: "backend/register.php",
          success: function(data){
+          
+                  $('input:text, input:password').val('');
+              
               alert("Account Created ");
+              
          }
 });
     //set timer to re-enable the button 
