@@ -24,10 +24,10 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
 
 $stmt->bind_param("ss",
                               $sIdu,
-                              
+
                               $serialCode
 
-                        );  
+                        );
 
   $sIdu = 2;
 
@@ -35,7 +35,7 @@ $stmt->bind_param("ss",
 
  $stmt->execute();
  $stmt->close();
- $conn->close(); 
+ $conn->close();
            header('location: director-notif.php');
           exit();
 
@@ -44,31 +44,31 @@ $stmt->bind_param("ss",
 if(isset($_POST['denied'])){
     //nameofoffice
     //serial
-  
+
     //Check connection
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  
+
   // prepare and binds
   $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
                                                   WHERE SerialCode = ?
                                                  ");
-  
+
   $stmt->bind_param("ss",
                                 $sIdu,
-                                
+
                                 $serialCode
-  
-                          );  
-  
+
+                          );
+
     $sIdu = 3;
-  
+
    $serialCode = $_POST['serial'];
-  
+
    $stmt->execute();
    $stmt->close();
-   $conn->close(); 
+   $conn->close();
             header('location: director-notif.php');
           exit();
   }
@@ -133,9 +133,9 @@ require '../api/dbcon.php';
                                                materialsNeeded7,
                                                materialsNeeded8,
                                                materialsNeeded9,
-                                               materialsNeeded10, 
-                                               materialsNeeded11, 
-                                               materialsNeeded12 
+                                               materialsNeeded10,
+                                               materialsNeeded11,
+                                               materialsNeeded12
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -203,7 +203,7 @@ require '../api/dbcon.php';
                      );
 
     while($stmt->fetch()){
-     
+
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=trim(strtolower($Campus))){
@@ -313,6 +313,7 @@ require 'navbar-director.php';
 
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                          <input type="hidden" name="serial" value="<?php echo $SerialCode;?>">
                         <h4 class="col-6"><b>Priority</b>
                           <small>
                             <!-- <select class="form-control form-control" name="priority" id="priority"> -->
@@ -336,7 +337,7 @@ require 'navbar-director.php';
                           <div class="row">
 
                              <h4 class="col-6"><b>Status</b>&nbsp;
-                            
+
                             <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
                                 <small><?php
                                 require '../api/dbcon.php';
@@ -353,7 +354,7 @@ require 'navbar-director.php';
                                 }
                               ?></small>
                             <!-- </select> -->
-                        
+
                         <h4 class="col-6"><b>Date:</b>&nbsp;
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
@@ -449,7 +450,7 @@ require 'navbar-director.php';
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
-                            
+
                                 </th>
                                 <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
                             </tr>
@@ -517,17 +518,17 @@ require 'navbar-director.php';
                             </th>
                         </tr>
                     </table>
-                    
+
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
             <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
-            
+
             <input name="approve" style="padding:20px;" class="btn btn-success" type="submit" value="Approve">
-            
 
 
-               <?php 
+
+               <?php
             }
 $stmt->execute();
 $stmt->close();
@@ -535,7 +536,7 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
-               
+
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
                 });
