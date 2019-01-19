@@ -7,7 +7,7 @@ require 'testadmin.php';
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
              session_start();
-    }  
+    }
 
 
 
@@ -18,31 +18,31 @@ require 'testadmin.php';
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        
+
         // prepare and binds
         $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
 
-                                              
+
                                                         WHERE SerialCode = ?
                                                        ");
-        
+
         $stmt->bind_param("ss",
                                       $sIdu,
 
                                       $serialCode
-        
-                                );  
+
+                                );
 
         //print_r($_POST);
           $sIdu = 8;
 
-        
+
          $serialCode = $_POST['serial'];
-        
+
          $stmt->execute();
          $stmt->close();
-         $conn->close(); 
-        
+         $conn->close();
+
         }
 
 
@@ -121,10 +121,10 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                materialsNeeded7=?,
                                                materialsNeeded8=?,
                                                materialsNeeded9=?,
-                                               materialsNeeded10=?, 
+                                               materialsNeeded10=?,
                                                materialsNeeded11=?,
-                                               materialsNeeded12=? 
-                                      
+                                               materialsNeeded12=?
+
                                                 WHERE SerialCode = ?
                                                ");
 
@@ -186,7 +186,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $m12get,
                               $serialCode
 
-                        );  
+                        );
 // Approved = $directorSignature
 // set parameters and execute
 //print_r($_POST);
@@ -199,7 +199,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
  $welding = isset($_POST['Welding']) ? "checked" : 'off';
  // $date = $_POST['date1'];
- $requesterSignature = $_POST['requester-signature']; 
+ $requesterSignature = $_POST['requester-signature'];
  $inspecterSignature = $_POST['inspecter-signature'];
  $directorSignature = $_POST['director-signature'];
  $nameOfRequester = $_POST['name-of-requester'];
@@ -257,7 +257,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
   exit();
  }
  $stmt->close();
- $conn->close(); 
+ $conn->close();
 
 }
 
@@ -323,7 +323,7 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription 
+                           UserJobDescription
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -392,7 +392,7 @@ require '../api/dbcon.php';
                      );
 
     while($stmt->fetch()){
-     
+
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
@@ -408,7 +408,7 @@ require '../api/dbcon.php';
 
 
       //code for checking if user is with the same campus as the requester
-      
+
 
 ?>
 <!DOCTYPE html>
@@ -475,7 +475,7 @@ require 'navbar.php';
                           <div class="row">
 
                              <h4 class="col-6"><b>Status</b>&nbsp;
-                            
+
                             <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
                                 <small><?php
                                 require '../api/dbcon.php';
@@ -492,7 +492,7 @@ require 'navbar.php';
                                 }
                               ?></small>
                             <!-- </select> -->
-                        
+
                         <h4 class="col-6"><b>Date:</b>&nbsp;
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
@@ -587,7 +587,7 @@ require 'navbar.php';
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
-                            
+
                                 </th>
                                 <th ><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
                             </tr>
@@ -871,14 +871,14 @@ require 'navbar.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <!-- <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button"> -->
-            <input name="complete" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Complete" id="custom-button">
+            <input name="complete" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="For Evaluation" id="custom-button">
             <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
-           
+
           </div>
 </form>
 
 
-               <?php 
+               <?php
             }
 $stmt->execute();
 $stmt->close();
@@ -906,7 +906,7 @@ $conn->close();
                 $('#message-bottom').text('Submitting would set this as Task Completed');
                       //           $(":input").not("[class=onNapprove]")
                       // .prop("disabled", true);
-                      
+
 
               }
               //disabling of fields
@@ -1038,7 +1038,7 @@ $conn->close();
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
 
-                
+
 
             </script>
 </body>

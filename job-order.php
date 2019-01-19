@@ -6,7 +6,7 @@ error_reporting(E_ALL);
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
              session_start();
-    }  
+    }
 
 
 
@@ -72,11 +72,11 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                materialsNeeded7=?,
                                                materialsNeeded8=?,
                                                materialsNeeded9=?,
-                                               materialsNeeded10=?, 
+                                               materialsNeeded10=?,
                                                materialsNeeded11=?,
-                                               materialsNeeded12=? 
+                                               materialsNeeded12=?
                                                -- ApprovedBy,
-                                      
+
                                                 WHERE SerialCode = ?
                                                ");
 
@@ -140,10 +140,10 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $m12get,
                               $serialCode
 
-                        );  
+                        );
 // Approved = $directorSignature
 // set parameters and execute
-  $sIdu = 1;
+  $sIdu = 6;
 // $nameOfOffice = $_POST['nameofoffice'];
  $painting = isset($_POST['Painting']) ? "checked" : 'off';
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
@@ -152,7 +152,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
  $welding = isset($_POST['Welding']) ? "checked" : 'off';
  // $date = $_POST['date1'];
- $requesterSignature = $_POST['requester-signature']; 
+ $requesterSignature = $_POST['requester-signature'];
  $inspecterSignature = $_POST['inspecter-signature'];
  $directorSignature = $_POST['director-signature'];
  $nameOfRequester = $_POST['name-of-requester'];
@@ -206,11 +206,11 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
 if($stmt->execute()){
   echo "<script type='text/javascript'>
-                alert ('Update Successful!'); 
+                alert ('Update Successful!');
                 window.location.href='login.php';</script>";
 }
  $stmt->close();
- $conn->close(); 
+ $conn->close();
 
 }
 
@@ -277,7 +277,7 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription 
+                           UserJobDescription
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -346,7 +346,7 @@ require '../api/dbcon.php';
                      );
 
     while($stmt->fetch()){
-     
+
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
@@ -363,7 +363,7 @@ require '../api/dbcon.php';
 
 
       //code for checking if user is with the same campus as the requester
-      
+
 
 ?>
 <!DOCTYPE html>
@@ -406,6 +406,7 @@ require 'navbar.php';
 
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                          <input type="hidden" name="serial" value="<?php echo $SerialCode;?>">
                         <h4 class="col-6"><b>Priority</b>
                           <small>
                             <!-- <select class="form-control form-control" name="priority" id="priority"> -->
@@ -429,7 +430,7 @@ require 'navbar.php';
                           <div class="row">
 
                              <h4 class="col-6"><b>Status</b>&nbsp;
-                            
+
                             <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
                                 <small><?php
                                 require '../api/dbcon.php';
@@ -446,7 +447,7 @@ require 'navbar.php';
                                 }
                               ?></small>
                             <!-- </select> -->
-                        
+
                         <h4 class="col-6"><b>Date:</b>&nbsp;
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
@@ -541,7 +542,7 @@ require 'navbar.php';
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
-                            
+
                                 </th>
                                 <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
                             </tr>
@@ -735,7 +736,7 @@ require 'navbar.php';
           </div>
         </div>
             <br>
-            <div class="container" style="margin-top: ; display: none;">
+            <div class="container" id="con-eval-form" style="margin-top: ; ">
 
                 <div class="card">
                     <div class="card-body" style="margin-left:2%;">
@@ -827,7 +828,7 @@ require 'navbar.php';
 </form>
 
 
-               <?php 
+               <?php
             }
 $stmt->execute();
 $stmt->close();
@@ -853,7 +854,9 @@ $conn->close();
                 //$('#message-bottom').remove();
                 $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial],[name=designation-of-requester],[name=designation-of-inspecter]")
                       .prop("disabled", true);
-                
+                      $('#con-eval-form').css('display', 'none');
+
+
               }else if(<?php echo $statusId ?> == 2 ){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
@@ -887,7 +890,7 @@ $conn->close();
                       $(".onNapprove").removeAttr("readonly");
 
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
-               
+
                 $('#message-bottom').text('Uneditable');
 $(":input").not("")
                       .prop("disabled", true);
@@ -1031,7 +1034,7 @@ $(":input").not("")
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
 
-                
+
 
             </script>
 </body>
