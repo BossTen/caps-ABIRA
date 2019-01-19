@@ -30,7 +30,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                RequestorSignature=?,
                                                -- RequestorName=?,
                                                -- RequestorDesignation=?,
-                                               DateRequested=?,
+                                               -- DateRequested=?,
                                                signatureOfInspector=?,
                                                InspectorName=?,
                                                InspectorDesignation=?,
@@ -81,7 +81,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
                               $airConditioning,
                               $masonryCarpentry,
@@ -92,7 +92,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $requesterSignature,
                               // $nameOfRequester,
                               // $designationOfRequester,
-                              $dateRequested,
+                              // $dateRequested,
                               $inspecterSignature,
                               $nameOfInspector,
                               $designationOfInspecter,
@@ -160,7 +160,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $nameOfInspector = $_POST['name-of-inspector'];
  $designationOfRequester = $_POST['designation-of-requester'];
  $designationOfInspecter = $_POST['designation-of-inspecter'];
- $dateRequested = $_POST['date-requested'];
+ // $dateRequested = $_POST['date-requested'];
  $dateInspected = $_POST['date-inspected'];
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];

@@ -511,8 +511,8 @@ require 'navbar-director.php';
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <th><medium><?php echo  $DateRequested;?></medium></th>
-                            <th><medium>"<?php echo  $DateInspected;?></medium></th>
+                            <th><medium><?php echo  $DateRequestCreated;?></medium></th>
+                            <th><medium><?php echo  $DateInspected;?></medium></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>
