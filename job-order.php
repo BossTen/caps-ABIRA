@@ -207,7 +207,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 if($stmt->execute()){
   echo "<script type='text/javascript'>
                 alert ('Update Successful!');
-                window.location.href='login.php';</script>";
+                window.location.href='faculty-notif.php';</script>";
 }
  $stmt->close();
  $conn->close();
