@@ -22,7 +22,9 @@ if(session_id() == '' || !isset($_SESSION)) {
       <li class="nav-item">
         <a class="nav-link" href="faculty-notices.php">Notices</a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" href="faculty-forevaluation-view.php">Evaluation</a>
+      </li>
     </ul>
   </div>
     <div class="pull-right">
