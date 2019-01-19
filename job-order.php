@@ -528,7 +528,7 @@ require 'navbar.php';
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"></textarea>
+                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"><?php echo $JobRecommendation; ?></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
@@ -611,16 +611,16 @@ require 'navbar.php';
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
-                            <th><medium><?php echo  $RequestorName;?></medium></th>
-                            <th><medium><?php echo  $InspectorName;?></medium></th>
+                            <th><medium><?php echo  $RequestorName; ?></medium></th>
+                            <th><medium><?php echo  $InspectorName; ?></medium></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
                         </tr>
                         <tr>
                             <th>Designation:</th>
-                            <th><medium><?php echo  $RequestorDesignation;?></medium>
-                            <th><medium><?php echo  $InspectorDesignation;?></medium></th>
+                            <th><medium><?php echo  $RequestorDesignation; ?></medium>
+                            <th><medium><?php echo  $InspectorDesignation; ?></medium></th>
                             <th>
                                 <center>Assistant Director of FMSO</center>
                             </th>
@@ -628,7 +628,7 @@ require 'navbar.php';
                         <tr>
                             <th>Date:</th>
                             <th><medium><?php echo  $DateRequestCreated;?></medium></th>
-                            <th><medium><?php echo  $DateInspected;?></medium></th>
+                            <th><medium><?php echo  $DateInspected=='0000-00-00'? '': $InspectorDesignation; ?></medium></th>
                             <th>
                                 <center>GSO - GPB Main II</center>
                             </th>

@@ -28,8 +28,8 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                Plumbing=?,
                                                Welding=?,
                                                RequestorSignature=?,
-                                               RequestorName=?,
-                                               RequestorDesignation=?,
+                                               -- RequestorName=?,
+                                               -- RequestorDesignation=?,
                                                DateRequested=?,
                                                signatureOfInspector=?,
                                                InspectorName=?,
@@ -40,8 +40,8 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                EndOfService=?,
                                                NoOfHours=?,
                                                Assessment=?,
-                                               StartOfServiceTime=?,
-                                               EndOfServiceTime=?,
+                                               -- StartOfServiceTime=?,
+                                               -- EndOfServiceTime=?,
                                                AccomplishedWork1=?,
                                                WorkDoneBy1=?,
                                                Signature1=?,
@@ -81,7 +81,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
                               $airConditioning,
                               $masonryCarpentry,
@@ -90,8 +90,8 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $plumbing,
                               $welding,
                               $requesterSignature,
-                              $nameOfRequester,
-                              $designationOfRequester,
+                              // $nameOfRequester,
+                              // $designationOfRequester,
                               $dateRequested,
                               $inspecterSignature,
                               $nameOfInspector,
@@ -102,8 +102,8 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $endOfService,
                               $noOfHours,
                               $assessment,
-                              $startOfServiceTime,
-                              $endOfServiceTime,
+                              // $startOfServiceTime,
+                              // $endOfServiceTime,
                               $accomplishedWork1,
                               $workDoneBy1,
                               $signature1,
@@ -166,8 +166,8 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
  $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
- $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
- $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
+ // $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
+ // $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
  $accomplishedWork1 = $_POST['accomplished-work1'];
  $workDoneBy1 = $_POST['work-done-by1'];
  $signature1 = $_POST['signature1'];
@@ -621,11 +621,11 @@ require 'navbar.php';
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
-                            <!-- <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="" readonly></th>
-                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="" required></th> -->
+                            <!-- <th><input class="w3-input" type="text" name="name-of-requester" placeholder="name of requester" value="" readonly></th> -->
 
                              <th><medium><?php echo  $RequestorName;?></medium></th>
-                            <th><medium><?php echo  $InspectorName;?></medium></th>
+                            <!-- <th><medium></medium></th> -->
+                            <th><input class="w3-input" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" required></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
                             </th>
