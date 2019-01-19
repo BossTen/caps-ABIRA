@@ -7,7 +7,7 @@ require 'testadmin.php';
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
              session_start();
-    }  
+    }
 
 
 
@@ -19,14 +19,14 @@ if ($conn->connect_error) {
 
 // prepare and binds
 $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                              
+
                                                RequestorSignature=?,
-                                               RequestorName=?,
-                                               RequestorDesignation=?,
-                                               DateRequested=?,
+                                               -- RequestorName=?,
+                                               -- RequestorDesignation=?,
+                                               -- DateRequested=?,
                                                signatureOfInspector=?,
-                                               InspectorName=?,
-                                               InspectorDesignation=?,
+                                               -- InspectorName=?,
+                                               -- InspectorDesignation=?,
                                                DateInspected=?,
                                                Approved=?,
                                                StartOfService=?,
@@ -35,7 +35,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                Assessment=?,
                                                StartOfServiceTime=?,
                                                EndOfServiceTime=?,
-                                               AccomplishedWork1=?, 
+                                               AccomplishedWork1=?,
                                                WorkDoneBy1=?,
                                                Signature1=?,
                                                AccomplishedWork2=?,
@@ -54,7 +54,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                AccuracyOfWork=?,
                                                Courtesy=?,
                                                QualityOfService=?,
-                                               priorityId=?,
+                                               -- priorityId=?,
                                                JobRecommendation=?,
                                                InspectionReport=?,
                                                materialsNeeded1=?,
@@ -66,22 +66,22 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                materialsNeeded7=?,
                                                materialsNeeded8=?,
                                                materialsNeeded9=?,
-                                               materialsNeeded10=?, 
+                                               materialsNeeded10=?,
                                                materialsNeeded11=?,
-                                               materialsNeeded12=? 
+                                               materialsNeeded12=?
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
-                              
+
                               $requesterSignature,
-                              $nameOfRequester,
-                              $designationOfRequester,
-                              $dateRequested,
+                              // $nameOfRequester,
+                              // $designationOfRequester,
+                              // $dateRequested,
                               $inspecterSignature,
-                              $nameOfInspector,
-                              $designationOfInspecter,
+                              // $nameOfInspector,
+                              // $designationOfInspecter,
                               $dateInspected,
                               $directorSignature,
                               $startOfService,
@@ -109,7 +109,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $accuracyOfWork,
                               $courtesy,
                               $qualityOfService,
-                              $priority,
+                              // $priority,
                               //$campus,
                               $jobRecommendation,
                               $inspectionReport,
@@ -127,7 +127,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $m12get,
                               $serialCode
 
-                        );  
+                        );
 // Approved = $directorSignature
 // set parameters and execute
   $sIdu = 5;
@@ -139,14 +139,14 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
  $plumbing = isset($_POST['Plumbing']) ? "checked" : 'off';
  $welding = isset($_POST['Welding']) ? "checked" : 'off';
  // $date = $_POST['date1'];
- $requesterSignature = $_POST['requester-signature']; 
+ $requesterSignature = $_POST['requester-signature'];
  $inspecterSignature = $_POST['inspecter-signature'];
  $directorSignature = $_POST['director-signature'];
- $nameOfRequester = $_POST['name-of-requester'];
- $nameOfInspector = $_POST['name-of-inspector'];
- $designationOfRequester = $_POST['designation-of-requester'];
- $designationOfInspecter = $_POST['designation-of-inspecter'];
- $dateRequested = $_POST['date-requested'];
+ // $nameOfRequester = $_POST['name-of-requester'];
+ // $nameOfInspector = $_POST['name-of-inspector'];
+ // $designationOfInspecter = $_POST['designation-of-inspecter'];
+ // $designationOfRequester = $_POST['designation-of-requester'];
+ // $dateRequested = $_POST['date-requested'];
  $dateInspected = $_POST['date-inspected'];
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
@@ -173,7 +173,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
  $accuracyOfWork = isset($_POST['cb2'])? $_POST['cb2'] : "0" ;
  $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
  $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
- $priority = $_POST['priority'];
+ // $priority = $_POST['priority'];
  $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
  $m1get = isset($_POST['m1']) ? $_POST['m1'] : '';
@@ -190,13 +190,12 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
  $m12get =isset($_POST['m12']) ? $_POST['m12'] : '';
 
  $serialCode = $_POST['serial'];
-
  if($stmt->execute()){
   header('location: scheduling.php');
   exit();
  }
  $stmt->close();
- $conn->close(); 
+ $conn->close();
 
 }
 
@@ -266,7 +265,7 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription 
+                           UserJobDescription
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -335,11 +334,11 @@ require '../api/dbcon.php';
                      );
 
     $stmt->fetch();
-     
+
 $stmt->execute();
 $stmt->close();
 $conn->close();
-                
+
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
@@ -355,7 +354,7 @@ $conn->close();
 
 
       //code for checking if user is with the same campus as the requester
-      
+
 
 ?>
 <!DOCTYPE html>
@@ -402,6 +401,7 @@ require 'navbar.php';
 
                     <div class="row">
                         <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
+                          <input type="hidden" name="serial" value="<?php echo $SerialCode; ?>">
                         <h4 class="col-6"><b>Priority</b>
                           <small>
                             <!-- <select class="form-control form-control" name="priority" id="priority"> -->
@@ -425,7 +425,7 @@ require 'navbar.php';
                           <div class="row">
 
                              <h4 class="col-6"><b>Status</b>&nbsp;
-                            
+
                             <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
                                 <small><?php
                                 require '../api/dbcon.php';
@@ -442,7 +442,7 @@ require 'navbar.php';
                                 }
                               ?></small>
                             <!-- </select> -->
-                        
+
                         <h4 class="col-6"><b>Date:</b>&nbsp;
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
@@ -451,7 +451,7 @@ require 'navbar.php';
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo  $RequestorDesignation;?><small/>
                         </h4>
-                        
+
                         <h4 class="col-6"><b>Campus:</b>&nbsp;
                             <small><?php echo $Campus; ?></small>
                 <h4 class="col-6"><b>Name of Office:</b>&nbsp;
@@ -544,7 +544,7 @@ require 'navbar.php';
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
-                            
+
                                 </th>
                                 <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
                             </tr>
@@ -832,11 +832,11 @@ require 'navbar.php';
 
 
 
-<br>  
+<br>
 <div class="container ">
   <div class="float-right"><a href="">
     <a href="" class="nav-link" data-toggle="modal" data-target="#write" ><button type="button" class="btn btn-success">Write a message</button></a>
-  </div>   
+  </div>
 </div>
 
 <!--modal write a message-->
@@ -848,7 +848,7 @@ require 'navbar.php';
       <div class="modal-body">
         <form action="message.php" method="post">
         <input class="form-control col-12" name="serialcode" id="" placeholder="Enter Serial Code" value="<?php echo $SerialCode;?>" readonly>
-                     
+
         <br>
         <input type="text" name="message" class="form-control col-12" id="" placeholder="Enter your message"><br>
         <button type="submit" name="send" class="btn btn-success">Send</button>
@@ -879,8 +879,8 @@ require 'navbar.php';
   </div>
 </div>
             <script>
-  $('#print-button').on('click', function() {  
-                window.print();  
+  $('#print-button').on('click', function() {
+                window.print();
                 return false; // why false?
               });
                 /*
@@ -902,7 +902,7 @@ require 'navbar.php';
                 $('#message-bottom').text('Submitting would set this as for On-going');
                       //           $(":input").not("[class=onNapprove]")
                       // .prop("disabled", true);
-                      
+
 
               }
               //disabling of fields
@@ -1037,7 +1037,7 @@ require 'navbar.php';
                 console.log(document.getElementsByName("status")[0].value);
                 console.log(s_usr_type);
 
-                
+
 
             </script>
 </body>

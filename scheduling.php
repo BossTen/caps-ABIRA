@@ -5,13 +5,13 @@
     <title>Scheduling</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="w3.css">
-    
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
 
@@ -53,13 +53,13 @@ require 'navbar-director.php';
             </thead>
             <tbody>
                 <?php
-    
-           
+
+
                 switch ($_SESSION['usr_type']){
 
                     case 'director':
              require '../api/dbcon.php';
-      
+
             $stmt = $conn->prepare("SELECT j.StartOfService, j.EndOfService, j.SerialCode,j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName , p.name as priorityName FROM ((joborder as j INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id)
                                 WHERE j.Campus = ? && s.Name = 'On-Going'");
             $stmt->bind_param('s',$campus);
@@ -67,7 +67,7 @@ require 'navbar-director.php';
             $stmt->execute();
             $stmt->bind_result($startOfService, $endOfService, $serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName, $priorityName);
 
-                                
+
                                 while($stmt->fetch()){
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                         echo "<tr>";
@@ -87,16 +87,16 @@ require 'navbar-director.php';
                                 case 'admin':
 
              require '../api/dbcon.php';
-      
+
             $stmt = $conn->prepare("SELECT j.StartOfService, j.EndOfService,  j.SerialCode, j.NameOfOffice, j.Campus, j.UserJobDescription, j.JobRecommendation, j.DateRequestCreated, j.statusId, s.name as statusName , p.name as priorityName FROM ((joborder as j INNER JOIN status as s ON j.statusId = s.Id) INNER JOIN priority as p ON j.priorityId = p.Id) WHERE j.Campus = ? && s.Name = 'On-Going'");
             $stmt->bind_param('s',$campus);
-
+            
             // (s.Name = 'Approved' || s.Name = 'On-Going' || s.Name = 'Pending For Approval')
             $campus = $_SESSION['usr_campus'];
             $stmt->execute();
             $stmt->bind_result($startOfService, $endOfService,$serialCode,$nameOfOffice, $campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName, $priorityName);
 
-                                
+
                                 while($stmt->fetch()){
                                     $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                                    //$description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
@@ -117,10 +117,10 @@ require 'navbar-director.php';
 
                               function redirectDirector($sCode, $sId, $desc){
                                         return "<td><a href='director-job-order-update.php?serial=". $sCode. "'>" . $desc . "</td>";
-                            }     
+                            }
                             function redirectAdmin($sCode, $sId, $desc){
                                         switch($sId){
-                                  case 2: 
+                                  case 2:
                                         return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                   case 5:
@@ -133,8 +133,8 @@ require 'navbar-director.php';
                                         return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
                                         break;
                                 }
-                            }                   
-                                   
+                            }
+
 ?>
             </tbody>
 
@@ -149,11 +149,11 @@ function convertDate(d) {
   var tbody = document.querySelector("#results tbody");
   // get trs as array for ease of use
   var rows = [].slice.call(tbody.querySelectorAll("tr"));
-  
+
   rows.sort(function(a,b) {
     return convertDate(a.cells[2].innerHTML) - convertDate(b.cells[2].innerHTML);
   });
-  
+
   rows.forEach(function(v) {
     tbody.appendChild(v); // note that .appendChild() *moves* elements
   });
