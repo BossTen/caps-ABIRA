@@ -117,7 +117,7 @@ $('#fpass, #spass').on('keyup', function () {
           
                   $('input:text, input:password').val('');
               
-              alert("Account Created ");
+              alert(data);
               
          }
 });

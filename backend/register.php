@@ -11,19 +11,35 @@ require '../../api/dbcon.php';
 
 
 if(isset($_REQUEST)){
-  $stmt = $conn->prepare("INSERT INTO accounts (username, password, designation, position, campus, NameOfOffice, Department)
+	$stmt = $conn->prepare("SELECT Count(*) FROM accounts WHERE username = ?");
+	$stmt->bind_param('s',$username);
+	$username = $_POST['username'];
+	$stmt->execute();
+	$stmt->bind_result($count);
+	$stmt->fetch();
+	$stmt->close();
+	$conn->close();
+	
+	if($count!=0){
+		echo 'username already exists';
+	}else{
+require '../../api/dbcon.php';
+  $stmt1 = $conn->prepare("INSERT INTO accounts (username, password, designation, position, campus, NameOfOffice, Department)
 VALUES (?,?,?,?,?,?,?)");
-$stmt->bind_param("sssssss", $username, $password, $designation, $position, $campus, $nameOfOffice, $Department);
-$username = $_POST['username'];
+$stmt1->bind_param("sssssss", $username2, $password, $designation, $position, $campus, $nameOfOffice, $Department);
+$username2 = $_POST['username'];
 $password = md5($_POST['password']);
 $designation = 'faculty';
 $position = $_POST['designation'];
 $campus = $_POST['campus'];
 $nameOfOffice = $_POST['nameofoffice'];
 $Department = $_POST['department'];
-  $stmt->execute();
- $stmt->close();
+  $stmt1->execute();
+ $stmt1->close();
  $conn->close(); 
+  echo 'user successfully created';
+
+ }
 }
 
       
