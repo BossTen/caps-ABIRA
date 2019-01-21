@@ -533,8 +533,8 @@ require 'navbar.php';
           <div class="row">
             <p class="col-3">Start Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></p>
             <p class="col-3">Start Time: <input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php $date = date("H:i", strtotime($r_StartOfServiceTime)); echo "$date"; ?>"  required></p>
-            <p class="col-3">End Date: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php $date = date("H:i", strtotime($r_EndOfServiceTime)); echo "$date"; ?>"  required></p>
-            <p class="col-3">End Time: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" ></p>
+            <p class="col-3">End Date: <input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" value="<?php echo $r_EndOfService; ?>"  required></p>
+            <p class="col-3">End Time: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php $date = date("H:i", strtotime($r_EndOfServiceTime)); echo "$date"; ?>"  required></p>
           </div>
           <br>
           <div class="row">

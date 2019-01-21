@@ -491,6 +491,9 @@ require 'navbar.php';
           </div>
 
           <!--footer-->
+          <center>
+          <h6 id="message-bottom" class="w3-text-green"></h6>
+          </center>
           <div id="btn-container" class="container w3-center" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Send to Director" id="custom-button">
             <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">

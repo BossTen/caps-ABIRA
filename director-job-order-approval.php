@@ -520,11 +520,12 @@ require 'navbar-director.php';
                     </table>
 
               <!-- ADD -->
-              <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
+              <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info
               <center>
-            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4>
-
+            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4> -->
+            <center>
             <input name="approve" style="padding:20px;" class="btn btn-success" type="submit" value="Approve">
+            </center>
 
 
 

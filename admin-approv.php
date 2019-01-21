@@ -471,23 +471,73 @@ require 'navbar.php';
 
           <div class="row">
             <p class="col-3">Start Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></p>
-            <p class="col-3">Start Time: <input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" ></p>
+            <p class="col-3">Start Time: <input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" required></p>
             <p class="col-3">End Date: <input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" required></p>
-            <p class="col-3">End Time: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" ></p>
+            <p class="col-3">End Time: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" required></p>
           </div>
           <br>
           <div class="row">
             <p class="col-4">No. of hrs: <input class="w3-input onNapprove form-control" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly></p>
-            <p class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> >Work completed upon agreed duration</p>
-            <p class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> >Work not completed upon agreed duration </p>
+            <p class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> disabled>Work completed upon agreed duration</p>
+            <p class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> disabled>Work not completed upon agreed duration </p>
         </div>
 
-          <!--footer--> 
+          <!--footer-->
+          <br>
+          <center>
+          <h6 id="message-bottom" class="w3-text-green"></h6>
+          </center>
           <div id="btn-container" class="container w3-center" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
             <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="button" value="Print">
           </div>
           </div>
+
+          <div class="container ">
+  <div class="float-right"><a href="">
+    <a href="" class="nav-link" data-toggle="modal" data-target="#write" ><button type="button" class="btn btn-success">Write a message</button></a>
+  </div>
+</div>
+
+<!--modal write a message-->
+<div class="modal fade" id="write" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <form action="message.php" method="post">
+        <input class="form-control col-12" name="serialcode" id="" placeholder="Enter Serial Code" value="<?php echo $SerialCode;?>" readonly>
+
+        <br>
+        <input type="text" name="message" class="form-control col-12" id="" placeholder="Enter your message"><br>
+        <button type="submit" name="send" class="btn btn-success">Send</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal reply-->
+<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <input type="text" name="" class="form-control col-12" id="" placeholder="Enter your message" value= ""><br>
+        <button type="button" class="btn btn-success">Send</button>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
