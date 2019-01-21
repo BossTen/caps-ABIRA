@@ -447,19 +447,19 @@ require 'navbar.php';
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
                         </h4>
-                      <h4 class="col-6"><b>Designation:</b>&nbsp;
+                      <h4 class="col-12" hidden=""><b>Designation:</b>&nbsp;
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo  $RequestorDesignation;?><small/>
                         </h4>
 
-                        <h4 class="col-6"><b>Campus:</b>&nbsp;
+                        <h4 class="col-12"><b>Campus:</b>&nbsp;
                             <small><?php echo $Campus; ?></small>
-                <h4 class="col-6"><b>Name of Office:</b>&nbsp;
+                <h4 class="col-12"><b>Name of Office:</b>&nbsp;
                     <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
-                    <small><?php echo $NameOfOffice; ?>"</small>
-                <h4 class="col-6"><b>Department:</b>&nbsp;
+                    <small><?php echo $NameOfOffice; ?></small>
+                <h4 class="col-12" hidden=""><b>Department:</b>&nbsp;
                     <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
-                    <small><?php echo $NameOfOffice; ?>"</small>
+                    <small><?php echo $NameOfOffice; ?></small>
             </div>
     </div>
     </div>
@@ -647,7 +647,7 @@ require 'navbar.php';
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
                   <div class="table-responsive">
-                    <table class="table table-bordered table-responsive w3-card w3-round">
+                    <table class="table table-bordered w3-card w3-round">
                         <tr>
                             <th>Start of Service</th>
                             <th>End of Service</th>
@@ -674,7 +674,7 @@ require 'navbar.php';
               </div>
             </div>
  <br>
-    <div class="container" style="margin-top: ;">
+    <div class="container" style="margin-top: ;" hidden="">
 
 
             <div class="card">

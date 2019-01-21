@@ -497,9 +497,9 @@ require 'navbar.php';
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
                         </h4>
-                        <h4 class="col-6"><b>Campus:</b>&nbsp;
+                        <h4 class="col-12"><b>Campus:</b>&nbsp;
                             <small><?php echo $Campus; ?></small>
-                <h4 class="col-6"><b>Name of Office:</b>&nbsp;
+                <h4 class="col-12"><b>Name of Office:</b>&nbsp;
                     <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
                     <small><?php echo $NameOfOffice; ?>"</small>
 
