@@ -611,7 +611,7 @@ require 'navbar.php';
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
-                            <th><medium><?php echo  $RequestorName; ?></medium></th>
+                            <th><medium><?php echo  $RequestorName;?></medium></th>
                             <th><medium><?php echo  $InspectorName; ?></medium></th>
                             <th>
                                 <center>Engr. VICTOR A. SEMIRA</center>
