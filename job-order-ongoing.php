@@ -20,29 +20,90 @@ require 'testadmin.php';
         }
 
         // prepare and binds
-        $stmt = $conn->prepare("UPDATE joborder SET statusId = ?
+        $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
+                                                    -- RequestorSignature = ?,
+                                                    -- signatureOfInspector = ?,
+                                                    -- Approved = ?,
+                                                    StartOfService = ?,
+                                                    StartOfServiceTime = ?,
+                                                    EndOfService = ?,
+                                                    EndOfServiceTime = ?,
+                                                    NoOfHours = ?,
+                                                    Assessment = ?,
+                                                    AccomplishedWork1=?,
+                                                   WorkDoneBy1=?,
+                                                   Signature1=?,
+                                                   AccomplishedWork2=?,
+                                                   WorkDoneBy2=?,
+                                                   Signature2=?,
+                                                   AccomplishedWork3=?,
+                                                   WorkDoneBy3=?,
+                                                   Signature3=?,
+                                                   AccomplishedWork4=?,
+                                                   WorkDoneBy4=?,
+                                                   Signature4=?
+
+
 
 
                                                         WHERE SerialCode = ?
                                                        ");
 
-        $stmt->bind_param("ss",
+        $stmt->bind_param("ssssssssssssssssssss",
                                       $sIdu,
-
+                                      // $requesterSignature,
+                                      // $inspecterSignature,
+                                      // $directorSignature,
+                                      $startOfService,
+                                      $startOfServiceTime,
+                                      $endOfService,
+                                      $endOfServiceTime,
+                                      $noOfHours,
+                                      $assessment,
+                                      $accomplishedWork1,
+                                      $workDoneBy1,
+                                      $signature1,
+                                      $accomplishedWork2,
+                                      $workDoneBy2,
+                                      $signature2,
+                                      $accomplishedWork3,
+                                      $workDoneBy3,
+                                      $signature3,
+                                      $accomplishedWork4,
+                                      $workDoneBy4,
+                                      $signature4,
                                       $serialCode
 
                                 );
 
-        //print_r($_POST);
+        // print_r($_POST);
           $sIdu = 8;
-
-
+           $requesterSignature = $_POST['requester-signature'];
+           $inspecterSignature = $_POST['inspecter-signature'];
+           $directorSignature = $_POST['director-signature'];
+           $startOfService = $_POST['start-of-service'];
+           $endOfService = $_POST['end-of-service'];
+           $noOfHours = $_POST['no-of-hours'];
+           $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
+           $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
+           $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
+           $accomplishedWork1 = $_POST['accomplished-work1'];
+           $workDoneBy1 = $_POST['work-done-by1'];
+           $signature1 = $_POST['signature1'];
+           $accomplishedWork2 = $_POST['accomplished-work2'];
+           $workDoneBy2 = $_POST['work-done-by2'];
+           $signature2 = $_POST['signature2'];
+           $accomplishedWork3 = $_POST['accomplished-work3'];
+           $workDoneBy3 = $_POST['work-done-by3'];
+           $signature3 = $_POST['signature3'];
+           $accomplishedWork4 = $_POST['accomplished-work4'];
+           $workDoneBy4 = $_POST['work-done-by4'];
+           $signature4 = $_POST['signature4'];
          $serialCode = $_POST['serial'];
 
          $stmt->execute();
          $stmt->close();
          $conn->close();
-
         }
 
 
@@ -652,9 +713,9 @@ require 'navbar.php';
                         </tr>
                         <tr>
                             <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature" readonly></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature" readonly=""></th>
-                            <th><input class="w3-input" type="text" name="director-signature" readonly></th>
+                            <th><input class="w3-input" type="text" name="requester-signature" ></th>
+                            <th><input class="w3-input" type="text" name="inspecter-signature" ></th>
+                            <th><input class="w3-input" type="text" name="director-signature" ></th>
                           </tr>
                           <tr>
                             <th>Printed Name:</th>
@@ -703,7 +764,7 @@ require 'navbar.php';
                         <tr>
                             <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></th>
                             <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" value="<?php echo $r_EndOfService; ?>"  required></th>
-                            <th id="con-numhours" rowspan=2 value="" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>"  required>
+                            <th id="con-numhours" rowspan=2 value="" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>"  readonly>
                                 <p class="error-message" id="assessmentErrorMessage"></p>
                             </th>
                             <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> >Work completed upon agreed duration</th>
@@ -762,7 +823,7 @@ require 'navbar.php';
                                 <center>Conforme:
                             </th>
                             <th><medium><?php echo  $RequestorName; ?></medium></th>
-                            <th><medium><?php echo ($ConformeApproved == 1 ? 'Approved' : 'Not Approved'); ?></medium></th>
+                            <th><medium></medium></th>
                             <th>
                                 <center><input type="hidden" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>"  required>
                             </th>
