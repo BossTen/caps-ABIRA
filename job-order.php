@@ -12,6 +12,58 @@ error_reporting(E_ALL);
 
 require '../api/dbcon.php';
 
+if(isset($_POST['evaluation'])){
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// prepare and binds
+$stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
+
+                                               ResponseTime=?,
+                                               AccuracyOfWork=?,
+                                               Courtesy=?,
+                                               QualityOfService=?
+
+
+                                               -- ApprovedBy,
+
+                                                WHERE SerialCode = ?
+                                               ");
+
+$stmt->bind_param("ssssss",
+                              $sIdu,
+
+                              $responseTime,
+                              $accuracyOfWork,
+                              $courtesy,
+                              $qualityOfService,
+
+                              $serialCode
+
+                        );
+// Approved = $directorSignature
+// set parameters and execute
+  $sIdu = 6;
+// $nameOfOffice = $_POST['nameofoffice'];
+
+ $responseTime = isset($_POST['cb1'])? $_POST['cb1'] : "0" ;
+ $accuracyOfWork = isset($_POST['cb2'])? $_POST['cb2'] : "0" ;
+ $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
+ $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
+
+
+ $serialCode = $_POST['serial'];
+
+if($stmt->execute()){
+  echo "<script type='text/javascript'>
+                alert ('Update Successful!');
+                window.location.href='faculty-notif.php';</script>";
+}
+ $stmt->close();
+ $conn->close();
+}
+
 if(isset($_POST['jos'])){
 
 if ($conn->connect_error) {
@@ -900,7 +952,11 @@ $(":input").not("")
                 $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
 
               }else if(<?php echo $statusId ?> == 8){
-                document.getElementById("custom-button").value = "Submit Evaluation";
+                //document.getElementById("custom-button").value = "Submit Evaluation";
+                $("#custom-button").attr({
+                  name: 'evaluation',
+                  value: 'Submit Evaluation'
+                })
               }
               //disabling of fields
 
