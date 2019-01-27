@@ -135,15 +135,58 @@ require 'navbar.php';
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Evaluation/ Performance Chart</strong>
+                                <strong>Response Time Chart</strong>
                             </div>
                             <div class="card-body">
-                                    <canvas id="myChart"></canvas>
+                                    <canvas id="reponsetime"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Accuracy of Work Chart</strong>
+                            </div>
+                            <div class="card-body">
+                                    <canvas id="accuracy"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Courtesy Chart</strong>
+                            </div>
+                            <div class="card-body">
+                                    <canvas id="courtesy></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Quality Service Chart</strong>
+                            </div>
+                            <div class="card-body">
+                                    <canvas id="quality"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
                 
                     <div class="row">
                     <div class="col-lg-12">
@@ -168,8 +211,10 @@ require 'navbar.php';
 
     <script src="js/mdb.js"></script>
     <script src="js/mdb.min.js"></script>
+
+<!--reponsetime-->
 <script>
-  var ctx = document.getElementById("myChart").getContext('2d');
+  var ctx = document.getElementById("responsetime").getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -210,44 +255,140 @@ require 'navbar.php';
 
 
 </script>
+
+<!--accuracy of work -->
 <script>
-  //line
-  var ctxL = document.getElementById("lineChart").getContext('2d');
-  var myLineChart = new Chart(ctxL, {
-    type: 'line',
+  var ctx = document.getElementById("accuracy").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
     data: {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
       datasets: [{
-          label: "My First dataset",
-          // data: [<?php echo $QualityOfService; ?>, <?php echo $QualityOfService; ?>,, <?php echo $QualityOfService; ?>,, <?php echo $QualityOfService; ?>, 0, 0, 0],
-          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>, 0, 0, 0],
+        label: 'Users Feedback' , 
+        // data: [0, 0, 0, 0, 0, 0],
+          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
           backgroundColor: [
-            'rgba(105, 0, 132, .2)',
-          ],
-          borderColor: [
-            'rgba(200, 99, 132, .7)',
-          ],
-          borderWidth: 2
-        },
-        {
-          label: "My Second dataset",
-          data: [0, 0, 0, 0, 0, 0, 0],
-          backgroundColor: [
-            'rgba(0, 137, 132, .2)',
-          ],
-          borderColor: [
-            'rgba(0, 10, 130, .7)',
-          ],
-          borderWidth: 2
-        }
-      ]
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          // 'rgba(153, 102, 255, 0.2)',
+          // 'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          // 'rgba(153, 102, 255, 1)',
+          // 'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
     },
     options: {
-      responsive: true
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
     }
   });
 
+
 </script>
+
+<!--courtesy-->
+<script>
+  var ctx = document.getElementById("courtesy").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
+      datasets: [{
+        label: 'Users Feedback' , 
+        // data: [0, 0, 0, 0, 0, 0],
+          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          // 'rgba(153, 102, 255, 0.2)',
+          // 'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          // 'rgba(153, 102, 255, 1)',
+          // 'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+
+</script>
+
+<!--quality of service -->
+<script>
+  var ctx = document.getElementById("quality").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
+      datasets: [{
+        label: 'Users Feedback' , 
+        // data: [0, 0, 0, 0, 0, 0],
+          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          // 'rgba(153, 102, 255, 0.2)',
+          // 'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          // 'rgba(153, 102, 255, 1)',
+          // 'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+
+</script>
+
+<!--work duration -->
 <script>
   //pie
   var ctxP = document.getElementById("pieChart").getContext('2d');
