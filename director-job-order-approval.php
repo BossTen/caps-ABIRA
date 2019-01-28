@@ -291,6 +291,18 @@ require '../api/dbcon.php';
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
 
+      <style>
+h6 {
+  text-indent: 50px;
+  color: gray;
+}
+label {
+  text-indent: 0px;
+  color: black;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -298,26 +310,17 @@ require '../api/dbcon.php';
 require 'navbar-director.php';
 ?>
 
-    <center>
-        <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
-    </center>
-            <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
-    <div class="container" style="margin-top: ;">
-
-
-
-            <div class="card">
-                <div class="card-body" style="margin-left: 2%;">
-
-                    <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
-                          <input type="hidden" name="serial" value="<?php echo $SerialCode;?>">
-                        <h4 class="col-6"><b>Priority</b>
-                          <small>
-                            <!-- <select class="form-control form-control" name="priority" id="priority"> -->
-                                <?php
+<br><br>
+<form action="" method="POST">
+<div class="container" style="margin-bottom: 1%;">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-12">
+        <div class="card-body" style="margin-left: 3%;margin-right: 3%;">
+          <h5 class="w3-text-red">Job Order Form - Inspection Order</h5>
+          <div class="row">
+            <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
+            <h6 class="col-6">Priority: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
                                 $result = $conn->query($sql);
@@ -330,16 +333,10 @@ require 'navbar-director.php';
 
                                   }
                                 }
-                              ?>
-                            <!-- </select> -->
-                          </small>
-                          </div>
-                          <div class="row">
-
-                             <h4 class="col-6"><b>Status</b>&nbsp;
-
-                            <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
-                                <small><?php
+                              ?></label> </h6>
+          </div>
+          <div class="row">
+            <h6 class="col-6">Status: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM status where Id = $statusId";
                                 $result = $conn->query($sql);
@@ -352,181 +349,56 @@ require 'navbar-director.php';
 
                                   }
                                 }
-                              ?></small>
-                            <!-- </select> -->
+                              ?></label></h6>
+            <h6 class="col-6">Date: <label><?php echo $DateRequestCreated ?></label></h6>
+          </div>
+          <div class="row">
+            <h6 class="col-6">Campus: <label><?php echo $Campus; ?></label></h6>
+            <h6 class="col-6">Name of Office: <label><?php echo $NameOfOffice; ?></label>
+          </div>
+          <h5 class="w3-text-red">Job Order Request</h5>
+          <div class="row">
+            <h6 class="col-12">Works: <label></label></h6>
+          </div>
+          <div class="row">
+            <h6>Inspection Report:&nbsp; <label><?php echo $InspectionReport; ?></label></h6>
+          </div>
+          <br>
+          <div class="row">
+            <h6>Job Recommendation:&nbsp; <label><?php echo $JobRecommendation; ?></label></h6>
+            
+          </div>
+          <br>
+          <div class="row">
+            <h6>Materials Needed:&nbsp; <label><?php echo $m1 ?></label></h6>
+            
+          </div>
+          <br>
+          <div class="row">
+            <h6 class="col-4">Requested by: <label><?php echo  $RequestorName;?></label></h6>
+            <h6 class="col-4">Designation: <label><?php echo  $RequestorDesignation;?></label></h6>
+            <h6 class="col-4">Date: <label><?php echo  $DateRequestCreated;?></label></h6>
+          </div>
+          <br>
+          <div class="row">
+            <h6 class="col-4">Inspected by: <label><?php echo  $InspectorName;?></label></h6>
+            <h6 class="col-4">Designation: <label><?php echo  $InspectorDesignation;?></label></h6>
+            <h6 class="col-4">Date: <label><?php echo  $DateInspected;?></label></h6>
+          </div>
 
-                        <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
-                            <small><?php echo $DateRequestCreated ?><small/>
-                        </h4>
-                        <h4 class="col-12"><b>Campus:</b>&nbsp;
-                            <small><?php echo $Campus; ?></small>
-                <h4 class="col-12"><b>Name of Office:</b>&nbsp;
-                    <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
-                    <small><?php echo $NameOfOffice; ?>"</small>
-
-            </div>
-    </div>
-    </div>
-    <br>
-    <center>
-        <h1 class="w3-text-red">Job Order Request</h1>
-    </center>
-    <div class="container" style="margin-top: ;">
-        <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-
-                    <table class="table table-bordered w3-card w3-round">
-                        <tbody>
-                            <tr>
-                                <th colspan="col-5">
-                                    <center>Kindly put a check mark before the work<br> service and/or assistance to be done
-                                </th>
-                                <th colspan="2.5">
-                                    <center>Inspection report
-                                </th>
-                                <th colspan="2.5">
-                                    <center>Material Needed
-                                </th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?>  disabled>
-                                    <label>Air-conditioning Works:</label></th>
-                                <th rowspan="5">
-                                    <div class="form-group"><big><?php echo $InspectionReport; ?></big>
-                                        <p id="mlInspectionReport"></p>
-                                    </div>
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>" readonly/></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?> disabled>
-                                    <label>
-                                        <center>Carpentry/ Masonary Works:
-                                    </label></th>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>" readonly></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?> disabled>
-                                    <label>Electrical Works:</label></th>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <center>Job Recommendation
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?> disabled>
-                                    <label>
-                                        <center>Painting Works:
-                                    </label></th>
-                                <th rowspan="6">
-                                    <div class="form-group"><big><?php echo $JobRecommendation; ?></big>
-                                        <p id="mlJobRecommendation"></p>
-                                    </div>
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?> disabled>
-                                    <label>
-                                        <center>Plumbing Works:
-                                    </label></th>
-
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?> disabled>
-                                    <label>
-                                        <center>Welding Works:
-                                    </label></th>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>" readonly></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>" readonly></th>
-                            </tr>
-                    </table>
-
-
-
-                    <table class="table table-bordered w3-card w3-round">
-                        <tr>
-                            <th></th>
-                            <th>
-                                <center>Requested by:
-                            </th>
-                            <th>
-                                <center>Inspected by:
-                            </th>
-                            <th>
-                                <center>Approved by:
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Signature:</th>
-                            <th><input class="w3-input" type="hidden" name="requester-signature" placeholder="requester signature" readonly></th>
-                            <th><input class="w3-input" type="hidden" name="inspecter-signature" placeholder="inspecter signature" readonly></th>
-                            <th><input class="w3-input" type="hidden" name="director-signature" placeholder="signature of director" readonly></th>
-                        </tr>
-                        <tr>
-                            <th>Printed Name:</th>
-                            <th><medium><?php echo  $RequestorName;?></medium></th>
-                            <th><medium><?php echo  $InspectorName;?></medium></th>
-                            <th>
-                                <center>Engr. VICTOR A. SEMIRA</center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Designation:</th>
-                            <th><medium><?php echo  $RequestorDesignation;?></medium></th>
-                            <th><medium><?php echo  $InspectorDesignation;?></medium></th>
-                            <th>
-                                <center>Assistant Director of FMSO</center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Date:</th>
-                            <th><medium><?php echo  $DateRequestCreated;?></medium></th>
-                            <th><medium><?php echo  $DateInspected;?></medium></th>
-                            <th>
-                                <center>GSO - GPB Main II</center>
-                            </th>
-                        </tr>
-                    </table>
-
-              <!-- ADD -->
-              <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info
-              <center>
-            <h4 class="w3-text-green">Submitting would change the status of this form to "for approval" this is for the director to approve"</h4> -->
-            <center>
+          <!--footer-->
+          <div id="btn-container" class="container w3-center" style="margin-bottom: 5%">
             <input name="approve" style="padding:20px;" class="btn btn-success" type="submit" value="Approve">
-            </center>
+          </div>
+          </div>
 
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
                <?php

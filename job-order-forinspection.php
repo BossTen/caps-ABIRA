@@ -466,13 +466,13 @@ require 'navbar.php';
           </div>
           <div class="row">
             <h6>Inspection Report:&nbsp;</h6>
-            <textarea class="form-control" rows="5" cols="100" name="inspect-report" id="inspectionReport" required><?php echo $InspectionReport; ?></textarea>
+            <textarea class="form-control" rows="5" cols="100" name="inspect-report" id="inspectionReport" maxlength="450" required><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport">
           </div>
           <br>
           <div class="row">
             <h6>Job Recommendation:&nbsp;</h6>
-            <textarea class="form-control" rows="5" cols="100" name="job-recommendation" id="jobRecommendation" required></textarea>
+            <textarea class="form-control" rows="5" cols="100" name="job-recommendation" id="jobRecommendation" maxlength="450" required></textarea>
                                         <p id="mlJobRecommendation">
           </div>  
           <br>
@@ -492,11 +492,12 @@ require 'navbar.php';
             <h6 class="col-4">Designation: <input class="form-control" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>" required></h6>
             <h6 class="col-4">Date: <input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>" disabled></h6>
           </div>
+          <br>
           <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
 
-            <h4 id="message-bottom" class="w3-text-green"></h4>
+            <h6 id="message-bottom" class="w3-text-green"></h4>
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Send to Director" id="custom-button">

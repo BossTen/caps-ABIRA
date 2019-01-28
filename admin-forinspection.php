@@ -479,6 +479,7 @@ require 'navbar.php';
     </div>
   </div>
 </div>
+</form>
 
  <?php 
             }

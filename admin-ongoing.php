@@ -449,7 +449,7 @@ require 'navbar.php';
 ?>
 
 <br><br>
-
+<form action="" method="POST">
 <div class="container" style="margin-bottom: 3%;">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
@@ -545,6 +545,7 @@ require 'navbar.php';
     </div>
   </div>
 </div>
+</form>
 
  <?php 
             }

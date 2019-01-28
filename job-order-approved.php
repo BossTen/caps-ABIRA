@@ -379,6 +379,17 @@ $conn->close();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
+h6 {
+  text-indent: 50px;
+  color: gray;
+}
+label {
+  text-indent: 0px;
+  color: black;
+}
+</style>s
+
 </head>
 
 <body>
@@ -386,26 +397,17 @@ $conn->close();
 require 'navbar.php';
 ?>
 
-    <center>
-        <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
-    </center>
-            <!-- UPDATE form -->
-        <form action="" method="POST">
-            <!-- UPDATE card -->
-    <div class="container" style="margin-top: ;">
-
-
-
-            <div class="card">
-                <div class="card-body" style="margin-left: 2%;">
-
-                    <div class="row">
-                        <h4 class="col-6"><b>Serial:</b>&nbsp;<small><?php echo $SerialCode;?></small>
-                          <input type="hidden" name="serial" value="<?php echo $SerialCode; ?>">
-                        <h4 class="col-6"><b>Priority</b>
-                          <small>
-                            <!-- <select class="form-control form-control" name="priority" id="priority"> -->
-                                <?php
+<br><br>
+<form action="" method="POST">
+<div class="container" style="margin-bottom: 3%;">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-12">
+        <div class="card-body" style="margin-left: 3%;margin-right: 3%;">
+          <h5 class="w3-text-red">Job Order Form - Inspection Order</h5>
+          <div class="row">
+            <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
+            <h6 class="col-6">Priority: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
                                 $result = $conn->query($sql);
@@ -418,16 +420,10 @@ require 'navbar.php';
 
                                   }
                                 }
-                              ?>
-                            <!-- </select> -->
-                          </small>
-                          </div>
-                          <div class="row">
-
-                             <h4 class="col-6"><b>Status</b>&nbsp;
-
-                            <!-- <select class="form-control form-control" name="status" id="status" disabled> -->
-                                <small><?php
+                              ?></label></h6>
+          </div>
+          <div class="row">
+            <h6 class="col-6">Status: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM status where Id = $statusId";
                                 $result = $conn->query($sql);
@@ -440,382 +436,53 @@ require 'navbar.php';
 
                                   }
                                 }
-                              ?></small>
-                            <!-- </select> -->
-
-                        <h4 class="col-6"><b>Date:</b>&nbsp;
-                            <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
-                            <small><?php echo $DateRequestCreated ?><small/>
-                        </h4>
-                      <h4 class="col-12" hidden=""><b>Designation:</b>&nbsp;
-                            <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
-                            <small><?php echo  $RequestorDesignation;?><small/>
-                        </h4>
-
-                        <h4 class="col-12"><b>Campus:</b>&nbsp;
-                            <small><?php echo $Campus; ?></small>
-                <h4 class="col-12"><b>Name of Office:</b>&nbsp;
-                    <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
-                    <small><?php echo $NameOfOffice; ?></small>
-                <h4 class="col-12" hidden=""><b>Department:</b>&nbsp;
-                    <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
-                    <small><?php echo $NameOfOffice; ?></small>
-            </div>
-    </div>
-    </div>
-    <br>
-    <center>
-        <h1 class="w3-text-red">Job Order Request</h1>
-    </center>
-    <div class="container" style="margin-top: ;">
-
-
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                  <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
-                        <tbody>
-                            <tr>
-                                <th colspan="col-5">
-                                    <center>Kindly put a check mark before the work<br> service and/or assistance to be done
-                                </th>
-                                <th colspan="2.5">
-                                    <center>Inspection report
-                                </th>
-                                <th colspan="2.5">
-                                    <center>Material Needed
-                                </th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> disabled>
-                                    <label>Air-conditioning Works:</label></th>
-                                <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" readonly><?php echo $InspectionReport; ?></textarea>
-                                        <p id="mlInspectionReport"></p>
-                                    </div>
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>" readonly/></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?> disabled>
-                                    <label>
-                                        <center>Carpentry/ Masonary Works:
-                                    </label></th>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>" readonly></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?> disabled>
-                                    <label>Electrical Works:</label></th>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <center>Job Recommendation
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?> disabled>
-                                    <label>
-                                        <center>Painting Works:
-                                    </label></th>
-                                <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"readonly> <?php echo $r_JobRecommendation ?></textarea>
-                                        <p id="mlJobRecommendation" ></p>
-                                    </div>
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?> disabled>
-                                    <label>
-                                        <center>Plumbing Works:
-                                    </label></th>
-
-                                </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>" readonly></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>" readonly></th>
-                            </tr>
-                            <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?> disabled>
-                                    <label>
-                                        <center>Welding Works:
-                                    </label></th>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>" readonly></th>
-                            </tr>
-                            <tr>
-
-                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>" readonly></th>
-                            </tr>
-                    </table>
-                  </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <br><br>
-<!--report-->
-<div class="container" style="margin-top: ;">
-
-
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                    <h4 class="no-print"><b>Report Description:</b>&nbsp;
-            <div class="form-group"><small>
-              <?php echo $userJobDescription ?>
-            </small>
-                  </div>
-                </div>
-              </div>
-
-               <br>
-    <div class="container" style="margin-top: ;">
-
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                  <div class="table-responsive">
-
-
-                    <table class="table tab table-bordered w3-card w3-round">
-                        <tr>
-                            <th></th>
-                            <th>
-                                <center>Requested by:
-                            </th>
-                            <th>
-                                <center>Inspected by:
-                            </th>
-                            <th>
-                                <center>Approved by:
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Signature:</th>
-                            <th><input class="w3-input" type="text" name="requester-signature"  readonly></th>
-                            <th><input class="w3-input" type="text" name="inspecter-signature"  readonly></th>
-                            <th><input class="w3-input" type="text" name="director-signature"  readonly></th>
-                          </tr>
-                          <tr>
-                            <th>Printed Name:</th>
-                            <th><medium><?php echo  $RequestorName;?></medium></th>
-                            <th><medium><?php echo  $InspectorName;?></medium></th>
-                            <th>
-                                <center>Engr. VICTOR A. SEMIRA</center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Designation:</th>
-                            <th><medium><?php echo  $RequestorDesignation;?></medium></th>
-                            <th><medium><?php echo  $InspectorDesignation;?></medium></th>
-                            <th>
-                                <center>Assistant Director of FMSO</center>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Date:</th>
-                            <th><medium><?php echo  $DateRequestCreated;?></medium></th>
-                            <th><medium><?php echo  $DateInspected;?></medium></th>
-                            <th>
-                                <center>GSO - GPB Main II</center>
-                            </th>
-                        </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-             <br>
-    <div class="container" style="margin-top: ;">
-
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                  <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
-                        <tr>
-                            <th>Start of Service</th>
-                            <th>End of Service</th>
-                            <th>No. of hrs</th>
-                            <th>Assessment</th>
-                        </tr>
-                        <br>
-                        <tr>
-                            <th id="con-startDate">Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></th>
-                            <th><input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" required></th>
-                            <th id="con-numhours" rowspan=2 value="<?php echo $EndOfService; ?>" ><input class="w3-input onNapprove" type="text" name="no-of-hours" id="noOfHours" value="<?php echo $NoOfHours; ?>" readonly>
-                                <p class="error-message" id="assessmentErrorMessage"></p>
-                            </th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> disabled >Work completed upon agreed duration</th>
-                        </tr>
-                        <tr>
-                            <th>Time:<input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" ></th>
-                            <th><input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" ></th>
-                            <th><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?> disabled >Work not completed upon agreed duration</th>
-                        </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
- <br>
-    <div class="container" style="margin-top: ;" hidden="">
-
-
-            <div class="card">
-                <div class="card-body" style="margin-left:2%;">
-                  <div class="table-responsive">
-                    <table class="table table-bordered w3-card w3-round">
-                        <tr>
-                            <th colspan=2>
-                                <center>Accomplished Works
-                            </th>
-                            <th>
-                                <center>Work done by:
-                            </th>
-                            <th>
-                                <center>Signature
-                            </th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" ></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature1" value="<?php echo $Signature1?>"></th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" ></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature2" value="<?php echo $Signature2?>"></th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" ></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature3" value="<?php echo $Signature3?>"></th>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input class="w3-input onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" ></th>
-                            <th><input class="w3-input onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"></th>
-                            <th><input class="w3-input onNapprove" type="text" name="signature4" value="<?php echo $Signature4; ?>"></th>
-                        </tr>
-                        <tr>
-                            <th rowspan=2>
-                                <center>Conforme:
-                            </th>
-                            <th><medium><?php echo  $RequestorName; ?></medium></th>
-                            <th><input class="w3-input onNapprove" type="hidden" name="conforme-signature"></th>
-                            <th>
-                                <center><input type="hidden" class="form-control onNapprove" name="conforme-date-signed" value="<?php echo $ConformeDateApproved?>" >
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <center>Name
-                            </th>
-                            <th>
-                                <center>Signature
-                            </th>
-                            <th>
-                                <center>Date signed
-                            </th>
-                    </table>
-                </div>
-            </div>
+                              ?></label></h6>
+            <h6 class="col-6">Date: <label><?php echo $DateRequestCreated ?></label></h6>
           </div>
-        </div>
-            <br>
-            <div class="container" style="margin-top: ; display:none">
+          <div class="row">
+            <h6 class="col-6">Campus: <label><?php echo $Campus; ?></label></h6>
+            <h6 class="col-6">Name of Office: <label><?php echo $NameOfOffice; ?></label></h6>
+          </div>
+          <h5 class="w3-text-red">Job Order Request</h5>
+          <div class="row">
+            <h6 class="col-12">Report Description: <label><?php echo $userJobDescription ?></label></h6>
+          </div>
+          <div class="row">
+            <h6 class="col-12">Works: <label></label></h6>
+          </div>
+          <div class="row">
+            <h6>Inspection Report:&nbsp; <label><?php echo $InspectionReport; ?></label></h6>
+           
+          </div>
+          <br>
+          <div class="row">
+            <h6>Job Recommendation:&nbsp; <label><?php echo $r_JobRecommendation ?></label></h6>   
+          </div>
+          <br>
+          <div class="row">
+            <h6>Materials Needed:&nbsp;<label><?php echo $m1 ?></label></h6>
+            
+          </div>
+          <br>
+          <div class="row">
+            <h6 class="col-4">Requested by: <label><?php echo  $RequestorName;?></label></h6>
+            <h6 class="col-4">Designation: <label><?php echo  $RequestorDesignation;?></label></h6>
+            <h6 class="col-4">Date: <label><?php echo  $DateRequestCreated;?></label></h6>
+          </div>
+          <br>
+          <div class="row">
+            <h6 class="col-4">Inspected by: <label><?php echo  $InspectorName;?></label></h6>
+            <h6 class="col-4">Designation: <label><?php echo  $InspectorDesignation;?></label></h6>
+            <h6 class="col-4">Date: <label><?php echo  $DateInspected;?></label></h6>
+          </div>
+          <br>
 
-                <div class="card">
-                    <div class="card-body" style="margin-left:2%;">
-
-                        <table class="table table-bordered table-responsive">
-                            <tbody>
-                                <tr>
-                                    <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
-                                </tr>
-                                <tr>
-                                    <th rowspan="2" colspan="4">
-                                        <center>EVALUATION STATEMENTS
-                                    </th>
-                                    <th>Outstanding</th>
-                                    <th>Very Satisfactory</th>
-                                    <th>Satisfactory</th>
-                                    <th>Unsatisfactory</th>
-                                    <th>Poor</th>
-                                </tr>
-                                <tr>
-                                    <center>
-                                        <th>
-                                            <center>5</center>
-                                        </th>
-                                        <th>
-                                            <center>4</center>
-                                        </th>
-                                        <th>
-                                            <center>3</center>
-                                        </th>
-                                        <th>
-                                            <center>2</center>
-                                        </th>
-                                        <th>
-                                            <center>1</center>
-                                        </th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Response time for the initial call for service</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 5 ? 'checked' : 'disabled') : ($ResponseTime == 5 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 4 ? 'checked' : 'disabled') : ($ResponseTime == 4 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 3 ? 'checked' : 'disabled') : ($ResponseTime == 3 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 2 ? 'checked' : 'disabled') : ($ResponseTime == 2 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 1 ? 'checked' : 'disabled') : ($ResponseTime == 1 ? 'checked' : '')    ?> ></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 5 ? 'checked' : 'disabled') : ($AccuracyOfWork == 5 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 4 ? 'checked' : 'disabled') : ($AccuracyOfWork == 4 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 3 ? 'checked' : 'disabled') : ($AccuracyOfWork == 3 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 2 ? 'checked' : 'disabled') : ($AccuracyOfWork == 2 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 1 ? 'checked' : 'disabled') : ($AccuracyOfWork == 1 ? 'checked' : '');    ?> ></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="4">Courtesy and professionalis of the attending personel</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 5 ? 'checked' : 'disabled') : ($Courtesy == 5 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 4 ? 'checked' : 'disabled') : ($Courtesy == 4 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 3 ? 'checked' : 'disabled') : ($Courtesy == 3 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 2 ? 'checked' : 'disabled') : ($Courtesy == 2 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 1 ? 'checked' : 'disabled') : ($Courtesy == 1 ? 'checked' : '');    ?> ></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
-                                    <th><input type="radio" value="5" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 5 ? 'checked' : 'disabled') : ($QualityOfService == 5 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="4" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 4 ? 'checked' : 'disabled') : ($QualityOfService == 4 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="3" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 3 ? 'checked' : 'disabled') : ($QualityOfService == 3 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="2" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 2 ? 'checked' : 'disabled') : ($QualityOfService == 2 ? 'checked' : '');    ?> ></th>
-                                    <th><input type="radio" value="1" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 1 ? 'checked' : 'disabled') : ($QualityOfService == 1 ? 'checked' : '');    ?> ></th>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+          <div class="row">
+            <h6 class="col-3">Start Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></h6>
+            <h6 class="col-3">Start Time: <input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" required></h6>
+            <h6 class="col-3">End Date: <input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" required></h6>
+            <h6 class="col-3">End Time: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" required></h6>
+          </div>
             <br>
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
@@ -878,6 +545,7 @@ require 'navbar.php';
     </div>
   </div>
 </div>
+</form>
             <script>
   $('#print-button').on('click', function() {
                 window.print();
