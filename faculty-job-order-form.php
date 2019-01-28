@@ -170,7 +170,7 @@ echo $_SESSION['usr_campus'];
 
          <div class="row">
                             <h4 class="col-12"><b>Priority</b>&nbsp;
-                <select class="form-control" name="priority" id="priority" required>
+                <select class="form-control" name="priority" id="priority" placeholder="asdasdasdsa" required>
                     <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority";
@@ -202,7 +202,18 @@ echo $_SESSION['usr_campus'];
         </div>
         <br />
         <h4><b>Description of Concern:</b>&nbsp;
-            <div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" placeholder="please make a detailed description of your concern based on your understanding of the situation" required></textarea></div>
+            <select class="form-control" name="" required>
+                <option></option>
+            </select>
+        </h4>
+        <br>
+        <h4><b>Others:</b></h4>
+            <input type="text" name="" class="form-control" required>
+        <br>
+        <h4><b>Location:</b></h4>
+            <input type="text" name="" class="form-control" required>
+        <br>
+
             
             <center>
                 <h6 style="color: green;">I hereby to certify that the above information are true to my knowledge. </h6>
