@@ -63,16 +63,16 @@ require 'navbar-faculty.php';
                                  }
                       
                               function redirectTo($sCode, $sId, $desc){
-                              // switch ($sId) {
-                              //   case 1:
-                              //           return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
-                              //     break;
+                              switch ($sId) {
+                                case 8:
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                  break;
                                 
-                              //   default:
-                              //     return "<td>" . $desc . "</td>";
-                              //     break;
-                              // }
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";                                 
+                                default:
+                                  return "<td>" . $desc . "</td>";
+                                  break;
+                              }
+                                                          
                               }
                               ?>
             </tbody>

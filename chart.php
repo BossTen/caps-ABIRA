@@ -4,101 +4,272 @@
 require '../api/dbcon.php';
     $stmt = $conn->prepare("select
                            Count(*)
-                           FROM joborder WHERE assessment='completed'");
-    //$stmt->bind_param('s',$sId);
-    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
+                           FROM joborder WHERE ResponseTime=5");
+
     $stmt->execute();
-    $stmt->bind_result($completed
+    $stmt->bind_result($R5
                      );
     $stmt->fetch();
-    //echo 'completed '. $completed;
-
     $stmt->close();
     $conn->close();
 
 require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE ResponseTime=4");
 
+  $stmt->execute();
+  $stmt->bind_result($R4
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+
+require '../api/dbcon.php';
     $stmt = $conn->prepare("select
                            Count(*)
-                           FROM joborder WHERE assessment='notcompleted'");
-    //$stmt->bind_param('s',$sId);
-    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
+                           FROM joborder WHERE ResponseTime=3");
+
     $stmt->execute();
-    $stmt->bind_result($notCompleted
+    $stmt->bind_result($R3
                      );
-
     $stmt->fetch();
-   // echo 'notcompleted '. $notCompleted;
-
-        $stmt->close();
+    $stmt->close();
     $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE ResponseTime=2");
+
+  $stmt->execute();
+  $stmt->bind_result($R2
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE ResponseTime=1");
+
+    $stmt->execute();
+    $stmt->bind_result($R1
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+
+  
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE AccuracyOfWork=5");
+
+    $stmt->execute();
+    $stmt->bind_result($a5
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE AccuracyOfWork=4");
+
+  $stmt->execute();
+  $stmt->bind_result($a4
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE AccuracyOfWork=3");
+
+    $stmt->execute();
+    $stmt->bind_result($a3
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE AccuracyOfWork=2");
+
+  $stmt->execute();
+  $stmt->bind_result($a2
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE AccuracyOfWork=1");
+
+    $stmt->execute();
+    $stmt->bind_result($a1
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+// courtesy
+
+
+
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE Courtesy=5");
+
+    $stmt->execute();
+    $stmt->bind_result($c5
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE Courtesy=4");
+
+  $stmt->execute();
+  $stmt->bind_result($c4
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE Courtesy=3");
+
+    $stmt->execute();
+    $stmt->bind_result($c3
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE Courtesy=2");
+
+  $stmt->execute();
+  $stmt->bind_result($c2
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE Courtesy=1");
+
+    $stmt->execute();
+    $stmt->bind_result($c1
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+// Quality Service Chart
+
+
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE QualityOfService=5");
+
+    $stmt->execute();
+    $stmt->bind_result($q5
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE QualityOfService=4");
+
+  $stmt->execute();
+  $stmt->bind_result($q4
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE QualityOfService=3");
+
+    $stmt->execute();
+    $stmt->bind_result($q3
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE QualityOfService=2");
+
+  $stmt->execute();
+  $stmt->bind_result($q2
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+require '../api/dbcon.php';
+    $stmt = $conn->prepare("select
+                           Count(*)
+                           FROM joborder WHERE QualityOfService=1");
+
+    $stmt->execute();
+    $stmt->bind_result($q1
+                     );
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
 
     require '../api/dbcon.php';
+  $stmt = $conn->prepare("select
+                         Count(*)
+                         FROM joborder WHERE Assessment='completed'");
 
+  $stmt->execute();
+  $stmt->bind_result($completed
+                   );
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+
+require '../api/dbcon.php';
     $stmt = $conn->prepare("select
-                           SUM(ResponseTime)
-                           FROM joborder WHERE statusId=6");
-    //$stmt->bind_param('s',$sId);
-    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
+                           Count(*)
+                           FROM joborder WHERE Assessment='notcompleted'");
+
     $stmt->execute();
-    $stmt->bind_result($ResponseTime
+    $stmt->bind_result($notcompleted
                      );
-
     $stmt->fetch();
-   // echo 'notcompleted '. $notCompleted;
-
-        $stmt->close();
-    $conn->close();
-
-    require '../api/dbcon.php';
-
-    $stmt = $conn->prepare("select
-                          SUM(AccuracyOfWork)
-                          FROM joborder WHERE statusId=6");
-    //$stmt->bind_param('s',$sId);
-    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
-    $stmt->execute();
-    $stmt->bind_result($AccuracyOfWork
-                     );
-
-    $stmt->fetch();
-
     $stmt->close();
     $conn->close();
-
-        require '../api/dbcon.php';
-
-    $stmt = $conn->prepare("select
-                          SUM(Courtesy)
-                          FROM joborder WHERE statusId=6");
-    //$stmt->bind_param('s',$sId);
-    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
-    $stmt->execute();
-    $stmt->bind_result($Courtesy
-                     );
-
-    $stmt->fetch();
-
-    $stmt->close();
-    $conn->close();
-
-
-        require '../api/dbcon.php';
-
-    $stmt = $conn->prepare("select
-                          SUM(QualityOfService)
-                          FROM joborder WHERE statusId=6");
-    //$stmt->bind_param('s',$sId);
-    //$sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
-    $stmt->execute();
-    $stmt->bind_result($QualityOfService
-                     );
-
-    $stmt->fetch();
-
-    $stmt->close();
-    $conn->close();
-
 ?>
 
 <!DOCTYPE html>
@@ -138,7 +309,7 @@ require 'navbar.php';
                                 <strong>Response Time Chart</strong>
                             </div>
                             <div class="card-body">
-                                    <canvas id="reponsetime"></canvas>
+                                    <canvas id="responsetime"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -166,7 +337,7 @@ require 'navbar.php';
                                 <strong>Courtesy Chart</strong>
                             </div>
                             <div class="card-body">
-                                    <canvas id="courtesy></canvas>
+                                    <canvas id="courtesy"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -212,32 +383,42 @@ require 'navbar.php';
     <script src="js/mdb.js"></script>
     <script src="js/mdb.min.js"></script>
 
-<!--reponsetime-->
 <script>
-  var ctx = document.getElementById("responsetime").getContext('2d');
-  var myChart = new Chart(ctx, {
+  //bar
+
+  //ResponseTime
+  var R5 = <?php echo $R5; ?> ;
+  var R4 = <?php echo $R4; ?> ;
+  var R3 = <?php echo $R3; ?> ;
+  var R2 = <?php echo $R2; ?> ;
+  var R1 = <?php echo $R1; ?> ;
+  var rLabel = "Response Evaluation";
+  //ResponseTime 
+
+  // 
+  var ctxB = document.getElementById("responsetime").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
+      labels: ["5", "4", "3", "2", "1"],
       datasets: [{
-        label: 'Users Feedback' , 
-        // data: [0, 0, 0, 0, 0, 0],
-          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
-          backgroundColor: [
+        label: rLabel,
+        data: [R5, R4, R3, R2, R1],
+        backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 20 6, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
-          // 'rgba(153, 102, 255, 0.2)',
-          // 'rgba(255, 159, 64, 0.2)'
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
           'rgba(255,99,132,1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
-          // 'rgba(153, 102, 255, 1)',
-          // 'rgba(255, 159, 64, 1)'
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
       }]
@@ -254,34 +435,41 @@ require 'navbar.php';
   });
 
 
-</script>
 
-<!--accuracy of work -->
-<script>
-  var ctx = document.getElementById("accuracy").getContext('2d');
-  var myChart = new Chart(ctx, {
+
+  //AccuracyOfWork
+  var a5 = <?php echo $a5; ?> ;
+  var a4 = <?php echo $a4; ?> ;
+  var a3 = <?php echo $a3; ?> ;
+  var a2 = <?php echo $a2; ?> ;
+  var a1 = <?php echo $a1; ?> ;
+  var aLabel = "Accuracy Of Work Evaluation";
+  //AccuracyOfWork
+
+  // 
+  var ctxB = document.getElementById("accuracy").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
+      labels: ["5", "4", "3", "2", "1"],
       datasets: [{
-        label: 'Users Feedback' , 
-        // data: [0, 0, 0, 0, 0, 0],
-          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
-          backgroundColor: [
+        label: aLabel,
+        data: [a5, a4, a3, a2, a1],
+        backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 20 6, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
-          // 'rgba(153, 102, 255, 0.2)',
-          // 'rgba(255, 159, 64, 0.2)'
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
           'rgba(255,99,132,1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
-          // 'rgba(153, 102, 255, 1)',
-          // 'rgba(255, 159, 64, 1)'
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
       }]
@@ -298,34 +486,39 @@ require 'navbar.php';
   });
 
 
-</script>
+  //AccuracyOfWork
+  var c5 = <?php echo $c5; ?> ;
+  var c4 = <?php echo $c4; ?> ;
+  var c3 = <?php echo $c3; ?> ;
+  var c2 = <?php echo $c2; ?> ;
+  var c1 = <?php echo $c1; ?> ;
+  var cLabel = "Courtesy";
+  //AccuracyOfWork
 
-<!--courtesy-->
-<script>
-  var ctx = document.getElementById("courtesy").getContext('2d');
-  var myChart = new Chart(ctx, {
+  // 
+  var ctxB = document.getElementById("courtesy").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
+      labels: ["5", "4", "3", "2", "1"],
       datasets: [{
-        label: 'Users Feedback' , 
-        // data: [0, 0, 0, 0, 0, 0],
-          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
-          backgroundColor: [
+        label: cLabel,
+        data: [c5, c4, c3, c2, c1],
+        backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 20 6, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
-          // 'rgba(153, 102, 255, 0.2)',
-          // 'rgba(255, 159, 64, 0.2)'
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
           'rgba(255,99,132,1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
-          // 'rgba(153, 102, 255, 1)',
-          // 'rgba(255, 159, 64, 1)'
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
       }]
@@ -342,34 +535,39 @@ require 'navbar.php';
   });
 
 
-</script>
+  //Quality
+  var q5 = <?php echo $q5; ?> ;
+  var q4 = <?php echo $q4; ?> ;
+  var q3 = <?php echo $q3; ?> ;
+  var q2 = <?php echo $q2; ?> ;
+  var q1 = <?php echo $q1; ?> ;
+  var cLabel = "Courtesy";
+  //Quality
 
-<!--quality of service -->
-<script>
-  var ctx = document.getElementById("quality").getContext('2d');
-  var myChart = new Chart(ctx, {
+  // 
+  var ctxB = document.getElementById("quality").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["Response Time", "Accuracy of Work", "Courtesy", "Quality of Service"],
+      labels: ["5", "4", "3", "2", "1"],
       datasets: [{
-        label: 'Users Feedback' , 
-        // data: [0, 0, 0, 0, 0, 0],
-          data: [<?php echo $ResponseTime; ?>, <?php echo $AccuracyOfWork; ?>, <?php echo $Courtesy; ?>, <?php echo $QualityOfService; ?>],
-          backgroundColor: [
+        label: cLabel,
+        data: [q5, q4, q3, q2, q1],
+        backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
+          'rgba(255, 20 6, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
-          // 'rgba(153, 102, 255, 0.2)',
-          // 'rgba(255, 159, 64, 0.2)'
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
           'rgba(255,99,132,1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
-          // 'rgba(153, 102, 255, 1)',
-          // 'rgba(255, 159, 64, 1)'
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
       }]
@@ -386,26 +584,27 @@ require 'navbar.php';
   });
 
 
-</script>
-
-<!--work duration -->
-<script>
+  var completed = <?php echo $completed; ?> ;
+  var not_completed = <?php echo $notcompleted; ?> ;
   //pie
   var ctxP = document.getElementById("pieChart").getContext('2d');
   var myPieChart = new Chart(ctxP, {
     type: 'pie',
     data: {
-      labels: ["Work completed upon agreed duration", "Work not completed upon agreed duration"],
+      labels: ["Not Completed on time", "Completed on time"],
       datasets: [{
-        data: [<?php echo $completed;?>, <?php echo $notCompleted;?> ],
-        backgroundColor: ["#46BFBD", "#F7464A"],
-        hoverBackgroundColor: ["#5AD3D1", "#FF5A5E"]
+        data: [not_completed, completed],
+        backgroundColor: ["#F7464A", "#46BFBD"],
+        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
       }]
     },
     options: {
       responsive: true
     }
   });
+
+
+
 
 </script>
 
