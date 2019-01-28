@@ -99,13 +99,19 @@ require'navbar-director.php';
                                   while ($row =  $result->fetch_assoc()) {
                                    $description =   empty($row['JobRecommendation']) ? $row['UserJobDescription'] : $row['JobRecommendation'];
                                     echo "<tr>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['SerialCode'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['Campus'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" .$description. "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['DateRequestCreated'] . "</td>";
-                        echo "<td><a style='color:#1d1d1d !important;' href='director-job-order-update.php?serial=". $row['SerialCode']. "'>" . $row['statusName'] . "</td>";
+                        echo "<td>" . $row['SerialCode'] . "</td>";
+                        echo "<td>" . $row['Campus'] . "</td>";
+                        echo "<td>" .$description. "</td>";
+                        echo "<td>" . $row['DateRequestCreated'] . "</td>";
+                        echo "<td>" . $row['statusName'] . "</td>";
+                        echo button($serialCode);
                           echo "</tr>";
-                                  }
+                                  
+                                  
+                                 }
+                              function button($sCode){
+                                return "<td><a href='director-job-order-update.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                              }
                                 }
                               }
                               ?>

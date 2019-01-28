@@ -94,6 +94,7 @@ require'navbar.php';
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>
+         <th></th>
       </tr>
     </thead>
     <tbody>
@@ -109,8 +110,7 @@ require'navbar.php';
                                                         $stmt->bind_result($serialCode,$campus,$userJobDescription, $JobRecommendation, $dCreated, $statusId, $statusName);
 
 
-                                
-                                while($stmt->fetch()){
+                                                               while($stmt->fetch()){
                                    $description =   empty($JobRecommendation) ? $userJobDescription : $JobRecommendation;
                                     echo "<tr>";
                         echo redirectTo($serialCode, $statusId, $serialCode);
@@ -118,23 +118,26 @@ require'navbar.php';
                         echo redirectTo($serialCode, $statusId, $description);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
+                        echo button($serialCode);
                           echo "</tr>";
                                   
                                   
                                  }
-                      
+                              function button($sCode){
+                                return "<td><a href='job-order.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                              }
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
                                   case 2: 
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                                         break;
                                   case 3:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                                         break;
                                  case 1:
                                  case 6:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                                         break;
 
                                  

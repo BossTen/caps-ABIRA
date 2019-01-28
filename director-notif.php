@@ -38,6 +38,7 @@ require 'navbar-director.php';
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>
+         <th></th>
       </tr>
     </thead>
     <tbody>
@@ -62,18 +63,21 @@ require 'navbar-director.php';
                         echo redirectTo($serialCode, $statusId, $description);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
+                        echo button($serialCode);
                           echo "</tr>";
                                   
                                   
                                  }
-                      
+                              function button($sCode){
+                                return "<td><a href='director-job-order-approval.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                              }
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
 
                                   case 1:
                                   //REDIRECT TO EVALUATION
-                                        return "<td><a href='director-job-order-approval.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                                         break;
                                   default:
                                         return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";

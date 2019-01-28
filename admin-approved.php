@@ -86,6 +86,7 @@ require'navbar.php';
         <th>Date</th>
          <th>Status</th>
          <th>Priority</th>
+         <th></th>
       </tr>
     </thead>
        <tbody>
@@ -114,16 +115,19 @@ require'navbar.php';
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
                         echo redirectTo($serialCode, $statusId, $priorityName);
+                        echo button($serialCode);
                           echo "</tr>";
                                   
                                   
                                  }
-                      
+                              function button($sCode){
+                                return "<td><a href='job-order-approved.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                              }
                               function redirectTo($sCode, $sId, $desc){
 
                                 switch($sId){
                                   case 2: 
-                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                                         break;
                                  
                                   default:
