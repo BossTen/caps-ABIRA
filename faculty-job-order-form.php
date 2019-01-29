@@ -65,7 +65,8 @@
             //now inserting data
         require '../api/dbcon.php';
             
-            $stmt=$conn->prepare("INSERT INTO joborder (AirCondition,
+            $stmt=$conn->prepare("INSERT INTO joborder (location,
+                                                       AirCondition,
                                                        CarpentryMasonry,
                                                        ElectricalWorks,
                                                        Plumbing,
@@ -80,9 +81,10 @@
                                                        DateRequestCreated,
                                                        NameOfOffice,
                                                        requestorDesignation
-                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
+                                                       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" );
                                                 
-        $stmt->bind_param('sssssssssssssss',
+        $stmt->bind_param('ssssssssssssssss',
+                           $location,
                             $airConditioning,
                             $masonryCarpentry,
                             $electrical,
@@ -98,7 +100,7 @@
                             $DateRequestCreated,
                             $NameOfOffice,
                             $requestorDesignation);
-
+        $location = $_POST['location'];
          $airConditioning = isset($_POST['AirCondition']) ? "checked" : '';
          $masonryCarpentry = isset($_POST['CarpentryMasonary']) ? "checked" : '';
          $electrical = isset($_POST['ElectricalWorks']) ? "checked" : '';
@@ -194,7 +196,7 @@ echo $_SESSION['usr_campus'];
             </h4>
         </div>
 
-            <h4><b>Services</b></h4><p>Choose the type of service you need</p>
+            <h4><b>Services</b></h4>
             <div class="card">
           <div class="card-body">
             <input class="w3-check" type="checkbox" name="AirCondition" id="AirCondition"><label>Air-conditioning Works</label><br>
@@ -207,18 +209,11 @@ echo $_SESSION['usr_campus'];
           </div>
         </div>
         <br />
-        <h4><b>Description of Concern:</b></h4><p>Choose the issue you think your device is having</p>
-            <select class="form-control" name="" required>
-                <option></option>
-            </select>
-        </h4>
-        <br>
-        <h4><b>Others:</b></h4><p>If none of the above issue fits your problem, make a brief  description of the issue</p>
-            <input type="text" name="" class="form-control" required>
-        <br>
         <h4><b>Location:</b></h4><p>Indicate the location of the issue for inspection</p>
-            <input type="text" name="" class="form-control" required>
+            <input type="text" name="location" class="form-control" required>
         <br>
+        <h4><b>Description of Concern:</b>&nbsp
+<div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" placeholder="please make a detailed description of your concern based on your understanding of the situation" required></textarea></div>
 
             
             <center>
