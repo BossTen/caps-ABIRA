@@ -419,6 +419,7 @@ require 'navbar.php';
           <h5 class="w3-text-red">Job Order Form - Inspection Order</h5>
                     <div class="row">
                         <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
+                        <input type="hidden" name="serial" value="<?php echo $SerialCode?>"/> 
                         <h6 class="col-6">Priority: <label><input type="hidden" name="priority" value="<?php echo $priorityId?>"/>
                                 <?php
                                 require '../api/dbcon.php';
