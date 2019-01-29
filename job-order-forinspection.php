@@ -462,6 +462,9 @@ require 'navbar.php';
           <div class="row">
             <h6 class="col-12">Report Description: <label><?php echo $userJobDescription ?></label></h6>
           </div>
+          <div class="row">
+            <h6 class="col-12">Location: <label></label></h6>
+          </div>
            <div class="row">
             <h6 class="col-12">Works: <label></label></h6>
           </div>
