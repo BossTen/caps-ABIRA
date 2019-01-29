@@ -151,6 +151,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
+  <style>
+      p {
+        color: gray;
+      }
+  </style>
+
 </head>
 
 <body>
@@ -188,7 +194,7 @@ echo $_SESSION['usr_campus'];
             </h4>
         </div>
 
-            <h4><b>Services</b></h4>
+            <h4><b>Services</b></h4><p>Choose the type of service you need</p>
             <div class="card">
           <div class="card-body">
             <input class="w3-check" type="checkbox" name="AirCondition" id="AirCondition"><label>Air-conditioning Works</label><br>
@@ -201,16 +207,16 @@ echo $_SESSION['usr_campus'];
           </div>
         </div>
         <br />
-        <h4><b>Description of Concern:</b>&nbsp;
+        <h4><b>Description of Concern:</b></h4><p>Choose the issue you think your device is having</p>
             <select class="form-control" name="" required>
                 <option></option>
             </select>
         </h4>
         <br>
-        <h4><b>Others:</b></h4>
+        <h4><b>Others:</b></h4><p>If none of the above issue fits your problem, make a brief  description of the issue</p>
             <input type="text" name="" class="form-control" required>
         <br>
-        <h4><b>Location:</b></h4>
+        <h4><b>Location:</b></h4><p>Indicate the location of the issue for inspection</p>
             <input type="text" name="" class="form-control" required>
         <br>
 
