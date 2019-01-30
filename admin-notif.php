@@ -35,6 +35,7 @@ require 'navbar.php';
         <th>Date</th>
          <th>Status</th>
          <th>Priority</th>
+         <th></th>
       </tr>
     </thead>
     <tbody>
@@ -60,30 +61,32 @@ require 'navbar.php';
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
                         echo redirectTo($serialCode, $statusId, $priorityName);
+                        echo button($serialCode, $statusId);
                           echo "</tr>";
-                                  
-                                  
                                  }
-                      
-                              function redirectTo($sCode, $sId, $desc){
 
-                                switch($sId){
+                        function button($sCode, $sId){
+                              switch($sId){
                                   case 2: 
                                     //NO REDIRECT
-                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                   case 7:
                                   //REDIRECT TO inspection
-                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                   case 3:
                                   //REDIRECT TO Edenied
-                                        return "<td><a href='job-order-denied.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-denied.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                   default:
-                                        return "<td><a href='not-allowed.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='not-allowed.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                 }  
+                        }
+                              function redirectTo($sCode, $sId, $desc){
+                                        return "<td>" . $desc . "</td>";
+ 
                               }
                               ?>
             </tbody>
