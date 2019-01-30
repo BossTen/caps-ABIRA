@@ -10,8 +10,8 @@ require_once '../api/dbcon.php';
     }  
 
 
-
-
+date_default_timezone_set('Asia/Hong_Kong');
+ $date = date('Y-m-d H:i:s');
 
 if(isset($_POST['jos'])){
 
@@ -161,7 +161,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssss",
  $designationOfRequester = $_POST['designation-of-requester'];
  $designationOfInspecter = $_POST['designation-of-inspecter'];
  // $dateRequested = $_POST['date-requested'];
- $dateInspected = $_POST['date-inspected'];
+ $dateInspected = $date;
  $startOfService = $_POST['start-of-service'];
  $endOfService = $_POST['end-of-service'];
  $noOfHours = $_POST['no-of-hours'];
