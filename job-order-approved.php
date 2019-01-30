@@ -265,7 +265,8 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription
+                           UserJobDescription,
+                           location
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -330,7 +331,8 @@ require '../api/dbcon.php';
                        $m10,
                        $m11,
                        $m12,
-                       $userJobDescription
+                       $userJobDescription,
+                       $location
                      );
 
     $stmt->fetch();
@@ -449,7 +451,7 @@ require 'navbar.php';
             <h6 class="col-12">Report Description: <label><?php echo $userJobDescription ?></label></h6>
           </div>
           <div class="row">
-            <h6 class="col-12">Location: <label></label></h6>
+            <h6 class="col-12">Location: <label><?php echo $location; ?></label></h6>
           </div>
           <div class="row">
             <h6 class="col-12">Works: <label></label></h6>
