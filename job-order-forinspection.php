@@ -11,7 +11,8 @@ require_once '../api/dbcon.php';
 
 
 date_default_timezone_set('Asia/Hong_Kong');
- $date = date('Y-m-d H:i:s');
+ $date = date('Y-m-d');
+ // $date = date('Y-m-d H:i:s');
 
 if(isset($_POST['jos'])){
 
@@ -533,7 +534,7 @@ require 'navbar.php';
           <div class="row">
             <h6 class="col-4">Inspected by: <input class="form-control" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" required></h6>
             <h6 class="col-4">Designation: <input class="form-control" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>" required></h6>
-            <h6 class="col-4">Date: <input type="date" class="form-control" name="date-inspected" value="<?php echo  $DateInspected;?>" disabled></h6>
+            <h6 class="col-4">Date: <input type="date" class="form-control" name="date-inspected" value="<?php echo  $date; ?>" disabled></h6>
           </div>
           <br>
           <!-- ADD -->
