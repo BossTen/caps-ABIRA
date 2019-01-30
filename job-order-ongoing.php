@@ -566,7 +566,25 @@ require 'navbar.php';
             <h6 class="col-12">Location: <label><?php echo $location; ?></label></h6>
           </div>
           <div class="row">
-            <h6 class="col-12">Works: <label></label></h6>
+            <h6 class="col-12">Works: <label><?php 
+            $works = array();
+            
+              if($AirCondition=="checked")
+                array_push($works,'Air Condition');
+              if($CarpentryMasonry=="checked")
+                array_push($works, 'Carpentry Masonry');
+              if($ElectricalWorks=="checked")
+                array_push($works, 'Electrical Works');
+              if($Painting=="checked")
+                array_push($works, 'Painting');
+              if($Plumbing=="checked")
+                array_push($works, 'Plumbing');
+              if($Welding=="checked")
+                array_push($works, 'Welding');
+
+
+            
+            echo implode(", ", $works); ?></label></h6>
           </div>
           <div class="row">
             <h6>Inspection Report:&nbsp; <label><?php echo $InspectionReport; ?></label></h6>
