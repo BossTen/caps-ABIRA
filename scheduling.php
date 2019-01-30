@@ -49,6 +49,7 @@ require 'navbar-director.php';
                     <th onclick="sortTable(3)">End Date</th>
                     <th onclick="sortTable(4)">Status</th>
                     <th onclick="sortTable(4)">Priority</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -77,9 +78,11 @@ require 'navbar-director.php';
                         // echo redirectDirector($serialCode, $statusId, $startOfService);
                         echo "<td>" . $startOfService . "</td>";
 
-                        echo redirectAdmin($serialCode, $statusId, $endOfService);
+                        echo redirectDirector($serialCode, $statusId, $endOfService);
                         echo redirectDirector($serialCode, $statusId, $statusName);
                         echo redirectDirector($serialCode, $statusId, $priorityName);
+                        echo buttonDirector($serialCode);
+
                         echo "</tr>";
 
                                 }
@@ -109,31 +112,45 @@ require 'navbar-director.php';
                         echo redirectAdmin($serialCode, $statusId, $endOfService);
                         echo redirectAdmin($serialCode, $statusId, $statusName);
                         echo redirectAdmin($serialCode, $statusId, $priorityName);
+                        echo buttonAdmin($serialCode, $statusId);
                         echo "</tr>";
 
                                 }
                                 break;
                     }
-
-                              function redirectDirector($sCode, $sId, $desc){
-                                        return "<td><a href='director-job-order-update.php?serial=". $sCode. "'>" . $desc . "</td>";
+                            function buttonDirector($sCode){
+                                return "<td><a href='director-job-order-update.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                             }
-                            function redirectAdmin($sCode, $sId, $desc){
+                            function buttonAdmin($sCode,$sId){
+                         
                                         switch($sId){
                                   case 2:
-                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                   case 5:
-                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                   case 7:
-                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                   default:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                                         break;
                                 }
+                            
                             }
+                              function redirectDirector($sCode, $sId, $desc){
+                                        return "<td>" . $desc . "</td>";
+                            }
+                            
+                            
+                            function redirectAdmin($sCode, $sId, $desc){
+                                  
+                                        return "<td>" . $desc . "</td>";
+
+                                
+                            }
+
 
 ?>
             </tbody>
