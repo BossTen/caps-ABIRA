@@ -109,16 +109,38 @@ require 'navbar-director.php';
                         echo redirectAdmin($serialCode, $statusId, $endOfService);
                         echo redirectAdmin($serialCode, $statusId, $statusName);
                         echo redirectAdmin($serialCode, $statusId, $priorityName);
-                        echo button($serialCode);
+                        echo adminButton($serialCode);
                           echo "</tr>";
                                   
                                   
                                  }
-                              function button($sCode){
+                        function directorButton($sCode){
+                            return "<td><a href='job-order-approved.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                        }
+                              function adminButton($sCode,$sId){
                                 return "<td><a href='director-job-order-approval.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                               
+                                switch($sId){
+                                  case 2:
+                                        return "<td><a href='job-order-approved.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                                        return "<td>" . $desc . "</td>";
+                                        break;
+                                  case 5:
+                                        return "<td><a href='job-order-ongoing.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                                        return "<td>" . $desc . "</td>";
+                                        break;
+                                  case 7:
+                                        return "<td><a href='job-order-forinspection.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                                        return "<td>" . $desc . "</td>";
+                                        break;
+                                  default:
+                                        return "<td><a href='job-order.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                                        return "<td>" . $desc . "</td>";
+                                        break;
+                                }
                               }
                               function redirectDirector($sCode, $sId, $desc){
-                                        return "<td><a href='director-job-order-update.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                             }
                             function redirectAdmin($sCode, $sId, $desc){
                                         switch($sId){
