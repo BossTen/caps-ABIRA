@@ -463,10 +463,10 @@ require 'navbar.php';
             <h6 class="col-12">Report Description: <label><?php echo $userJobDescription ?></label></h6>
           </div>
           <div class="row">
-            <h6 class="col-12">Location: <label></label></h6>
+            <h6 class="col-12">Location: <label>CICS room 101</label></h6>
           </div>
            <div class="row">
-            <h6 class="col-12">Works: <label></label></h6>
+            <h6 class="col-12">Works: <label>Airconditioning</label></h6>
           </div>
           <div class="row">
             <h6>Inspection Report:&nbsp;</h6>
@@ -481,8 +481,27 @@ require 'navbar.php';
           </div>  
           <br>
           <div class="row">
-            <h6>Materials Needed:&nbsp;</h6>
-            <textarea class="form-control" rows="5" cols="100" name="m1" value="<?php echo $m1 ?>" id="" required></textarea>
+            <h6>Materials Needed: (fill-up horizontaly)&nbsp;</h6>
+          </div>
+          <div class="row">
+            <h6 class="col-4"><input class="form-control" type="text" name="m1"  value="<?php echo $m1 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m2"  value="<?php echo $m2 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m3"  value="<?php echo $m3 ?>">
+          </div>
+          <div class="row">
+            <h6 class="col-4"><input class="form-control" type="text" name="m4"  value="<?php echo $m4 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m5"  value="<?php echo $m5 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m6"  value="<?php echo $m6 ?>">
+          </div>
+          <div class="row">
+            <h6 class="col-4"><input class="form-control" type="text" name="m7"  value="<?php echo $m7 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m8"  value="<?php echo $m8 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m9"  value="<?php echo $m9 ?>">
+          </div>
+          <div class="row">
+            <h6 class="col-4"><input class="form-control" type="text" name="m10"  value="<?php echo $m10 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m11"  value="<?php echo $m11 ?>">
+            <h6 class="col-4"><input class="form-control" type="text" name="m12"  value="<?php echo $m12 ?>">
           </div>
           <br>
           <div class="row">
