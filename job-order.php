@@ -440,7 +440,10 @@ require '../api/dbcon.php';
 
 <body>
     <?php
-require 'navbar.php';
+    if($_SESSION['usr_type']=="admin")
+      require 'navbar.php';
+    else if($_SESSION['usr_type']=="faculty")
+      require 'navbar-faculty.php';
 ?>
 
     <center>
