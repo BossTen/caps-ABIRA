@@ -340,7 +340,13 @@ require '../api/dbcon.php';
 $stmt->execute();
 $stmt->close();
 $conn->close();
-
+$materials = array();
+for ($i=1; $i <= 12; $i++) { 
+  $m = "m".$i;
+  if($$m!=null){
+    array_push($materials,$$m);
+  }
+}
       //code for checking if user is with the same campus as the requester
       if (!isset($_SESSION)) session_start();//one liner code to check if session has started
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
@@ -390,7 +396,7 @@ label {
   text-indent: 0px;
   color: black;
 }
-</style>s
+</style>
 
 </head>
 
@@ -454,7 +460,7 @@ require 'navbar.php';
             <h6 class="col-12">Location: <label><?php echo $location; ?></label></h6>
           </div>
           <div class="row">
-            <h6 class="col-12">Works: <label></label></h6>
+            <h6 class="col-12">Works: <label><?php echo implode(", ", $materials); ?></label></h6>
           </div>
           <div class="row">
             <h6>Inspection Report:&nbsp; <label><?php echo $InspectionReport; ?></label></h6>
