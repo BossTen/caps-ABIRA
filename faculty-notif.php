@@ -33,6 +33,7 @@ require 'navbar-faculty.php';
         <th>Description</th>
         <th>Date</th>
          <th>Status</th>
+         <th></th>
       </tr>
     </thead>
     <tbody>
@@ -57,15 +58,26 @@ require 'navbar-faculty.php';
                         echo redirectTo($serialCode, $statusId, $description);
                         echo redirectTo($serialCode, $statusId, $dCreated);
                         echo redirectTo($serialCode, $statusId, $statusName);
+                        echo button($serialCode, $statusId);
                           echo "</tr>";
                                   
                                   
                                  }
+                                 function button($sCode, $sId){
+                                switch ($sId) {
+                                case 8:
+                                  return "<td><a href='job-order.php?serial=". $sCode. "'><button type='button' class='btn btn-success'>Open</button></a></td>";
+                                
+                                default:
+                                  return "<td><a href='job-order.php?serial=". $sCode. "'><button type='button' class='btn btn-basic' disabled>Open</button></a></td>";
+                                  break;
+                              }
+                            } 
                       
                               function redirectTo($sCode, $sId, $desc){
                               switch ($sId) {
                                 case 8:
-                                        return "<td><a href='job-order.php?serial=". $sCode. "'>" . $desc . "</td>";
+                                        return "<td>" . $desc . "</td>";
                                   break;
                                 
                                 default:
