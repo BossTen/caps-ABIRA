@@ -23,9 +23,8 @@
 
 <body>
 <?php
-require 'testadmin.php';
-require 'navbar.php';
 
+require 'testaccountcreator.php';
 
 
 
@@ -58,28 +57,14 @@ require 'navbar.php';
 
                               ?>
                             </select>
-            <h5 class="col-12"><b>Department:</b>&nbsp;
-              <select class="form-control form-control col-12" name="department" id="department" required>
-                  <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAof Engineering, Architecture  & Fine Arts) Bldg.
+            <h5 class="col-12"><b>Designation:</b>&nbsp;
+              <select class="form-control form-control col-12" name="designation" id="designation" required>
+                  <option value="director">Director
                   </option>
-                  <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS Informatics & Computing Sciences) Bldg.
-                  </option>
-                  <option value="CIT (College of Industrial Technology) Bldg.">CIT (College ofTechnology) Bldg.</option>
-                  <option value="RG RECTO Bldg. (RGR)">RG RECTO Bldg. (RGR)</option>
-                  <option value="STUDENT Center Bldg. (SSC)">STUDENT Center Bldg. (SSC)</option>
-                  <option value="FMSO/GSO Office, ME (Boiler room) & OSAS/GUIDANCE Office">FMSO/GSO Boiler room) & OSAS/GUIDANCE Office
-                  </option>
-                  <option value="RSFIHM (School of Food & International Hotel Management) Bldg.">RSFIHMFood & International Hotel Management) Bldg.</option>
-                  <option value="Gymnasium Area">Gymnasium Area</option>
-                  <option value="Food Innovation Center Building">Food Innovation Center Building </option>
-                     
+                  <option value="admin">Admin</option>                     
                        
               </select>
-            <h5 class="col-12"><b>Name Of Office: </b>&nbsp;
-                  <input type="text" name="nameofoffice" class="form-control col-12" id="nameofoffice" placeholder="Name of Office" required>
-            <h4 class="col-12"><b>Designation: </b>&nbsp;
-                  <input type="text" name="designation" class="form-control col-12" id="designation" placeholder="Designation" required>
-            <br>
+<br>
             <center>
             <input name="submit" style="paddingding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register" disabled="">
           </form>
@@ -112,7 +97,7 @@ $('#fpass, #spass').on('keyup', function () {
     
          data: data,
          type: "post",
-         url: "backend/register.php",
+         url: "backend/AdminAccount.php",
          success: function(data){
           
                   $('input:text, input:password').val('');

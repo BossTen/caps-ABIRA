@@ -33,9 +33,13 @@ header('location: home.php');
    }else if($_SESSION['usr_type']=='director'){
    header('location: director-index.php');
    exit(); 
-   }else if($_SESSION['usr_type']=='faculty')
+   }else if($_SESSION['usr_type']=='faculty'){
    header('location: faculty-index.php');
     exit();
+  }else if($_SESSION['usr_type']=='Account_Admin'){
+    header('location: campus-acc.php');
+    exit();
+  }
   }else{
  $faculty = json_decode($api->authenticate_student($_POST['username'],$_POST['password']),true);
    if(!empty($faculty[0]['usr_fullname'])){
