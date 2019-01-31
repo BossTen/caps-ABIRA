@@ -24,11 +24,11 @@ require 'testadmin.php';
                                                     -- RequestorSignature = ?,
                                                     -- signatureOfInspector = ?,
                                                     -- Approved = ?,
-                                                    --StartOfService = ?,
-                                                    --StartOfServiceTime = ?,
-                                                    --EndOfService = ?,
-                                                    --EndOfServiceTime = ?,
-                                                    --NoOfHours = ?,
+                                                    -- StartOfService = ?,
+                                                    -- StartOfServiceTime = ?,
+                                                    -- EndOfService = ?,
+                                                    -- EndOfServiceTime = ?,
+                                                    -- NoOfHours = ?,
                                                     Assessment = ?,
                                                     AccomplishedWork1=?,
                                                    WorkDoneBy1=?,
@@ -54,11 +54,11 @@ require 'testadmin.php';
                                       // $requesterSignature,
                                       // $inspecterSignature,
                                       // $directorSignature,
-                                      //$startOfService,
-                                      //$startOfServiceTime,
-                                      //$endOfService,
-                                      //$endOfServiceTime,
-                                      //$noOfHours,
+                                      // $startOfService,
+                                      // $startOfServiceTime,
+                                      // $endOfService,
+                                      // $endOfServiceTime,
+                                      // $noOfHours,
                                       $assessment,
                                       $accomplishedWork1,
                                       $workDoneBy1,
@@ -78,12 +78,12 @@ require 'testadmin.php';
 
         // print_r($_POST);
           $sIdu = 8;
-           //$requesterSignature = $_POST['requester-signature'];
-           //$inspecterSignature = $_POST['inspecter-signature'];
-           //$directorSignature = $_POST['director-signature'];
-           //$startOfService = $_POST['start-of-service'];
-           //$endOfService = $_POST['end-of-service'];
-           //$noOfHours = $_POST['no-of-hours'];
+           // $requesterSignature = $_POST['requester-signature'];
+           // $inspecterSignature = $_POST['inspecter-signature'];
+           // $directorSignature = $_POST['director-signature'];
+           // $startOfService = $_POST['start-of-service'];
+           // $endOfService = $_POST['end-of-service'];
+           // $noOfHours = $_POST['no-of-hours'];
            $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
            $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
            $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
