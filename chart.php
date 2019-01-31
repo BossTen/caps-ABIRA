@@ -298,84 +298,89 @@ require '../api/dbcon.php';
 require 'navbar.php';
 ?>
 <br><br>
-        <div class="container" style="margin-bottom: 5%;">
-            <div class="">
 
+<div class="container" style="margin-bottom: 3%;">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-12">
+        <div class="card-body" style="margin-left: 3%;margin-right: 3%;">
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Response Time Chart</strong>
-                            </div>
-                            <div class="card-body">
-                                    <canvas id="responsetime"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Accuracy of Work Chart</strong>
-                            </div>
-                            <div class="card-body">
-                                    <canvas id="accuracy"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Courtesy Chart</strong>
-                            </div>
-                            <div class="card-body">
-                                    <canvas id="courtesy"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Quality Service Chart</strong>
-                            </div>
-                            <div class="card-body">
-                                    <canvas id="quality"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                
-                    <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Compliance to scheduled project duration</strong>
-                            </div>
-                            <div class="card-body">
-                                    <canvas id="pieChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
+          <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Response Time Chart</strong>
                 </div>
+                <div class="card-body">
+                  <canvas id="responsetime"></canvas>
+                </div>
+              </div>
             </div>
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Accuracy of Work Chart</strong>
+                </div>
+                <div class="card-body">
+                   <canvas id="accuracy"></canvas>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Courtesy Chart</strong>
+                </div>
+                <div class="card-body">
+                  <canvas id="courtesy"></canvas>
+                </div>
+              </div>
+          </div>
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Quality Service Chart</strong>
+                </div>
+                <div class="card-body">
+                  <canvas id="quality"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<center>
+<div class="container" style="margin-bottom: 3%;">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-12">
+        <div class="card-body" style="margin-left: 3%;">
+          <div class="row w3-center">
+            <div class="col-lg-10">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Compliance to scheduled project duration</strong>
+                </div>
+                <div class="card-body">
+                  <canvas id="pieChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+
 
 
 
@@ -541,7 +546,7 @@ require 'navbar.php';
   var q3 = <?php echo $q3; ?> ;
   var q2 = <?php echo $q2; ?> ;
   var q1 = <?php echo $q1; ?> ;
-  var cLabel = "Courtesy";
+  var cLabel = "Quality Service";
   //Quality
 
   // 
