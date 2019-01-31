@@ -398,7 +398,7 @@ h6 {
   color: gray;
 }
 label {
-  text-indent: 0px;
+  text-indent: 2px;
   color: black;
 }
 </style>
@@ -469,25 +469,22 @@ require 'navbar.php';
             <h6 class="col-12">Location: <label><?php echo $location; ?></label></h6>
           </div>
            <div class="row">
-            <h6 class="col-12">Works: <label><?php 
-            $works = array();
-            
-              if($AirCondition=="checked")
-                array_push($works,'Air Condition');
-              if($CarpentryMasonry=="checked")
-                array_push($works, 'Carpentry Masonry');
-              if($ElectricalWorks=="checked")
-                array_push($works, 'Electrical Works');
-              if($Painting=="checked")
-                array_push($works, 'Painting');
-              if($Plumbing=="checked")
-                array_push($works, 'Plumbing');
-              if($Welding=="checked")
-                array_push($works, 'Welding');
-
-
-            
-            echo implode(", ", $works); ?></label></h6>
+            <h6 class="col-12">Works:&nbsp;
+              <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
+                                    <label>Air-conditioning &nbsp;</label>
+                <input class="form-check-input" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
+                                    <label>Carpentry/ Masonary &nbsp;</label></th>
+              <input class="form-check-input" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
+                                    <label>Electrical &nbsp;</label></th>
+              <input class="form-check-input" type="checkbox" name="Painting" <?php echo $Painting; ?>>
+                                    <label>Painting &nbsp;</label>
+              <input class="form-check-input" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                    <label>Plumbing &nbsp;</label>
+              <input class="form-check-input" type="checkbox" name="Welding" <?php echo $Welding; ?>>
+                                    <label>Welding &nbsp;</label>
+              </div>
+              </h6>                                 
           </div>
           <div class="row">
             <h6>Inspection Report:&nbsp;</h6>
