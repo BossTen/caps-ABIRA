@@ -104,7 +104,8 @@ require'navbar-director.php';
                         echo "<td>" .$description. "</td>";
                         echo "<td>" . $row['DateRequestCreated'] . "</td>";
                         echo "<td>" . $row['statusName'] . "</td>";
-                        echo button($serialCode);
+                        // echo button($row['SerialCode']);
+                        echo "<td><a href='director-job-order-update.php?serial=". $row['SerialCode'] . "'><button type='button' class='btn btn-success'>Open</button></a></td>";
                           echo "</tr>";
                                   
                                   
