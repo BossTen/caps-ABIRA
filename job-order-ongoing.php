@@ -629,19 +629,19 @@ require 'navbar.php';
           <br>
           <div class="row">
             <h6 class="col-4">No. of hrs: <label><?php echo $NoOfHours; ?></label></h6>
-            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> ><label>Work completed upon agreed duration</label></h6>
-            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>  required><label>Work not completed upon agreed duration</label></h6>
+            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> ><label>*Work completed upon agreed duration*</label></h6>
+            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>  required><label>*Work not completed upon agreed duration*</label></h6>
         </div>
         <br>
 
         <div class="row">
-          <h6 class="col-8">Accomplished Works: 
+          <h6 class="col-8">*Accomplished Works:* 
             <input class="form-control onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" ><br>
             <input class="form-control onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" ><br>
             <input class="form-control onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" ><br>
             <input class="form-control onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" ><br>
           </h6>
-          <h6 class="col-4">Work done by:
+          <h6 class="col-4">*Work done by:*
             <input class="form-control onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"><br>
             <input class="form-control onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"><br>
             <input class="form-control onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"><br>

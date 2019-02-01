@@ -519,10 +519,10 @@ require 'navbar.php';
           <br>
 
           <div class="row">
-            <h6 class="col-3">Start Date: <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></h6>
-            <h6 class="col-3">Start Time: <input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" required></h6>
-            <h6 class="col-3">End Date: <input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" required></h6>
-            <h6 class="col-3">End Time: <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" required></h6>
+            <h6 class="col-3">*Start Date:* <input type="date" name="start-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="startOfService" value="<?php echo $StartOfService; ?>" required></h6>
+            <h6 class="col-3">*Start Time:* <input type="time" class="form-control onNapprove" name="start-of-service-time" onchange="serviceCheckDate()" id="startOfServiceTime" value="<?php echo $StartOfServiceTime;?>" required></h6>
+            <h6 class="col-3">*End Date:* <input type="date" name="end-of-service" onchange="serviceCheckDate()" class="form-control onNapprove" id="endOfService" required></h6>
+            <h6 class="col-3">*End Time:* <input type="time" class="form-control onNapprove" name="end-of-service-time" onchange="serviceCheckDate()" id="endOfServiceTime" value="<?php echo $EndOfServiceTime; ?>" required></h6>
           </div>
             <br>
               <!-- ADD -->
