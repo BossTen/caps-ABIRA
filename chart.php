@@ -405,7 +405,7 @@ require 'navbar.php';
   var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["5", "4", "3", "2", "1"],
+      labels: ["Outstanding", "Very Satisfactory", "Satisfactory", "Unsatisfactory", "Poor"],
       datasets: [{
         label: rLabel,
         data: [R5, R4, R3, R2, R1],
@@ -456,7 +456,7 @@ require 'navbar.php';
   var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["5", "4", "3", "2", "1"],
+      labels: ["Outstanding", "Very Satisfactory", "Satisfactory", "Unsatisfactory", "Poor"],
       datasets: [{
         label: aLabel,
         data: [a5, a4, a3, a2, a1],
@@ -505,7 +505,7 @@ require 'navbar.php';
   var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["5", "4", "3", "2", "1"],
+      labels: ["Outstanding", "Very Satisfactory", "Satisfactory", "Unsatisfactory", "Poor"],
       datasets: [{
         label: cLabel,
         data: [c5, c4, c3, c2, c1],
@@ -554,7 +554,7 @@ require 'navbar.php';
   var myBarChart = new Chart(ctxB, {
     type: 'bar',
     data: {
-      labels: ["5", "4", "3", "2", "1"],
+      labels: ["Outstanding", "Very Satisfactory", "Satisfactory", "Unsatisfactory", "Poor"],
       datasets: [{
         label: cLabel,
         data: [q5, q4, q3, q2, q1],

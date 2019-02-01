@@ -1,8 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require '../api/dbcon.php';
-require 'testadmin.php';
+//require 'testadmin.php';
 
  if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
@@ -11,117 +10,59 @@ require 'testadmin.php';
 
 
 
+require '../api/dbcon.php';
+
+if(isset($_POST['evaluation'])){
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// prepare and binds
+$stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
+
+                                               ResponseTime=?,
+                                               AccuracyOfWork=?,
+                                               Courtesy=?,
+                                               QualityOfService=?
 
 
-    if(isset($_POST['complete'])){
+                                               -- ApprovedBy,
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+                                                WHERE SerialCode = ?
+                                               ");
 
-        // prepare and binds
-        $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
-                                                    -- RequestorSignature = ?,
-                                                    -- signatureOfInspector = ?,
-                                                    -- Approved = ?,
-                                                    -- StartOfService = ?,
-                                                    -- StartOfServiceTime = ?,
-                                                    -- EndOfService = ?,
-                                                    -- EndOfServiceTime = ?,
-                                                    -- NoOfHours = ?,
-                                                    Assessment = ?,
-                                                    AccomplishedWork1=?,
-                                                   WorkDoneBy1=?,
-                                                   Signature1=?,
-                                                   AccomplishedWork2=?,
-                                                   WorkDoneBy2=?,
-                                                   Signature2=?,
-                                                   AccomplishedWork3=?,
-                                                   WorkDoneBy3=?,
-                                                   Signature3=?,
-                                                   AccomplishedWork4=?,
-                                                   WorkDoneBy4=?,
-                                                   Signature4=?
+$stmt->bind_param("ssssss",
+                              $sIdu,
+
+                              $responseTime,
+                              $accuracyOfWork,
+                              $courtesy,
+                              $qualityOfService,
+
+                              $serialCode
+
+                        );
+// Approved = $directorSignature
+// set parameters and execute
+  $sIdu = 6;
+// $nameOfOffice = $_POST['nameofoffice'];
+
+ $responseTime = isset($_POST['cb1'])? $_POST['cb1'] : "0" ;
+ $accuracyOfWork = isset($_POST['cb2'])? $_POST['cb2'] : "0" ;
+ $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
+ $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
 
 
+ $serialCode = $_POST['serial'];
 
-
-                                                        WHERE SerialCode = ?
-                                                       ");
-
-        $stmt->bind_param("sssssssssssssss",
-                                      $sIdu,
-                                      // $requesterSignature,
-                                      // $inspecterSignature,
-                                      // $directorSignature,
-                                      // $startOfService,
-                                      // $startOfServiceTime,
-                                      // $endOfService,
-                                      // $endOfServiceTime,
-                                      // $noOfHours,
-                                      $assessment,
-                                      $accomplishedWork1,
-                                      $workDoneBy1,
-                                      $signature1,
-                                      $accomplishedWork2,
-                                      $workDoneBy2,
-                                      $signature2,
-                                      $accomplishedWork3,
-                                      $workDoneBy3,
-                                      $signature3,
-                                      $accomplishedWork4,
-                                      $workDoneBy4,
-                                      $signature4,
-                                      $serialCode
-
-                                );
-
-        // print_r($_POST);
-          $sIdu = 8;
-           // $requesterSignature = $_POST['requester-signature'];
-           // $inspecterSignature = $_POST['inspecter-signature'];
-           // $directorSignature = $_POST['director-signature'];
-           // $startOfService = $_POST['start-of-service'];
-           // $endOfService = $_POST['end-of-service'];
-           // $noOfHours = $_POST['no-of-hours'];
-           $assessment = isset($_POST['assessment'])? $_POST['assessment'] : "notcompleted"  ;
-           $startOfServiceTime = date('h:i A', strtotime($_POST['start-of-service-time']));
-           $endOfServiceTime = date('h:i A', strtotime($_POST['end-of-service-time']));
-           $accomplishedWork1 = $_POST['accomplished-work1'];
-           $workDoneBy1 = $_POST['work-done-by1'];
-           $signature1 = $_POST['signature1'];
-           $accomplishedWork2 = $_POST['accomplished-work2'];
-           $workDoneBy2 = $_POST['work-done-by2'];
-           $signature2 = $_POST['signature2'];
-           $accomplishedWork3 = $_POST['accomplished-work3'];
-           $workDoneBy3 = $_POST['work-done-by3'];
-           $signature3 = $_POST['signature3'];
-           $accomplishedWork4 = $_POST['accomplished-work4'];
-           $workDoneBy4 = $_POST['work-done-by4'];
-           $signature4 = $_POST['signature4'];
-         $serialCode = $_POST['serial'];
-
-         $stmt->execute();
-         $stmt->close();
-         $conn->close();
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if($stmt->execute()){
+  echo "<script type='text/javascript'>
+                alert ('Update Successful!');
+                window.location.href='faculty-notif.php';</script>";
+}
+ $stmt->close();
+ $conn->close();
+}
 
 if(isset($_POST['jos'])){
 
@@ -171,6 +112,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                AccuracyOfWork=?,
                                                Courtesy=?,
                                                QualityOfService=?,
+                                               priorityId=?,
                                                JobRecommendation=?,
                                                InspectionReport=?,
                                                materialsNeeded1=?,
@@ -185,6 +127,7 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                materialsNeeded10=?,
                                                materialsNeeded11=?,
                                                materialsNeeded12=?
+                                               -- ApprovedBy,
 
                                                 WHERE SerialCode = ?
                                                ");
@@ -231,7 +174,9 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $accuracyOfWork,
                               $courtesy,
                               $qualityOfService,
-                              $JobRecommendation,
+                              $priority,
+                              //$campus,
+                              $jobRecommendation,
                               $inspectionReport,
                               $m1get,
                               $m2get,
@@ -250,8 +195,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                         );
 // Approved = $directorSignature
 // set parameters and execute
-//print_r($_POST);
-  $sIdu = 8;
+  $sIdu = 6;
 // $nameOfOffice = $_POST['nameofoffice'];
  $painting = isset($_POST['Painting']) ? "checked" : 'off';
  $airConditioning = isset($_POST['air-conditioning']) ? "checked" : 'off';
@@ -295,8 +239,7 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
  $courtesy = isset($_POST['cb3'])? $_POST['cb3'] : "0";
  $qualityOfService = isset($_POST['cb4'])? $_POST['cb4'] : "0";
  $priority = $_POST['priority'];
- // $jobRecommendation = $_POST['job-recommendation'];
- echo $JobRecommendation = $_POST['jrecommendation'];
+ $jobRecommendation = $_POST['job-recommendation'];
  $inspectionReport = $_POST['inspect-report'];
  $m1get = isset($_POST['m1']) ? $_POST['m1'] : '';
  $m2get = isset($_POST['m2']) ? $_POST['m2'] : '';
@@ -313,16 +256,18 @@ $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
  $serialCode = $_POST['serial'];
 
- if($stmt->execute()){
-  header('location: admin-completed.php');
-  exit();
- }
+if($stmt->execute()){
+  echo "<script type='text/javascript'>
+                alert ('Update Successful!');
+                window.location.href='faculty-notif.php';</script>";
+}
  $stmt->close();
  $conn->close();
 
 }
 
 require '../api/dbcon.php';
+    //echo $sId;
     $stmt = $conn->prepare("select
                            NameOfOffice,
                            SerialCode,
@@ -384,8 +329,7 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription,
-                           location
+                           UserJobDescription
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -409,11 +353,11 @@ require '../api/dbcon.php';
                        $DateInspected,
                        $Approved,
                        $StartOfService,
-                       $r_EndOfService,
+                       $EndOfService,
                        $NoOfHours,
                        $Assessment,
-                       $r_StartOfServiceTime,
-                       $r_EndOfServiceTime,
+                       $StartOfServiceTime,
+                       $EndOfServiceTime,
                        $AccomplishedWork1,
                        $WorkDoneBy1,
                        $Signature1,
@@ -435,7 +379,7 @@ require '../api/dbcon.php';
                        $QualityOfService,
                        $priorityId,
                        $Campus,
-                       $r_JobRecommendation,
+                       $JobRecommendation,
                        $InspectionReport,
                        $statusId,
                        $m1,
@@ -450,8 +394,7 @@ require '../api/dbcon.php';
                        $m10,
                        $m11,
                        $m12,
-                       $userJobDescription,
-                       $location
+                       $userJobDescription
                      );
 
     while($stmt->fetch()){
@@ -461,13 +404,14 @@ require '../api/dbcon.php';
       if(strtolower($_SESSION['usr_campus'])!=strtolower($Campus)){
          // header('location: not-allowed.php');
          // exit();
-        echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
+       // echo strtolower($_SESSION['usr_campus']). strtolower($Campus);
       }
 
-      if($statusId!=5){
-        //if status is not equals to approved
-        header('location: job-order-view.php');
-      }
+      // if($statusId==4||$statusId==5||$statusId==2||$statusId==8){
+      //   //if status is equals to approved, ongoing, for inspection
+      //   header('location: job-order-view.php');
+      //   exit();
+      // }
 
 
       //code for checking if user is with the same campus as the requester
@@ -492,13 +436,13 @@ require '../api/dbcon.php';
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
 
-      <style>
+         <style>
 h6 {
   text-indent: 50px;
   color: gray;
 }
 label {
-  text-indent: 0px;
+  text-indent: 2px;
   color: black;
 }
 </style>
@@ -507,22 +451,28 @@ label {
 
 <body>
     <?php
-require 'navbar.php';
+    if($_SESSION['usr_type']=="admin")
+      require 'navbar.php';
+    else if($_SESSION['usr_type']=="faculty")
+      require 'navbar-faculty.php';
 ?>
 
 <br><br>
-<form action="" method="POST">
 
+            <!-- UPDATE form -->
+<form action="" method="POST">
+            <!-- UPDATE card -->
 <div class="container" style="margin-bottom: 3%;">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
       <div class="card card-signin my-12">
         <div class="card-body" style="margin-left: 3%;margin-right: 3%;">
           <h5 class="w3-text-red">Job Order Form - Inspection Order</h5>
-          <div class="row">
-            <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
-            <input type="hidden" name="serial" value="<?php echo $SerialCode;?>"/>
-            <h6 class="col-6">Priority: <label><?php
+            <div class="row">
+                        <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
+                        <input type="hidden" name="serial" value="<?php echo $SerialCode?>"/> 
+                        <h6 class="col-6">Priority: <label><input type="hidden" name="priority" value="<?php echo $priorityId?>"/>
+                                <?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
                                 $result = $conn->query($sql);
@@ -536,9 +486,10 @@ require 'navbar.php';
                                   }
                                 }
                               ?></label></h6>
-          </div>
-          <div class="row">
-            <h6 class="col-6">Status: <label><?php
+                          </div>
+                          <div class="row">
+
+                             <h6 class="col-6">Status: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM status where Id = $statusId";
                                 $result = $conn->query($sql);
@@ -552,11 +503,36 @@ require 'navbar.php';
                                   }
                                 }
                               ?></label></h6>
-            <h6 class="col-6">Date: <label><?php echo $DateRequestCreated ?></label></h6>
-          </div>
-          <div class="row">
+                        <h6 class="col-6">Date: <label><?php echo $DateRequestCreated ?></label></h6>
+                      </div>
+                      <div class="row">
             <h6 class="col-6">Campus: <label><?php echo $Campus; ?></label></h6>
             <h6 class="col-6">Name of Office: <label><?php echo $NameOfOffice; ?></label></h6>
+          </div>
+          <h5 class="w3-text-red">Job Order Request</h5>
+          <div class="row">
+            <h6 class="col-12">Report Description: <label><?php echo $userJobDescription ?></label></h6>
+          </div>
+          <div class="row">
+            <h6 class="col-12">Location: <label><?php echo $location; ?></label></h6>
+          </div>
+           <div class="row">
+            <h6 class="col-12">Works:&nbsp;
+              <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
+                                    <label>Air-conditioning &nbsp;</label>
+                <input class="form-check-input" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
+                                    <label>Carpentry/ Masonary &nbsp;</label></th>
+              <input class="form-check-input" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
+                                    <label>Electrical &nbsp;</label></th>
+              <input class="form-check-input" type="checkbox" name="Painting" <?php echo $Painting; ?>>
+                                    <label>Painting &nbsp;</label>
+              <input class="form-check-input" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                    <label>Plumbing &nbsp;</label>
+              <input class="form-check-input" type="checkbox" name="Welding" <?php echo $Welding; ?>>
+                                    <label>Welding &nbsp;</label>
+              </div>
+              </h6>                                 
           </div>
           <h5 class="w3-text-red">Job Order Request</h5>
           <div class="row">
@@ -592,19 +568,11 @@ require 'navbar.php';
           </div>
           <br>
           <div class="row">
-            <h6>Job Recommendation:&nbsp; <label><?php echo $r_JobRecommendation ?></label></h6>   
+            <h6>Job Recommendation:&nbsp; <label><?php echo $JobRecommendatio ?></label></h6>   
           </div>
           <br>
           <div class="row">
-            <h6>Materials Needed:&nbsp;<label><?php 
-            $materials = array();
-            for ($i=1; $i <= 12; $i++) { 
-              $m = "m".$i;
-              if($$m!=null){
-                array_push($materials,$$m);
-              }
-            }
-            echo implode(", ", $materials); ?></label></h6>
+            <h6>Materials Needed:&nbsp;<label><?php echo $m1 ?></label></h6>
             
           </div>
           <br>
@@ -636,18 +604,90 @@ require 'navbar.php';
 
         <div class="row">
           <h6 class="col-8">Accomplished Works: 
-            <input class="form-control onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" ><br>
-            <input class="form-control onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" ><br>
-            <input class="form-control onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" ><br>
-            <input class="form-control onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" ><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
           </h6>
           <h6 class="col-4">Work done by:
-            <input class="form-control onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>"><br>
-            <input class="form-control onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"><br>
-            <input class="form-control onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"><br>
-            <input class="form-control onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
           </h6>
         </div>
+            <br>
+
+                        <table class="table table-bordered table-responsive">
+                            <tbody>
+                                <tr>
+                                    <th colspan="12">Thank you for giving us the opportunity to serve you better. Please help us by taking a few minutes to inform us about the technical assistance/service that you have just been provided. Put check in the colun that corresponds to your of satisfaction.</th>
+                                </tr>
+                                <tr>
+                                    <th rowspan="2" colspan="4">
+                                        <center>EVALUATION STATEMENTS
+                                    </th>
+                                    <th>Outstanding</th>
+                                    <th>Very Satisfactory</th>
+                                    <th>Satisfactory</th>
+                                    <th>Unsatisfactory</th>
+                                    <th>Poor</th>
+                                </tr>
+                                <tr>
+                                    <center>
+                                        <th>
+                                            <center>5</center>
+                                        </th>
+                                        <th>
+                                            <center>4</center>
+                                        </th>
+                                        <th>
+                                            <center>3</center>
+                                        </th>
+                                        <th>
+                                            <center>2</center>
+                                        </th>
+                                        <th>
+                                            <center>1</center>
+                                        </th>
+                                </tr>
+
+                                <tr>
+                                    <th colspan="4">Response time for the initial call for service</th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 5 ? 'checked' : 'disabled') : ($ResponseTime == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 4 ? 'checked' : 'disabled') : ($ResponseTime == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 3 ? 'checked' : 'disabled') : ($ResponseTime == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 2 ? 'checked' : 'disabled') : ($ResponseTime == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb1" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($ResponseTime == 1 ? 'checked' : 'disabled') : ($ResponseTime == 1 ? 'checked' : '')    ?> ></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="4">Accuracy of work and efficiency to save time</th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 5 ? 'checked' : 'disabled') : ($AccuracyOfWork == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 4 ? 'checked' : 'disabled') : ($AccuracyOfWork == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 3 ? 'checked' : 'disabled') : ($AccuracyOfWork == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 2 ? 'checked' : 'disabled') : ($AccuracyOfWork == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb2" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($AccuracyOfWork == 1 ? 'checked' : 'disabled') : ($AccuracyOfWork == 1 ? 'checked' : '');    ?> ></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="4">Courtesy and professionalis of the attending personel</th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 5 ? 'checked' : 'disabled') : ($Courtesy == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 4 ? 'checked' : 'disabled') : ($Courtesy == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 3 ? 'checked' : 'disabled') : ($Courtesy == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 2 ? 'checked' : 'disabled') : ($Courtesy == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb3" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($Courtesy == 1 ? 'checked' : 'disabled') : ($Courtesy == 1 ? 'checked' : '');    ?> ></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="4">Quality of service provided in performing the requested work, service and/or assistance</th>
+                                    <th><input type="radio" value="5" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 5 ? 'checked' : 'disabled') : ($QualityOfService == 5 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="4" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 4 ? 'checked' : 'disabled') : ($QualityOfService == 4 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="3" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 3 ? 'checked' : 'disabled') : ($QualityOfService == 3 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="2" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 2 ? 'checked' : 'disabled') : ($QualityOfService == 2 ? 'checked' : '');    ?> ></th>
+                                    <th><input type="radio" value="1" class="form-control" name="cb4" <?php echo ($_SESSION['usr_type'] == 'admin' || $_SESSION['usr_type']  == 'director')? ($QualityOfService == 1 ? 'checked' : 'disabled') : ($QualityOfService == 1 ? 'checked' : '');    ?> ></th>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
             <br>
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
@@ -656,10 +696,8 @@ require 'navbar.php';
             <h4 id="message-bottom" class="w3-text-green"></h4>
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
-            <!-- <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button"> -->
-            <input name="complete" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="For Evaluation" id="custom-button">
-            <input name="btn-print" style="padding:20px;" onClick="window.print()" class="no-print btn btn-warning" id="print-button" type="button" value="Print">
-
+            <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
+            <input name="" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="submit" value="Print">
           </div>
 </form>
 
@@ -670,7 +708,7 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
                 ?>
-
+            <script src="js/jquery-3.3.1.js"></script>
             <script>
 
                 /*
@@ -685,24 +723,74 @@ $conn->close();
               //disabling of fields
                 console.log('statusId '+<?php echo $statusId ?>);
 
-              if(<?php echo $statusId ?> == 2 ){
+              if(<?php echo $statusId ?> == 1){
+                console.log('for approval');
+                //$('#message-bottom').remove();
+                $(":input").not("[name=accept],[name=denied],[name=btn-print],[name=serial],[name=designation-of-requester],[name=designation-of-inspecter]")
+                      .prop("disabled", true);
+                      $('#con-eval-form').css('display', 'none');
+
+
+              }else if(<?php echo $statusId ?> == 2 ){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
                 //change button name for server side script
-                $('#message-bottom').text('Submitting would set this as Task Completed');
-                      //           $(":input").not("[class=onNapprove]")
-                      // .prop("disabled", true);
+                $("#custom-button").attr('name', 'ongoing');
+                $('#message-bottom').text('Submitting would set this as for On-going');
+                                $(":input").not("[class=onNapprove]")
+                      .prop("disabled", true);
+                      $(".onNapprove").removeAttr("disabled");
+                      $(".onNapprove").removeAttr("readonly");
 
+              }else if(<?php echo $statusId ?> == 3){
+                //denied
+                //but we need to add a text
+                $('#message-bottom').text('This Request is denied');
+                //add button draft to only save as draft and not change status
+                $(":input").not("")
+                      .prop("disabled", true);
 
+              }else if(<?php echo $statusId ?> == 5){
+                //on going
+                //but we need to add a text
+                $("#custom-button").attr('name', 'ongoing');
+                $('#message-bottom').text('Submitting would change the status to Done!, click draft if you only want to save');
+                //add button draft to only save as draft and not change status
+                var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
+                $input.appendTo($("#btn-container"));
+                                $(":input").not("[class=onNapprove]")
+                      .prop("disabled", true);
+                      $(".onNapprove").removeAttr("disabled");
+                      $(".onNapprove").removeAttr("readonly");
+
+              }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
+
+                $('#message-bottom').text('Uneditable');
+$(":input").not("")
+                      .prop("disabled", true);
+              }else if(<?php echo $statusId ?> == 7){
+                //fields are now set for this status so we aint going to readonly any fields here
+                //but we need to add a text
+                $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
+
+              }else if(<?php echo $statusId ?> == 8){
+                //document.getElementById("custom-button").value = "Submit Evaluation";
+                $("#custom-button").attr({
+                  name: 'evaluation',
+                  value: 'Submit Evaluation'
+                })
               }
               //disabling of fields
 
+              //approve logic
+              /*readonly all fields except the fields given by bi*/
+              //approve logic
 
               // add script that is status is approved then remove disable in fields
                 $("#inspectionReport").keyup(function() {
                     $("#mlInspectionReport").text("Characters left: " + (450 - $(this).val().length));
                 });
-                $("#cjobRecommendation").keyup(function() {
+                $("#jobRecommendation").keyup(function() {
                     $("#mlJobRecommendation").text("Characters left: " + (450 - $(this).val().length));
                 });
 

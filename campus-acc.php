@@ -66,7 +66,7 @@ require 'testaccountcreator.php';
               </select>
 <br>
             <center>
-            <input name="submit" style="paddingding:20px;" id='save' class="btn btn-success col-md-4" type="submit" value="Register" disabled="">
+            <input name="submit" style="paddingding:20px;" id='save' class="btn btn-success ocl-md-4" type="submit" value="Register" disabled="">
           </form>
             </center>
 
