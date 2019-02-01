@@ -540,82 +540,82 @@ require '../api/dbcon.php';
                                 </th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
+                                <th rowspan=2><input class="faculty-for-eval-disabled w3-check" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
                                     <label>Air-conditioning Works:</label></th>
                                 <th rowspan="5">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
+                                    <div class="form-group"><textarea class="faculty-for-eval-disabled form-control" rows="15" name="inspect-report" id="inspectionReport" maxlength="450" ><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m1" value="<?php echo $m1 ?>"/></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m2" value="<?php echo $m2 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
+                                <th rowspan=2><input class="faculty-for-eval-disabled w3-check" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
                                     <label>
                                         <center>Carpentry/ Masonary Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m3" value="<?php echo $m3 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m4" value="<?php echo $m4 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
+                                <th rowspan=2><input class="faculty-for-eval-disabled w3-check" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
                                     <label>Electrical Works:</label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m5" value="<?php echo $m5 ?>"></th>
                             </tr>
                             <tr>
                                 <th>
                                     <center>Job Recommendation
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m6" value="<?php echo $m6 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?>>
+                                <th rowspan=2><input class="faculty-for-eval-disabled w3-check" type="checkbox" name="Painting" <?php echo $Painting; ?>>
                                     <label>
                                         <center>Painting Works:
                                     </label></th>
                                 <th rowspan="6">
-                                    <div class="form-group"><textarea class="form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"><?php echo $JobRecommendation; ?></textarea>
+                                    <div class="form-group"><textarea class="faculty-for-eval-disabled form-control" rows="15" name="job-recommendation" id="jobRecommendation" maxlength="450"><?php echo $JobRecommendation; ?></textarea>
                                         <p id="mlJobRecommendation"></p>
                                     </div>
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m7" value="<?php echo $m7 ?>"></th>
                             </tr>
                             <tr>
-                              <th colspan=2><input class="w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
+                              <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m8" value="<?php echo $m8 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
+                                <th rowspan=2><input class="faculty-for-eval-disabled w3-check" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
                                     <label>
                                         <center>Plumbing Works:
                                     </label></th>
 
                                 </th>
-                                <th colspan=2><input class="w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m9" value="<?php echo $m9 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m10" value="<?php echo $m10 ?>"></th>
                             </tr>
                             <tr>
-                                <th rowspan=2><input class="w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
+                                <th rowspan=2><input class="faculty-for-eval-disabled w3-check" type="checkbox" name="Welding" <?php echo $Welding; ?>>
                                     <label>
                                         <center>Welding Works:
                                     </label></th>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m11" value="<?php echo $m11 ?>"></th>
                             </tr>
                             <tr>
 
-                                <th colspan=2><input class="w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
+                                <th colspan=2><input class="faculty-for-eval-disabled w3-input" type="text" name="m12" value="<?php echo $m12 ?>"></th>
                             </tr>
                     </table>
             </div>
@@ -903,7 +903,7 @@ $conn->close();
                 */
               //disabling of fields
                 console.log('statusId '+<?php echo $statusId ?>);
-
+                var user_type = "<?php echo $_SESSION['usr_type'] ?>";
               if(<?php echo $statusId ?> == 1){
                 console.log('for approval');
                 //$('#message-bottom').remove();
@@ -939,7 +939,7 @@ $conn->close();
                 //add button draft to only save as draft and not change status
                 var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
                 $input.appendTo($("#btn-container"));
-                                $(":input").not("[class=onNapprove]")
+                $(":input").not("[class=onNapprove]")
                       .prop("disabled", true);
                       $(".onNapprove").removeAttr("disabled");
                       $(".onNapprove").removeAttr("readonly");
@@ -955,11 +955,16 @@ $(":input").not("")
                 $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
 
               }else if(<?php echo $statusId ?> == 8){
+                console.log("for eval");
+                if(user_type == 'faculty'){
+                  console.log("faculty");
+              $(".faculty-for-eval-disabled").attr("disabled", true);
                 //document.getElementById("custom-button").value = "Submit Evaluation";
                 $("#custom-button").attr({
                   name: 'evaluation',
                   value: 'Submit Evaluation'
                 })
+              }
               }
               //disabling of fields
 
