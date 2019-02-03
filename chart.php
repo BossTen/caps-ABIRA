@@ -596,7 +596,7 @@ require 'navbar.php';
   var myPieChart = new Chart(ctxP, {
     type: 'pie',
     data: {
-      labels: ["Not Completed on time", "Completed on time"],
+      labels: ["Not Completed on time "+not_completed, "Completed on time "+completed],
       datasets: [{
         data: [not_completed, completed],
         backgroundColor: ["#F7464A", "#46BFBD"],
