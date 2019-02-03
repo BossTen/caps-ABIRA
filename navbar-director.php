@@ -22,8 +22,10 @@ if(session_id() == '' || !isset($_SESSION)) {
       <li class="nav-item">
         <a class="nav-link" href="director-notif.php">Notification</a>
       </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" data-toggle="modal" data-target="#faqs" >FAQs</a>
+      </li>
     </ul>
-    <a href="" class="nav-link" data-toggle="modal" data-target="#faqs" >FAQs</a>
   </div>
   <div class="pull-right">
     <div class="dropdown show">
@@ -39,7 +41,6 @@ if(session_id() == '' || !isset($_SESSION)) {
 </nav>
 
 <!--faqs-->
-
 <style>
 h6 {
   text-indent: 50px;
@@ -54,11 +55,10 @@ h6 {
 }
 </style>
 <div class="modal fade" id="faqs" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog " role="document">
-
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 style="color:red;"> Administratior FAQs</h1>
+        <h1 style="color:red">Director FAQs</h1>
       </div>
       <div class="modal-body">
         <h1>Frequently Ask Question</h1>
@@ -72,8 +72,7 @@ h6 {
 <h6>A. No. The job order request will automatically change into completed once the sender answer the evaluation.</h6>
 <label>5. How can I decline a job order request?</label><br>
 <h6>A. You cannot decline a job order request.</h6>
-      
-
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>

@@ -22,12 +22,13 @@ if(session_id() == '' || !isset($_SESSION)) {
       <li class="nav-item">
         <a class="nav-link" href="faculty-notices.php">Notices</a>
       </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" data-toggle="modal" data-target="#faqs" >FAQs</a>
+      </li>
      <!--  <li class="nav-item">
         <a class="nav-link" href="faculty-forevaluation-view.php">Evaluation</a>
       </li> -->
-
     </ul>
-    <a href="" class="nav-link" data-toggle="modal" data-target="#faqs" >FAQs</a>
   </div>
     <div class="pull-right">
     <div class="dropdown show">
@@ -39,8 +40,6 @@ if(session_id() == '' || !isset($_SESSION)) {
   </div>
 </div>
 </nav>
-
-<!--faqs-->
 
 <style>
 h6 {
@@ -56,14 +55,13 @@ h6 {
 }
 </style>
 <div class="modal fade" id="faqs" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog " role="document">
-
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 style="color:red;"> Administratior FAQs</h1>
+        <h1 style="color:red">User FAQs</h1>
       </div>
       <div class="modal-body">
-        <h1>Frequently Ask Question</h1>
+<h1>Frequently Ask Question</h1>
 <label>1. How do I see the current status of my sent request?</label><br>
 <h6>A. In the navigation click "Reports". A table of list of your sent reports will show.
 In the last column of the table there is a column for status where you can see the current progress of your service request.
@@ -78,8 +76,7 @@ A. To cancel a request you will need to send a message to the GSO for them to st
 <label>5. How do I create a new account?</label><br>
 A. To ensure the security and integrity of the system, the only person that can create an account is the GSO admin.
 There is only one account per department. For a new account, you will have to go the GSO personally and they will register you in the system and create an account for you.</h6><br>
-      
-
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
