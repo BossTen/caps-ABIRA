@@ -177,7 +177,7 @@ echo $_SESSION['usr_campus'];
 	<div class=" card-body  style="margin-left: 5%;">
 
          <div class="row">
-                            <h4 class="col-12"><b>*Priority*</b>&nbsp;
+                            <h4 class="col-12"><b>Priority</b>&nbsp;
                 <select class="form-control" name="priority" id="priority" placeholder="asdasdasdsa" required>
                     <?php
                                 require '../api/dbcon.php';
@@ -196,7 +196,7 @@ echo $_SESSION['usr_campus'];
             </h4>
         </div>
 
-            <h4><b>*Services*</b></h4>
+            <h4><b>Services</b></h4>
             <div class="card">
           <div class="card-body">
             <input class="w3-check" type="checkbox" name="AirCondition" id="AirCondition"><label>Air-conditioning Works</label><br>
@@ -209,11 +209,11 @@ echo $_SESSION['usr_campus'];
           </div>
         </div>
         <br />
-        <h4><b>*Location:*</b></h4><p>Indicate the location of the issue for inspection</p>
-            <input type="text" name="location" class="form-control" required>
+        <h4><b>Location:</b></h4>
+            <input type="text" name="location" class="form-control" required placeholder="**Indicate the location of the issue for inspection**">
         <br>
-        <h4><b>*Description of Concern:*</b>&nbsp
-<div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" placeholder="please make a detailed description of your concern based on your understanding of the situation" required></textarea></div>
+        <h4><b>Description of Concern:</b>&nbsp
+<div class="form-group col-12"><textarea class="form-control" rows="15" name="user-job-description" placeholder="**please make a detailed description of your concern based on your understanding of the situation**" required></textarea></div>
 
             
             <center>

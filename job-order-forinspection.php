@@ -488,19 +488,19 @@ require 'navbar.php';
               </h6>                                 
           </div>
           <div class="row">
-            <h6>*Inspection Report:*&nbsp;</h6>
-            <textarea class="form-control" rows="5" cols="100" name="inspect-report" id="inspectionReport" maxlength="450" required><?php echo $InspectionReport; ?></textarea>
+            <h6>Inspection Report:&nbsp;</h6>
+            <textarea class="form-control" rows="5" cols="100" name="inspect-report" id="inspectionReport" maxlength="450" placeholder="** **" required><?php echo $InspectionReport; ?></textarea>
                                         <p id="mlInspectionReport">
           </div>
           <br>
           <div class="row">
-            <h6>*Job Recommendation:*&nbsp;</h6>
-            <textarea class="form-control" rows="5" cols="100" name="job-recommendation" id="jobRecommendation" maxlength="450" required></textarea>
+            <h6>Job Recommendation:&nbsp;</h6>
+            <textarea class="form-control" rows="5" cols="100" name="job-recommendation" id="jobRecommendation" maxlength="450" placeholder="** **" required></textarea>
                                         <p id="mlJobRecommendation">
           </div>  
           <br>
           <div class="row">
-            <h6>*Materials Needed:* (fill-up horizontaly)&nbsp;</h6>
+            <h6>Materials Needed: (fill-up horizontaly)&nbsp;</h6>
           </div>
           <div class="row">
             <h6 class="col-4"><input class="form-control" type="text" name="m1"  value="<?php echo $m1 ?>">
@@ -530,8 +530,8 @@ require 'navbar.php';
           </div>
           <br>
           <div class="row">
-            <h6 class="col-4">*Inspected by:* <input class="form-control" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" required></h6>
-            <h6 class="col-4">*Designation:* <input class="form-control" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>" required></h6>
+            <h6 class="col-4">Inspected by: <input class="form-control" type="text" name="name-of-inspector" placeholder="name of inspecter" value="<?php echo  $InspectorName;?>" required></h6>
+            <h6 class="col-4">Designation: <input class="form-control" type="text" name="designation-of-inspecter" placeholder="designation of inspecter" value="<?php echo  $InspectorDesignation;?>" required></h6>
             <h6 class="col-4">Date: <input type="date" class="form-control" name="date-inspected" value="<?php echo  $date; ?>" disabled></h6>
           </div>
           <br>
