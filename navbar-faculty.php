@@ -42,15 +42,11 @@ if(session_id() == '' || !isset($_SESSION)) {
 </nav>
 
 <style>
-h6 {
-  text-indent: 50px;
-  color: #4d94ff;
-}
-label {
+.label {
   color: #80b3ff;
   font-size: 20px;
 }
-h6 {
+.h6 {
   color: #cc00cc;
 }
 </style>
@@ -62,18 +58,18 @@ h6 {
       </div>
       <div class="modal-body">
 <h1>Frequently Ask Question</h1>
-<label>1. How do I see the current status of my sent request?</label><br>
-<h6>A. In the navigation click "Reports". A table of list of your sent reports will show.
+<label  class="label">1. How do I see the current status of my sent request?</label><br>
+<h6 class="h6">A. In the navigation click "Reports". A table of list of your sent reports will show.
 In the last column of the table there is a column for status where you can see the current progress of your service request.
-<label>
+<label class="label">
 2. Can I request more than 1 service in one job order request?</label><br>
 A. Yes. Just click on the checkbox next to the type of services you need and make a detailed description of the trouble in the description box.
-<label>3. How do I send a message to the GSO?</label><br>
+<label class="label">3. How do I send a message to the GSO?</label><br>
 A. Click on a request you sent. Under the job order form is a button "write a message".
 Click this button, compose your message, and click send. If the GSO replies, you can see it in the notices page when you click notices in the navigation bar above the page.
-<label>4. How do I cancel a sent request?</label><br>
+<label class="label">4. How do I cancel a sent request?</label><br>
 A. To cancel a request you will need to send a message to the GSO for them to stop the progress of your request.
-<label>5. How do I create a new account?</label><br>
+<label class="label">5. How do I create a new account?</label><br>
 A. To ensure the security and integrity of the system, the only person that can create an account is the GSO admin.
 There is only one account per department. For a new account, you will have to go the GSO personally and they will register you in the system and create an account for you.</h6><br>
       </div>
