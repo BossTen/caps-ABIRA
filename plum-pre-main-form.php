@@ -172,7 +172,7 @@ require'navbar.php';
                              <h4 class="col-12"><b>Accomplish by:</b>&nbsp;<input type="text" name="accomplished-by"  class="form-control col-12"></h4>
         </div>
         <div class="row">
-                <input style="padding:20px;" class="btn btn-success col-12" type="submit" name="submit" value="Save">
+                <input style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" name="submit" value="Save">
         </div>
 </form>
 
