@@ -222,4 +222,4 @@ echo $_SESSION['usr_campus'];
         <input name="submit" style="padding:20px;" class="btn btn-success offset-md-4 col-md-4" type="submit" value="Submit">
 
     </form>
-    </div>
+    </div> 

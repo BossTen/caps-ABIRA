@@ -60,7 +60,7 @@ require 'navbar.php';
                             </select>
             <h5 class="col-12"><b>Department:</b>&nbsp;
               <select class="form-control form-control col-12" name="department" id="department" required>
-                  <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAof Engineering, Architecture  & Fine Arts) Bldg.
+                  <option value="CEAFA (College of Engineering, Architecture  & Fine Arts) Bldg.">CEAFA(College of Engineering, Architecture  & Fine Arts) Bldg.
                   </option>
                   <option value="CICS (College of Informatics & Computing Sciences) Bldg.">CICS Informatics & Computing Sciences) Bldg.
                   </option>

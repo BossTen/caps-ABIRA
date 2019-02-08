@@ -445,6 +445,7 @@ require '../api/dbcon.php';
     else if($_SESSION['usr_type']=="faculty")
       require 'navbar-faculty.php';
 ?>
+<br><br>
 
     <center>
         <h1 class="w3-text-red">Job Order Form - Inspection Order</h1>
@@ -507,9 +508,11 @@ require '../api/dbcon.php';
                             <!-- <input type="date" class="form-control col-12" name="date1" value="" disabled/> -->
                             <small><?php echo $DateRequestCreated ?><small/>
                         </h4>
-                        <h4 class="col-12"><b>Campus:</b>&nbsp;
+                        </div>
+                        <div class="row">
+                        <h4 class="col-6"><b>Campus:</b>&nbsp;
                             <small><?php echo $Campus; ?></small>
-                <h4 class="col-12"><b>Name of Office:</b>&nbsp;
+                <h4 class="col-6"><b>Name of Office:</b>&nbsp;
                     <!-- <input type="text" name="nameofoffice" class="form-control col-30" id="nameofoffice" placeholder="Name of Office" value=""disabled> -->
                     <small><?php echo $NameOfOffice; ?></small>
 
@@ -525,8 +528,9 @@ require '../api/dbcon.php';
 
             <div class="card">
                 <div class="card-body" style="margin-left:2%;">
+                                    <div class="table-responsive">
 
-                    <table class="table  table-bordered w3-card w3-round">
+                    <table class="table  table-bordered w3-round">
                         <tbody>
                             <tr>
                                 <th colspan="col-5">
