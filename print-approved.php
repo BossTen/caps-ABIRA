@@ -360,7 +360,7 @@ $conn->close();
 
       if($statusId!=2){
         //if status is not equals to approved
-        header('location: job-order-view.php');
+        //header('location: job-order-view.php');
       }
 
 

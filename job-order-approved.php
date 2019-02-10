@@ -533,7 +533,7 @@ require 'navbar.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="button" value="Print">
+            <a href="print-approved.php?id=<?php echo $SerialCode; ?>" ><input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="button" value="Print"></a>
 
           </div>
 </form>
@@ -589,12 +589,7 @@ require 'navbar.php';
 </form>
             <script>
 
-  $('[name=print-button]').on('click', function() {
-    //debugger;
-    console.log("print");
-                window.print();
-                return false; // why false?
-              });
+
                 /*
                   1 - For Approval
                   2 - Approved
