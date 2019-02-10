@@ -882,7 +882,7 @@ require '../api/dbcon.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <a href="print-joborder.php?serial=<?php echo $SerialCode; ?> "><input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning print-active" type="submit" value="Print">
+            <a href="print-joborder.php?serial=<?php echo $SerialCode; ?> "><input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning print-active" type="button" value="Print">
           </div>
 </form>
 
