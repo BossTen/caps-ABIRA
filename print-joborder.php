@@ -329,7 +329,8 @@ require '../api/dbcon.php';
                            materialsNeeded10,
                            materialsNeeded11,
                            materialsNeeded12,
-                           UserJobDescription
+                           UserJobDescription,
+                           location
                            FROM joborder WHERE SerialCode=?");
     $stmt->bind_param('s',$sId);
     $sId = isset($_GET['serial'])? $_GET['serial'] : '' ;
@@ -394,7 +395,8 @@ require '../api/dbcon.php';
                        $m10,
                        $m11,
                        $m12,
-                       $userJobDescription
+                       $userJobDescription,
+                       $location
                      );
 
     while($stmt->fetch()){
@@ -533,7 +535,7 @@ label {
           </div>
           <br>
           <div class="row">
-            <h6>Job Recommendation:&nbsp; <label><?php echo $r_JobRecommendation ?></label></h6>   
+            <h6>Job Recommendation:&nbsp; <label><?php echo $JobRecommendation ?></label></h6>   
           </div>
           <br>
           <div class="row">
@@ -563,9 +565,9 @@ label {
           <br>
           <div class="row">
             <h6 class="col-3">Start Date: <label><?php echo $StartOfService; ?></label></h6>
-            <h6 class="col-3">Start Time: <label><?php $date = date("H:i", strtotime($r_StartOfServiceTime)); echo "$date"; ?></label></h6>
-            <h6 class="col-3">End Date: <label><?php echo $r_EndOfService; ?></label></h6>
-            <h6 class="col-3">End Time: <label><?php $date = date("H:i", strtotime($r_EndOfServiceTime)); echo "$date"; ?></label></h6>
+            <h6 class="col-3">Start Time: <label><?php $date = date("H:i", strtotime($StartOfServiceTime)); echo "$date"; ?></label></h6>
+            <h6 class="col-3">End Date: <label><?php echo $EndOfService; ?></label></h6>
+            <h6 class="col-3">End Time: <label><?php $date = date("H:i", strtotime($EndOfServiceTime)); echo "$date"; ?></label></h6>
           </div>
           <br>
           <div class="row">

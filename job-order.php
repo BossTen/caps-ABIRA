@@ -882,7 +882,7 @@ require '../api/dbcon.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning print-active" type="submit" value="Print">
+            <a href="print-joborder.php?serial=<?php echo $SerialCode; ?> "><input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning print-active" type="submit" value="Print">
           </div>
 </form>
 
@@ -895,12 +895,7 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
-  $('[name=print-button]').on('click', function() {
-    //debugger;
-    console.log("print");
-                window.print();
-                return false; // why false?
-              });
+
                 /*
                   1 - For Approval
                   2 - Approved
