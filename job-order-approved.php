@@ -588,7 +588,10 @@ require 'navbar.php';
 </div>
 </form>
             <script>
-  $('#print-button').on('click', function() {
+
+  $('[name=print-button]').on('click', function() {
+    //debugger;
+    console.log("print");
                 window.print();
                 return false; // why false?
               });

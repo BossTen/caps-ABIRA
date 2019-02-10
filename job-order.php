@@ -882,7 +882,7 @@ require '../api/dbcon.php';
 
             <div id="btn-container" class="container" style="margin-bottom: 5%">
             <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="submit" value="Print">
+            <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning print-active" type="submit" value="Print">
           </div>
 </form>
 
@@ -895,7 +895,12 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
-
+  $('[name=print-button]').on('click', function() {
+    //debugger;
+    console.log("print");
+                window.print();
+                return false; // why false?
+              });
                 /*
                   1 - For Approval
                   2 - Approved
@@ -951,8 +956,10 @@ $conn->close();
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
 
                 $('#message-bottom').text('Uneditable');
-$(":input").not("")
+                
+                $(":input").not(':input[name="print-button"]')
                       .prop("disabled", true);
+
               }else if(<?php echo $statusId ?> == 7){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
