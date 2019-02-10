@@ -126,14 +126,13 @@ $stmt = $conn->prepare("UPDATE joborder SET statusId = ?,
                                                materialsNeeded9=?,
                                                materialsNeeded10=?,
                                                materialsNeeded11=?,
-                                               materialsNeeded12=?,
-                                               location=?
+                                               materialsNeeded12=?
                                                -- ApprovedBy,
 
                                                 WHERE SerialCode = ?
                                                ");
 
-$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+$stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $sIdu,
                               $airConditioning,
                               $masonryCarpentry,
@@ -191,8 +190,7 @@ $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
                               $m10get,
                               $m11get,
                               $m12get,
-                              $serialCode,
-                              $location
+                              $serialCode
 
                         );
 // Approved = $directorSignature
@@ -424,7 +422,7 @@ require '../api/dbcon.php';
 <html lang="en">
 
 <head>
-    <title class="no-print">Job Order Form</title>
+    <title class="no-print">Print Job Order</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -438,13 +436,13 @@ require '../api/dbcon.php';
   <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/custom.css">
 
-         <style>
+   <style>
 h6 {
   text-indent: 50px;
   color: gray;
 }
 label {
-  text-indent: 2px;
+  text-indent: 0px;
   color: black;
 }
 </style>
@@ -452,29 +450,20 @@ label {
 </head>
 
 <body>
-    <?php
-    if($_SESSION['usr_type']=="admin")
-      require 'navbar.php';
-    else if($_SESSION['usr_type']=="faculty")
-      require 'navbar-faculty.php';
-?>
-
 <br><br>
-
-            <!-- UPDATE form -->
 <form action="" method="POST">
-            <!-- UPDATE card -->
+
 <div class="container" style="margin-bottom: 3%;">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
       <div class="card card-signin my-12">
-        <div class="card-body" style="margin-left: 3%;margin-right: 3%;">
+        <div class="card-body">
+          <h1 class="w3-center">BatStateU General Services Office</h5>
           <h5 class="w3-text-red">Job Order Form - Inspection Order</h5>
-            <div class="row">
-                        <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
-                        <input type="hidden" name="serial" value="<?php echo $SerialCode?>"/> 
-                        <h6 class="col-6">Priority: <label><input type="hidden" name="priority" value="<?php echo $priorityId?>"/>
-                                <?php
+          <div class="row">
+            <h6 class="col-6">Serial: <label><?php echo $SerialCode;?></label></h6>
+            <input type="hidden" name="serial" value="<?php echo $SerialCode;?>"/>
+            <h6 class="col-6">Priority: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM priority where Id = $priorityId";
                                 $result = $conn->query($sql);
@@ -488,10 +477,9 @@ label {
                                   }
                                 }
                               ?></label></h6>
-                          </div>
-                          <div class="row">
-
-                             <h6 class="col-6">Status: <label><?php
+          </div>
+          <div class="row">
+            <h6 class="col-6">Status: <label><?php
                                 require '../api/dbcon.php';
                                 $sql = "SELECT Id, Name FROM status where Id = $statusId";
                                 $result = $conn->query($sql);
@@ -505,36 +493,11 @@ label {
                                   }
                                 }
                               ?></label></h6>
-                        <h6 class="col-6">Date: <label><?php echo $DateRequestCreated ?></label></h6>
-                      </div>
-                      <div class="row">
+            <h6 class="col-6">Date: <label><?php echo $DateRequestCreated ?></label></h6>
+          </div>
+          <div class="row">
             <h6 class="col-6">Campus: <label><?php echo $Campus; ?></label></h6>
             <h6 class="col-6">Name of Office: <label><?php echo $NameOfOffice; ?></label></h6>
-          </div>
-          <h5 class="w3-text-red">Job Order Request</h5>
-          <div class="row">
-            <h6 class="col-12">Report Description: <label><?php echo $userJobDescription ?></label></h6>
-          </div>
-          <div class="row">
-            <h6 class="col-12">Location: <label><?php echo $location; ?></label></h6>
-          </div>
-           <div class="row">
-            <h6 class="col-12">Works:&nbsp;
-              <div class="form-check-inline">
-                <input class="form-check-input" type="checkbox" name="air-conditioning" <?php echo $AirCondition; ?> >
-                                    <label>Air-conditioning &nbsp;</label>
-                <input class="form-check-input" type="checkbox" name="masonary-carpentry" <?php echo $CarpentryMasonry; ?>>
-                                    <label>Carpentry/ Masonary &nbsp;</label></th>
-              <input class="form-check-input" type="checkbox" name="Electrical" <?php echo $ElectricalWorks; ?>>
-                                    <label>Electrical &nbsp;</label></th>
-              <input class="form-check-input" type="checkbox" name="Painting" <?php echo $Painting; ?>>
-                                    <label>Painting &nbsp;</label>
-              <input class="form-check-input" type="checkbox" name="Plumbing" <?php echo $Plumbing; ?>>
-                                    <label>Plumbing &nbsp;</label>
-              <input class="form-check-input" type="checkbox" name="Welding" <?php echo $Welding; ?>>
-                                    <label>Welding &nbsp;</label>
-              </div>
-              </h6>                                 
           </div>
           <h5 class="w3-text-red">Job Order Request</h5>
           <div class="row">
@@ -570,11 +533,19 @@ label {
           </div>
           <br>
           <div class="row">
-            <h6>Job Recommendation:&nbsp; <label><?php echo $JobRecommendatio ?></label></h6>   
+            <h6>Job Recommendation:&nbsp; <label><?php echo $r_JobRecommendation ?></label></h6>   
           </div>
           <br>
           <div class="row">
-            <h6>Materials Needed:&nbsp;<label><?php echo $m1 ?></label></h6>
+            <h6>Materials Needed:&nbsp;<label><?php 
+            $materials = array();
+            for ($i=1; $i <= 12; $i++) { 
+              $m = "m".$i;
+              if($$m!=null){
+                array_push($materials,$$m);
+              }
+            }
+            echo implode(", ", $materials); ?></label></h6>
             
           </div>
           <br>
@@ -599,27 +570,30 @@ label {
           <br>
           <div class="row">
             <h6 class="col-4">No. of hrs: <label><?php echo $NoOfHours; ?></label></h6>
-            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> ><label>Work completed upon agreed duration</label></h6>
-            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>  required><label>Work not completed upon agreed duration</label></h6>
+            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="completed" <?php echo $Assessment == 'completed'? 'checked' : '' ?> ><label>*Work completed upon agreed duration*</label></h6>
+            <h6 class="col-4"><input class="w3-check onNapprove" type="radio" name="assessment" value="notcompleted" <?php echo $Assessment != 'completed'? 'checked' : '' ?>  required><label>*Work not completed upon agreed duration*</label></h6>
         </div>
         <br>
 
         <div class="row">
-          <h6 class="col-8">Accomplished Works: 
-            <input class="form-control onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
-            <input class="form-control onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
-            <input class="form-control onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
-            <input class="form-control onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+          <h6 class="col-7">Accomplished Works: 
+            <input class="form-control onNapprove" type="text" name="accomplished-work1" value=" <?php echo $AccomplishedWork1; ?>" placeholder="** **"><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work2" value=" <?php echo $AccomplishedWork2; ?>" ><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work3" value="<?php echo $AccomplishedWork3; ?>" ><br>
+            <input class="form-control onNapprove" type="text" name="accomplished-work4" value="<?php echo $AccomplishedWork4; ?>" ><br>
           </h6>
-          <h6 class="col-4">Work done by:
-            <input class="form-control onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
-            <input class="form-control onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
-            <input class="form-control onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
-            <input class="form-control onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>" style="border:0;outline:0;background:transparent; min-width:100%"><br>
+          <h6 class="col-3">Work done by:
+            <input class="form-control onNapprove" type="text" name="work-done-by1" value="<?php echo $WorkDoneBy1; ?>" placeholder="** **"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by2" value="<?php echo $WorkDoneBy2; ?>"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by3" value="<?php echo $WorkDoneBy3; ?>"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by4" value="<?php echo $WorkDoneBy4; ?>"><br>
           </h6>
-        </div>
-            <br>
-
+          <h6 class="col-2">Signature:
+            <input class="form-control onNapprove" type="text" name="work-done-by1"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by2"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by3"><br>
+            <input class="form-control onNapprove" type="text" name="work-done-by4"><br>
+          </h6>
                         <table class="table table-bordered table-responsive">
                             <tbody>
                                 <tr>
@@ -690,16 +664,14 @@ label {
 
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
             <br>
               <!-- ADD -->
               <!-- only display message if status is set as for gso and disable submit button if status is not for gso additional info -->
               <center>
-
-            <h4 id="message-bottom" class="w3-text-green"></h4>
-
-            <div id="btn-container" class="container" style="margin-bottom: 5%">
-            <input name="jos" style="padding:20px;" class=" onNapprove no-print btn btn-success" type="submit" value="Update" id="custom-button">
-            <input name="" style="padding:20px;" class="onNapprove no-print btn btn-warning" type="submit" value="Print">
+            <input name="print-button" style="padding:20px;" class="onNapprove no-print btn btn-warning print-active" type="submit" value="Print">
           </div>
 </form>
 
@@ -712,7 +684,12 @@ $conn->close();
                 ?>
             <script src="js/jquery-3.3.1.js"></script>
             <script>
-
+  $('[name=print-button]').on('click', function() {
+    //debugger;
+    console.log("print");
+                window.print();
+                return false; // why false?
+              });
                 /*
                   1 - For Approval
                   2 - Approved
@@ -724,7 +701,7 @@ $conn->close();
                 */
               //disabling of fields
                 console.log('statusId '+<?php echo $statusId ?>);
-
+                var user_type = "<?php echo $_SESSION['usr_type'] ?>";
               if(<?php echo $statusId ?> == 1){
                 console.log('for approval');
                 //$('#message-bottom').remove();
@@ -760,7 +737,7 @@ $conn->close();
                 //add button draft to only save as draft and not change status
                 var $input = $('<input name="draft" style="padding:20px;" class="no-print btn onNapprove btn-success" type="submit" value="draft" id="">');
                 $input.appendTo($("#btn-container"));
-                                $(":input").not("[class=onNapprove]")
+                $(":input").not("[class=onNapprove]")
                       .prop("disabled", true);
                       $(".onNapprove").removeAttr("disabled");
                       $(".onNapprove").removeAttr("readonly");
@@ -768,19 +745,26 @@ $conn->close();
               }else if(<?php echo $statusId ?> == 6||<?php echo $statusId ?> == 3){
 
                 $('#message-bottom').text('Uneditable');
-$(":input").not("")
+                
+                $(":input").not(':input[name="print-button"]')
                       .prop("disabled", true);
+
               }else if(<?php echo $statusId ?> == 7){
                 //fields are now set for this status so we aint going to readonly any fields here
                 //but we need to add a text
                 $('#message-bottom').text('Submitting would change the status of this form to "for approval" this is for the director to approve');
 
               }else if(<?php echo $statusId ?> == 8){
+                console.log("for eval");
+                if(user_type == 'faculty'){
+                  console.log("faculty");
+              $(".faculty-for-eval-disabled").attr("disabled", true);
                 //document.getElementById("custom-button").value = "Submit Evaluation";
                 $("#custom-button").attr({
                   name: 'evaluation',
                   value: 'Submit Evaluation'
                 })
+              }
               }
               //disabling of fields
 
